@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-09T15:10:16",
+ "generated": "2026-10-09T16:00:14",
  "donate_url": null,
  "members_url": null,
  "press_contact": null,
@@ -51,7 +51,7 @@
    ],
    "lyrics_file": "assets/data/lyrics/crown-of-ash.json",
    "download_url": null,
-   "blurb": null,
+   "blurb": "Crown of Ash is a slow, solemn reckoning sung to a fallen tyrant in the style of an old ballad. The narrator weighs mercy against the widows, orphans and graves the ruler left behind, and the song ends in a stillness that feels less like victory than a long-held breath finally let go.",
    "category": "vocal",
    "mixed": false
   },

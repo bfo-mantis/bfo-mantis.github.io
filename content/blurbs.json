@@ -28,8 +28,8 @@
    "type": "single",
    "genre": "Folk",
    "release_date": "2026-10-09",
-   "basis": "pending",
-   "blurb": "",
+   "basis": "lyrics",
+   "blurb": "Crown of Ash is a slow, solemn reckoning sung to a fallen tyrant in the style of an old ballad. The narrator weighs mercy against the widows, orphans and graves the ruler left behind, and the song ends in a stillness that feels less like victory than a long-held breath finally let go.",
    "blurb_source": "track:QTA7T2600629"
   },
   "the-only-way": {
@@ -269,9 +269,8 @@
    "release_slug": "crown-of-ash",
    "n": 1,
    "title": "Crown of Ash",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "no_lyrics"
+   "basis": "lyrics",
+   "blurb": "Crown of Ash is a slow, solemn reckoning sung to a fallen tyrant in the style of an old ballad. The narrator weighs mercy against the widows, orphans and graves the ruler left behind, and the song ends in a stillness that feels less like victory than a long-held breath finally let go."
   },
   "QT9XM2685551": {
    "release_slug": "the-only-way",
