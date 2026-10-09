@@ -95,7 +95,8 @@
           return '<li class="has-lyrics"><span class="n">' + t.n + '</span><details data-isrc="' + esc(t.isrc) + '">' +
             '<summary><span class="tt">' + esc(t.title) + '</span><span class="ltag" aria-hidden="true">Lyrics</span>' +
             '<span class="sr-only"> — show lyrics</span></summary>' +
-            '<div class="lyrics" aria-live="polite">Loading lyrics…</div></details></li>';
+            '<div class="lyrics" aria-live="polite">Loading lyrics…</div>' +
+            '<p class="lcopy">&copy; ' + r.release_date.slice(0, 4) + ' bfo.mantis Records. All rights reserved.</p></details></li>';
         }
         return '<li><span class="n">' + t.n + '</span><span class="tt">' + esc(t.title) +
           (t.lyrics === "instrumental" ? ' <span class="itag">Instrumental</span>' : "") + "</span></li>";

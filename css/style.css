@@ -119,3 +119,4 @@ a{color:inherit}
 .artist-link{display:inline-block;margin-left:10px;padding:3px 12px;border:1px solid #3a3a4a;border-radius:999px;color:var(--text);text-decoration:none;font-size:.85rem;font-weight:500;vertical-align:1px}
 .artist-link:hover{border-color:var(--accent)}
 @media (max-width:520px){.artist-link{margin:8px 0 0 0}}
+.lcopy{margin:0 0 14px;color:var(--muted);font-size:.78rem;letter-spacing:.01em}
