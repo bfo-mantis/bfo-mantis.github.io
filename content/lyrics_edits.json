@@ -141,47 +141,6 @@
     }
    ]
   },
-  "QT6HR2642232": {
-   "release_title": "The Ridge",
-   "track_title": "The Ridge",
-   "edits": [
-    {
-     "line": 89,
-     "type": "cleanup",
-     "action": "delete_line",
-     "line_sha256_16": "5ec1f7e700f37c3d",
-     "reason": "transcription artifact"
-    },
-    {
-     "line": 118,
-     "type": "cleanup",
-     "action": "delete_line",
-     "line_sha256_16": "5ec1f7e700f37c3d",
-     "reason": "transcription artifact"
-    },
-    {
-     "line": 119,
-     "type": "cleanup",
-     "action": "delete_line",
-     "line_sha256_16": "5ec1f7e700f37c3d",
-     "reason": "transcription artifact"
-    },
-    {
-     "line": 121,
-     "type": "cleanup",
-     "action": "delete_line",
-     "line_sha256_16": "5ec1f7e700f37c3d",
-     "reason": "transcription artifact"
-    },
-    {
-     "line": 122,
-     "type": "cleanup",
-     "action": "delete_line",
-     "line_sha256_16": "5ec1f7e700f37c3d",
-     "reason": "transcription artifact"
-    }
-   ]
-  },
   "QT6G62652788": {
    "release_title": "Rebel Anthem",
    "track_title": "Blood for the Beast",
