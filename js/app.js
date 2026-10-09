@@ -1,143 +1,152 @@
+/* bfo.mantis — progressive enhancement only. Pages are pre-rendered by tools/build_pages.py. */
 (function () {
   "use strict";
-  var data = window.BFO_DATA || { releases: [] };
-  var all = data.releases.slice();
   var today = new Date(); today.setHours(0, 0, 0, 0);
-  var $ = function (id) { return document.getElementById(id); };
-  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
-  var dateOf = function (r) { var p = r.release_date.split("-"); return new Date(+p[0], p[1] - 1, +p[2]); };
-  var upcoming = function (r) { return dateOf(r) > today; };
-  var fmt = function (r) { return dateOf(r).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }); };
-  var link = function (r) { return "release.html?r=" + encodeURIComponent(r.slug); };
-  var y = $("year"); if (y) y.textContent = new Date().getFullYear();
+  var each = function (sel, fn, root) { Array.prototype.forEach.call((root || document).querySelectorAll(sel), fn); };
+  var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
 
-  function picture(r, small, eager, cls) {
-    if (!r.cover) return '<div class="noart" aria-hidden="true"></div>';
-    var webp = small ? r.cover.webp_small : r.cover.webp, jpg = small ? r.cover.jpg_small : r.cover.jpg;
-    return '<picture><source type="image/webp" srcset="' + webp + '"><img ' + (cls ? 'class="' + cls + '" ' : "") +
-      'src="' + jpg + '" width="' + (small ? 400 : 800) + '" height="' + (small ? 400 : 800) + '" alt="Cover art for ' + esc(r.title) + ' by bfo.mantis"' +
-      (eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"') + "></picture>";
-  }
-  function card(r, eager) {
-    var n = r.tracks.length;
-    var sub = (r.type === "album" ? n + (n === 1 ? " track" : " tracks") + " · " : "") + fmt(r) + (r.genre ? " · " + esc(r.genre) : "");
-    return '<li class="card"><a href="' + link(r) + '">' +
-      '<div class="art">' + picture(r, true, eager) + (upcoming(r) ? '<span class="badge">Out ' + fmt(r).replace(/, \d{4}$/, "") + "</span>" : "") + "</div>" +
-      '<div class="info"><h3 class="title">' + esc(r.title) + '</h3><p class="sub">' + sub + "</p></div></a></li>";
+  // Upcoming vs released labels are baked in at build time; refresh them against today's date.
+  each("[data-date]", function (el) {
+    var p = el.getAttribute("data-date").split("-");
+    var up = new Date(+p[0], p[1] - 1, +p[2]) > today;
+    // only touch the DOM when the baked-in state is out of date (avoids needless style recalcs)
+    each(".js-upcoming", function (x) { if (x.hidden !== !up && x.closest("[data-date]") === el) x.hidden = !up; }, el);
+    each(".js-released", function (x) { if (x.hidden !== up && x.closest("[data-date]") === el) x.hidden = up; }, el);
+  });
+
+  // Compact header + back-to-top button once the page is scrolled.
+  var body = document.body, ticking = false, st = {};
+  var set = function (cls, on) { if (st[cls] !== on) { st[cls] = on; body.classList.toggle(cls, on); } };
+  var onScroll = function () {
+    ticking = false;
+    var s = window.pageYOffset;
+    set("is-scrolled", s > 24);
+    set("show-top", s > 900);
+  };
+  var queue = function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } };
+  window.addEventListener("scroll", queue, { passive: true });
+  window.addEventListener("load", queue);   // e.g. reload mid-page (reading the offset earlier would force a layout)
+  each('a[href="#top"]', function (a) {
+    a.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+      var brand = document.querySelector(".brand"); if (brand) brand.focus({ preventScroll: true });
+      if (history.replaceState) history.replaceState(null, "", location.pathname + location.search);
+    });
+  });
+
+  // 30-second previews: one shared <audio preload="none">, so only one clip plays at a time and nothing
+  // downloads until a play button is pressed.
+  var pvButtons = document.querySelectorAll("button.pv");
+  var top = document.querySelector("button.pv-top");
+  if (pvButtons.length) {
+    var audio = new Audio(); audio.preload = "none";
+    var current = null;   // the .pv button whose clip is loaded
+    var main = top && top.closest(".pv-main");
+    var nowEl = main && main.querySelector(".pv-now"), timeEl = main && main.querySelector(".pv-time");
+    var mmss = function (t) { t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ":" + ("0" + t % 60).slice(-2); };
+    var label = function (btn, playing) {
+      btn.setAttribute("aria-label", (playing ? "Pause" : "Play") + " 30-second preview of " + btn.getAttribute("data-title"));
+    };
+    var setState = function (playing) {
+      if (current) {
+        current.classList.toggle("is-playing", playing);
+        label(current, playing);
+        current.closest("li").classList.toggle("pv-active", true);
+      }
+      if (top) {
+        top.classList.toggle("is-playing", playing);
+        var title = current ? current.getAttribute("data-title") : pvButtons[0].getAttribute("data-title");
+        top.setAttribute("aria-label", (playing ? "Pause" : "Play") + " 30-second preview of " + title);
+        top.querySelector(".pv-top-label").textContent = playing ? "Pause preview" : "Play preview";
+        if (nowEl) nowEl.textContent = title;
+      }
+    };
+    var progress = function () {
+      if (!current) return;
+      var d = audio.duration || 30, p = Math.min(1, (audio.currentTime || 0) / d);
+      var bar = current.closest("li").querySelector(".pv-bar > span");
+      if (bar) bar.style.transform = "scaleX(" + p + ")";
+      if (timeEl) timeEl.textContent = mmss(audio.currentTime) + " / " + mmss(d);
+    };
+    var reset = function (btn) {
+      if (!btn) return;
+      btn.classList.remove("is-playing"); label(btn, false);
+      var li = btn.closest("li"); li.classList.remove("pv-active");
+      var bar = li.querySelector(".pv-bar > span"); if (bar) bar.style.transform = "scaleX(0)";
+    };
+    var play = function (btn) {
+      if (current === btn && !audio.paused) { audio.pause(); return; }
+      if (current !== btn) {
+        reset(current); current = btn;
+        audio.src = btn.getAttribute("data-src");
+      }
+      var pr = audio.play();
+      if (pr && pr.catch) pr.catch(function () { setState(false); });
+    };
+    Array.prototype.forEach.call(pvButtons, function (btn) {
+      btn.addEventListener("click", function () { play(btn); });
+    });
+    if (top) top.addEventListener("click", function () { play(current || pvButtons[0]); });
+    audio.addEventListener("play", function () { setState(true); });
+    audio.addEventListener("pause", function () { setState(false); });
+    audio.addEventListener("timeupdate", progress);
+    audio.addEventListener("ended", function () {
+      setState(false); reset(current); audio.currentTime = 0; if (timeEl) timeEl.textContent = "0:00 / 0:30";
+    });
+    audio.addEventListener("error", function () {
+      if (!current) return;
+      setState(false); if (nowEl) nowEl.textContent = "Preview unavailable";
+    });
+    document.addEventListener("keydown", function (ev) {   // Esc stops the preview
+      if (ev.key === "Escape" && !audio.paused) audio.pause();
+    });
   }
 
-  // ---------- home ----------
-  if ($("albums-grid")) {
-    var albums = all.filter(function (r) { return r.type === "album"; });
-    var singles = all.filter(function (r) { return r.type === "single"; });
-    $("albums-grid").innerHTML = albums.map(function (r, i) { return card(r, i < 4); }).join("");
-    $("singles-grid").innerHTML = singles.map(function (r) { return card(r, false); }).join("");
-    $("albums-count").textContent = albums.length + " albums";
-    $("singles-count").textContent = singles.length + " singles";
-    var tracks = all.reduce(function (a, r) { return a + r.tracks.length; }, 0);
-    $("hero-meta").textContent = albums.length + " albums · " + singles.length + " singles · " + tracks + " tracks";
-    var released = all.filter(function (r) { return !upcoming(r); });
-    var latest = all[0];
-    if (latest) {
-      $("hero-latest").outerHTML = '<a class="hero-latest" href="' + link(latest) + '">' + picture(latest, true, true) +
-        '<div><div class="k">' + (upcoming(latest) ? "Out " + fmt(latest) : "Latest release") + '</div><div class="t">' + esc(latest.title) +
-        '</div><div class="s">' + (latest.type === "album" ? "Album" : "Single") + (latest.genre ? " · " + esc(latest.genre) : "") + "</div></div></a>";
-    }
-    var bg = $("hero-bg");
-    if (bg) bg.innerHTML = released.concat(released).slice(0, 24).map(function (r) {
-      return r.cover ? '<img src="' + r.cover.jpg_small + '" alt="" loading="lazy" decoding="async" width="400" height="400">' : "";
-    }).join("");
-  }
-
-  // ---------- support (home) ----------
-  var sup = $("support-action");
-  if (sup && data.donate_url) {
-    sup.innerHTML = '<a class="btn-alt" href="' + esc(data.donate_url) + '" target="_blank" rel="noopener">Donate' +
-      '<span class="sr-only"> (opens in a new tab)</span></a>';
-  }
-
-  // ---------- release ----------
-  var el = $("release");
-  if (el) {
-    var slug = new URLSearchParams(location.search).get("r");
-    var r = all.filter(function (x) { return x.slug === slug; })[0];
-    if (!r) {
-      document.title = "Release not found — bfo.mantis";
-      el.innerHTML = '<div class="notfound"><h1>Release not found</h1><p><a class="back" href="./">← Back to all releases</a></p></div>';
-      return;
-    }
-    document.title = r.title + " — bfo.mantis";
-    var md = document.createElement("meta"); md.name = "description";
-    md.content = r.title + " by bfo.mantis — " + (r.type === "album" ? "album" : "single") + ", " + r.release_date_display + "."; document.head.appendChild(md);
-    if (r.cover) $("release-bg").style.backgroundImage = 'url("' + r.cover.jpg_small + '")';
-    var NT = '<span class="sr-only"> (opens in a new tab)</span>';
-    var primaryLabel = r.listen_source === "hyperfollow" ? (upcoming(r) ? "Pre-save / listen" : "Listen everywhere") : "Listen";
-    var listen = r.listen_url
-      ? '<a class="btn" href="' + esc(r.listen_url) + '" target="_blank" rel="noopener">' +
-        '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>' + primaryLabel + NT + "</a>"
-      : "";
-    var stores = (r.store_links || []).filter(function (st) { return st.url !== r.listen_url; });
-    if (stores.length) {
-      listen += '<div class="stores"><p class="stores-label" id="stores-label">Or open in</p><ul class="store-row" aria-labelledby="stores-label">' +
-        stores.map(function (st) {
-          return '<li><a class="store" href="' + esc(st.url) + '" target="_blank" rel="noopener">' + esc(st.name) + NT + "</a></li>";
-        }).join("") + "</ul></div>";
-    }
-    // Direct download: real link only when content/site_config.json has a URL; otherwise a disabled placeholder.
-    listen += '<div class="buy">' + (r.download_url
-      ? '<a class="btn-alt" href="' + esc(r.download_url) + '" target="_blank" rel="noopener">Download' + NT + "</a>"
-      : '<button type="button" class="btn-alt" disabled aria-disabled="true" aria-describedby="dl-soon">Download</button>' +
-        '<span class="soon-tag" id="dl-soon">Coming soon</span>') + "</div>";
-    el.innerHTML =
-      '<div class="cover-col"><div class="cover">' + picture(r, false, true) + "</div>" +
-      '<p class="art-copy">Artwork &copy; ' + r.release_date.slice(0, 4) + " bfo.mantis Records. All rights reserved.</p></div>" +
-      "<div>" +
-      '<a class="back" href="./#' + (r.type === "album" ? "albums" : "singles") + '">← All releases</a>' +
-      '<p class="eyebrow">' + (r.type === "album" ? "Album" : "Single") + (upcoming(r) ? " · Upcoming" : "") + "</p>" +
-      "<h1>" + esc(r.title) + "</h1>" +
-      '<p class="by">bfo.mantis</p>' +
-      '<ul class="facts">' +
-      '<li><span>Released</span> ' + (upcoming(r) ? "Out " : "") + '<time datetime="' + r.release_date + '">' + esc(r.release_date_display) + "</time></li>" +
-      (r.genre ? "<li><span>Genre</span> " + esc(r.genre) + "</li>" : "") +
-      "<li>" + r.tracks.length + (r.tracks.length === 1 ? " track" : " tracks") + "</li>" +
-      (r.label ? "<li><span>Label</span> " + esc(r.label) + "</li>" : "") +
-      "</ul>" + listen +
-      '<h2 class="tracks-title">Tracklist</h2>' +
-      '<ol class="tracks">' + r.tracks.map(function (t) {
-        if (t.lyrics === "lyrics" && r.lyrics_file) {
-          return '<li class="has-lyrics"><span class="n">' + t.n + '</span><details data-isrc="' + esc(t.isrc) + '">' +
-            '<summary><span class="tt">' + esc(t.title) + '</span><span class="ltag" aria-hidden="true">Lyrics</span>' +
-            '<span class="sr-only"> — show lyrics</span></summary>' +
-            '<div class="lyrics" aria-live="polite">Loading lyrics…</div>' +
-            '<p class="lcopy">&copy; ' + r.release_date.slice(0, 4) + ' bfo.mantis Records. All rights reserved.</p></details></li>';
-        }
-        return '<li><span class="n">' + t.n + '</span><span class="tt">' + esc(t.title) +
-          (t.lyrics === "instrumental" ? ' <span class="itag">Instrumental</span>' : "") + "</span></li>";
-      }).join("") + "</ol>" +
-      "</div>";
-    // Lyrics are fetched only when a track is first expanded (keeps the initial page light).
-    var lyricsPromise = null;
+  // Lyrics: fetched only when a track is first expanded (keeps the page light).
+  var rel = document.querySelector("article.release[data-lyrics]");
+  if (rel) {
+    var file = rel.getAttribute("data-lyrics"), lyricsPromise = null;
+    // A track is a plain string, or (when it has redactions) an array of lines; a line is a string or an
+    // array of parts, where a part is a string or {r: n} (a redaction of roughly n characters, bucketed).
+    // Redactions render as empty bars: no text inside, so nothing can be selected, copied or searched.
+    var bar = function (n, whole) {
+      var b = document.createElement("span");
+      b.className = "rbar" + (whole ? " rbar-line" : "");
+      b.setAttribute("role", "img");
+      b.setAttribute("aria-label", "redacted");
+      b.style.setProperty("--n", Math.max(1, Math.min(64, +n || 8)));
+      return b;
+    };
+    var renderLyrics = function (box, v) {
+      box.textContent = "";
+      if (!v) { box.textContent = "Lyrics unavailable."; return; }
+      if (typeof v === "string") { box.textContent = v; return; }   // textContent: no HTML injection
+      v.forEach(function (line, i) {
+        if (i) box.appendChild(document.createTextNode("\n"));
+        if (typeof line === "string") { box.appendChild(document.createTextNode(line)); return; }
+        var whole = line.length === 1 && typeof line[0] === "object";
+        line.forEach(function (p) {
+          box.appendChild(typeof p === "string" ? document.createTextNode(p) : bar(p && p.r, whole));
+        });
+      });
+    };
     var loadLyrics = function () {
-      if (!lyricsPromise) lyricsPromise = fetch(r.lyrics_file).then(function (res) {
+      if (!lyricsPromise) lyricsPromise = fetch(file).then(function (res) {
         if (!res.ok) throw new Error(res.status); return res.json();
       });
       return lyricsPromise;
     };
-    Array.prototype.forEach.call(el.querySelectorAll("details[data-isrc]"), function (d) {
+    each("details[data-isrc]", function (d) {
       d.addEventListener("toggle", function () {
         if (!d.open || d.dataset.loaded) return;
         var box = d.querySelector(".lyrics");
         loadLyrics().then(function (map) {
-          box.textContent = map[d.dataset.isrc] || "Lyrics unavailable.";   // textContent: no HTML injection
+          renderLyrics(box, map[d.dataset.isrc]);
           d.dataset.loaded = "1";
         }).catch(function () { box.textContent = "Couldn't load lyrics. Please try again."; lyricsPromise = null; });
       });
-    });
-    var more = all.filter(function (x) { return x.slug !== r.slug && x.type === r.type; }).slice(0, 6);
-    if (more.length) {
-      $("more-title").textContent = "More " + (r.type === "album" ? "albums" : "singles");
-      $("more-grid").innerHTML = more.map(function (x) { return card(x, false); }).join("");
-      $("more-section").hidden = false;
-    }
+    }, rel);
   }
 })();

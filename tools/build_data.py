@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Regenerate assets/data/releases.js (+ releases.json) and cover art from the DistroKid catalog.
+"""Regenerate assets/data/releases.js (+ releases.json) and cover art from the DistroKid catalog,
+then (unless --no-pages) the static pages, share images, sitemap etc. via tools/build_pages.py.
 
 Usage (from the site root or anywhere):
     python3 tools/build_data.py [--catalog PATH] [--links PATH] [--skip-covers] [--force-covers]
@@ -80,7 +81,38 @@ def track_entry(t, lyrics, lstatus):
     status = "lyrics" if has else ("instrumental" if st == "instrumental" else "none")
     return {"n": t["n"], "title": t["title"], "isrc": isrc, "lyrics": status}
 
-REDACTED = "[redacted]"
+# Redactions are emitted as structured tokens, never as placeholder text, so the published lyrics files
+# contain no searchable marker. Lengths are bucketed so a bar doesn't reveal the exact word length.
+_R = "\ue000"   # private-use sentinel used only inside the build
+
+def _bucket(n, whole_line):
+    step, lo, hi = (16, 16, 64) if whole_line else (8, 8, 48)
+    return max(lo, min(hi, -(-n // step) * step))
+
+def _tok(n, whole_line):
+    return f"{_R}{_bucket(n, whole_line)}{_R}"
+
+def structure_lyrics(text):
+    """Plain string if the track has no redactions; otherwise a list of lines, each either a string or a list
+    of parts where a part is a string or {"r": bucketed_length}. A line made of a single {"r": n} is a
+    whole-line redaction."""
+    if _R not in text:
+        return text
+    out = []
+    for line in text.split("\n"):
+        if _R not in line:
+            out.append(line); continue
+        parts = []
+        for i, chunk in enumerate(line.split(_R)):
+            if i % 2:
+                parts.append({"r": int(chunk)})
+            elif chunk:
+                parts.append(chunk)
+        out.append(parts)
+    return out
+
+def count_redactions(v):
+    return 0 if isinstance(v, str) else sum(1 for l in v if isinstance(l, list) for p in l if isinstance(p, dict))
 
 def apply_lyrics_edits(isrc, text, edits, log):
     """Apply content/lyrics_edits.json to one track. Each edit is checked against a hash of the source line."""
@@ -98,12 +130,12 @@ def apply_lyrics_edits(isrc, text, edits, log):
         if e["action"] == "delete_line":
             drop.add(n)
         elif e["action"] == "redact_line":
-            lines[n - 1] = REDACTED
+            lines[n - 1] = _tok(len(lines_src(text)[n - 1].strip()), True)
         elif e["action"] == "redact_span":
-            a, b = e["span"]; lines[n - 1] = lines[n - 1][:a] + REDACTED + lines[n - 1][b:]
+            a, b = e["span"]; lines[n - 1] = lines[n - 1][:a] + _tok(b - a, False) + lines[n - 1][b:]
     out = "\n".join(l for i, l in enumerate(lines, 1) if i not in drop)
     out = re.sub(r"\n{3,}", "\n\n", out).strip("\n")
-    return out
+    return structure_lyrics(out)
 
 def lines_src(text):
     return text.replace("\r\n", "\n").strip("\n").split("\n")
@@ -195,6 +227,8 @@ def main():
                     help="JSON keyed by ISRC: {release_title, track_title, lyrics}; skipped if missing")
     ap.add_argument("--lyrics-status", default="/workspace/lyrics_status.json",
                     help="JSON keyed by ISRC: has_lyrics | instrumental | no_lyrics; skipped if missing")
+    ap.add_argument("--site-url", default="https://bfo-mantis.github.io/", help="absolute URL used for canonical/Open Graph/sitemap")
+    ap.add_argument("--no-pages", action="store_true", help="only write data; skip tools/build_pages.py")
     ap.add_argument("--site-config", default=str(ROOT / "content" / "site_config.json"),
                     help="future download/donate links (null = disabled placeholder)")
     ap.add_argument("--lyrics-overrides", default=str(ROOT / "content" / "lyrics_overrides"),
@@ -211,6 +245,12 @@ def main():
             overrides[o["title"]] = o
     lyrics = json.loads(Path(a.lyrics).read_text()) if a.lyrics and Path(a.lyrics).exists() else {}
     lstatus = json.loads(Path(a.lyrics_status).read_text()) if a.lyrics_status and Path(a.lyrics_status).exists() else {}
+    # user-confirmed per-track overrides (content/track_status_overrides.json, keyed by ISRC) win over lyrics_status
+    tso_path = ROOT / "content" / "track_status_overrides.json"
+    tso = {k: v for k, v in json.loads(tso_path.read_text()).items() if not k.startswith("_")} if tso_path.exists() else {}
+    bad = {k: v for k, v in tso.items() if v not in ("instrumental", "no_lyrics")}
+    if bad: sys.exit(f"track_status_overrides.json: unsupported values {bad}")
+    lstatus = {**lstatus, **tso}
     used, releases, excluded, failed = set(), [], [], []
     for r in cat:
         if ARTIST not in (r.get("artist") or []):
@@ -254,6 +294,23 @@ def main():
     cfg = load_site_config(a.site_config, {x["slug"] for x in releases})
     for x in releases:
         x["download_url"] = cfg["download_url_by_slug"].get(x["slug"])
+        for t in x["tracks"]:   # 30 s previews made by tools/make_previews.py (only if the clip exists)
+            pv = f"assets/audio/previews/{x['slug']}/{t['n']:02d}.mp3"
+            t["preview"] = pv if (ROOT / pv).exists() else None
+    # Songs vs instrumentals: a release is "vocal" if any track has lyrics (DistroKid text or an artist override,
+    # both of which set lyrics == "lyrics"); otherwise "instrumental". A vocal release that also contains tracks
+    # marked instrumental is flagged "mixed" (its instrumental tracks keep their per-track tag on the page).
+    unclassified = []
+    for x in releases:
+        tags = [t["lyrics"] for t in x["tracks"]]
+        x["category"] = "vocal" if "lyrics" in tags else "instrumental"
+        x["mixed"] = x["category"] == "vocal" and "instrumental" in tags
+        if x["category"] == "instrumental":
+            unclassified += [f'{x["slug"]} #{t["n"]} {t["isrc"]}' for t in x["tracks"] if t["lyrics"] != "instrumental"]
+    print("categories: vocal", sum(x["category"] == "vocal" for x in releases),
+          "| instrumental", sum(x["category"] == "instrumental" for x in releases),
+          "| mixed:", [x["slug"] for x in releases if x["mixed"]] or "none",
+          "| instrumental releases with tracks not marked instrumental (no lyrics on file):", unclassified or "none")
     data = {"artist": ARTIST, "generated": datetime.now().isoformat(timespec="seconds"),
             "donate_url": cfg["donate_url"], "releases": releases}
     print("downloads enabled:", sum(1 for x in releases if x["download_url"]), "| donate enabled:", bool(cfg["donate_url"]))
@@ -271,10 +328,17 @@ def main():
     from collections import Counter as _C
     print("track lyrics:", dict(_C(t["lyrics"] for x in releases for t in x["tracks"])), "| lyrics files:", nfiles)
     print("lyrics ISRCs not on site:", [k for k in lyrics if k not in site_isrcs] or "none")
+    tso_lyr = [x["slug"] + " " + t["isrc"] for x in releases for t in x["tracks"] if t["isrc"] in tso and t["lyrics"] == "lyrics"]
+    print(f"track status overrides: {len(tso)}" + (f"; NOT on site: {sorted(set(tso) - site_isrcs)}" if set(tso) - site_isrcs else "")
+          + (f"; ignored (lyrics on file): {tso_lyr}" if tso_lyr else ""))
     print("status ISRCs not on site:", [k for k in lstatus if k not in site_isrcs] or "none")
     print("site ISRCs missing from status:", [k for k in site_isrcs if lstatus and k not in lstatus] or "none")
     print(f"lyrics edits: {n_ed} in {len(edits)} tracks | problems:", edit_log or "none")
     print("cover failures:", failed or "none")
+    if not a.no_pages:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import build_pages
+        build_pages.main(a.site_url)
     return 1 if failed else 0
 
 if __name__ == "__main__":
