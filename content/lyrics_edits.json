@@ -1,0 +1,548 @@
+{
+ "_meta": {
+  "source": "/workspace/bfo_mantis_lyrics.json (unchanged)",
+  "line_numbering": "1-based, after CRLF->LF and trimming leading/trailing blank lines",
+  "actions": {
+   "delete_line": "remove line (cleanup)",
+   "redact_line": "replace whole line with [redacted]",
+   "redact_span": "replace chars [start,end) of the line with [redacted]"
+  },
+  "safety": "line_sha256_16 must match the source line or the edit is skipped with a warning"
+ },
+ "tracks": {
+  "QT9XH2672254": {
+   "release_title": "DANGEROUS",
+   "track_title": "First Responder",
+   "edits": [
+    {
+     "line": 49,
+     "type": "cleanup",
+     "action": "delete_line",
+     "line_sha256_16": "2179829c978cbe0e",
+     "reason": "transcription artifact"
+    }
+   ]
+  },
+  "QT6HR2651302": {
+   "release_title": "Sovereign Heart of Fire",
+   "track_title": "Sovereign Flame",
+   "edits": [
+    {
+     "line": 82,
+     "type": "cleanup",
+     "action": "delete_line",
+     "line_sha256_16": "62eb53ac04af1964",
+     "reason": "transcription artifact"
+    }
+   ]
+  },
+  "QT6HR2651305": {
+   "release_title": "Sovereign Heart of Fire",
+   "track_title": "Forge of Fathers",
+   "edits": [
+    {
+     "line": 61,
+     "type": "cleanup",
+     "action": "delete_line",
+     "line_sha256_16": "2179829c978cbe0e",
+     "reason": "transcription artifact"
+    }
+   ]
+  },
+  "QT6HR2651308": {
+   "release_title": "Sovereign Heart of Fire",
+   "track_title": "Sovereign Dawn",
+   "edits": [
+    {
+     "line": 28,
+     "type": "cleanup",
+     "action": "delete_line",
+     "line_sha256_16": "c708e3d7120584b1",
+     "reason": "transcription artifact"
+    }
+   ]
+  },
+  "QT6HN2654622": {
+   "release_title": "One Man INVICTUS",
+   "track_title": "One Man (Leonidas)",
+   "edits": [
+    {
+     "line": 163,
+     "type": "cleanup",
+     "action": "delete_line",
+     "line_sha256_16": "2179829c978cbe0e",
+     "reason": "transcription artifact"
+    }
+   ]
+  },
+  "QT6F82621394": {
+   "release_title": "The Flock Betrayal",
+   "track_title": "The Flock Betrayal",
+   "edits": [
+    {
+     "line": 83,
+     "type": "cleanup",
+     "action": "delete_line",
+     "line_sha256_16": "2179829c978cbe0e",
+     "reason": "transcription artifact"
+    }
+   ]
+  },
+  "QT6F62681643": {
+   "release_title": "EVIL EYE CONTRACTS",
+   "track_title": "EVIL EYE CONTRACTS",
+   "edits": [
+    {
+     "line": 66,
+     "type": "redaction",
+     "action": "redact_span",
+     "line_sha256_16": "a5d56141b9ba30a7",
+     "reason": "unproven allegation against a named individual/company",
+     "span": [
+      0,
+      11
+     ]
+    },
+    {
+     "line": 68,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "6866ccfe427b0638",
+     "reason": "unproven allegation against a named individual/company"
+    },
+    {
+     "line": 92,
+     "type": "redaction",
+     "action": "redact_span",
+     "line_sha256_16": "e9f6d384051d9574",
+     "reason": "unproven allegation against a named individual/company",
+     "span": [
+      0,
+      9
+     ]
+    },
+    {
+     "line": 104,
+     "type": "redaction",
+     "action": "redact_span",
+     "line_sha256_16": "abb51d779ad9fb02",
+     "reason": "unproven allegation against a named individual/company",
+     "span": [
+      0,
+      19
+     ]
+    },
+    {
+     "line": 107,
+     "type": "cleanup",
+     "action": "delete_line",
+     "line_sha256_16": "62eb53ac04af1964",
+     "reason": "transcription artifact"
+    }
+   ]
+  },
+  "QT6HR2642232": {
+   "release_title": "The Ridge",
+   "track_title": "The Ridge",
+   "edits": [
+    {
+     "line": 89,
+     "type": "cleanup",
+     "action": "delete_line",
+     "line_sha256_16": "5ec1f7e700f37c3d",
+     "reason": "transcription artifact"
+    },
+    {
+     "line": 118,
+     "type": "cleanup",
+     "action": "delete_line",
+     "line_sha256_16": "5ec1f7e700f37c3d",
+     "reason": "transcription artifact"
+    },
+    {
+     "line": 119,
+     "type": "cleanup",
+     "action": "delete_line",
+     "line_sha256_16": "5ec1f7e700f37c3d",
+     "reason": "transcription artifact"
+    },
+    {
+     "line": 121,
+     "type": "cleanup",
+     "action": "delete_line",
+     "line_sha256_16": "5ec1f7e700f37c3d",
+     "reason": "transcription artifact"
+    },
+    {
+     "line": 122,
+     "type": "cleanup",
+     "action": "delete_line",
+     "line_sha256_16": "5ec1f7e700f37c3d",
+     "reason": "transcription artifact"
+    }
+   ]
+  },
+  "QT6G62652788": {
+   "release_title": "Rebel Anthem",
+   "track_title": "Blood for the Beast",
+   "edits": [
+    {
+     "line": 36,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "90808d4c1bacf411",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 42,
+     "type": "redaction",
+     "action": "redact_span",
+     "line_sha256_16": "b3d4fdc63939b8f5",
+     "reason": "hate speech: slur/ethnic or religious targeting",
+     "span": [
+      22,
+      49
+     ]
+    },
+    {
+     "line": 93,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "90808d4c1bacf411",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 141,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "272147bb7582902c",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 182,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "272147bb7582902c",
+     "reason": "incitement/call for violence against people or officials"
+    }
+   ]
+  },
+  "QT6G62652789": {
+   "release_title": "Rebel Anthem",
+   "track_title": "The Hydra Bleeds",
+   "edits": [
+    {
+     "line": 19,
+     "type": "redaction",
+     "action": "redact_span",
+     "line_sha256_16": "9d728f37d9bc32b1",
+     "reason": "incitement/call for violence against people or officials",
+     "span": [
+      0,
+      23
+     ]
+    },
+    {
+     "line": 23,
+     "type": "redaction",
+     "action": "redact_span",
+     "line_sha256_16": "9d728f37d9bc32b1",
+     "reason": "incitement/call for violence against people or officials",
+     "span": [
+      0,
+      23
+     ]
+    },
+    {
+     "line": 93,
+     "type": "redaction",
+     "action": "redact_span",
+     "line_sha256_16": "9f4d9396212efa81",
+     "reason": "incitement/call for violence against people or officials",
+     "span": [
+      0,
+      23
+     ]
+    },
+    {
+     "line": 96,
+     "type": "redaction",
+     "action": "redact_span",
+     "line_sha256_16": "30daf00b2e9c9c73",
+     "reason": "incitement/call for violence against people or officials",
+     "span": [
+      0,
+      20
+     ]
+    },
+    {
+     "line": 103,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "6b23565e9f5d0cb6",
+     "reason": "incitement/call for violence against people or officials"
+    }
+   ]
+  },
+  "QT6HN2654618": {
+   "release_title": "One Man INVICTUS",
+   "track_title": "One Man (FRANTIC)",
+   "edits": [
+    {
+     "line": 48,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "8135b98d4950c1e7",
+     "reason": "hate speech: slur/ethnic or religious targeting"
+    }
+   ]
+  },
+  "QT9XH2672256": {
+   "release_title": "DANGEROUS",
+   "track_title": "Blue Plague",
+   "edits": [
+    {
+     "line": 51,
+     "type": "redaction",
+     "action": "redact_span",
+     "line_sha256_16": "83f372b91157f97f",
+     "reason": "hate speech: disability slur",
+     "span": [
+      31,
+      39
+     ]
+    },
+    {
+     "line": 62,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "1f9592825d49d7a3",
+     "reason": "incitement/call for violence against people or officials"
+    }
+   ]
+  },
+  "QT6G62652783": {
+   "release_title": "Rebel Anthem",
+   "track_title": "The Tree is Thirsty",
+   "edits": [
+    {
+     "line": 58,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "4917bd30c45f1008",
+     "reason": "incitement/call for violence against people or officials"
+    }
+   ]
+  },
+  "QT6G62652784": {
+   "release_title": "Rebel Anthem",
+   "track_title": "The Tree is Thirsty (Sovereign Armageddon)",
+   "edits": [
+    {
+     "line": 11,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "d55a0712ec3c28ee",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 12,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "49b30ed13ac66fda",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 13,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "7238e00ec216535d",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 14,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "feafb590ed77a275",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 43,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "a68a123a7e5fa2df",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 44,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "bfd4ca8af6c57eef",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 46,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "6530f73976c17e40",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 47,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "30657901435b64d5",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 93,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "253bb047f6e43319",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 94,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "362208242b030a1d",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 97,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "e940d870f03e15cd",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 99,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "37d44211dfd491b3",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 107,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "93278bbfdb4e1733",
+     "reason": "incitement/call for violence against people or officials"
+    }
+   ]
+  },
+  "QT6HN2654612": {
+   "release_title": "One Man INVICTUS",
+   "track_title": "One Man (Invictus)",
+   "edits": [
+    {
+     "line": 14,
+     "type": "redaction",
+     "action": "redact_span",
+     "line_sha256_16": "f7d787d76027f514",
+     "reason": "incitement/call for violence against people or officials",
+     "span": [
+      23,
+      48
+     ]
+    },
+    {
+     "line": 19,
+     "type": "redaction",
+     "action": "redact_span",
+     "line_sha256_16": "80d53e7ff7a2b676",
+     "reason": "incitement/call for violence against people or officials",
+     "span": [
+      25,
+      52
+     ]
+    },
+    {
+     "line": 21,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "dfca2fcb5b4d8987",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 62,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "61cc63047dd9ec64",
+     "reason": "threat against people or their families"
+    },
+    {
+     "line": 71,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "fe4ed2908f7c062c",
+     "reason": "incitement/call for violence against people or officials"
+    },
+    {
+     "line": 72,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "92ba0530a647f868",
+     "reason": "incitement/call for violence against people or officials"
+    }
+   ]
+  },
+  "QT9XH2672259": {
+   "release_title": "DANGEROUS",
+   "track_title": "Defiance",
+   "edits": [
+    {
+     "line": 12,
+     "type": "redaction",
+     "action": "redact_span",
+     "line_sha256_16": "b08e8635389e7b09",
+     "reason": "dehumanizing language about migrants",
+     "span": [
+      22,
+      30
+     ]
+    },
+    {
+     "line": 57,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "39af6cacf4852069",
+     "reason": "threat against people or their families"
+    },
+    {
+     "line": 58,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "ac08aefba8a01798",
+     "reason": "threat against people or their families"
+    }
+   ]
+  },
+  "QT9XH2672251": {
+   "release_title": "DANGEROUS",
+   "track_title": "Void means VOID!",
+   "edits": [
+    {
+     "line": 73,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "f109828fb827d657",
+     "reason": "incitement/call for violence against people or officials"
+    }
+   ]
+  },
+  "QT6F92659506": {
+   "release_title": "Flock of the Tyrants",
+   "track_title": "Flock of the Tyrants",
+   "edits": [
+    {
+     "line": 119,
+     "type": "redaction",
+     "action": "redact_line",
+     "line_sha256_16": "0924fde70f66a0a6",
+     "reason": "incitement/call for violence against people or officials"
+    }
+   ]
+  }
+ }
+}

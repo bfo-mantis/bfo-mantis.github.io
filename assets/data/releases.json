@@ -1,0 +1,2329 @@
+{
+ "artist": "bfo.mantis",
+ "generated": "2026-10-09T00:06:22",
+ "releases": [
+  {
+   "slug": "crown-of-ash",
+   "title": "Crown of Ash",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-10-09",
+   "release_date_display": "October 9, 2026",
+   "genre": "Folk",
+   "label": "bfo.mantis Records",
+   "upc": "700536942163",
+   "listen_url": "https://distrokid.com/hyperfollow/wetline1/crown-of-ash?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [],
+   "cover": {
+    "jpg": "assets/covers/crown-of-ash-800.jpg",
+    "webp": "assets/covers/crown-of-ash-800.webp",
+    "jpg_small": "assets/covers/crown-of-ash-400.jpg",
+    "webp_small": "assets/covers/crown-of-ash-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Crown of Ash",
+     "isrc": "QTA7T2600629",
+     "lyrics": "none"
+    }
+   ],
+   "lyrics_file": null
+  },
+  {
+   "slug": "the-only-way",
+   "title": "The Only Way",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-09-18",
+   "release_date_display": "September 18, 2026",
+   "genre": "Metal",
+   "label": "bfo.mantis Records",
+   "upc": "700766933498",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/the-only-way?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/3omVH9tmwq2TVWiIRadffs"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/the-only-way-single/6814011369?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/the-only-way-single/6814011369?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/the-only-way-800.jpg",
+    "webp": "assets/covers/the-only-way-800.webp",
+    "jpg_small": "assets/covers/the-only-way-400.jpg",
+    "webp_small": "assets/covers/the-only-way-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "The Only Way",
+     "isrc": "QT9XM2685551",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/the-only-way.json"
+  },
+  {
+   "slug": "forge-of-your-light",
+   "title": "Forge of Your Light",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-09-12",
+   "release_date_display": "September 12, 2026",
+   "genre": "Metal",
+   "label": "bfo.mantis Records",
+   "upc": "700904236894",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/forge-of-your-light?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/4wLeauIsEIgQeqJMsSB4Da"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/forge-of-your-light-single/6811712664?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/forge-of-your-light-single/6811712664?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/forge-of-your-light-800.jpg",
+    "webp": "assets/covers/forge-of-your-light-800.webp",
+    "jpg_small": "assets/covers/forge-of-your-light-400.jpg",
+    "webp_small": "assets/covers/forge-of-your-light-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Forge of Your Light",
+     "isrc": "QT9XH2693555",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/forge-of-your-light.json"
+  },
+  {
+   "slug": "dangerous",
+   "title": "DANGEROUS",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "album",
+   "release_date": "2026-09-12",
+   "release_date_display": "September 12, 2026",
+   "genre": "Rock",
+   "label": "bfo.mantis Records",
+   "upc": "700904368786",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/dangerous?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/7slaW7d9XtztWdUHoIM53s"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/dangerous/6811647141?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/dangerous/6811647141?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Amazon",
+     "url": "https://www.amazon.com/gp/product/B0HJP7BDPL/?tag=distrokid06-20"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/dangerous-800.jpg",
+    "webp": "assets/covers/dangerous-800.webp",
+    "jpg_small": "assets/covers/dangerous-400.jpg",
+    "webp_small": "assets/covers/dangerous-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Dangerous",
+     "isrc": "QT9XH2672245",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 2,
+     "title": "Tha Last Thunderbolt",
+     "isrc": "QT9XH2672246",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 3,
+     "title": "Guardians of the Free",
+     "isrc": "QT9XH2672247",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 4,
+     "title": "Solution or Problem",
+     "isrc": "QT9XH2672248",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 5,
+     "title": "Here to Hell...p",
+     "isrc": "QT9XH2672249",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 6,
+     "title": "Suits",
+     "isrc": "QT9XH2672250",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 7,
+     "title": "Void means VOID!",
+     "isrc": "QT9XH2672251",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 8,
+     "title": "Qualified Impunity",
+     "isrc": "QT9XH2672252",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 9,
+     "title": "Earned or Burned",
+     "isrc": "QT9XH2672253",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 10,
+     "title": "First Responder",
+     "isrc": "QT9XH2672254",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 11,
+     "title": "Hero or Zero",
+     "isrc": "QT9XH2672255",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 12,
+     "title": "Blue Plague",
+     "isrc": "QT9XH2672256",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 13,
+     "title": "Counted as Cast",
+     "isrc": "QT9XH2672257",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 14,
+     "title": "We Are Dangerous",
+     "isrc": "QT9XH2672258",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 15,
+     "title": "Defiance",
+     "isrc": "QT9XH2672259",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/dangerous.json"
+  },
+  {
+   "slug": "road-to-hell",
+   "title": "Road to Hell",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-09-04",
+   "release_date_display": "September 4, 2026",
+   "genre": "Metal",
+   "label": "bfo.mantis Records",
+   "upc": "700997385264",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/road-to-hell?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/6zBusS7CSrMsZUJJMtnzUo"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/road-to-hell-single/6808337818?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/road-to-hell-single/6808337818?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Amazon",
+     "url": "https://www.amazon.com/gp/product/B0HHPRQ9W9/?tag=distrokid06-20"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/road-to-hell-800.jpg",
+    "webp": "assets/covers/road-to-hell-800.webp",
+    "jpg_small": "assets/covers/road-to-hell-400.jpg",
+    "webp_small": "assets/covers/road-to-hell-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Road to Hell",
+     "isrc": "QT6J22605151",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/road-to-hell.json"
+  },
+  {
+   "slug": "blood-waters-the-tree",
+   "title": "Blood Waters the Tree",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-09-04",
+   "release_date_display": "September 4, 2026",
+   "genre": "Christian/Gospel",
+   "label": "bfo.mantis Records",
+   "upc": "701486500793",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/blood-waters-the-tree?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/3NY60tH4RxDzGR7zHaZFv7"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/blood-waters-the-tree-single/6807182138?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/blood-waters-the-tree-single/6807182138?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Amazon",
+     "url": "https://www.amazon.com/gp/product/B0HHBDQDCX/?tag=distrokid06-20"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/blood-waters-the-tree-800.jpg",
+    "webp": "assets/covers/blood-waters-the-tree-800.webp",
+    "jpg_small": "assets/covers/blood-waters-the-tree-400.jpg",
+    "webp_small": "assets/covers/blood-waters-the-tree-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Blood Waters the Tree",
+     "isrc": "QT6HX2695835",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/blood-waters-the-tree.json"
+  },
+  {
+   "slug": "savage-serenade-volume-3",
+   "title": "Savage Serenade Volume 3",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "album",
+   "release_date": "2026-09-04",
+   "release_date_display": "September 4, 2026",
+   "genre": "World",
+   "label": "bfo.mantis Records",
+   "upc": "701486811455",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/savage-serenade-volume-3?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/6kKv6XUABREHnIIvNeetIY"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/savage-serenade-volume-3/6806875384?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/savage-serenade-volume-3/6806875384?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Amazon",
+     "url": "https://www.amazon.com/gp/product/B0HH828FT9/?tag=distrokid06-20"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/savage-serenade-volume-3-800.jpg",
+    "webp": "assets/covers/savage-serenade-volume-3-800.webp",
+    "jpg_small": "assets/covers/savage-serenade-volume-3-400.jpg",
+    "webp_small": "assets/covers/savage-serenade-volume-3-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Gentle Thunder",
+     "isrc": "QT6HX2631826",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 2,
+     "title": "Quiet Wildfire",
+     "isrc": "QT6HX2631827",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 3,
+     "title": "Savage Calm",
+     "isrc": "QT6HX2631828",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 4,
+     "title": "Serene Claw",
+     "isrc": "QT6HX2631829",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 5,
+     "title": "Somber Tempest",
+     "isrc": "QT6HX2631830",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 6,
+     "title": "Tranquil Blaze",
+     "isrc": "QT6HX2631831",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 7,
+     "title": "Silk and Steel",
+     "isrc": "QT6HX2631832",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 8,
+     "title": "Velvet Storm",
+     "isrc": "QT6HX2631833",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 9,
+     "title": "Hushed Fury",
+     "isrc": "QT6HX2631834",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 10,
+     "title": "Tender Rage",
+     "isrc": "QT6HX2631835",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 11,
+     "title": "Yearning Howl",
+     "isrc": "QT6HX2631836",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 12,
+     "title": "Blazing Shadow",
+     "isrc": "QT6HX2631837",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 13,
+     "title": "Silent Frenzy",
+     "isrc": "QT6HX2631838",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 14,
+     "title": "Solemn Edge",
+     "isrc": "QT6HX2631839",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 15,
+     "title": "Serene Thunder",
+     "isrc": "QT6HX2631840",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 16,
+     "title": "Whispering Inferno",
+     "isrc": "QT6HX2631841",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 17,
+     "title": "Stoic Rage",
+     "isrc": "QT6HX2631842",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 18,
+     "title": "Feral Lullaby",
+     "isrc": "QT6HX2631843",
+     "lyrics": "instrumental"
+    }
+   ],
+   "lyrics_file": null
+  },
+  {
+   "slug": "savage-serenade-volume-2",
+   "title": "Savage Serenade Volume 2",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "album",
+   "release_date": "2026-08-28",
+   "release_date_display": "August 28, 2026",
+   "genre": "World",
+   "label": "bfo.mantis Records",
+   "upc": "701518586627",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/savage-serenade-volume-2?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/6IuPAgIG3lAhavmnapran6"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/savage-serenade-volume-2/6804620567?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/savage-serenade-volume-2/6804620567?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Amazon",
+     "url": "https://www.amazon.com/gp/product/B0HG9S19C3/?tag=distrokid06-20"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/savage-serenade-volume-2-800.jpg",
+    "webp": "assets/covers/savage-serenade-volume-2-800.webp",
+    "jpg_small": "assets/covers/savage-serenade-volume-2-400.jpg",
+    "webp_small": "assets/covers/savage-serenade-volume-2-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Silent Tempest",
+     "isrc": "QT6HS2632087",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 2,
+     "title": "Velvet Thunder",
+     "isrc": "QT6HS2632088",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 3,
+     "title": "Gentle Savage",
+     "isrc": "QT6HS2632089",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 4,
+     "title": "Serene Storm",
+     "isrc": "QT6HS2632090",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 5,
+     "title": "Whispering Fury",
+     "isrc": "QT6HS2632091",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 6,
+     "title": "Soft Inferno",
+     "isrc": "QT6HS2632092",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 7,
+     "title": "Tranquil Rage",
+     "isrc": "QT6HS2632093",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 8,
+     "title": "Hushed Blaze",
+     "isrc": "QT6HS2632094",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 9,
+     "title": "Peaceful Wildfire",
+     "isrc": "QT6HS2632095",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 10,
+     "title": "Tender Maelstrom",
+     "isrc": "QT6HS2632096",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 11,
+     "title": "Still Flame",
+     "isrc": "QT6HS2632097",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 12,
+     "title": "Howling Calm",
+     "isrc": "QT6HS2632098",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 13,
+     "title": "Quiet Claw",
+     "isrc": "QT6HS2632099",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 14,
+     "title": "Soft Savagery",
+     "isrc": "QT6HS2632100",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 15,
+     "title": "Serene Fury",
+     "isrc": "QT6HS2632101",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 16,
+     "title": "Whispering Inferno",
+     "isrc": "QT6HS2632102",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 17,
+     "title": "Tempests Lullaby",
+     "isrc": "QT6HS2632103",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 18,
+     "title": "Mellow Thunder",
+     "isrc": "QT6HS2632104",
+     "lyrics": "instrumental"
+    }
+   ],
+   "lyrics_file": null
+  },
+  {
+   "slug": "sovereign-heart-of-fire",
+   "title": "Sovereign Heart of Fire",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "album",
+   "release_date": "2026-08-28",
+   "release_date_display": "August 28, 2026",
+   "genre": "Christian/Gospel",
+   "label": "bfo.mantis Records",
+   "upc": "701546023897",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/sovereign-heart-of-fire?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/2MHUyu47E790WCEr4uPY8R"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/sovereign-heart-of-fire/6804363446?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/sovereign-heart-of-fire/6804363446?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Amazon",
+     "url": "https://www.amazon.com/gp/product/B0HG6Y4GNF/?tag=distrokid06-20"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/sovereign-heart-of-fire-800.jpg",
+    "webp": "assets/covers/sovereign-heart-of-fire-800.webp",
+    "jpg_small": "assets/covers/sovereign-heart-of-fire-400.jpg",
+    "webp_small": "assets/covers/sovereign-heart-of-fire-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "True Liberty's ROAR",
+     "isrc": "QT6HR2651300",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 2,
+     "title": "The Rebel Prayer",
+     "isrc": "QT6HR2651301",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 3,
+     "title": "Sovereign Flame",
+     "isrc": "QT6HR2651302",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 4,
+     "title": "Sovereign Thunder",
+     "isrc": "QT6HR2651303",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 5,
+     "title": "To the Bitter End",
+     "isrc": "QT6HR2651304",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 6,
+     "title": "Forge of Fathers",
+     "isrc": "QT6HR2651305",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 7,
+     "title": "Endowed in Flame",
+     "isrc": "QT6HR2651306",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 8,
+     "title": "Immortal Flame",
+     "isrc": "QT6HR2651307",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 9,
+     "title": "Sovereign Dawn",
+     "isrc": "QT6HR2651308",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 10,
+     "title": "Burning for Liberty",
+     "isrc": "QT6HR2651309",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 11,
+     "title": "Endowed by the Creator",
+     "isrc": "QT6HR2651310",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 12,
+     "title": "Forge Eternal",
+     "isrc": "QT6HR2651311",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 13,
+     "title": "Endowed Sovereignty",
+     "isrc": "QT6HR2651312",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 14,
+     "title": "Havilah",
+     "isrc": "QT6HR2651313",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 15,
+     "title": "Sovereign Heart of Fire",
+     "isrc": "QT6HR2651314",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/sovereign-heart-of-fire.json"
+  },
+  {
+   "slug": "the-ridge",
+   "title": "The Ridge",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "album",
+   "release_date": "2026-08-23",
+   "release_date_display": "August 23, 2026",
+   "genre": "Hip Hop/Rap",
+   "label": "bfo.mantis Records",
+   "upc": "701546082856",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/the-ridge?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/3XBRwwz4GERQlvl2ZDZ6K0"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/the-ridge-single/6804338756?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/the-ridge-single/6804338756?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Amazon",
+     "url": "https://www.amazon.com/gp/product/B0HG6QV59L/?tag=distrokid06-20"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/the-ridge-800.jpg",
+    "webp": "assets/covers/the-ridge-800.webp",
+    "jpg_small": "assets/covers/the-ridge-400.jpg",
+    "webp_small": "assets/covers/the-ridge-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Ruby Ridge",
+     "isrc": "QT6HR2642231",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 2,
+     "title": "The Ridge",
+     "isrc": "QT6HR2642232",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/the-ridge.json"
+  },
+  {
+   "slug": "savage-serenade",
+   "title": "Savage Serenade",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "album",
+   "release_date": "2026-08-21",
+   "release_date_display": "August 21, 2026",
+   "genre": "Folk",
+   "label": "bfo.mantis Records",
+   "upc": "700989974629",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/savage-serenade?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/4RhFwE94GjdbNyONvJ4Uos"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/savage-serenade/6803737452?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/savage-serenade/6803737452?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Amazon",
+     "url": "https://www.amazon.com/gp/product/B0HFY7T4RK/?tag=distrokid06-20"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/savage-serenade-800.jpg",
+    "webp": "assets/covers/savage-serenade-800.webp",
+    "jpg_small": "assets/covers/savage-serenade-400.jpg",
+    "webp_small": "assets/covers/savage-serenade-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Savage Surrender",
+     "isrc": "QT6HP2682017",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 2,
+     "title": "Blood Kissed",
+     "isrc": "QT6HP2682018",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 3,
+     "title": "Quiet Thorns",
+     "isrc": "QT6HP2682019",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 4,
+     "title": "Feral Edge",
+     "isrc": "QT6HP2682020",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 5,
+     "title": "Crimson Whisper",
+     "isrc": "QT6HP2682021",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 6,
+     "title": "Howling Grace",
+     "isrc": "QT6HP2682022",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 7,
+     "title": "Velvet Ruin",
+     "isrc": "QT6HP2682024",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 8,
+     "title": "Tender Carnage",
+     "isrc": "QT6HP2682026",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 9,
+     "title": "Shards of Devotion",
+     "isrc": "QT6HP2682027",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 10,
+     "title": "Wild and Wanting",
+     "isrc": "QT6HP2682028",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 11,
+     "title": "Ashen Embrace",
+     "isrc": "QT6HP2682029",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 12,
+     "title": "Silent Fury",
+     "isrc": "QT6HP2682030",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 13,
+     "title": "Roses on the Blade",
+     "isrc": "QT6HP2682031",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 14,
+     "title": "Heart of the Storm",
+     "isrc": "QT6HP2682032",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 15,
+     "title": "Edge of Softness",
+     "isrc": "QT6HP2682033",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 16,
+     "title": "Echoes of the Wound",
+     "isrc": "QT6HP2682034",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 17,
+     "title": "Last Savage Prayer",
+     "isrc": "QT6HP2682035",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 18,
+     "title": "Fiercely Grateful",
+     "isrc": "QT6HP2682036",
+     "lyrics": "instrumental"
+    }
+   ],
+   "lyrics_file": null
+  },
+  {
+   "slug": "one-man-invictus",
+   "title": "One Man INVICTUS",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "album",
+   "release_date": "2026-08-21",
+   "release_date_display": "August 21, 2026",
+   "genre": "Rock",
+   "label": "bfo.mantis Records",
+   "upc": "882068502784",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/one-man-invictus?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/69LL0yjG1iXzQAGfqsW4ME"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/one-man-invictus/6803052725?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/one-man-invictus/6803052725?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Amazon",
+     "url": "https://www.amazon.com/gp/product/B0HFRNL7NG/?tag=distrokid06-20"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/one-man-invictus-800.jpg",
+    "webp": "assets/covers/one-man-invictus-800.webp",
+    "jpg_small": "assets/covers/one-man-invictus-400.jpg",
+    "webp_small": "assets/covers/one-man-invictus-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "One Man (Invictus)",
+     "isrc": "QT6HN2654612",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 2,
+     "title": "One Man (At the Gallows)",
+     "isrc": "QT6HN2654613",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 3,
+     "title": "One Man (Stood)",
+     "isrc": "QT6HN2654614",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 4,
+     "title": "One Man (Burned)",
+     "isrc": "QT6HN2654615",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 5,
+     "title": "One Man (Conviction)",
+     "isrc": "QT6HN2654616",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 6,
+     "title": "One Man (The Ghost)",
+     "isrc": "QT6HN2654617",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 7,
+     "title": "One Man (FRANTIC)",
+     "isrc": "QT6HN2654618",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 8,
+     "title": "One Man (The Swamp Fox)",
+     "isrc": "QT6HN2654619",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 9,
+     "title": "One Man (Gandhi)",
+     "isrc": "QT6HN2654620",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 10,
+     "title": "One Song (Devotion)",
+     "isrc": "QT6HN2654621",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 11,
+     "title": "One Man (Leonidas)",
+     "isrc": "QT6HN2654622",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 12,
+     "title": "One Man (Immortal Stand)",
+     "isrc": "QT6HN2654623",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 13,
+     "title": "One Man (Defiance)",
+     "isrc": "QT6HN2654624",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 14,
+     "title": "One Man (Heart of Thunder)",
+     "isrc": "QT6HN2654625",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 15,
+     "title": "One Man Nation (Under God)",
+     "isrc": "QT6HN2654626",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/one-man-invictus.json"
+  },
+  {
+   "slug": "one-man",
+   "title": "One Man - 站着",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-08-21",
+   "release_date_display": "August 21, 2026",
+   "genre": "Folk",
+   "label": "bfo.mantis Records",
+   "upc": "882068960171",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/one-man---?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/4Y0c5JiudQwUQ1g1cRgVpz"
+    },
+    {
+     "name": "Amazon",
+     "url": "https://www.amazon.com/gp/product/B0HFMGRP4R/?tag=distrokid06-20"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/one-man-800.jpg",
+    "webp": "assets/covers/one-man-800.webp",
+    "jpg_small": "assets/covers/one-man-400.jpg",
+    "webp_small": "assets/covers/one-man-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "One Man - 站着",
+     "isrc": "QT6HM2669331",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/one-man.json"
+  },
+  {
+   "slug": "spellbound-volume-3",
+   "title": "Spellbound Volume 3",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "album",
+   "release_date": "2026-08-14",
+   "release_date_display": "August 14, 2026",
+   "genre": "Electronic",
+   "label": "bfo.mantis Records",
+   "upc": "881900721826",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/spellbound-volume-3?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/5QMAWnb1jm2Wun9WA1b30q"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/spellbound-volume-3/6799736952?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/spellbound-volume-3/6799736952?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Amazon",
+     "url": "https://www.amazon.com/gp/product/B0HDM8SBBX/?tag=distrokid06-20"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-423450140"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/spellbound-volume-3-800.jpg",
+    "webp": "assets/covers/spellbound-volume-3-800.webp",
+    "jpg_small": "assets/covers/spellbound-volume-3-400.jpg",
+    "webp_small": "assets/covers/spellbound-volume-3-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Wayward",
+     "isrc": "QT6G62685858",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 2,
+     "title": "Adrift",
+     "isrc": "QT6G62685859",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 3,
+     "title": "Reflections",
+     "isrc": "QT6G62685860",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 4,
+     "title": "Resonance",
+     "isrc": "QT6G62685861",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 5,
+     "title": "Trance",
+     "isrc": "QT6G62685862",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 6,
+     "title": "Within",
+     "isrc": "QT6G62685863",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 7,
+     "title": "Reunion",
+     "isrc": "QT6G62685864",
+     "lyrics": "none"
+    },
+    {
+     "n": 8,
+     "title": "Bliss",
+     "isrc": "QT6G62685865",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 9,
+     "title": "Last light",
+     "isrc": "QT6G62685866",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 10,
+     "title": "Untethered",
+     "isrc": "QT6G62685867",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 11,
+     "title": "Return",
+     "isrc": "QT6G62685868",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 12,
+     "title": "Flickering Glimpse",
+     "isrc": "QT6G62685869",
+     "lyrics": "instrumental"
+    }
+   ],
+   "lyrics_file": null
+  },
+  {
+   "slug": "rebel-anthem",
+   "title": "Rebel Anthem",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "album",
+   "release_date": "2026-08-14",
+   "release_date_display": "August 14, 2026",
+   "genre": "Metal",
+   "label": "bfo.mantis Records",
+   "upc": "881900955467",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/rebel-anthem?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/5T47et1LgKHJLWBw82qS9n"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/rebel-anthem/6799606263?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/rebel-anthem/6799606263?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Amazon",
+     "url": "https://www.amazon.com/gp/product/B0HDL42KV4/?tag=distrokid06-20"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-423357253"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/rebel-anthem-800.jpg",
+    "webp": "assets/covers/rebel-anthem-800.webp",
+    "jpg_small": "assets/covers/rebel-anthem-400.jpg",
+    "webp_small": "assets/covers/rebel-anthem-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Rebel Anthem",
+     "isrc": "QT6G62652781",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 2,
+     "title": "Rebel Anthem (Reckoning)",
+     "isrc": "QT6G62652782",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 3,
+     "title": "The Tree is Thirsty",
+     "isrc": "QT6G62652783",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 4,
+     "title": "The Tree is Thirsty (Sovereign Armageddon)",
+     "isrc": "QT6G62652784",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 5,
+     "title": "Sovereign Tongue",
+     "isrc": "QT6G62652785",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 6,
+     "title": "They Fear Us",
+     "isrc": "QT6G62652786",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 7,
+     "title": "Tree of Liberty (Reignited)",
+     "isrc": "QT6G62652787",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 8,
+     "title": "Blood for the Beast",
+     "isrc": "QT6G62652788",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 9,
+     "title": "The Hydra Bleeds",
+     "isrc": "QT6G62652789",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 10,
+     "title": "Brotherhood",
+     "isrc": "QT6G62652790",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 11,
+     "title": "Pure FURY!",
+     "isrc": "QT6G62652791",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 12,
+     "title": "Rebel Anthem (Blood Tax)",
+     "isrc": "QT6G62652792",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 13,
+     "title": "At the Gallows",
+     "isrc": "QT6G62652793",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 14,
+     "title": "What Is Tyranny?",
+     "isrc": "QT6G62652794",
+     "lyrics": "lyrics"
+    },
+    {
+     "n": 15,
+     "title": "What Is Rebellion?",
+     "isrc": "QT6G62652795",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/rebel-anthem.json"
+  },
+  {
+   "slug": "the-savage-ledger",
+   "title": "The Savage Ledger",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-07-25",
+   "release_date_display": "July 25, 2026",
+   "genre": "Hip Hop/Rap",
+   "label": "bfo.mantis Records",
+   "upc": "882204841425",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/the-savage-ledger?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/7HDtuD6yapXW5CqszjpiEq"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/the-savage-ledger-single/6794268962?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/the-savage-ledger-single/6794268962?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-419291657"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/the-savage-ledger-800.jpg",
+    "webp": "assets/covers/the-savage-ledger-800.webp",
+    "jpg_small": "assets/covers/the-savage-ledger-400.jpg",
+    "webp_small": "assets/covers/the-savage-ledger-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "The Savage Ledger",
+     "isrc": "QT6FH2601974",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/the-savage-ledger.json"
+  },
+  {
+   "slug": "spellbound-volume-2",
+   "title": "Spellbound Volume 2",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "album",
+   "release_date": "2026-07-25",
+   "release_date_display": "July 25, 2026",
+   "genre": "Electronic",
+   "label": "bfo.mantis Records",
+   "upc": "882159956618",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/spellbound-volume-2?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/1DEXO3ZSfy0gcos3idJhmj"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/spellbound-volume-2/6792426929?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/spellbound-volume-2/6792426929?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1032755792"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-417908894"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/spellbound-volume-2-800.jpg",
+    "webp": "assets/covers/spellbound-volume-2-800.webp",
+    "jpg_small": "assets/covers/spellbound-volume-2-400.jpg",
+    "webp_small": "assets/covers/spellbound-volume-2-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Fading",
+     "isrc": "QT6F92689660",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 2,
+     "title": "Firelight Embers",
+     "isrc": "QT6F92689661",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 3,
+     "title": "Soft Wind's",
+     "isrc": "QT6F92689662",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 4,
+     "title": "Embers",
+     "isrc": "QT6F92689663",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 5,
+     "title": "Sand of Time",
+     "isrc": "QT6F92689664",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 6,
+     "title": "Painting Clouds",
+     "isrc": "QT6F92689665",
+     "lyrics": "none"
+    },
+    {
+     "n": 7,
+     "title": "Stolen Time",
+     "isrc": "QT6F92689666",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 8,
+     "title": "Nightfall",
+     "isrc": "QT6F92689667",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 9,
+     "title": "Endless Moments",
+     "isrc": "QT6F92689668",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 10,
+     "title": "Morning Dew",
+     "isrc": "QT6F92689669",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 11,
+     "title": "Sun Down",
+     "isrc": "QT6F92689670",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 12,
+     "title": "Midnight Rain",
+     "isrc": "QT6F92689671",
+     "lyrics": "instrumental"
+    }
+   ],
+   "lyrics_file": null
+  },
+  {
+   "slug": "spellbound-volume-1",
+   "title": "Spellbound Volume 1",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "album",
+   "release_date": "2026-07-25",
+   "release_date_display": "July 25, 2026",
+   "genre": "Electronic",
+   "label": "bfo.mantis Records",
+   "upc": "882102015010",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/spellbound-volume-1?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/4j2nG4j0y5jeTg2J1gJLZy"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/spellbound-volume-1/6792403537?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/spellbound-volume-1/6792403537?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1032686492"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-423450140"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/spellbound-volume-1-800.jpg",
+    "webp": "assets/covers/spellbound-volume-1-800.webp",
+    "jpg_small": "assets/covers/spellbound-volume-1-400.jpg",
+    "webp_small": "assets/covers/spellbound-volume-1-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Captive",
+     "isrc": "QT6F92681190",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 2,
+     "title": "Transfixed",
+     "isrc": "QT6F92681191",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 3,
+     "title": "Smitten",
+     "isrc": "QT6F92681192",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 4,
+     "title": "Spellbound",
+     "isrc": "QT6F92681193",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 5,
+     "title": "lingering",
+     "isrc": "QT6F92681194",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 6,
+     "title": "Stoic",
+     "isrc": "QT6F92681195",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 7,
+     "title": "Rhythms of the Heart",
+     "isrc": "QT6F92681196",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 8,
+     "title": "Country Stars",
+     "isrc": "QT6F92681197",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 9,
+     "title": "Mesmerized",
+     "isrc": "QT6F92681198",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 10,
+     "title": "Groove",
+     "isrc": "QT6F92681199",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 11,
+     "title": "Traveling",
+     "isrc": "QT6F92681200",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 12,
+     "title": "Taken",
+     "isrc": "QT6F92681201",
+     "lyrics": "instrumental"
+    }
+   ],
+   "lyrics_file": null
+  },
+  {
+   "slug": "flock-of-the-tyrants",
+   "title": "Flock of the Tyrants",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-07-19",
+   "release_date_display": "July 19, 2026",
+   "genre": "Rock",
+   "label": "bfo.mantis Records",
+   "upc": "882102138252",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/flock-of-the-tyrants?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/2cKxzOHVmqdEUi5BoSJeZf"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/flock-of-the-tyrants-single/6792349853?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/flock-of-the-tyrants-single/6792349853?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1032517212"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/flock-of-the-tyrants-800.jpg",
+    "webp": "assets/covers/flock-of-the-tyrants-800.webp",
+    "jpg_small": "assets/covers/flock-of-the-tyrants-400.jpg",
+    "webp_small": "assets/covers/flock-of-the-tyrants-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Flock of the Tyrants",
+     "isrc": "QT6F92659506",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/flock-of-the-tyrants.json"
+  },
+  {
+   "slug": "the-flock-betrayal",
+   "title": "The Flock Betrayal",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-07-16",
+   "release_date_display": "July 16, 2026",
+   "genre": "Hip Hop/Rap",
+   "label": "bfo.mantis Records",
+   "upc": "882102935462",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/the-flock-betrayal?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/3dSXhKfgXuQU2XRyPTYuxn"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/the-flock-betrayal-single/6791796592?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/the-flock-betrayal-single/6791796592?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1031111242"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/the-flock-betrayal-800.jpg",
+    "webp": "assets/covers/the-flock-betrayal-800.webp",
+    "jpg_small": "assets/covers/the-flock-betrayal-400.jpg",
+    "webp_small": "assets/covers/the-flock-betrayal-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "The Flock Betrayal",
+     "isrc": "QT6F82621394",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/the-flock-betrayal.json"
+  },
+  {
+   "slug": "violent-light",
+   "title": "Violent Light",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-07-16",
+   "release_date_display": "July 16, 2026",
+   "genre": "Hip Hop/Rap",
+   "label": "bfo.mantis Records",
+   "upc": "882102967289",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/violent-light?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/1Hms3yI6Wk2WZfHmJV5oYX"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/violent-light-single/6793668551?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/violent-light-single/6793668551?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1035535672"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-418810032"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/violent-light-800.jpg",
+    "webp": "assets/covers/violent-light-800.webp",
+    "jpg_small": "assets/covers/violent-light-400.jpg",
+    "webp_small": "assets/covers/violent-light-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Violent Light",
+     "isrc": "QT6F82613759",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/violent-light.json"
+  },
+  {
+   "slug": "evil-eye-contracts",
+   "title": "EVIL EYE CONTRACTS",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-07-15",
+   "release_date_display": "July 15, 2026",
+   "genre": "Hip Hop/Rap",
+   "label": "bfo.mantis Records",
+   "upc": "882100647565",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/evil-eye-contrasts?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/6nqkYS9QAfvEfKCxPkAsDk"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/evil-eye-contrasts-single/6791078539?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/evil-eye-contrasts-single/6791078539?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1029518732"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-416879782"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/evil-eye-contracts-800.jpg",
+    "webp": "assets/covers/evil-eye-contracts-800.webp",
+    "jpg_small": "assets/covers/evil-eye-contracts-400.jpg",
+    "webp_small": "assets/covers/evil-eye-contracts-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "EVIL EYE CONTRACTS",
+     "isrc": "QT6F62681643",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/evil-eye-contracts.json"
+  },
+  {
+   "slug": "carry-the-star",
+   "title": "Carry the Star",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-07-12",
+   "release_date_display": "July 12, 2026",
+   "genre": "Rock",
+   "label": "bfo.mantis Records",
+   "upc": "882093918208",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/carry-the-star?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/3ytKbvq7wTclKvwo0An5QL"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/carry-the-star-single/6790073752?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/carry-the-star-single/6790073752?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1027167692"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-416124841"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/carry-the-star-800.jpg",
+    "webp": "assets/covers/carry-the-star-800.webp",
+    "jpg_small": "assets/covers/carry-the-star-400.jpg",
+    "webp_small": "assets/covers/carry-the-star-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Carry the Star",
+     "isrc": "QT6F42637691",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/carry-the-star.json"
+  },
+  {
+   "slug": "anvil-s-kiss",
+   "title": "Anvil's Kiss",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-07-10",
+   "release_date_display": "July 10, 2026",
+   "genre": "Rock",
+   "label": "bfo.mantis Records",
+   "upc": "883005744755",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/anvils-kiss?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/2HolDZSm3xEX4jZbahyqtd"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/anvils-kiss-single/6789521893?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/anvils-kiss-single/6789521893?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1025737492"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-415682312"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/anvil-s-kiss-800.jpg",
+    "webp": "assets/covers/anvil-s-kiss-800.webp",
+    "jpg_small": "assets/covers/anvil-s-kiss-400.jpg",
+    "webp_small": "assets/covers/anvil-s-kiss-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Anvil's Kiss",
+     "isrc": "QT6F22689948",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/anvil-s-kiss.json"
+  },
+  {
+   "slug": "tinmouth-cathedral-volume-1",
+   "title": "Tinmouth Cathedral Volume 1",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "album",
+   "release_date": "2026-07-09",
+   "release_date_display": "July 9, 2026",
+   "genre": "Electronic",
+   "label": "bfo.mantis Records",
+   "upc": "882988204355",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/tinmouth-cathedral-volume-1?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/2eD1Me08Koh2GsTBVeqXnY"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/tinmouth-cathedral-volume-1/6789056155?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/tinmouth-cathedral-volume-1/6789056155?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1024764901"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-415368629"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/tinmouth-cathedral-volume-1-800.jpg",
+    "webp": "assets/covers/tinmouth-cathedral-volume-1-800.webp",
+    "jpg_small": "assets/covers/tinmouth-cathedral-volume-1-400.jpg",
+    "webp_small": "assets/covers/tinmouth-cathedral-volume-1-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Tin Cathedral Reverberations",
+     "isrc": "QT6F22604260",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 2,
+     "title": "Rusted Industrial Liturgy",
+     "isrc": "QT6F22604261",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 3,
+     "title": "Echoes of Distortion",
+     "isrc": "QT6F22604262",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 4,
+     "title": "Grunge Machine Vespers",
+     "isrc": "QT6F22604263",
+     "lyrics": "none"
+    },
+    {
+     "n": 5,
+     "title": "Techno Tin Collapse",
+     "isrc": "QT6F22604264",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 6,
+     "title": "Voltage and Rust",
+     "isrc": "QT6F22604265",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 7,
+     "title": "Distorted Altar Storm",
+     "isrc": "QT6F22604266",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 8,
+     "title": "Cathedral Core Decay",
+     "isrc": "QT6F22604267",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 9,
+     "title": "Mechanical Grunge Frequency",
+     "isrc": "QT6F22604268",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 10,
+     "title": "Shadow Pulse Requiem",
+     "isrc": "QT6F22604269",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 11,
+     "title": "EDM Rust Sermon",
+     "isrc": "QT6F22604270",
+     "lyrics": "instrumental"
+    },
+    {
+     "n": 12,
+     "title": "Tinmouth Echo Chamber",
+     "isrc": "QT6F22604271",
+     "lyrics": "instrumental"
+    }
+   ],
+   "lyrics_file": null
+  },
+  {
+   "slug": "blazing-stars",
+   "title": "Blazing Stars",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-07-07",
+   "release_date_display": "July 7, 2026",
+   "genre": "Rock",
+   "label": "bfo.mantis Records",
+   "upc": "882877127710",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/blazing-stars?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/3RB7a8eloO6mFF24yKW1gg"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/blazing-stars-single/6788357226?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/blazing-stars-single/6788357226?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-414870042"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/blazing-stars-800.jpg",
+    "webp": "assets/covers/blazing-stars-800.webp",
+    "jpg_small": "assets/covers/blazing-stars-400.jpg",
+    "webp_small": "assets/covers/blazing-stars-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Blazing Stars",
+     "isrc": "QT6EY2616104",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/blazing-stars.json"
+  },
+  {
+   "slug": "america-250",
+   "title": "America 250",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-07-04",
+   "release_date_display": "July 4, 2026",
+   "genre": "Rock",
+   "label": "bfo.mantis Records",
+   "upc": "882792122418",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/america-250?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/3RWJyfABEnZltCfGmmRit1"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/america-250-single/6787694827?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/america-250-single/6787694827?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1021455711"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-414364801"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/america-250-800.jpg",
+    "webp": "assets/covers/america-250-800.webp",
+    "jpg_small": "assets/covers/america-250-400.jpg",
+    "webp_small": "assets/covers/america-250-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "America 250",
+     "isrc": "QT6EW2622862",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/america-250.json"
+  },
+  {
+   "slug": "sacred-steel",
+   "title": "Sacred Steel",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-07-04",
+   "release_date_display": "July 4, 2026",
+   "genre": "Rock",
+   "label": "bfo.mantis Records",
+   "upc": "882792449607",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/sacred-steel?ref=release",
+   "listen_source": "hyperfollow",
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/3WD2G1CfQ0kkgpRacAYoBI"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/sacred-steel-single/6787351767?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/sacred-steel-single/6787351767?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1021149661"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-414233331"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/sacred-steel-800.jpg",
+    "webp": "assets/covers/sacred-steel-800.webp",
+    "jpg_small": "assets/covers/sacred-steel-400.jpg",
+    "webp_small": "assets/covers/sacred-steel-400.webp",
+    "width": 800,
+    "height": 800
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Sacred Steel",
+     "isrc": "QT6EV2671151",
+     "lyrics": "lyrics"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/sacred-steel.json"
+  }
+ ]
+}

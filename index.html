@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>bfo.mantis — Releases</title>
+<meta name="description" content="Albums and singles by bfo.mantis.">
+<meta name="theme-color" content="#0b0b0f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0b0f'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23c8ff4d' font-family='sans-serif' font-weight='700'%3Ebm%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="./" aria-label="bfo.mantis home">bfo<span>.</span>mantis</a>
+  <nav aria-label="Primary">
+    <a href="#albums">Albums</a>
+    <a href="#singles">Singles</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-bg" id="hero-bg" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="eyebrow">Artist</p>
+      <h1 id="hero-title">bfo.mantis</h1>
+      <p class="hero-meta" id="hero-meta"></p>
+      <div class="hero-latest" id="hero-latest"></div>
+    </div>
+  </section>
+
+  <section id="albums" class="section" aria-labelledby="albums-title">
+    <div class="section-head">
+      <h2 id="albums-title">Albums</h2>
+      <p class="count" id="albums-count"></p>
+    </div>
+    <ul class="grid grid-albums" id="albums-grid"></ul>
+  </section>
+
+  <section id="singles" class="section" aria-labelledby="singles-title">
+    <div class="section-head">
+      <h2 id="singles-title">Singles</h2>
+      <p class="count" id="singles-count"></p>
+    </div>
+    <ul class="grid grid-singles" id="singles-grid"></ul>
+  </section>
+
+  <section id="about" class="section about" aria-labelledby="about-title">
+    <h2 id="about-title">About</h2>
+    <div class="placeholder" role="note">
+      <strong>PLACEHOLDER — artist bio goes here.</strong>
+      <p>Replace this block in <code>index.html</code> (section <code>#about</code>) with the real bfo.mantis bio. No bio text has been written on purpose.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>&copy; <span id="year"></span> bfo.mantis · bfo.mantis Records</p>
+</footer>
+<noscript><p class="noscript">This site needs JavaScript enabled to list releases.</p></noscript>
+<script src="assets/data/releases.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
