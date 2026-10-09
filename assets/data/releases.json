@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-09T00:27:30",
+ "generated": "2026-10-09T00:36:39",
  "releases": [
   {
    "slug": "crown-of-ash",
@@ -130,7 +130,8 @@
      "n": 1,
      "title": "Forge of Your Light",
      "isrc": "QT9XH2693555",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "lyrics_source": "artist"
     }
    ],
    "lyrics_file": "assets/data/lyrics/forge-of-your-light.json"

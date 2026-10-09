@@ -108,15 +108,39 @@ def apply_lyrics_edits(isrc, text, edits, log):
 def lines_src(text):
     return text.replace("\r\n", "\n").strip("\n").split("\n")
 
-def write_lyrics_files(releases, lyrics, edits=None, log=None):
+def load_overrides(folder):
+    """content/lyrics_overrides/<ISRC>.txt: authoritative lyrics from the artist. Used as-is except:
+    line endings normalised, section-label lines removed, leading/trailing blank lines trimmed."""
+    out = {}
+    d = Path(folder)
+    if d.is_dir():
+        for f in sorted(d.glob("*.txt")):
+            text = f.read_text(encoding="utf-8").replace("\r\n", "\n")
+            # drop section labels (lines entirely in parentheses, e.g. "(Chorus)") for consistency with
+            # the other songs; blank lines between sections stay as stanza breaks
+            lines = [l.rstrip() for l in text.split("\n") if not re.fullmatch(r"\s*\(.*\)\s*", l)]
+            out[f.stem.strip().upper()] = re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).strip("\n")
+    return out
+
+def write_lyrics_files(releases, lyrics, edits=None, log=None, overrides=None):
     """One small JSON per release (assets/data/lyrics/<slug>.json), fetched only on that release page."""
     d = ROOT / "assets" / "data" / "lyrics"; d.mkdir(parents=True, exist_ok=True)
     for f in d.glob("*.json"):
         f.unlink()
     n = 0
+    log = log if log is not None else []
+    overrides = overrides or {}
     for r in releases:
-        m = {t["isrc"]: apply_lyrics_edits(t["isrc"], lyrics[t["isrc"]]["lyrics"], edits or {}, log if log is not None else [])
-             for t in r["tracks"] if t["lyrics"] == "lyrics"}
+        m = {}
+        for t in r["tracks"]:
+            if t["isrc"] in overrides:
+                # artist-supplied text replaces the DistroKid text entirely; lyrics_edits.json is not applied
+                t["lyrics"] = "lyrics"; t["lyrics_source"] = "artist"
+                m[t["isrc"]] = overrides[t["isrc"]]
+                if (edits or {}).get(t["isrc"]):
+                    log.append(f"{t['isrc']}: override present, {len(edits[t['isrc']]['edits'])} lyrics_edits entries skipped")
+            elif t["lyrics"] == "lyrics":
+                m[t["isrc"]] = apply_lyrics_edits(t["isrc"], lyrics[t["isrc"]]["lyrics"], edits or {}, log)
         r["lyrics_file"] = f"assets/data/lyrics/{r['slug']}.json" if m else None
         if m:
             (d / f"{r['slug']}.json").write_text(json.dumps(m, ensure_ascii=False)); n += 1
@@ -152,6 +176,8 @@ def main():
                     help="JSON keyed by ISRC: {release_title, track_title, lyrics}; skipped if missing")
     ap.add_argument("--lyrics-status", default="/workspace/lyrics_status.json",
                     help="JSON keyed by ISRC: has_lyrics | instrumental | no_lyrics; skipped if missing")
+    ap.add_argument("--lyrics-overrides", default=str(ROOT / "content" / "lyrics_overrides"),
+                    help="folder of <ISRC>.txt files that fully replace the DistroKid lyrics for that track")
     ap.add_argument("--lyrics-edits", default=str(ROOT / "content" / "lyrics_edits.json"),
                     help="line-level cleanup/redaction edits keyed by ISRC (applied at build time; source untouched)")
     ap.add_argument("--skip-covers", action="store_true")
@@ -198,7 +224,10 @@ def main():
     releases.sort(key=lambda x: x["release_date"], reverse=True)
     edits = json.loads(Path(a.lyrics_edits).read_text()).get("tracks", {}) if a.lyrics_edits and Path(a.lyrics_edits).exists() else {}
     edit_log = []
-    nfiles = write_lyrics_files(releases, lyrics, edits, edit_log)
+    overrides = load_overrides(a.lyrics_overrides) if a.lyrics_overrides else {}
+    nfiles = write_lyrics_files(releases, lyrics, edits, edit_log, overrides)
+    site_isrcs_o = {t["isrc"] for x in releases for t in x["tracks"]}
+    print(f"lyrics overrides: {len(overrides)} applied" + (f"; NOT on site: {sorted(set(overrides) - site_isrcs_o)}" if set(overrides) - site_isrcs_o else ""))
     n_ed = sum(len(v["edits"]) for v in edits.values())
     site_isrcs = {t["isrc"] for x in releases for t in x["tracks"]}
     data = {"artist": ARTIST, "generated": datetime.now().isoformat(timespec="seconds"), "releases": releases}
