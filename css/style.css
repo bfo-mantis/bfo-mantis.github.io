@@ -116,3 +116,6 @@ a{color:inherit}
 .ltag{color:var(--accent);border:1px solid rgba(200,255,77,.4)}
 .itag{color:var(--muted);border:1px solid var(--line);margin-left:6px;vertical-align:2px}
 .lyrics{white-space:pre-line;color:#d4d3de;line-height:1.75;font-size:.95rem;padding:14px 0 8px;max-width:60ch;overflow-wrap:break-word}
+.artist-link{display:inline-block;margin-left:10px;padding:3px 12px;border:1px solid #3a3a4a;border-radius:999px;color:var(--text);text-decoration:none;font-size:.85rem;font-weight:500;vertical-align:1px}
+.artist-link:hover{border-color:var(--accent)}
+@media (max-width:520px){.artist-link{margin:8px 0 0 0}}

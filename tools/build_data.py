@@ -46,13 +46,23 @@ def pick_listen(r):
         return r["distrokid_release_page"], "distrokid_page"
     return None, None
 
-STORE_ORDER = ["Spotify", "Apple Music", "iTunes", "Amazon", "Deezer", "Tidal", "YouTube Music", "iHeartRadio"]
+STORE_ORDER = ["Spotify", "YouTube Music", "Apple Music", "iTunes", "Amazon", "Deezer", "Tidal", "iHeartRadio"]
+STORE_NAMES = {"youtube_music": "YouTube Music"}
 
-def clean_stores(sl):
-    """Return [{name, url}] for public store links only, in a stable order; never adds stores."""
+def clean_stores(sl, rtype="album"):
+    """Return [{name, url}] for public store links only, in a stable order; never adds stores.
+    Nested values like youtube_music {"album": playlist, "track": watch} resolve to the track URL
+    for singles and the album playlist for albums."""
     if not sl:
         return []
     items = sl.items() if isinstance(sl, dict) else [(x.get("name"), x.get("url")) for x in sl]
+    flat = []
+    for name, url in items:
+        name = STORE_NAMES.get(name, name)
+        if isinstance(url, dict):
+            url = (url.get("track") or url.get("album")) if rtype == "single" else (url.get("album") or url.get("track"))
+        flat.append((name, url))
+    items = flat
     out = []
     for name, url in items:
         if not name or not is_public(url):
@@ -181,7 +191,7 @@ def main():
             "release_date": d.isoformat(), "release_date_display": r["release_date"],
             "genre": r.get("genre"), "label": r.get("label"), "upc": r.get("upc"),
             "listen_url": url, "listen_source": src,
-            "store_links": clean_stores(r.get("store_links")), "cover": cover,
+            "store_links": clean_stores(r.get("store_links"), r["type"].lower()), "cover": cover,
             "tracks": [track_entry(t, lyrics, lstatus) for t in r["tracklist"]],
         })
     # newest first; stable for equal dates (keeps catalog order)
