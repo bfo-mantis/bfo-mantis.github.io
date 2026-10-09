@@ -317,6 +317,12 @@ def cat_sections_html(root, releases, today, eager_albums=4):
 ALBUM_SIZES = "(max-width: 520px) 46vw, (max-width: 1240px) 24vw, 280px"
 SINGLE_SIZES = "(max-width: 520px) 46vw, (max-width: 1240px) 16vw, 190px"
 
+GOATCOUNTER = None   # set by main() from content/site_config.json (goatcounter_code); None = no analytics at all
+
+def goatcounter_tag():
+    if not GOATCOUNTER: return ""
+    return f'\n<script data-goatcounter="https://{GOATCOUNTER}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>'
+
 def head(root, *, title, desc, url, og_image, og_alt, og_type="website", extra="", noindex=False, css_v="", jsonld=None):
     j = f'\n<script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False, separators=(",", ":"))}</script>' if jsonld else ""
     return f'''<!doctype html>
@@ -324,6 +330,7 @@ def head(root, *, title, desc, url, og_image, og_alt, og_type="website", extra="
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js")</script>
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 {'<meta name="robots" content="noindex">' if noindex else f'<link rel="canonical" href="{e(url)}">'}
@@ -349,21 +356,27 @@ def head(root, *, title, desc, url, og_image, og_alt, og_type="website", extra="
 <link rel="manifest" href="{root}site.webmanifest">
 <link rel="preload" href="{root}assets/fonts/syne-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="{root}css/style.css?v={css_v}">{j}
+<link rel="stylesheet" href="{root}css/style.css?v={css_v}">{j}{goatcounter_tag()}
 </head>'''
+
+HAS_MERCH = False   # set by main() when content/merch.json has items (Merch page + nav link)
 
 def topbar(root, has_about, home=False, current=None):
     p = "" if home else root
     about = f'<a href="{p}#about">About</a>' if has_about else ""
+    cur = lambda k: ' aria-current="page"' if current == k else ""
+    merch = f'<a href="{root}merch/"{cur("merch")}>Merch</a>' if HAS_MERCH else ""
     return f'''<a class="skip" href="#main">Skip to content</a>
 <header class="topbar" id="top">
   <a class="brand" href="{root or './'}" aria-label="{ARTIST} home">bfo<span>.</span>mantis</a>
-  <nav aria-label="Primary">
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"></span>Menu</button>
+  <nav id="site-nav" aria-label="Primary">
     <a href="{p}#songs">Songs</a>
     <a href="{p}#instrumentals">Instrumentals</a>
-    <a href="{root}genres/"{' aria-current="page"' if current == "genres" else ""}>Genres</a>
+    <a href="{root}genres/"{cur("genres")}>Genres</a>
     {about}
     <a href="{p}#support">Support</a>
+    <a href="{root}lounge/"{cur("lounge")}>Lounge</a>{merch}
   </nav>
 </header>'''
 
@@ -371,6 +384,7 @@ def footer(root, js_v):
     year = date.today().year
     return f'''<footer class="footer">
   <p>Music, lyrics, artwork and audio previews &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</p>
+  <a class="footer-link" href="{root}press/">Press kit</a>
   <a class="footer-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
 </footer>
 <a class="to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l-7 7m7-7l7 7M12 5v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -384,11 +398,12 @@ PAUSE_ICON = '<svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path 
 NT = '<span class="sr-only"> (opens in a new tab)</span>'
 EXT = '<svg class="ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 
-def buy_html(url, label, tag_id):
+def buy_html(url, label, tag_id, event=None):
     """Future direct download / donation. A real link only when content/site_config.json supplies an https URL
     (validated in build_data.py); otherwise a disabled, non-clickable placeholder with a "Coming soon" tag."""
     if url:
-        return f'<div class="buy"><a class="btn-alt" href="{e(url)}" target="_blank" rel="noopener">{label}{NT}</a></div>'
+        gc = f' data-gc="{e(event)}"' if event else ""
+        return f'<div class="buy"><a class="btn-alt" href="{e(url)}" target="_blank" rel="noopener"{gc}>{label}{NT}</a></div>'
     return (f'<div class="buy"><button type="button" class="btn-alt" disabled aria-disabled="true" aria-describedby="{tag_id}">{label}</button>'
             f'<span class="soon-tag" id="{tag_id}">Coming soon</span></div>')
 
@@ -423,9 +438,14 @@ def release_jsonld(r, site):
                       "copyrightNotice": f"Artwork © {r['release_date'][:4]} {LABEL_NAME}. All rights reserved.",
                       "creditText": LABEL_NAME}
     if r.get("label"): d["recordLabel"] = {"@type": "Organization", "name": r["label"]}
+    if r.get("blurb"): d["description"] = r["blurb"]
     d["copyrightHolder"] = {"@type": "Organization", "name": LABEL_NAME}
     d["copyrightYear"] = int(r["release_date"][:4])
-    same = [s["url"] for s in r.get("store_links") or []]
+    # sameAs: one canonical URL per store (iTunes is the same Apple page as Apple Music; affiliate/tracking params
+    # dropped where the URL works without them). The visible buttons keep the links exactly as listed.
+    def canon(u):
+        return u.split("?")[0].rstrip("/") if re.match(r"https://(music\.apple\.com|www\.amazon\.com)/", u) else u
+    same = list(dict.fromkeys(canon(s["url"]) for s in r.get("store_links") or [] if s["name"] != "iTunes"))
     if same: d["sameAs"] = same
     return d
 
@@ -443,7 +463,18 @@ def article(phrase):
         an = lw[:1] in "aeiou" and not lw.startswith(("uni", "use", "usu", "eu", "one"))
     return "an" if an else "a"
 
+def short_blurb(b, limit=230):
+    """Meta description from a blurb: whole sentences up to ~limit chars (always at least the first sentence)."""
+    sents = re.split(r"(?<=[.!?])\s+(?=[A-Z0-9\"'])", b.strip())
+    out = sents[0]
+    for x in sents[1:]:
+        if len(out) + 1 + len(x) > limit: break
+        out += " " + x
+    return out
+
 def describe(r):
+    if r.get("blurb"):
+        return short_blurb(r["blurb"])
     n = len(r["tracks"])
     g = (r['genre'] + ' ' if r.get('genre') else '') + ('instrumental ' if r.get("category") == "instrumental" else '')
     body = f"{n}-track {g}album" if r["type"] == "album" else f"{g}single"
@@ -515,7 +546,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None):
   <section id="support" class="section support" aria-labelledby="support-title">
     <div class="section-head"><h2 id="support-title">Support bfo.mantis</h2></div>
     <p class="support-line">bfo.mantis is a small independent artist. Direct support is coming soon.</p>
-    {buy_html(donate_url, "Donate", "donate-soon")}
+    {buy_html(donate_url, "Donate", "donate-soon", "event/donate")}
   </section>
 </main>
 
@@ -534,19 +565,26 @@ def build_release(releases, i, site, today, v, has_about):
     hd = head(root, title=f"{r['title']} — {ARTIST}", desc=desc, url=url, og_image=og_img,
               og_alt=f"Cover art for {r['title']} by {ARTIST}", og_type="music.album" if r["type"] == "album" else "music.song",
               extra=extra, css_v=v["css"], jsonld=release_jsonld(r, site))
+    # Direct store buttons (content/store_links.json). The first PRIMARY ones are always shown; if 2+ more remain they sit
+    # behind a "More" toggle (shown by default without JS). HyperFollow only appears as a fallback for a release that has
+    # no direct links yet.
     listen = ""
-    if r.get("listen_url"):
-        if r["listen_source"] == "hyperfollow":
-            label = f'<span class="js-released"{hid_rel}>Listen everywhere</span><span class="js-upcoming"{hid_up}>Pre-save / listen</span>'
-        else:
-            label = "Listen"
-        listen = (f'<a class="btn" href="{e(r["listen_url"])}" target="_blank" rel="noopener">'
-                  f'<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>{label}{NT}</a>')
-    stores = [s for s in r.get("store_links") or [] if s["url"] != r.get("listen_url")]
+    stores = r.get("store_links") or []
     if stores:
-        listen += ('<div class="stores"><p class="stores-label" id="stores-label">Or open in</p><ul class="store-row" aria-labelledby="stores-label">' +
-                   "".join(f'<li><a class="store" href="{e(s["url"])}" target="_blank" rel="noopener">{e(s["name"])}{EXT}{NT}</a></li>' for s in stores) +
-                   "</ul></div>")
+        PRIMARY = ("Spotify", "Apple Music", "YouTube Music", "Amazon Music")
+        extra = [x for x in stores if x["name"] not in PRIMARY]
+        if len(extra) < 2 or len(extra) == len(stores): extra = []   # a single extra (or nothing primary) is shown inline
+        main_ = [x for x in stores if x not in extra]
+        li = lambda s_, cls="": (f'<li{cls}><a class="store" href="{e(s_["url"])}" target="_blank" rel="noopener">'
+                                 f'{e(s_["name"])}{EXT}{NT}</a></li>')
+        more_btn = (f'<li class="more-li"><button type="button" class="store store-more" aria-expanded="false" aria-controls="stores-{r["slug"]}">'
+                    f'More<span class="more-n"> ({len(extra)})</span></button></li>') if extra else ""
+        listen = (f'<div class="stores"><p class="stores-label" id="stores-label">Listen on</p>'
+                  f'<ul class="store-row" id="stores-{r["slug"]}" aria-labelledby="stores-label"{" data-collapsed" if extra else ""}>'
+                  + "".join(li(x) for x in main_) + "".join(li(x, ' class="store-extra"') for x in extra) + more_btn + "</ul></div>")
+    elif r.get("listen_url"):
+        listen = (f'<a class="btn" href="{e(r["listen_url"])}" target="_blank" rel="noopener" data-gc="event/store/hyperfollow/{r["slug"]}">'
+                  f'<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Pre-save / listen{NT}</a>')
     tracks = []
     def pv_btn(t):
         if not t.get("preview"):
@@ -559,7 +597,8 @@ def build_release(releases, i, site, today, v, has_about):
             tracks.append(f'<li class="has-lyrics">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<details data-isrc="{e(t["isrc"])}">'
                           f'<summary><span class="tt">{e(t["title"])}</span><span class="ltag" aria-hidden="true">Lyrics</span>'
                           f'<span class="sr-only"> — show lyrics</span></summary>'
-                          f'<div class="lyrics" aria-live="polite">Loading lyrics…</div>'
+                          + (f'<p class="tblurb">{e(t["blurb"])}</p>' if t.get("blurb") else "")
+                          + f'<div class="lyrics" aria-live="polite">Loading lyrics…</div>'
                           f'<p class="lcopy">&copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p></details></li>')
         else:
             tag = ' <span class="itag">Instrumental</span>' if t["lyrics"] == "instrumental" else ""
@@ -604,17 +643,17 @@ def build_release(releases, i, site, today, v, has_about):
 {topbar(root, has_about)}
 <main id="main">
   <div class="release-bg"{bg} aria-hidden="true"></div>
-  <article class="release" data-date="{r["release_date"]}"{lyr}>
+  <article class="release" data-slug="{r["slug"]}" data-date="{r["release_date"]}"{lyr}>
     <div class="cover-col"><div class="cover">{picture(root, r, "(max-width: 820px) 92vw, 560px", eager=True, big=True)}</div>
       <p class="art-copy">Artwork &copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p></div>
     <div class="release-body">
       <a class="back" href="{root}#{anchor}"><span aria-hidden="true">←</span> All {more_label}</a>
       <p class="eyebrow">{kind}<span class="js-upcoming"{hid_up}> · Upcoming</span></p>
       <h1 style="--fit:{word_fit(r["title"]) or 1}">{e(r["title"])}</h1>
-      <p class="by">{ARTIST}</p>
+      <p class="by">{ARTIST}</p>{f'{chr(10)}      <p class="blurb">{e(r["blurb"])}</p>' if r.get("blurb") else ""}
       <ul class="facts">{facts}</ul>
-      <div class="listen">{listen}{buy_html(r.get("download_url"), "Download", "dl-soon")}</div>
       {preview_bar}
+      <div class="listen">{listen}{buy_html(r.get("download_url"), "Download", "dl-soon", f"event/download/{r['slug']}")}</div>
       <h2 class="tracks-title">Tracklist</h2>
       <ol class="tracks">{"".join(tracks)}</ol>
     </div>
@@ -721,6 +760,143 @@ def build_genres(releases, site, today, v, has_about):
     (ROOT / "genres" / "index.html").write_text(page)
     return groups
 
+LOUNGE_INTRO = "A home for the people who stand with bfo.mantis."
+LOUNGE_ITEMS = [   # user-approved wording; no prices, tiers, perks beyond these, or member counts
+    "Exclusive music: demos, unreleased tracks, and full downloads",
+    "Behind-the-scenes posts, song stories, and early announcements",
+    "A community space to talk with other fans and with bfo.mantis",
+    "A free email sign-up for news and early access",
+]
+
+def build_lounge(site, v, has_about, members_url=None):
+    root = "../"; url = site + "lounge/"
+    desc = f"Members Lounge (coming soon): {LOUNGE_INTRO} Exclusive music, behind-the-scenes posts, a fan community and a free email sign-up."
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"Members Lounge — {ARTIST}", "url": url,
+          "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site},
+          "about": music_group(site)}
+    hd = head(root, title=f"Members Lounge — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+    items = "".join(f'<li>{e(t)}</li>' for t in LOUNGE_ITEMS)
+    page = f'''{hd}
+<body class="lounge-page">
+{topbar(root, has_about, current="lounge")}
+<main id="main">
+  <section class="section lounge" aria-labelledby="lounge-title">
+    <a class="back" href="{root}"><span aria-hidden="true">←</span> Home</a>
+    <p class="eyebrow">bfo.mantis</p>
+    <div class="lounge-title"><h1 id="lounge-title">Members Lounge</h1><span class="soon-tag">Coming soon</span></div>
+    <p class="lounge-intro">{e(LOUNGE_INTRO)}</p>
+    <h2 class="lounge-sub">What members will get</h2>
+    <ul class="perks">{items}</ul>
+    {buy_html(members_url, "Join", "join-soon", "event/join")}
+  </section>
+</main>
+
+{footer(root, v["js"])}'''
+    (ROOT / "lounge").mkdir(exist_ok=True)
+    (ROOT / "lounge" / "index.html").write_text(page)
+
+def build_covers_zip(releases):
+    """assets/press/bfo-mantis-cover-art.zip: every 800px cover JPG + a notice. Deterministic (fixed timestamps), so an
+    unchanged set of covers gives a byte-identical zip and no git churn."""
+    import zipfile
+    out = ROOT / "assets" / "press"; out.mkdir(parents=True, exist_ok=True)
+    z = out / "bfo-mantis-cover-art.zip"
+    notice = (f"Cover art for releases by {ARTIST}.\nArtwork (c) {COPY_YEAR} {LABEL_NAME}. All rights reserved.\n"
+              f"Provided for press and editorial use in connection with {ARTIST} releases.\n")
+    with zipfile.ZipFile(z, "w", zipfile.ZIP_STORED) as zf:   # JPGs don't compress further
+        def add(name, data):
+            zi = zipfile.ZipInfo(name, date_time=(2026, 7, 4, 0, 0, 0)); zi.external_attr = 0o644 << 16
+            zf.writestr(zi, data)
+        add("README.txt", notice.encode())
+        for r in sorted(releases, key=lambda x: x["release_date"]):
+            if r.get("cover"):
+                add(f"{r['release_date']}_{r['slug']}.jpg", (ROOT / r["cover"]["jpg"]).read_bytes())
+    return "assets/press/" + z.name, z.stat().st_size
+
+def build_press(releases, site, v, has_about, about, tagline, press_contact):
+    root = "../"; url = site + "press/"
+    zip_path, zip_size = build_covers_zip(releases)
+    albums = sum(r["type"] == "album" for r in releases); singles = len(releases) - albums
+    ntr = sum(len(r["tracks"]) for r in releases)
+    genres = [g for g, _ in genre_groups(releases)]
+    first = min(releases, key=lambda r: r["release_date"])
+    since = date.fromisoformat(first["release_date"]); since_s = since.strftime("%B ") + str(since.day) + since.strftime(", %Y")
+    desc = (f"Press kit for {ARTIST}: bio, catalog facts, release list and downloadable cover art. "
+            f"{len(releases)} releases on {LABEL_NAME} since {since_s}.")
+    ld = {"@context": "https://schema.org", "@type": "AboutPage", "@id": url + "#page", "name": f"Press kit — {ARTIST}", "url": url,
+          "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site},
+          "about": {**music_group(site), "foundingDate": first["release_date"], "genre": genres,
+                    "recordLabel": {"@type": "Organization", "name": LABEL_NAME}}}
+    hd = head(root, title=f"Press kit — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+    rows = "".join(
+        f'<tr><td class="pk-cover">{picture(root, r, "56px", alt="")}</td>'
+        f'<th scope="row"><a href="{root}release/{r["slug"]}/">{e(r["title"])}</a></th>'
+        f'<td>{"Album" if r["type"] == "album" else "Single"}{f" · {len(r["tracks"])} tracks" if r["type"] == "album" else ""}</td>'
+        f'<td><time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time></td>'
+        f'<td>{genre_link(root, r["genre"]) if r.get("genre") else ""}</td>'
+        f'<td>' + (f'<a class="pk-dl" href="{root}{r["cover"]["jpg"]}" download="{r["slug"]}-cover-800.jpg">JPG 800px<span class="sr-only"> cover art for {e(r["title"])}</span></a>' if r.get("cover") else "") + '</td></tr>'
+        for r in releases)
+    if press_contact:
+        href = press_contact if press_contact.startswith("https://") else f"mailto:{press_contact}"
+        contact = f'<p><a class="btn-alt" href="{e(href)}"{" target=\"_blank\" rel=\"noopener\"" if href.startswith("https://") else ""}>{e(press_contact)}</a></p>'
+    else:
+        contact = '<p class="pk-soon"><span class="soon-tag">Coming soon</span> A press contact will be listed here.</p>'
+    bio = f'<div class="about-body">{about}</div>' if about else ""
+    page = f'''{hd}
+<body class="press-page">
+{topbar(root, has_about, current="press")}
+<main id="main">
+  <section class="section press" aria-labelledby="press-title">
+    <a class="back" href="{root}"><span aria-hidden="true">←</span> Home</a>
+    <p class="eyebrow">Press kit</p>
+    <h1 id="press-title">bfo<span>.</span>mantis</h1>
+    {f'<p class="pk-tagline">{e(tagline)}</p>' if tagline else ""}
+  </section>
+
+  <section class="section" aria-labelledby="pk-bio">
+    <div class="section-head"><h2 id="pk-bio">Bio</h2></div>
+    {bio}
+  </section>
+
+  <section class="section" aria-labelledby="pk-facts">
+    <div class="section-head"><h2 id="pk-facts">Catalog facts</h2></div>
+    <dl class="pk-facts">
+      <div><dt>Releases</dt><dd>{len(releases)} ({albums} albums, {singles} singles)</dd></div>
+      <div><dt>Tracks</dt><dd>{ntr}</dd></div>
+      <div><dt>Genres</dt><dd>{", ".join(genre_link(root, g) for g in genres)}</dd></div>
+      <div><dt>Active since</dt><dd><time datetime="{first["release_date"]}">{since_s}</time></dd></div>
+      <div><dt>Label</dt><dd>{LABEL_NAME}</dd></div>
+    </dl>
+  </section>
+
+  <section class="section" aria-labelledby="pk-releases">
+    <div class="section-head"><h2 id="pk-releases">Releases &amp; cover art</h2>
+      <a class="btn-alt pk-zip" href="{root}{zip_path}" download>Download all covers (ZIP, {zip_size / 1e6:.1f} MB)</a></div>
+    <div class="pk-table-wrap"><table class="pk-table">
+      <thead><tr><th scope="col"><span class="sr-only">Cover</span></th><th scope="col">Title</th><th scope="col">Type</th><th scope="col">Released</th><th scope="col">Genre</th><th scope="col">Cover art</th></tr></thead>
+      <tbody>{rows}</tbody>
+    </table></div>
+    <p class="art-copy">Artwork &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</p>
+  </section>
+
+  <section class="section" aria-labelledby="pk-photos">
+    <div class="section-head"><h2 id="pk-photos">Press photos</h2></div>
+    <p class="pk-soon"><span class="soon-tag">Coming soon</span></p>
+  </section>
+
+  <section class="section" aria-labelledby="pk-contact">
+    <div class="section-head"><h2 id="pk-contact">Contact</h2></div>
+    {contact}
+  </section>
+</main>
+
+{footer(root, v["js"])}'''
+    (ROOT / "press").mkdir(exist_ok=True)
+    (ROOT / "press" / "index.html").write_text(page)
+    return zip_size
+
 def build_misc(releases, site, v):
     # old URL shim: release.html?r=<slug> -> release/<slug>/
     slugs = json.dumps([r["slug"] for r in releases])
@@ -745,7 +921,7 @@ def build_misc(releases, site, v):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0b0b0f">
-<title>Page not found — {ARTIST}</title>
+<title>Page not found — {ARTIST}</title>{goatcounter_tag()}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
 @font-face{{font-family:Syne;font-weight:700 800;font-display:swap;src:url(/assets/fonts/syne-latin.woff2) format("woff2")}}
@@ -781,7 +957,7 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
 </body>
 </html>
 ''')
-    urls = ([site] + [f"{site}release/{r['slug']}/" for r in releases] + [site + "genres/"]
+    urls = ([site] + [f"{site}release/{r['slug']}/" for r in releases] + [site + "genres/", site + "lounge/", site + "press/"]
             + [f"{site}genre/{genre_slug(g)}/" for g, _ in genre_groups(releases)])
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
                                       "".join(f"  <url><loc>{e(u)}</loc></url>\n" for u in urls) + "</urlset>\n")
@@ -798,6 +974,8 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     site = site_url.rstrip("/") + "/"
     data = json.loads((ROOT / "assets" / "data" / "releases.json").read_text())
     releases = data["releases"]
+    global GOATCOUNTER
+    GOATCOUNTER = data.get("goatcounter_code")
     today = date.today()
     about = about_html(); has_about = bool(about)
     albums = sum(r["type"] == "album" for r in releases); singles = len(releases) - albums
@@ -816,9 +994,13 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     for i in range(len(releases)):
         build_release(releases, i, site, today, v, has_about)
     groups = build_genres(releases, site, today, v, has_about)
+    build_lounge(site, v, has_about, data.get("members_url"))
+    bl = ROOT / "content" / "blurbs.json"
+    tagline = (json.loads(bl.read_text()).get("artist") or {}).get("tagline") if bl.exists() else None
+    zsize = build_press(releases, site, v, has_about, about, tagline, data.get("press_contact"))
     build_misc(releases, site, v)
     print("genres:", ", ".join(f"{g} ({len(rs)} releases, {sum(len(r['tracks']) for r in rs)} tracks)" for g, rs in groups))
-    print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + 404 + release.html shim | sitemap urls: {len(releases) + 2 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
+    print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + lounge + press (covers zip {zsize / 1e6:.1f} MB) + 404 + release.html shim | sitemap urls: {len(releases) + 4 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()

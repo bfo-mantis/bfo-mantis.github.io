@@ -1,7 +1,10 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-09T13:52:10",
+ "generated": "2026-10-09T15:10:16",
  "donate_url": null,
+ "members_url": null,
+ "press_contact": null,
+ "goatcounter_code": "bfomantis",
  "releases": [
   {
    "slug": "crown-of-ash",
@@ -15,20 +18,25 @@
    "genre": "Folk",
    "label": "bfo.mantis Records",
    "upc": "700536942163",
-   "listen_url": "https://distrokid.com/hyperfollow/wetline1/crown-of-ash?ref=release",
-   "listen_source": "hyperfollow",
-   "store_links": [],
+   "listen_url": null,
+   "listen_source": null,
+   "store_links": [
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/crown-of-ash-single/6820737340?uo=4"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/crown-of-ash-single/6820737340?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    }
+   ],
    "cover": {
     "jpg": "assets/covers/crown-of-ash-800.jpg",
     "webp": "assets/covers/crown-of-ash-800.webp",
     "jpg_small": "assets/covers/crown-of-ash-400.jpg",
     "webp_small": "assets/covers/crown-of-ash-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -37,11 +45,13 @@
      "isrc": "QTA7T2600629",
      "lyrics": "lyrics",
      "lyrics_source": "artist",
+     "blurb": null,
      "preview": "assets/audio/previews/crown-of-ash/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/crown-of-ash.json",
    "download_url": null,
+   "blurb": null,
    "category": "vocal",
    "mixed": false
   },
@@ -57,20 +67,20 @@
    "genre": "Metal",
    "label": "bfo.mantis Records",
    "upc": "700766933498",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/the-only-way?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/3omVH9tmwq2TVWiIRadffs"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/watch?v=RXX3WOO5qT8"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/the-only-way-single/6814011369?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=RXX3WOO5qT8"
     },
     {
      "name": "iTunes",
@@ -83,11 +93,7 @@
     "jpg_small": "assets/covers/the-only-way-400.jpg",
     "webp_small": "assets/covers/the-only-way-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -95,11 +101,13 @@
      "title": "The Only Way",
      "isrc": "QT9XM2685551",
      "lyrics": "lyrics",
+     "blurb": null,
      "preview": "assets/audio/previews/the-only-way/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/the-only-way.json",
    "download_url": null,
+   "blurb": "A cold-eyed sermon against polite compliance, arguing that ballots, petitions and good manners have never loosened a yoke. Its answer is refusal itself, held up as the one defense of liberty that has always worked.",
    "category": "vocal",
    "mixed": false
   },
@@ -115,20 +123,24 @@
    "genre": "Metal",
    "label": "bfo.mantis Records",
    "upc": "700904236894",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/forge-of-your-light?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/4wLeauIsEIgQeqJMsSB4Da"
     },
     {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/forge-of-your-light-single/6811712664?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
      "name": "YouTube Music",
      "url": "https://music.youtube.com/watch?v=eEoSBpC9muM"
     },
     {
-     "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/forge-of-your-light-single/6811712664?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "name": "Amazon Music",
+     "url": "https://www.amazon.com/gp/product/B0HJPFQ816"
     },
     {
      "name": "iTunes",
@@ -141,11 +153,7 @@
     "jpg_small": "assets/covers/forge-of-your-light-400.jpg",
     "webp_small": "assets/covers/forge-of-your-light-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -154,11 +162,13 @@
      "isrc": "QT9XH2693555",
      "lyrics": "lyrics",
      "lyrics_source": "artist",
+     "blurb": null,
      "preview": "assets/audio/previews/forge-of-your-light/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/forge-of-your-light.json",
    "download_url": null,
+   "blurb": "A tribute to a mother pictured as a blacksmith who hammered seven children into shape in the forge of home. Faith, endurance and family legacy ring through every image of fire and tempered metal.",
    "category": "vocal",
    "mixed": false
   },
@@ -174,28 +184,28 @@
    "genre": "Rock",
    "label": "bfo.mantis Records",
    "upc": "700904368786",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/dangerous?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/7slaW7d9XtztWdUHoIM53s"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/playlist?list=OLAK5uy_ntmi9MYLQ5m6IeO_Zq7wPLnV2Mt3Qzkgc"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/dangerous/6811647141?uo=4&app=music&at=1001lry3&ct=dashboard"
     },
     {
-     "name": "iTunes",
-     "url": "https://music.apple.com/us/album/dangerous/6811647141?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/playlist?list=OLAK5uy_ntmi9MYLQ5m6IeO_Zq7wPLnV2Mt3Qzkgc"
     },
     {
-     "name": "Amazon",
+     "name": "Amazon Music",
      "url": "https://www.amazon.com/gp/product/B0HJP7BDPL/?tag=distrokid06-20"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/dangerous/6811647141?uo=4&app=itunes&at=1001lry3&ct=dashboard"
     }
    ],
    "cover": {
@@ -204,11 +214,7 @@
     "jpg_small": "assets/covers/dangerous-400.jpg",
     "webp_small": "assets/covers/dangerous-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -216,6 +222,7 @@
      "title": "Dangerous",
      "isrc": "QT9XH2672245",
      "lyrics": "lyrics",
+     "blurb": "The title track lays out the album's thesis: free will is a gift from God that no empire can revoke, and being peaceful is not the same as being harmless. Gandhi's refusal to obey is offered as proof that one person's no can outlast armies.",
      "preview": "assets/audio/previews/dangerous/01.mp3"
     },
     {
@@ -223,6 +230,7 @@
      "title": "Tha Last Thunderbolt",
      "isrc": "QT9XH2672246",
      "lyrics": "lyrics",
+     "blurb": "A march through Magna Carta, Patrick Henry, Lexington and Jefferson, arguing that a sovereign conscience is the final safeguard once government preys on its own people. The thunderbolt of the title is a single person's refusal.",
      "preview": "assets/audio/previews/dangerous/02.mp3"
     },
     {
@@ -230,6 +238,7 @@
      "title": "Guardians of the Free",
      "isrc": "QT9XH2672247",
      "lyrics": "lyrics",
+     "blurb": "A hymn-like call to vigilance about sentinels who keep liberty's flame alive through sacrifice and endless watch. It is one of the album's most stately, ceremonial moments.",
      "preview": "assets/audio/previews/dangerous/03.mp3"
     },
     {
@@ -237,6 +246,7 @@
      "title": "Solution or Problem",
      "isrc": "QT9XH2672248",
      "lyrics": "lyrics",
+     "blurb": "A confrontational mirror held up to the listener, built from a chain of either-or choices such as eagle or pig and brother or backstabber. Neutral ground is not an option.",
      "preview": "assets/audio/previews/dangerous/04.mp3"
     },
     {
@@ -244,6 +254,7 @@
      "title": "Here to Hell...p",
      "isrc": "QT9XH2672249",
      "lyrics": "lyrics",
+     "blurb": "The album's deepest dive into distrust of official kindness, flipping words like help, safety, equity and reform into their darkest readings. It also traces a cycle in which hardship makes people strong and comfort makes them soft.",
      "preview": "assets/audio/previews/dangerous/05.mp3"
     },
     {
@@ -251,6 +262,7 @@
      "title": "Suits",
      "isrc": "QT9XH2672250",
      "lyrics": "lyrics",
+     "blurb": "A slower, brooding look at spin, media narratives and algorithms as tools of mind control. It ends on a hopeful note, with the illusion cracking and people reclaiming their own thinking.",
      "preview": "assets/audio/previews/dangerous/06.mp3"
     },
     {
@@ -258,6 +270,7 @@
      "title": "Void means VOID!",
      "isrc": "QT9XH2672251",
      "lyrics": "lyrics",
+     "blurb": "Opening with Marbury v. Madison, the song argues that an unconstitutional law is void from the moment it is written, not after years of court battles. Its anger is aimed at lawmakers and agencies who leave citizens to fight each overreach alone.",
      "preview": "assets/audio/previews/dangerous/07.mp3"
     },
     {
@@ -265,6 +278,7 @@
      "title": "Qualified Impunity",
      "isrc": "QT9XH2672252",
      "lyrics": "lyrics",
+     "blurb": "One of the album's angriest songs, an all-out attack on the qualified immunity doctrine that names real victims of police violence and likens the defense to following orders. Its demand is accountability, delivered at full volume.",
      "preview": "assets/audio/previews/dangerous/08.mp3"
     },
     {
@@ -272,6 +286,7 @@
      "title": "Earned or Burned",
      "isrc": "QT9XH2672253",
      "lyrics": "lyrics",
+     "blurb": "Aimed at police, judges, soldiers and politicians alike, this song insists respect must be earned and that obeying immoral orders betrays the oath. One conscience, it argues, is enough to force the system to retreat.",
      "preview": "assets/audio/previews/dangerous/09.mp3"
     },
     {
@@ -279,6 +294,7 @@
      "title": "First Responder",
      "isrc": "QT9XH2672254",
      "lyrics": "lyrics",
+     "blurb": "Drawing on a school shooting where hundreds of officers waited for more than an hour, the song argues that you are your own first line of defense. Self-reliance and readiness are its whole message.",
      "preview": "assets/audio/previews/dangerous/10.mp3"
     },
     {
@@ -286,6 +302,7 @@
      "title": "Hero or Zero",
      "isrc": "QT9XH2672255",
      "lyrics": "lyrics",
+     "blurb": "A rough-edged challenge to police who put their own safety above the people they serve, set against soldiers and others who run toward danger. It closes by honoring the ones who do the job right.",
      "preview": "assets/audio/previews/dangerous/11.mp3"
     },
     {
@@ -293,6 +310,7 @@
      "title": "Blue Plague",
      "isrc": "QT9XH2672256",
      "lyrics": "lyrics",
+     "blurb": "The album's most profane broadside against police, rejecting even the idea of a good cop. It is raw, insulting and deliberately unbalanced.",
      "preview": "assets/audio/previews/dangerous/12.mp3"
     },
     {
@@ -300,6 +318,7 @@
      "title": "Counted as Cast",
      "isrc": "QT9XH2672257",
      "lyrics": "lyrics",
+     "blurb": "A retelling of the 1946 Battle of Athens in McMinn County, Tennessee, when returning veterans took up arms to force an honest vote count. It celebrates that no one died and treats vigilance as the ongoing price of freedom.",
      "preview": "assets/audio/previews/dangerous/13.mp3"
     },
     {
@@ -307,6 +326,7 @@
      "title": "We Are Dangerous",
      "isrc": "QT9XH2672258",
      "lyrics": "lyrics",
+     "blurb": "A working-class rally cry that flips power on its head: rulers depend on the labor and silence of ordinary people and lose everything once those people stop kneeling. Authority is stripped down to costume and props.",
      "preview": "assets/audio/previews/dangerous/14.mp3"
     },
     {
@@ -314,11 +334,13 @@
      "title": "Defiance",
      "isrc": "QT9XH2672259",
      "lyrics": "lyrics",
+     "blurb": "The closer gathers every grievance on the album, from surveillance and lockdowns to endless wars, media and police, into one sweeping rejection of the state. It ends by reclaiming the album's title as a promise.",
      "preview": "assets/audio/previews/dangerous/15.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/dangerous.json",
    "download_url": null,
+   "blurb": "DANGEROUS is built on one idea: a peaceful person who refuses to obey is far more powerful than a harmless one. Across 15 rock tracks, bfo.mantis takes aim at qualified immunity, unconstitutional laws, the language of official help and the people who enforce it, with history lessons from Marbury v. Madison to the 1946 Battle of Athens woven between the anger. The mood runs from stately hymns of vigilance to the most profane outbursts in the catalog, and every song comes back to the same choice between kneeling and standing.",
    "category": "vocal",
    "mixed": false
   },
@@ -334,28 +356,28 @@
    "genre": "Metal",
    "label": "bfo.mantis Records",
    "upc": "700997385264",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/road-to-hell?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/6zBusS7CSrMsZUJJMtnzUo"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/watch?v=OKf-wEggw8U"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/road-to-hell-single/6808337818?uo=4&app=music&at=1001lry3&ct=dashboard"
     },
     {
-     "name": "iTunes",
-     "url": "https://music.apple.com/us/album/road-to-hell-single/6808337818?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=OKf-wEggw8U"
     },
     {
-     "name": "Amazon",
+     "name": "Amazon Music",
      "url": "https://www.amazon.com/gp/product/B0HHPRQ9W9/?tag=distrokid06-20"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/road-to-hell-single/6808337818?uo=4&app=itunes&at=1001lry3&ct=dashboard"
     }
    ],
    "cover": {
@@ -364,11 +386,7 @@
     "jpg_small": "assets/covers/road-to-hell-400.jpg",
     "webp_small": "assets/covers/road-to-hell-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -377,11 +395,13 @@
      "isrc": "QT6J22605151",
      "lyrics": "lyrics",
      "lyrics_source": "artist",
+     "blurb": null,
      "preview": "assets/audio/previews/road-to-hell/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/road-to-hell.json",
    "download_url": null,
+   "blurb": "A blunt broadside against trading freedom for promised safety, built on the idea that kind language and good intentions disguise control. It takes hard positions on gun rights and abortion and keeps insisting that words carry real meaning.",
    "category": "vocal",
    "mixed": false
   },
@@ -397,28 +417,28 @@
    "genre": "Christian/Gospel",
    "label": "bfo.mantis Records",
    "upc": "701486500793",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/blood-waters-the-tree?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/3NY60tH4RxDzGR7zHaZFv7"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/watch?v=Vnr7fyw-tRc"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/blood-waters-the-tree-single/6807182138?uo=4&app=music&at=1001lry3&ct=dashboard"
     },
     {
-     "name": "iTunes",
-     "url": "https://music.apple.com/us/album/blood-waters-the-tree-single/6807182138?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=Vnr7fyw-tRc"
     },
     {
-     "name": "Amazon",
+     "name": "Amazon Music",
      "url": "https://www.amazon.com/gp/product/B0HHBDQDCX/?tag=distrokid06-20"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/blood-waters-the-tree-single/6807182138?uo=4&app=itunes&at=1001lry3&ct=dashboard"
     }
    ],
    "cover": {
@@ -427,11 +447,7 @@
     "jpg_small": "assets/covers/blood-waters-the-tree-400.jpg",
     "webp_small": "assets/covers/blood-waters-the-tree-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -439,11 +455,13 @@
      "title": "Blood Waters the Tree",
      "isrc": "QT6HX2695835",
      "lyrics": "lyrics",
+     "blurb": null,
      "preview": "assets/audio/previews/blood-waters-the-tree/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/blood-waters-the-tree.json",
    "download_url": null,
+   "blurb": "A story-song about Elias Hart, a small-town blacksmith of quiet faith who takes up his hammer when tyrants seize his village. His last stand, and his parting words to his daughter beneath an old oak, turn sacrifice into an inheritance.",
    "category": "vocal",
    "mixed": false
   },
@@ -459,28 +477,28 @@
    "genre": "World",
    "label": "bfo.mantis Records",
    "upc": "701486811455",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/savage-serenade-volume-3?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/6kKv6XUABREHnIIvNeetIY"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/playlist?list=OLAK5uy_ntqrvzTqGIrhGU6JHySy5jQwuBNIPaVKs"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/savage-serenade-volume-3/6806875384?uo=4&app=music&at=1001lry3&ct=dashboard"
     },
     {
-     "name": "iTunes",
-     "url": "https://music.apple.com/us/album/savage-serenade-volume-3/6806875384?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/playlist?list=OLAK5uy_ntqrvzTqGIrhGU6JHySy5jQwuBNIPaVKs"
     },
     {
-     "name": "Amazon",
+     "name": "Amazon Music",
      "url": "https://www.amazon.com/gp/product/B0HH828FT9/?tag=distrokid06-20"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/savage-serenade-volume-3/6806875384?uo=4&app=itunes&at=1001lry3&ct=dashboard"
     }
    ],
    "cover": {
@@ -489,11 +507,7 @@
     "jpg_small": "assets/covers/savage-serenade-volume-3-400.jpg",
     "webp_small": "assets/covers/savage-serenade-volume-3-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -501,6 +515,7 @@
      "title": "Gentle Thunder",
      "isrc": "QT6HX2631826",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/01.mp3"
     },
     {
@@ -508,6 +523,7 @@
      "title": "Quiet Wildfire",
      "isrc": "QT6HX2631827",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/02.mp3"
     },
     {
@@ -515,6 +531,7 @@
      "title": "Savage Calm",
      "isrc": "QT6HX2631828",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/03.mp3"
     },
     {
@@ -522,6 +539,7 @@
      "title": "Serene Claw",
      "isrc": "QT6HX2631829",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/04.mp3"
     },
     {
@@ -529,6 +547,7 @@
      "title": "Somber Tempest",
      "isrc": "QT6HX2631830",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/05.mp3"
     },
     {
@@ -536,6 +555,7 @@
      "title": "Tranquil Blaze",
      "isrc": "QT6HX2631831",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/06.mp3"
     },
     {
@@ -543,6 +563,7 @@
      "title": "Silk and Steel",
      "isrc": "QT6HX2631832",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/07.mp3"
     },
     {
@@ -550,6 +571,7 @@
      "title": "Velvet Storm",
      "isrc": "QT6HX2631833",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/08.mp3"
     },
     {
@@ -557,6 +579,7 @@
      "title": "Hushed Fury",
      "isrc": "QT6HX2631834",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/09.mp3"
     },
     {
@@ -564,6 +587,7 @@
      "title": "Tender Rage",
      "isrc": "QT6HX2631835",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/10.mp3"
     },
     {
@@ -571,6 +595,7 @@
      "title": "Yearning Howl",
      "isrc": "QT6HX2631836",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/11.mp3"
     },
     {
@@ -578,6 +603,7 @@
      "title": "Blazing Shadow",
      "isrc": "QT6HX2631837",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/12.mp3"
     },
     {
@@ -585,6 +611,7 @@
      "title": "Silent Frenzy",
      "isrc": "QT6HX2631838",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/13.mp3"
     },
     {
@@ -592,6 +619,7 @@
      "title": "Solemn Edge",
      "isrc": "QT6HX2631839",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/14.mp3"
     },
     {
@@ -599,6 +627,7 @@
      "title": "Serene Thunder",
      "isrc": "QT6HX2631840",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/15.mp3"
     },
     {
@@ -606,6 +635,7 @@
      "title": "Whispering Inferno",
      "isrc": "QT6HX2631841",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/16.mp3"
     },
     {
@@ -613,6 +643,7 @@
      "title": "Stoic Rage",
      "isrc": "QT6HX2631842",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/17.mp3"
     },
     {
@@ -620,11 +651,13 @@
      "title": "Feral Lullaby",
      "isrc": "QT6HX2631843",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-3/18.mp3"
     }
    ],
    "lyrics_file": null,
    "download_url": null,
+   "blurb": null,
    "category": "instrumental",
    "mixed": false
   },
@@ -640,28 +673,28 @@
    "genre": "World",
    "label": "bfo.mantis Records",
    "upc": "701518586627",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/savage-serenade-volume-2?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/6IuPAgIG3lAhavmnapran6"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/playlist?list=OLAK5uy_lVOuwAtLGqcayY0z5mKOikuDMqb3DZArU"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/savage-serenade-volume-2/6804620567?uo=4&app=music&at=1001lry3&ct=dashboard"
     },
     {
-     "name": "iTunes",
-     "url": "https://music.apple.com/us/album/savage-serenade-volume-2/6804620567?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/playlist?list=OLAK5uy_lVOuwAtLGqcayY0z5mKOikuDMqb3DZArU"
     },
     {
-     "name": "Amazon",
+     "name": "Amazon Music",
      "url": "https://www.amazon.com/gp/product/B0HG9S19C3/?tag=distrokid06-20"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/savage-serenade-volume-2/6804620567?uo=4&app=itunes&at=1001lry3&ct=dashboard"
     }
    ],
    "cover": {
@@ -670,11 +703,7 @@
     "jpg_small": "assets/covers/savage-serenade-volume-2-400.jpg",
     "webp_small": "assets/covers/savage-serenade-volume-2-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -682,6 +711,7 @@
      "title": "Silent Tempest",
      "isrc": "QT6HS2632087",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/01.mp3"
     },
     {
@@ -689,6 +719,7 @@
      "title": "Velvet Thunder",
      "isrc": "QT6HS2632088",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/02.mp3"
     },
     {
@@ -696,6 +727,7 @@
      "title": "Gentle Savage",
      "isrc": "QT6HS2632089",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/03.mp3"
     },
     {
@@ -703,6 +735,7 @@
      "title": "Serene Storm",
      "isrc": "QT6HS2632090",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/04.mp3"
     },
     {
@@ -710,6 +743,7 @@
      "title": "Whispering Fury",
      "isrc": "QT6HS2632091",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/05.mp3"
     },
     {
@@ -717,6 +751,7 @@
      "title": "Soft Inferno",
      "isrc": "QT6HS2632092",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/06.mp3"
     },
     {
@@ -724,6 +759,7 @@
      "title": "Tranquil Rage",
      "isrc": "QT6HS2632093",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/07.mp3"
     },
     {
@@ -731,6 +767,7 @@
      "title": "Hushed Blaze",
      "isrc": "QT6HS2632094",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/08.mp3"
     },
     {
@@ -738,6 +775,7 @@
      "title": "Peaceful Wildfire",
      "isrc": "QT6HS2632095",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/09.mp3"
     },
     {
@@ -745,6 +783,7 @@
      "title": "Tender Maelstrom",
      "isrc": "QT6HS2632096",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/10.mp3"
     },
     {
@@ -752,6 +791,7 @@
      "title": "Still Flame",
      "isrc": "QT6HS2632097",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/11.mp3"
     },
     {
@@ -759,6 +799,7 @@
      "title": "Howling Calm",
      "isrc": "QT6HS2632098",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/12.mp3"
     },
     {
@@ -766,6 +807,7 @@
      "title": "Quiet Claw",
      "isrc": "QT6HS2632099",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/13.mp3"
     },
     {
@@ -773,6 +815,7 @@
      "title": "Soft Savagery",
      "isrc": "QT6HS2632100",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/14.mp3"
     },
     {
@@ -780,6 +823,7 @@
      "title": "Serene Fury",
      "isrc": "QT6HS2632101",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/15.mp3"
     },
     {
@@ -787,6 +831,7 @@
      "title": "Whispering Inferno",
      "isrc": "QT6HS2632102",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/16.mp3"
     },
     {
@@ -794,6 +839,7 @@
      "title": "Tempests Lullaby",
      "isrc": "QT6HS2632103",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/17.mp3"
     },
     {
@@ -801,11 +847,13 @@
      "title": "Mellow Thunder",
      "isrc": "QT6HS2632104",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade-volume-2/18.mp3"
     }
    ],
    "lyrics_file": null,
    "download_url": null,
+   "blurb": null,
    "category": "instrumental",
    "mixed": false
   },
@@ -821,28 +869,28 @@
    "genre": "Christian/Gospel",
    "label": "bfo.mantis Records",
    "upc": "701546023897",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/sovereign-heart-of-fire?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/2MHUyu47E790WCEr4uPY8R"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/playlist?list=OLAK5uy_n5gS16m3HtzxgBeRJS0eQe1Woq-9V5Qkk"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/sovereign-heart-of-fire/6804363446?uo=4&app=music&at=1001lry3&ct=dashboard"
     },
     {
-     "name": "iTunes",
-     "url": "https://music.apple.com/us/album/sovereign-heart-of-fire/6804363446?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/playlist?list=OLAK5uy_n5gS16m3HtzxgBeRJS0eQe1Woq-9V5Qkk"
     },
     {
-     "name": "Amazon",
+     "name": "Amazon Music",
      "url": "https://www.amazon.com/gp/product/B0HG6Y4GNF/?tag=distrokid06-20"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/sovereign-heart-of-fire/6804363446?uo=4&app=itunes&at=1001lry3&ct=dashboard"
     }
    ],
    "cover": {
@@ -851,11 +899,7 @@
     "jpg_small": "assets/covers/sovereign-heart-of-fire-400.jpg",
     "webp_small": "assets/covers/sovereign-heart-of-fire-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -863,6 +907,7 @@
      "title": "True Liberty's ROAR",
      "isrc": "QT6HR2651300",
      "lyrics": "lyrics",
+     "blurb": "A song of conviction before God's throne, where judgment and mercy come from the same hand. Freedom here is spiritual, the deliverance of a soul once at home in Egypt and Babylon.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/01.mp3"
     },
     {
@@ -870,6 +915,7 @@
      "title": "The Rebel Prayer",
      "isrc": "QT6HR2651301",
      "lyrics": "lyrics",
+     "blurb": "One person kneeling in prayer becomes the start of a holy war against tyranny, backed by the God who stood with David and Daniel. It frames resistance to unjust rulers as obedience to God.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/02.mp3"
     },
     {
@@ -877,6 +923,7 @@
      "title": "Sovereign Flame",
      "isrc": "QT6HR2651302",
      "lyrics": "lyrics",
+     "blurb": "The stories of David and Moses frame a prayer for courage against darkness and tyranny. It ties liberty to the presence of the Spirit.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/03.mp3"
     },
     {
@@ -884,6 +931,7 @@
      "title": "Sovereign Thunder",
      "isrc": "QT6HR2651303",
      "lyrics": "lyrics",
+     "blurb": "A more abstract, meditative song about authority rising from within, with storm and electrical charge as its central images. Freedom arrives the moment people stop waiting for permission.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/04.mp3"
     },
     {
@@ -891,6 +939,7 @@
      "title": "To the Bitter End",
      "isrc": "QT6HR2651304",
      "lyrics": "lyrics",
+     "blurb": "A prayer for the Bill of Rights that lists the freedoms the singer sees eroding and asks for the strength to defend them to the very end.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/05.mp3"
     },
     {
@@ -898,6 +947,7 @@
      "title": "Forge of Fathers",
      "isrc": "QT6HR2651305",
      "lyrics": "lyrics",
+     "blurb": "A kneeling vow to defend the founders' legacy, with the Bill of Rights worn as armor. The singer asks for the resolve to carry a torch handed down through generations.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/06.mp3"
     },
     {
@@ -905,6 +955,7 @@
      "title": "Endowed in Flame",
      "isrc": "QT6HR2651306",
      "lyrics": "lyrics",
+     "blurb": "A declaration that rights come from the Creator rather than kings or parliaments, set against collectivism and dependence on the state.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/07.mp3"
     },
     {
@@ -912,6 +963,7 @@
      "title": "Immortal Flame",
      "isrc": "QT6HR2651307",
      "lyrics": "lyrics",
+     "blurb": "Hope as an unstoppable wildfire that rises out of the grave of despair. It is one of the album's most uplifting songs, addressed to listeners as children of God.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/08.mp3"
     },
     {
@@ -919,6 +971,7 @@
      "title": "Sovereign Dawn",
      "isrc": "QT6HR2651308",
      "lyrics": "lyrics",
+     "blurb": "A philosophical turn inward that weighs negative and positive freedom and the idea of self-ownership. Here the chains are the stories people swallow, and sovereignty begins in the self.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/09.mp3"
     },
     {
@@ -926,6 +979,7 @@
      "title": "Burning for Liberty",
      "isrc": "QT6HR2651309",
      "lyrics": "lyrics",
+     "blurb": "A rousing anthem for free men under open skies, careful to say its fire is meant to redeem rather than destroy.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/10.mp3"
     },
     {
@@ -933,6 +987,7 @@
      "title": "Endowed by the Creator",
      "isrc": "QT6HR2651310",
      "lyrics": "lyrics",
+     "blurb": "A straightforward civics lesson in song: rights are God-given, government borrows its power from the people, and rulers who forget that lose their claim.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/11.mp3"
     },
     {
@@ -940,6 +995,7 @@
      "title": "Forge Eternal",
      "isrc": "QT6HR2651311",
      "lyrics": "lyrics",
+     "blurb": "A personal song of being shattered and remade by grace, where every wound becomes a doorway. It is the album's most intimate and cosmic track.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/12.mp3"
     },
     {
@@ -947,6 +1003,7 @@
      "title": "Endowed Sovereignty",
      "isrc": "QT6HR2651312",
      "lyrics": "lyrics",
+     "blurb": "Asking where liberty comes from, the song answers that it flows from God alone and confesses how far people have drifted into comfortable cages.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/13.mp3"
     },
     {
@@ -954,6 +1011,7 @@
      "title": "Havilah",
      "isrc": "QT6HR2651313",
      "lyrics": "lyrics",
+     "blurb": "A portrait of a woman who rebuilt her life from loss and betrayal and answers hardship with mercy. It is a gentle, admiring song of resilience and grace.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/14.mp3"
     },
     {
@@ -961,11 +1019,13 @@
      "title": "Sovereign Heart of Fire",
      "isrc": "QT6HR2651314",
      "lyrics": "lyrics",
+     "blurb": "The title track closes the album in surrender, as the singer gives up the throne of his own heart to Christ. Hope, love and faith become weapons in a war he did not start.",
      "preview": "assets/audio/previews/sovereign-heart-of-fire/15.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/sovereign-heart-of-fire.json",
    "download_url": null,
+   "blurb": "Sovereign Heart of Fire carries the catalog's language of liberty into worship. Its 15 Christian/Gospel songs move between prayers for the courage to defend God-given rights and quieter songs of surrender, grace and resilience, including the tender portrait Havilah. Fire runs through it as both judgment and renewal, and it closes with the singer handing the throne of his own heart to Christ.",
    "category": "vocal",
    "mixed": false
   },
@@ -981,28 +1041,28 @@
    "genre": "Hip Hop/Rap",
    "label": "bfo.mantis Records",
    "upc": "701546082856",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/the-ridge?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/3XBRwwz4GERQlvl2ZDZ6K0"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/playlist?list=OLAK5uy_kRsgujnJpZG3YFtPWpNOhJxjP1u-QZYK0"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/the-ridge-single/6804338756?uo=4&app=music&at=1001lry3&ct=dashboard"
     },
     {
-     "name": "iTunes",
-     "url": "https://music.apple.com/us/album/the-ridge-single/6804338756?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/playlist?list=OLAK5uy_kRsgujnJpZG3YFtPWpNOhJxjP1u-QZYK0"
     },
     {
-     "name": "Amazon",
+     "name": "Amazon Music",
      "url": "https://www.amazon.com/gp/product/B0HG6QV59L/?tag=distrokid06-20"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/the-ridge-single/6804338756?uo=4&app=itunes&at=1001lry3&ct=dashboard"
     }
    ],
    "cover": {
@@ -1011,11 +1071,7 @@
     "jpg_small": "assets/covers/the-ridge-400.jpg",
     "webp_small": "assets/covers/the-ridge-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -1024,6 +1080,7 @@
      "isrc": "QT6HR2642231",
      "lyrics": "lyrics",
      "lyrics_source": "artist",
+     "blurb": "An unsparing spoken account of the August 1992 siege at Ruby Ridge, Idaho, told squarely from the Weaver family's side. It recounts the deaths of Sammy and Vicki Weaver in graphic detail and is fiercely critical of the federal response.",
      "preview": "assets/audio/previews/the-ridge/01.mp3"
     },
     {
@@ -1032,11 +1089,13 @@
      "isrc": "QT6HR2642232",
      "lyrics": "lyrics",
      "lyrics_source": "artist",
+     "blurb": "The same story recast as a hook-driven rap, compressing the standoff into chant-like verses and a chorus that says the raid came because one man refused. It ends as a memorial to Sammy and Vicki.",
      "preview": "assets/audio/previews/the-ridge/02.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/the-ridge.json",
    "download_url": null,
+   "blurb": "The Ridge is a two-track Hip Hop/Rap release about the 1992 siege at Ruby Ridge, Idaho. The first track is a long, graphic spoken account told from the Weaver family's side, and the second turns the same story into a hook-driven rap. Both end as memorials to Sammy and Vicki Weaver.",
    "category": "vocal",
    "mixed": false
   },
@@ -1052,28 +1111,28 @@
    "genre": "Folk",
    "label": "bfo.mantis Records",
    "upc": "700989974629",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/savage-serenade?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/4RhFwE94GjdbNyONvJ4Uos"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/playlist?list=OLAK5uy_kiZDGY6YyqxpawaDinHz5AUjZFuoKjKZ0"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/savage-serenade/6803737452?uo=4&app=music&at=1001lry3&ct=dashboard"
     },
     {
-     "name": "iTunes",
-     "url": "https://music.apple.com/us/album/savage-serenade/6803737452?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/playlist?list=OLAK5uy_kiZDGY6YyqxpawaDinHz5AUjZFuoKjKZ0"
     },
     {
-     "name": "Amazon",
+     "name": "Amazon Music",
      "url": "https://www.amazon.com/gp/product/B0HFY7T4RK/?tag=distrokid06-20"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/savage-serenade/6803737452?uo=4&app=itunes&at=1001lry3&ct=dashboard"
     }
    ],
    "cover": {
@@ -1082,11 +1141,7 @@
     "jpg_small": "assets/covers/savage-serenade-400.jpg",
     "webp_small": "assets/covers/savage-serenade-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -1094,6 +1149,7 @@
      "title": "Savage Surrender",
      "isrc": "QT6HP2682017",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/01.mp3"
     },
     {
@@ -1101,6 +1157,7 @@
      "title": "Blood Kissed",
      "isrc": "QT6HP2682018",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/02.mp3"
     },
     {
@@ -1108,6 +1165,7 @@
      "title": "Quiet Thorns",
      "isrc": "QT6HP2682019",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/03.mp3"
     },
     {
@@ -1115,6 +1173,7 @@
      "title": "Feral Edge",
      "isrc": "QT6HP2682020",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/04.mp3"
     },
     {
@@ -1122,6 +1181,7 @@
      "title": "Crimson Whisper",
      "isrc": "QT6HP2682021",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/05.mp3"
     },
     {
@@ -1129,6 +1189,7 @@
      "title": "Howling Grace",
      "isrc": "QT6HP2682022",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/06.mp3"
     },
     {
@@ -1136,6 +1197,7 @@
      "title": "Velvet Ruin",
      "isrc": "QT6HP2682024",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/07.mp3"
     },
     {
@@ -1143,6 +1205,7 @@
      "title": "Tender Carnage",
      "isrc": "QT6HP2682026",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/08.mp3"
     },
     {
@@ -1150,6 +1213,7 @@
      "title": "Shards of Devotion",
      "isrc": "QT6HP2682027",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/09.mp3"
     },
     {
@@ -1157,6 +1221,7 @@
      "title": "Wild and Wanting",
      "isrc": "QT6HP2682028",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/10.mp3"
     },
     {
@@ -1164,6 +1229,7 @@
      "title": "Ashen Embrace",
      "isrc": "QT6HP2682029",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/11.mp3"
     },
     {
@@ -1171,6 +1237,7 @@
      "title": "Silent Fury",
      "isrc": "QT6HP2682030",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/12.mp3"
     },
     {
@@ -1178,6 +1245,7 @@
      "title": "Roses on the Blade",
      "isrc": "QT6HP2682031",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/13.mp3"
     },
     {
@@ -1185,6 +1253,7 @@
      "title": "Heart of the Storm",
      "isrc": "QT6HP2682032",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/14.mp3"
     },
     {
@@ -1192,6 +1261,7 @@
      "title": "Edge of Softness",
      "isrc": "QT6HP2682033",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/15.mp3"
     },
     {
@@ -1199,6 +1269,7 @@
      "title": "Echoes of the Wound",
      "isrc": "QT6HP2682034",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/16.mp3"
     },
     {
@@ -1206,6 +1277,7 @@
      "title": "Last Savage Prayer",
      "isrc": "QT6HP2682035",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/17.mp3"
     },
     {
@@ -1213,11 +1285,13 @@
      "title": "Fiercely Grateful",
      "isrc": "QT6HP2682036",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/savage-serenade/18.mp3"
     }
    ],
    "lyrics_file": null,
    "download_url": null,
+   "blurb": null,
    "category": "instrumental",
    "mixed": false
   },
@@ -1233,28 +1307,28 @@
    "genre": "Rock",
    "label": "bfo.mantis Records",
    "upc": "882068502784",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/one-man-invictus?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/69LL0yjG1iXzQAGfqsW4ME"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/playlist?list=OLAK5uy_lgthZ2X7tZzjLhfofOyKYqDqE-H5STkzM"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/one-man-invictus/6803052725?uo=4&app=music&at=1001lry3&ct=dashboard"
     },
     {
-     "name": "iTunes",
-     "url": "https://music.apple.com/us/album/one-man-invictus/6803052725?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/playlist?list=OLAK5uy_lgthZ2X7tZzjLhfofOyKYqDqE-H5STkzM"
     },
     {
-     "name": "Amazon",
+     "name": "Amazon Music",
      "url": "https://www.amazon.com/gp/product/B0HFRNL7NG/?tag=distrokid06-20"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/one-man-invictus/6803052725?uo=4&app=itunes&at=1001lry3&ct=dashboard"
     }
    ],
    "cover": {
@@ -1263,11 +1337,7 @@
     "jpg_small": "assets/covers/one-man-invictus-400.jpg",
     "webp_small": "assets/covers/one-man-invictus-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -1275,6 +1345,7 @@
      "title": "One Man (Invictus)",
      "isrc": "QT6HN2654612",
      "lyrics": "lyrics",
+     "blurb": "A chant-like opener built from endless variations on a single figure, from the man pushed past his limit to the one who stops the tanks. The point is that ordinary people, one at a time, are what tyranny can never fully control.",
      "preview": "assets/audio/previews/one-man-invictus/01.mp3"
     },
     {
@@ -1282,6 +1353,7 @@
      "title": "One Man (At the Gallows)",
      "isrc": "QT6HN2654613",
      "lyrics": "lyrics",
+     "blurb": "A reworking of the wolf and gallows imagery from Rebel Anthem, this time centered on one man who breaks the silence and turns whispers into thunder.",
      "preview": "assets/audio/previews/one-man-invictus/02.mp3"
     },
     {
@@ -1289,6 +1361,7 @@
      "title": "One Man (Stood)",
      "isrc": "QT6HN2654614",
      "lyrics": "lyrics",
+     "blurb": "The English-language telling of the lone man before the tanks after Tiananmen Square, set against the famines and purges of the Mao era. His disappearance is framed as a defeat for the regime, not for him.",
      "preview": "assets/audio/previews/one-man-invictus/03.mp3"
     },
     {
@@ -1296,6 +1369,7 @@
      "title": "One Man (Burned)",
      "isrc": "QT6HN2654615",
      "lyrics": "lyrics",
+     "blurb": "A reverent account of the Buddhist monk Thich Quang Duc, who set himself on fire in Saigon in 1963 to protest religious persecution. It dwells on his stillness and the peace that made the act so powerful.",
      "preview": "assets/audio/previews/one-man-invictus/04.mp3"
     },
     {
@@ -1303,6 +1377,7 @@
      "title": "One Man (Conviction)",
      "isrc": "QT6HN2654616",
      "lyrics": "lyrics",
+     "blurb": "The story of Desmond Doss, the unarmed medic and conscientious objector who lowered seventy-five wounded men from the ridge at Okinawa. His repeated prayer for one more makes it the album's most tender song of courage.",
      "preview": "assets/audio/previews/one-man-invictus/05.mp3"
     },
     {
@@ -1310,6 +1385,7 @@
      "title": "One Man (The Ghost)",
      "isrc": "QT6HN2654617",
      "lyrics": "lyrics",
+     "blurb": "A swaggering rap about Matt Urban, the soldier who kept returning to the front after wounds that should have ended him. It doubles as a lesson in growing stronger from every blow.",
      "preview": "assets/audio/previews/one-man-invictus/06.mp3"
     },
     {
@@ -1317,6 +1393,7 @@
      "title": "One Man (FRANTIC)",
      "isrc": "QT6HN2654618",
      "lyrics": "lyrics",
+     "blurb": "A dramatic account of the radar-guided night battle off Guadalcanal in November 1942, when USS Washington sank the battleship Kirishima. It celebrates one commander's cool head in the middle of chaos.",
      "preview": "assets/audio/previews/one-man-invictus/07.mp3"
     },
     {
@@ -1324,6 +1401,7 @@
      "title": "One Man (The Swamp Fox)",
      "isrc": "QT6HN2654619",
      "lyrics": "lyrics",
+     "blurb": "A rollicking tale of Francis Marion, the small, limping militia leader who wore down British forces from the Carolina swamps. His hit-and-vanish war becomes a call to be that one defiant person.",
      "preview": "assets/audio/previews/one-man-invictus/08.mp3"
     },
     {
@@ -1331,6 +1409,7 @@
      "title": "One Man (Gandhi)",
      "isrc": "QT6HN2654620",
      "lyrics": "lyrics",
+     "blurb": "Built on Gandhi's refusal to surrender his obedience even under torture, the song portrays nonviolence as sharper than any weapon. A soft-spoken man outlasting an empire is its core image.",
      "preview": "assets/audio/previews/one-man-invictus/09.mp3"
     },
     {
@@ -1338,6 +1417,7 @@
      "title": "One Song (Devotion)",
      "isrc": "QT6HN2654621",
      "lyrics": "lyrics",
+     "blurb": "Joan of Arc tells her own story, from the voices she heard at Domremy through Orleans and Reims to her trial and burning at Rouen. Devotion is the single word that carries her through every stage.",
      "preview": "assets/audio/previews/one-man-invictus/10.mp3"
     },
     {
@@ -1345,6 +1425,7 @@
      "title": "One Man (Leonidas)",
      "isrc": "QT6HN2654622",
      "lyrics": "lyrics",
+     "blurb": "Thermopylae as the stand of the few against an empire's endless ranks, with Leonidas living on in every defiant soul. It prizes choosing how to die over living in chains.",
      "preview": "assets/audio/previews/one-man-invictus/11.mp3"
     },
     {
@@ -1352,6 +1433,7 @@
      "title": "One Man (Immortal Stand)",
      "isrc": "QT6HN2654623",
      "lyrics": "lyrics",
+     "blurb": "The legend of the lone Viking who held the bridge at Stamford Bridge against an English army. It ends by telling the listener that they are the bridge.",
      "preview": "assets/audio/previews/one-man-invictus/12.mp3"
     },
     {
@@ -1359,6 +1441,7 @@
      "title": "One Man (Defiance)",
      "isrc": "QT6HN2654624",
      "lyrics": "lyrics",
+     "blurb": "A roll call of last stands and uprisings, from Thermopylae and Spartacus to Joan of Arc, Masada, the Alamo, Warsaw and Tiananmen. One word is hammered home as the thing that survives them all.",
      "preview": "assets/audio/previews/one-man-invictus/13.mp3"
     },
     {
@@ -1366,6 +1449,7 @@
      "title": "One Man (Heart of Thunder)",
      "isrc": "QT6HN2654625",
      "lyrics": "lyrics",
+     "blurb": "An anthem for the unnamed individual who answers oppression with a roar, unbought and unbowed. Its chorus invites listeners to find that same person in themselves.",
      "preview": "assets/audio/previews/one-man-invictus/14.mp3"
     },
     {
@@ -1373,11 +1457,13 @@
      "title": "One Man Nation (Under God)",
      "isrc": "QT6HN2654626",
      "lyrics": "lyrics",
+     "blurb": "A spoken prayer that closes the album by calling each free person a nation unto himself, sovereign under God and armed. It widens the album's single heroes into a vision of a whole people.",
      "preview": "assets/audio/previews/one-man-invictus/15.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/one-man-invictus.json",
    "download_url": null,
+   "blurb": "One Man INVICTUS is a gallery of individuals who changed events by refusing to bend, including the Tank Man of Tiananmen Square, Thich Quang Duc, Desmond Doss, Francis Marion, Gandhi, Joan of Arc and Leonidas. Nearly every one of its 15 rock tracks is titled One Man, and together they argue that history turns on single acts of conscience, peaceful or not. It ends in prayer, widening one person's stand into a nation of them.",
    "category": "vocal",
    "mixed": false
   },
@@ -1393,8 +1479,8 @@
    "genre": "Folk",
    "label": "bfo.mantis Records",
    "upc": "882068960171",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/one-man---?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
@@ -1405,7 +1491,7 @@
      "url": "https://music.youtube.com/watch?v=K84VWeeV7hI"
     },
     {
-     "name": "Amazon",
+     "name": "Amazon Music",
      "url": "https://www.amazon.com/gp/product/B0HFMGRP4R/?tag=distrokid06-20"
     }
    ],
@@ -1415,11 +1501,7 @@
     "jpg_small": "assets/covers/one-man-400.jpg",
     "webp_small": "assets/covers/one-man-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -1427,11 +1509,13 @@
      "title": "One Man - 站着",
      "isrc": "QT6HM2669331",
      "lyrics": "lyrics",
+     "blurb": null,
      "preview": "assets/audio/previews/one-man/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/one-man.json",
    "download_url": null,
+   "blurb": "Sung in Mandarin, this retelling of the lone man who faced the tanks after the 1989 Tiananmen Square massacre frames his stand as a God-given act of free will. It sets the horrors of the Mao era against one unarmed figure whose refusal still echoes.",
    "category": "vocal",
    "mixed": false
   },
@@ -1447,28 +1531,28 @@
    "genre": "Electronic",
    "label": "bfo.mantis Records",
    "upc": "881900721826",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/spellbound-volume-3?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/5QMAWnb1jm2Wun9WA1b30q"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/playlist?list=OLAK5uy_m3WEIFjmUn01G0xiZEQLeXtP_Ni14aa98"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/spellbound-volume-3/6799736952?uo=4&app=music&at=1001lry3&ct=dashboard"
     },
     {
-     "name": "iTunes",
-     "url": "https://music.apple.com/us/album/spellbound-volume-3/6799736952?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/playlist?list=OLAK5uy_m3WEIFjmUn01G0xiZEQLeXtP_Ni14aa98"
     },
     {
-     "name": "Amazon",
+     "name": "Amazon Music",
      "url": "https://www.amazon.com/gp/product/B0HDM8SBBX/?tag=distrokid06-20"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/spellbound-volume-3/6799736952?uo=4&app=itunes&at=1001lry3&ct=dashboard"
     },
     {
      "name": "iHeartRadio",
@@ -1481,11 +1565,7 @@
     "jpg_small": "assets/covers/spellbound-volume-3-400.jpg",
     "webp_small": "assets/covers/spellbound-volume-3-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -1493,6 +1573,7 @@
      "title": "Wayward",
      "isrc": "QT6G62685858",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-3/01.mp3"
     },
     {
@@ -1500,6 +1581,7 @@
      "title": "Adrift",
      "isrc": "QT6G62685859",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-3/02.mp3"
     },
     {
@@ -1507,6 +1589,7 @@
      "title": "Reflections",
      "isrc": "QT6G62685860",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-3/03.mp3"
     },
     {
@@ -1514,6 +1597,7 @@
      "title": "Resonance",
      "isrc": "QT6G62685861",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-3/04.mp3"
     },
     {
@@ -1521,6 +1605,7 @@
      "title": "Trance",
      "isrc": "QT6G62685862",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-3/05.mp3"
     },
     {
@@ -1528,6 +1613,7 @@
      "title": "Within",
      "isrc": "QT6G62685863",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-3/06.mp3"
     },
     {
@@ -1535,6 +1621,7 @@
      "title": "Reunion",
      "isrc": "QT6G62685864",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-3/07.mp3"
     },
     {
@@ -1542,6 +1629,7 @@
      "title": "Bliss",
      "isrc": "QT6G62685865",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-3/08.mp3"
     },
     {
@@ -1549,6 +1637,7 @@
      "title": "Last light",
      "isrc": "QT6G62685866",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-3/09.mp3"
     },
     {
@@ -1556,6 +1645,7 @@
      "title": "Untethered",
      "isrc": "QT6G62685867",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-3/10.mp3"
     },
     {
@@ -1563,6 +1653,7 @@
      "title": "Return",
      "isrc": "QT6G62685868",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-3/11.mp3"
     },
     {
@@ -1570,11 +1661,13 @@
      "title": "Flickering Glimpse",
      "isrc": "QT6G62685869",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-3/12.mp3"
     }
    ],
    "lyrics_file": null,
    "download_url": null,
+   "blurb": null,
    "category": "instrumental",
    "mixed": false
   },
@@ -1590,28 +1683,28 @@
    "genre": "Metal",
    "label": "bfo.mantis Records",
    "upc": "881900955467",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/rebel-anthem?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/5T47et1LgKHJLWBw82qS9n"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/playlist?list=OLAK5uy_kCDLXNEKbycbOYe3_WC8xJzrJSFidFtGc"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/rebel-anthem/6799606263?uo=4&app=music&at=1001lry3&ct=dashboard"
     },
     {
-     "name": "iTunes",
-     "url": "https://music.apple.com/us/album/rebel-anthem/6799606263?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/playlist?list=OLAK5uy_kCDLXNEKbycbOYe3_WC8xJzrJSFidFtGc"
     },
     {
-     "name": "Amazon",
+     "name": "Amazon Music",
      "url": "https://www.amazon.com/gp/product/B0HDL42KV4/?tag=distrokid06-20"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/rebel-anthem/6799606263?uo=4&app=itunes&at=1001lry3&ct=dashboard"
     },
     {
      "name": "iHeartRadio",
@@ -1624,11 +1717,7 @@
     "jpg_small": "assets/covers/rebel-anthem-400.jpg",
     "webp_small": "assets/covers/rebel-anthem-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -1636,6 +1725,7 @@
      "title": "Rebel Anthem",
      "isrc": "QT6G62652781",
      "lyrics": "lyrics",
+     "blurb": "The opener names the album's target, a deep state machine of corrupt officials, courts and bureaucrats. Its rallying cry is the old maxim that liberty reigns when government fears the people.",
      "preview": "assets/audio/previews/rebel-anthem/01.mp3"
     },
     {
@@ -1643,6 +1733,7 @@
      "title": "Rebel Anthem (Reckoning)",
      "isrc": "QT6G62652782",
      "lyrics": "lyrics",
+     "blurb": "A heavier reworking that leans on the Declaration's long train of abuses and the right to alter or abolish. Forge and anvil imagery turn rebellion into the work of melting chains.",
      "preview": "assets/audio/previews/rebel-anthem/02.mp3"
     },
     {
@@ -1650,6 +1741,7 @@
      "title": "The Tree is Thirsty",
      "isrc": "QT6G62652783",
      "lyrics": "lyrics",
+     "blurb": "Built on Jefferson's tree of liberty, this song casts the people as heirs to 1776 who were raised as lions rather than cattle. Its chorus turns Jefferson's famous image into a defiant rallying cry.",
      "preview": "assets/audio/previews/rebel-anthem/03.mp3"
     },
     {
@@ -1657,6 +1749,7 @@
      "title": "The Tree is Thirsty (Sovereign Armageddon)",
      "isrc": "QT6G62652784",
      "lyrics": "lyrics",
+     "blurb": "An apocalyptic rewrite of the previous track that turns the tree of liberty into an image of total upheaval. It is the darkest and most extreme song on the album.",
      "preview": "assets/audio/previews/rebel-anthem/04.mp3"
     },
     {
@@ -1664,6 +1757,7 @@
      "title": "Sovereign Tongue",
      "isrc": "QT6G62652785",
      "lyrics": "lyrics",
+     "blurb": "A defense of free speech that walks through Brandenburg v. Ohio and the incitement test, then turns to rap lyrics being used as evidence in court. Its stance is that words are not violence and offense is not a crime.",
      "preview": "assets/audio/previews/rebel-anthem/05.mp3"
     },
     {
@@ -1671,6 +1765,7 @@
      "title": "They Fear Us",
      "isrc": "QT6G62652786",
      "lyrics": "lyrics",
+     "blurb": "A darker take on license plate cameras and fusion centers, with lenses that never sleep watching every road. It calls out the officials who signed the contracts and imagines citizens tearing the cameras down.",
      "preview": "assets/audio/previews/rebel-anthem/06.mp3"
     },
     {
@@ -1678,6 +1773,7 @@
      "title": "Tree of Liberty (Reignited)",
      "isrc": "QT6G62652787",
      "lyrics": "lyrics",
+     "blurb": "Farmers, fathers and sons stand against a surveillance state in a song of soil, forge and family. The tree of liberty returns as an inheritance to guard.",
      "preview": "assets/audio/previews/rebel-anthem/07.mp3"
     },
     {
@@ -1685,6 +1781,7 @@
      "title": "Blood for the Beast",
      "isrc": "QT6G62652788",
      "lyrics": "lyrics",
+     "blurb": "A history of American fights over central banking, from Jefferson and Jackson to Lincoln's greenbacks, the Federal Reserve and Kennedy, told as a story of hidden financial power working against the people. It is suspicious and furious in equal measure.",
      "preview": "assets/audio/previews/rebel-anthem/08.mp3"
     },
     {
@@ -1692,6 +1789,7 @@
      "title": "The Hydra Bleeds",
      "isrc": "QT6G62652789",
      "lyrics": "lyrics",
+     "blurb": "A companion piece that tells the same banking story in more detail, centered on Andrew Jackson's war with the Second Bank. The many-headed hydra stands for a power that keeps changing shape.",
      "preview": "assets/audio/previews/rebel-anthem/09.mp3"
     },
     {
@@ -1699,6 +1797,7 @@
      "title": "Brotherhood",
      "isrc": "QT6G62652790",
      "lyrics": "lyrics",
+     "blurb": "A song of loyalty among men rooted in the soil, carrying each other's burdens through loss. It is the album's warmest moment, though it still ends with a call to rise.",
      "preview": "assets/audio/previews/rebel-anthem/10.mp3"
     },
     {
@@ -1706,6 +1805,7 @@
      "title": "Pure FURY!",
      "isrc": "QT6G62652791",
      "lyrics": "lyrics",
+     "blurb": "Framed by the opening and closing of the Declaration of Independence, its middle is an avalanche of shouted single words covering taxes, medicine, surveillance, media and conspiracy theories. It plays like pure rage set to a list.",
      "preview": "assets/audio/previews/rebel-anthem/11.mp3"
     },
     {
@@ -1713,6 +1813,7 @@
      "title": "Rebel Anthem (Blood Tax)",
      "isrc": "QT6G62652792",
      "lyrics": "lyrics",
+     "blurb": "A third version of the title song, focused on the income tax, national banks and inflation as a hidden tax. The forge returns to melt down printing presses and ledgers.",
      "preview": "assets/audio/previews/rebel-anthem/12.mp3"
     },
     {
@@ -1720,6 +1821,7 @@
      "title": "At the Gallows",
      "isrc": "QT6G62652793",
      "lyrics": "lyrics",
+     "blurb": "A wolf stalking through fog stands for power that grows under cover of tolerance and civility. The song argues that delayed rights are denied rights and that complicity feeds tyranny.",
      "preview": "assets/audio/previews/rebel-anthem/13.mp3"
     },
     {
@@ -1727,6 +1829,7 @@
      "title": "What Is Tyranny?",
      "isrc": "QT6G62652794",
      "lyrics": "lyrics",
+     "blurb": "A plain-spoken definition track that names three examples of tyranny: civil asset forfeiture, gun restrictions and the drug war. It is more lesson than rant.",
      "preview": "assets/audio/previews/rebel-anthem/14.mp3"
     },
     {
@@ -1734,11 +1837,13 @@
      "title": "What Is Rebellion?",
      "isrc": "QT6G62652795",
      "lyrics": "lyrics",
+     "blurb": "The closing companion piece defines rebellion as organized, principled resistance rather than chaos, citing the Boston Tea Party, Lexington and the Whiskey Rebellion. It returns to the tree of liberty one last time.",
      "preview": "assets/audio/previews/rebel-anthem/15.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/rebel-anthem.json",
    "download_url": null,
+   "blurb": "Rebel Anthem is bfo.mantis at its most militant, 15 metal tracks aimed at a machine of corrupt officials, courts, central banks and surveillance. Several songs return in reworked versions, and history threads through the whole record, from the Declaration of Independence to Andrew Jackson's bank war. It swings from plain-spoken definitions of tyranny and rebellion to the most apocalyptic imagery in the catalog.",
    "category": "vocal",
    "mixed": false
   },
@@ -1754,20 +1859,20 @@
    "genre": "Hip Hop/Rap",
    "label": "bfo.mantis Records",
    "upc": "882204841425",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/the-savage-ledger?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/7HDtuD6yapXW5CqszjpiEq"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/watch?v=5Udnn6WVlw0"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/the-savage-ledger-single/6794268962?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=5Udnn6WVlw0"
     },
     {
      "name": "iTunes",
@@ -1784,11 +1889,7 @@
     "jpg_small": "assets/covers/the-savage-ledger-400.jpg",
     "webp_small": "assets/covers/the-savage-ledger-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -1796,11 +1897,13 @@
      "title": "The Savage Ledger",
      "isrc": "QT6FH2601974",
      "lyrics": "lyrics",
+     "blurb": null,
      "preview": "assets/audio/previews/the-savage-ledger/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/the-savage-ledger.json",
    "download_url": null,
+   "blurb": "A rapid-fire indictment that reads like a list of grievances: Patriot Act surveillance, the income tax, the Federal Reserve, civil asset forfeiture, qualified immunity and the national debt. It closes on a call to educate and awaken rather than despair.",
    "category": "vocal",
    "mixed": false
   },
@@ -1816,20 +1919,20 @@
    "genre": "Electronic",
    "label": "bfo.mantis Records",
    "upc": "882159956618",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/spellbound-volume-2?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/1DEXO3ZSfy0gcos3idJhmj"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/playlist?list=OLAK5uy_lWCOjVs6jj4CDt0IeL02R5ycg11f8846A"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/spellbound-volume-2/6792426929?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/playlist?list=OLAK5uy_lWCOjVs6jj4CDt0IeL02R5ycg11f8846A"
     },
     {
      "name": "iTunes",
@@ -1850,11 +1953,7 @@
     "jpg_small": "assets/covers/spellbound-volume-2-400.jpg",
     "webp_small": "assets/covers/spellbound-volume-2-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -1862,6 +1961,7 @@
      "title": "Fading",
      "isrc": "QT6F92689660",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-2/01.mp3"
     },
     {
@@ -1869,6 +1969,7 @@
      "title": "Firelight Embers",
      "isrc": "QT6F92689661",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-2/02.mp3"
     },
     {
@@ -1876,6 +1977,7 @@
      "title": "Soft Wind's",
      "isrc": "QT6F92689662",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-2/03.mp3"
     },
     {
@@ -1883,6 +1985,7 @@
      "title": "Embers",
      "isrc": "QT6F92689663",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-2/04.mp3"
     },
     {
@@ -1890,6 +1993,7 @@
      "title": "Sand of Time",
      "isrc": "QT6F92689664",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-2/05.mp3"
     },
     {
@@ -1897,6 +2001,7 @@
      "title": "Painting Clouds",
      "isrc": "QT6F92689665",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-2/06.mp3"
     },
     {
@@ -1904,6 +2009,7 @@
      "title": "Stolen Time",
      "isrc": "QT6F92689666",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-2/07.mp3"
     },
     {
@@ -1911,6 +2017,7 @@
      "title": "Nightfall",
      "isrc": "QT6F92689667",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-2/08.mp3"
     },
     {
@@ -1918,6 +2025,7 @@
      "title": "Endless Moments",
      "isrc": "QT6F92689668",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-2/09.mp3"
     },
     {
@@ -1925,6 +2033,7 @@
      "title": "Morning Dew",
      "isrc": "QT6F92689669",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-2/10.mp3"
     },
     {
@@ -1932,6 +2041,7 @@
      "title": "Sun Down",
      "isrc": "QT6F92689670",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-2/11.mp3"
     },
     {
@@ -1939,11 +2049,13 @@
      "title": "Midnight Rain",
      "isrc": "QT6F92689671",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-2/12.mp3"
     }
    ],
    "lyrics_file": null,
    "download_url": null,
+   "blurb": null,
    "category": "instrumental",
    "mixed": false
   },
@@ -1959,20 +2071,20 @@
    "genre": "Electronic",
    "label": "bfo.mantis Records",
    "upc": "882102015010",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/spellbound-volume-1?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/4j2nG4j0y5jeTg2J1gJLZy"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/playlist?list=OLAK5uy_ldxEr6L-Mj-SugK1BvNGXqDt4isH5yQdo"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/spellbound-volume-1/6792403537?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/playlist?list=OLAK5uy_ldxEr6L-Mj-SugK1BvNGXqDt4isH5yQdo"
     },
     {
      "name": "iTunes",
@@ -1993,11 +2105,7 @@
     "jpg_small": "assets/covers/spellbound-volume-1-400.jpg",
     "webp_small": "assets/covers/spellbound-volume-1-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -2005,6 +2113,7 @@
      "title": "Captive",
      "isrc": "QT6F92681190",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-1/01.mp3"
     },
     {
@@ -2012,6 +2121,7 @@
      "title": "Transfixed",
      "isrc": "QT6F92681191",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-1/02.mp3"
     },
     {
@@ -2019,6 +2129,7 @@
      "title": "Smitten",
      "isrc": "QT6F92681192",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-1/03.mp3"
     },
     {
@@ -2026,6 +2137,7 @@
      "title": "Spellbound",
      "isrc": "QT6F92681193",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-1/04.mp3"
     },
     {
@@ -2033,6 +2145,7 @@
      "title": "lingering",
      "isrc": "QT6F92681194",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-1/05.mp3"
     },
     {
@@ -2040,6 +2153,7 @@
      "title": "Stoic",
      "isrc": "QT6F92681195",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-1/06.mp3"
     },
     {
@@ -2047,6 +2161,7 @@
      "title": "Rhythms of the Heart",
      "isrc": "QT6F92681196",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-1/07.mp3"
     },
     {
@@ -2054,6 +2169,7 @@
      "title": "Country Stars",
      "isrc": "QT6F92681197",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-1/08.mp3"
     },
     {
@@ -2061,6 +2177,7 @@
      "title": "Mesmerized",
      "isrc": "QT6F92681198",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-1/09.mp3"
     },
     {
@@ -2068,6 +2185,7 @@
      "title": "Groove",
      "isrc": "QT6F92681199",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-1/10.mp3"
     },
     {
@@ -2075,6 +2193,7 @@
      "title": "Traveling",
      "isrc": "QT6F92681200",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-1/11.mp3"
     },
     {
@@ -2082,11 +2201,13 @@
      "title": "Taken",
      "isrc": "QT6F92681201",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/spellbound-volume-1/12.mp3"
     }
    ],
    "lyrics_file": null,
    "download_url": null,
+   "blurb": null,
    "category": "instrumental",
    "mixed": false
   },
@@ -2102,20 +2223,20 @@
    "genre": "Rock",
    "label": "bfo.mantis Records",
    "upc": "882102138252",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/flock-of-the-tyrants?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/2cKxzOHVmqdEUi5BoSJeZf"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/watch?v=IDHsWfp7lV8"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/flock-of-the-tyrants-single/6792349853?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=IDHsWfp7lV8"
     },
     {
      "name": "iTunes",
@@ -2132,11 +2253,7 @@
     "jpg_small": "assets/covers/flock-of-the-tyrants-400.jpg",
     "webp_small": "assets/covers/flock-of-the-tyrants-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -2144,11 +2261,13 @@
      "title": "Flock of the Tyrants",
      "isrc": "QT6F92659506",
      "lyrics": "lyrics",
+     "blurb": null,
      "preview": "assets/audio/previews/flock-of-the-tyrants/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/flock-of-the-tyrants.json",
    "download_url": null,
+   "blurb": "An angry protest against automated license plate cameras and warrantless tracking that leans on the Fourth Amendment and the Carpenter decision. City halls and police who sign the contracts are cast as the villains, and the demand is to switch the cameras off.",
    "category": "vocal",
    "mixed": false
   },
@@ -2164,20 +2283,20 @@
    "genre": "Hip Hop/Rap",
    "label": "bfo.mantis Records",
    "upc": "882102935462",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/the-flock-betrayal?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/3dSXhKfgXuQU2XRyPTYuxn"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/watch?v=MT-ncpW6Cg8"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/the-flock-betrayal-single/6791796592?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=MT-ncpW6Cg8"
     },
     {
      "name": "iTunes",
@@ -2194,11 +2313,7 @@
     "jpg_small": "assets/covers/the-flock-betrayal-400.jpg",
     "webp_small": "assets/covers/the-flock-betrayal-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -2206,11 +2321,13 @@
      "title": "The Flock Betrayal",
      "isrc": "QT6F82621394",
      "lyrics": "lyrics",
+     "blurb": null,
      "preview": "assets/audio/previews/the-flock-betrayal/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/the-flock-betrayal.json",
    "download_url": null,
+   "blurb": "A dense, wordy rap about local officials approving camera networks with no public vote. It paints each deal as a quiet betrayal and ends with a plea to set the open road free.",
    "category": "vocal",
    "mixed": false
   },
@@ -2226,20 +2343,20 @@
    "genre": "Hip Hop/Rap",
    "label": "bfo.mantis Records",
    "upc": "882102967289",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/violent-light?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/1Hms3yI6Wk2WZfHmJV5oYX"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/watch?v=ahDOxpNMcSw"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/violent-light-single/6793668551?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=ahDOxpNMcSw"
     },
     {
      "name": "iTunes",
@@ -2260,11 +2377,7 @@
     "jpg_small": "assets/covers/violent-light-400.jpg",
     "webp_small": "assets/covers/violent-light-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -2272,11 +2385,13 @@
      "title": "Violent Light",
      "isrc": "QT6F82613759",
      "lyrics": "lyrics",
+     "blurb": null,
      "preview": "assets/audio/previews/violent-light/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/violent-light.json",
    "download_url": null,
+   "blurb": "A furious track about distrust in vote counting, courts and judicial ethics, framed as darkness about to be flooded with light. Its central image is exposure, with the schemers dragged into a glare they cannot escape.",
    "category": "vocal",
    "mixed": false
   },
@@ -2292,20 +2407,20 @@
    "genre": "Hip Hop/Rap",
    "label": "bfo.mantis Records",
    "upc": "882100647565",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/evil-eye-contrasts?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/6nqkYS9QAfvEfKCxPkAsDk"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/watch?v=4Q9Z-MhILFo"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/evil-eye-contrasts-single/6791078539?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=4Q9Z-MhILFo"
     },
     {
      "name": "iTunes",
@@ -2326,11 +2441,7 @@
     "jpg_small": "assets/covers/evil-eye-contracts-400.jpg",
     "webp_small": "assets/covers/evil-eye-contracts-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -2338,11 +2449,13 @@
      "title": "EVIL EYE CONTRACTS",
      "isrc": "QT6F62681643",
      "lyrics": "lyrics",
+     "blurb": null,
      "preview": "assets/audio/previews/evil-eye-contracts/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/evil-eye-contracts.json",
    "download_url": null,
+   "blurb": "Another protest against license plate surveillance that tallies the cities and councils that signed on and the ones that pushed back. Each contract is framed as a betrayal of privacy, and the towns that said no are cheered on.",
    "category": "vocal",
    "mixed": false
   },
@@ -2358,20 +2471,20 @@
    "genre": "Rock",
    "label": "bfo.mantis Records",
    "upc": "882093918208",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/carry-the-star?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/3ytKbvq7wTclKvwo0An5QL"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/watch?v=w2BBWG4RK4g"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/carry-the-star-single/6790073752?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=w2BBWG4RK4g"
     },
     {
      "name": "iTunes",
@@ -2392,11 +2505,7 @@
     "jpg_small": "assets/covers/carry-the-star-400.jpg",
     "webp_small": "assets/covers/carry-the-star-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -2404,11 +2513,13 @@
      "title": "Carry the Star",
      "isrc": "QT6F42637691",
      "lyrics": "lyrics",
+     "blurb": null,
      "preview": "assets/audio/previews/carry-the-star/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/carry-the-star.json",
    "download_url": null,
+   "blurb": "A gentle, encouraging song about the small inner light everyone carries and the way kindness passes it from hand to hand. It trades the catalog's usual thunder for warmth, legacy and quiet self-worth.",
    "category": "vocal",
    "mixed": false
   },
@@ -2424,20 +2535,20 @@
    "genre": "Rock",
    "label": "bfo.mantis Records",
    "upc": "883005744755",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/anvils-kiss?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/2HolDZSm3xEX4jZbahyqtd"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/watch?v=jX9Bj5XSI2Q"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/anvils-kiss-single/6789521893?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=jX9Bj5XSI2Q"
     },
     {
      "name": "iTunes",
@@ -2458,11 +2569,7 @@
     "jpg_small": "assets/covers/anvil-s-kiss-400.jpg",
     "webp_small": "assets/covers/anvil-s-kiss-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -2470,11 +2577,13 @@
      "title": "Anvil's Kiss",
      "isrc": "QT6F22689948",
      "lyrics": "lyrics",
+     "blurb": null,
      "preview": "assets/audio/previews/anvil-s-kiss/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/anvil-s-kiss.json",
    "download_url": null,
+   "blurb": "An anthem of resilience for anyone who has been knocked down, comparing hardship to rough seas and a smith's anvil that toughen rather than break. Scars become medals, and the listener is told they have earned their own light.",
    "category": "vocal",
    "mixed": false
   },
@@ -2490,20 +2599,20 @@
    "genre": "Electronic",
    "label": "bfo.mantis Records",
    "upc": "882988204355",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/tinmouth-cathedral-volume-1?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/2eD1Me08Koh2GsTBVeqXnY"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/playlist?list=OLAK5uy_nMKlmGkScHvXGs-VgpJZcG7OiKYsHNst8"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/tinmouth-cathedral-volume-1/6789056155?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/playlist?list=OLAK5uy_nMKlmGkScHvXGs-VgpJZcG7OiKYsHNst8"
     },
     {
      "name": "iTunes",
@@ -2524,11 +2633,7 @@
     "jpg_small": "assets/covers/tinmouth-cathedral-volume-1-400.jpg",
     "webp_small": "assets/covers/tinmouth-cathedral-volume-1-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -2536,6 +2641,7 @@
      "title": "Tin Cathedral Reverberations",
      "isrc": "QT6F22604260",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/01.mp3"
     },
     {
@@ -2543,6 +2649,7 @@
      "title": "Rusted Industrial Liturgy",
      "isrc": "QT6F22604261",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/02.mp3"
     },
     {
@@ -2550,6 +2657,7 @@
      "title": "Echoes of Distortion",
      "isrc": "QT6F22604262",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/03.mp3"
     },
     {
@@ -2557,6 +2665,7 @@
      "title": "Grunge Machine Vespers",
      "isrc": "QT6F22604263",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/04.mp3"
     },
     {
@@ -2564,6 +2673,7 @@
      "title": "Techno Tin Collapse",
      "isrc": "QT6F22604264",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/05.mp3"
     },
     {
@@ -2571,6 +2681,7 @@
      "title": "Voltage and Rust",
      "isrc": "QT6F22604265",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/06.mp3"
     },
     {
@@ -2578,6 +2689,7 @@
      "title": "Distorted Altar Storm",
      "isrc": "QT6F22604266",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/07.mp3"
     },
     {
@@ -2585,6 +2697,7 @@
      "title": "Cathedral Core Decay",
      "isrc": "QT6F22604267",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/08.mp3"
     },
     {
@@ -2592,6 +2705,7 @@
      "title": "Mechanical Grunge Frequency",
      "isrc": "QT6F22604268",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/09.mp3"
     },
     {
@@ -2599,6 +2713,7 @@
      "title": "Shadow Pulse Requiem",
      "isrc": "QT6F22604269",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/10.mp3"
     },
     {
@@ -2606,6 +2721,7 @@
      "title": "EDM Rust Sermon",
      "isrc": "QT6F22604270",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/11.mp3"
     },
     {
@@ -2613,11 +2729,13 @@
      "title": "Tinmouth Echo Chamber",
      "isrc": "QT6F22604271",
      "lyrics": "instrumental",
+     "blurb": null,
      "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/12.mp3"
     }
    ],
    "lyrics_file": null,
    "download_url": null,
+   "blurb": null,
    "category": "instrumental",
    "mixed": false
   },
@@ -2633,20 +2751,20 @@
    "genre": "Rock",
    "label": "bfo.mantis Records",
    "upc": "882877127710",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/blazing-stars?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/3RB7a8eloO6mFF24yKW1gg"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/watch?v=xSD70Nbl1Ck"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/blazing-stars-single/6788357226?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=xSD70Nbl1Ck"
     },
     {
      "name": "iTunes",
@@ -2663,11 +2781,7 @@
     "jpg_small": "assets/covers/blazing-stars-400.jpg",
     "webp_small": "assets/covers/blazing-stars-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -2675,11 +2789,13 @@
      "title": "Blazing Stars",
      "isrc": "QT6EY2616104",
      "lyrics": "lyrics",
+     "blurb": null,
      "preview": "assets/audio/previews/blazing-stars/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/blazing-stars.json",
    "download_url": null,
+   "blurb": "Fathers, sons and ordinary men are forged like steel in this anthem of sacrifice, faith and liberty. The tree of liberty and a sky of burning stars carry the promise that simple people can turn the tide.",
    "category": "vocal",
    "mixed": false
   },
@@ -2695,20 +2811,20 @@
    "genre": "Rock",
    "label": "bfo.mantis Records",
    "upc": "882792122418",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/america-250?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/3RWJyfABEnZltCfGmmRit1"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/watch?v=bJmX1t5CoxM"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/america-250-single/6787694827?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=bJmX1t5CoxM"
     },
     {
      "name": "iTunes",
@@ -2729,11 +2845,7 @@
     "jpg_small": "assets/covers/america-250-400.jpg",
     "webp_small": "assets/covers/america-250-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -2741,11 +2853,13 @@
      "title": "America 250",
      "isrc": "QT6EW2622862",
      "lyrics": "lyrics",
+     "blurb": null,
      "preview": "assets/audio/previews/america-250/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/america-250.json",
    "download_url": null,
+   "blurb": "Written for the nation's 250th anniversary, it marches from Lexington and Valley Forge to the Delaware crossing and on to the present day. Embattled farmers, faith in God and the cost of freedom drive a proud, celebratory refrain.",
    "category": "vocal",
    "mixed": false
   },
@@ -2761,20 +2875,20 @@
    "genre": "Rock",
    "label": "bfo.mantis Records",
    "upc": "882792449607",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/sacred-steel?ref=release",
-   "listen_source": "hyperfollow",
+   "listen_url": null,
+   "listen_source": null,
    "store_links": [
     {
      "name": "Spotify",
      "url": "https://open.spotify.com/album/3WD2G1CfQ0kkgpRacAYoBI"
     },
     {
-     "name": "YouTube Music",
-     "url": "https://music.youtube.com/watch?v=Wm5s1bqJTXs"
-    },
-    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/sacred-steel-single/6787351767?uo=4&app=music&at=1001lry3&ct=dashboard"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=Wm5s1bqJTXs"
     },
     {
      "name": "iTunes",
@@ -2795,11 +2909,7 @@
     "jpg_small": "assets/covers/sacred-steel-400.jpg",
     "webp_small": "assets/covers/sacred-steel-400.webp",
     "width": 800,
-    "height": 800,
-    "original_size": [
-     800,
-     800
-    ]
+    "height": 800
    },
    "tracks": [
     {
@@ -2807,11 +2917,13 @@
      "title": "Sacred Steel",
      "isrc": "QT6EV2671151",
      "lyrics": "lyrics",
+     "blurb": null,
      "preview": "assets/audio/previews/sacred-steel/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/sacred-steel.json",
    "download_url": null,
+   "blurb": "A tribute to mothers and the women who pour themselves into their families, pushing back against the idea that nurturing is weakness. Lullabies, meals and sleepless nights become quiet victories with lasting power.",
    "category": "vocal",
    "mixed": false
   }

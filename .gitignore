@@ -5,7 +5,6 @@ __pycache__/
 venv/
 *.pyc
 .DS_Store
-content/blurbs.json
 content/lyrics_mishearings.json
 tools/blurbs_source.py
 tools/build_blurbs.py

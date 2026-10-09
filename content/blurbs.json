@@ -1,0 +1,1632 @@
+{
+ "_meta": {
+  "status": "Published: approved by the user on 2026-10-09 and wired into the site (entries marked pending are skipped)",
+  "keys": "releases by slug, tracks by ISRC",
+  "basis_values": [
+   "lyrics",
+   "pending"
+  ],
+  "excluded": [
+   "LOVELORN (Wetline)"
+  ]
+ },
+ "artist": {
+  "name": "bfo.mantis",
+  "basis": "lyrics+catalog",
+  "blurb": "bfo.mantis writes songs about the person who refuses to kneel. Across rock, metal, hip hop, folk and gospel, the lyrics return to the same convictions: rights come from God rather than the state, and a peaceful person who will not obey is stronger than any army. History supplies the heroes, from Thermopylae and Joan of Arc to Tiananmen Square and Ruby Ridge, alongside fierce attacks on surveillance, qualified immunity and central banking. Between the battle cries are tributes to mothers, brothers and anyone rebuilt by hardship.",
+  "tagline": "Songs for the one who will not kneel."
+ },
+ "label": {
+  "name": "bfo.mantis Records",
+  "basis": "catalog",
+  "blurb": "bfo.mantis Records is the label behind every bfo.mantis release. From July 4 to October 9, 2026, it has released or scheduled 28 titles (12 albums and 16 singles, 180 tracks in all) across Rock, Hip Hop/Rap, Metal, Electronic, Folk, Christian/Gospel and World. The output is fast and wide-ranging, from protest albums and worship records to multi-volume series such as Spellbound and Savage Serenade, sometimes with several releases landing on the same day.",
+  "optional_wetline_sentence": "Optional sentence, only if the user confirms Wetline is part of the label: \"The label is also connected to Wetline, a separate artist.\" (In the catalog, Wetline's album LOVELORN is credited to Wetline Records, not bfo.mantis Records.)"
+ },
+ "releases": {
+  "crown-of-ash": {
+   "title": "Crown of Ash",
+   "type": "single",
+   "genre": "Folk",
+   "release_date": "2026-10-09",
+   "basis": "pending",
+   "blurb": "",
+   "blurb_source": "track:QTA7T2600629"
+  },
+  "the-only-way": {
+   "title": "The Only Way",
+   "type": "single",
+   "genre": "Metal",
+   "release_date": "2026-09-18",
+   "basis": "lyrics",
+   "blurb": "A cold-eyed sermon against polite compliance, arguing that ballots, petitions and good manners have never loosened a yoke. Its answer is refusal itself, held up as the one defense of liberty that has always worked.",
+   "blurb_source": "track:QT9XM2685551"
+  },
+  "forge-of-your-light": {
+   "title": "Forge of Your Light",
+   "type": "single",
+   "genre": "Metal",
+   "release_date": "2026-09-12",
+   "basis": "lyrics",
+   "blurb": "A tribute to a mother pictured as a blacksmith who hammered seven children into shape in the forge of home. Faith, endurance and family legacy ring through every image of fire and tempered metal.",
+   "blurb_source": "track:QT9XH2693555"
+  },
+  "dangerous": {
+   "title": "DANGEROUS",
+   "type": "album",
+   "genre": "Rock",
+   "release_date": "2026-09-12",
+   "basis": "lyrics",
+   "blurb": "DANGEROUS is built on one idea: a peaceful person who refuses to obey is far more powerful than a harmless one. Across 15 rock tracks, bfo.mantis takes aim at qualified immunity, unconstitutional laws, the language of official help and the people who enforce it, with history lessons from Marbury v. Madison to the 1946 Battle of Athens woven between the anger. The mood runs from stately hymns of vigilance to the most profane outbursts in the catalog, and every song comes back to the same choice between kneeling and standing."
+  },
+  "road-to-hell": {
+   "title": "Road to Hell",
+   "type": "single",
+   "genre": "Metal",
+   "release_date": "2026-09-04",
+   "basis": "lyrics",
+   "blurb": "A blunt broadside against trading freedom for promised safety, built on the idea that kind language and good intentions disguise control. It takes hard positions on gun rights and abortion and keeps insisting that words carry real meaning.",
+   "blurb_source": "track:QT6J22605151"
+  },
+  "blood-waters-the-tree": {
+   "title": "Blood Waters the Tree",
+   "type": "single",
+   "genre": "Christian/Gospel",
+   "release_date": "2026-09-04",
+   "basis": "lyrics",
+   "blurb": "A story-song about Elias Hart, a small-town blacksmith of quiet faith who takes up his hammer when tyrants seize his village. His last stand, and his parting words to his daughter beneath an old oak, turn sacrifice into an inheritance.",
+   "blurb_source": "track:QT6HX2695835"
+  },
+  "savage-serenade-volume-3": {
+   "title": "Savage Serenade Volume 3",
+   "type": "album",
+   "genre": "World",
+   "release_date": "2026-09-04",
+   "basis": "pending",
+   "blurb": ""
+  },
+  "savage-serenade-volume-2": {
+   "title": "Savage Serenade Volume 2",
+   "type": "album",
+   "genre": "World",
+   "release_date": "2026-08-28",
+   "basis": "pending",
+   "blurb": ""
+  },
+  "sovereign-heart-of-fire": {
+   "title": "Sovereign Heart of Fire",
+   "type": "album",
+   "genre": "Christian/Gospel",
+   "release_date": "2026-08-28",
+   "basis": "lyrics",
+   "blurb": "Sovereign Heart of Fire carries the catalog's language of liberty into worship. Its 15 Christian/Gospel songs move between prayers for the courage to defend God-given rights and quieter songs of surrender, grace and resilience, including the tender portrait Havilah. Fire runs through it as both judgment and renewal, and it closes with the singer handing the throne of his own heart to Christ."
+  },
+  "the-ridge": {
+   "title": "The Ridge",
+   "type": "album",
+   "genre": "Hip Hop/Rap",
+   "release_date": "2026-08-23",
+   "basis": "lyrics",
+   "blurb": "The Ridge is a two-track Hip Hop/Rap release about the 1992 siege at Ruby Ridge, Idaho. The first track is a long, graphic spoken account told from the Weaver family's side, and the second turns the same story into a hook-driven rap. Both end as memorials to Sammy and Vicki Weaver."
+  },
+  "savage-serenade": {
+   "title": "Savage Serenade",
+   "type": "album",
+   "genre": "Folk",
+   "release_date": "2026-08-21",
+   "basis": "pending",
+   "blurb": ""
+  },
+  "one-man-invictus": {
+   "title": "One Man INVICTUS",
+   "type": "album",
+   "genre": "Rock",
+   "release_date": "2026-08-21",
+   "basis": "lyrics",
+   "blurb": "One Man INVICTUS is a gallery of individuals who changed events by refusing to bend, including the Tank Man of Tiananmen Square, Thich Quang Duc, Desmond Doss, Francis Marion, Gandhi, Joan of Arc and Leonidas. Nearly every one of its 15 rock tracks is titled One Man, and together they argue that history turns on single acts of conscience, peaceful or not. It ends in prayer, widening one person's stand into a nation of them."
+  },
+  "one-man": {
+   "title": "One Man - 站着",
+   "type": "single",
+   "genre": "Folk",
+   "release_date": "2026-08-21",
+   "basis": "lyrics",
+   "blurb": "Sung in Mandarin, this retelling of the lone man who faced the tanks after the 1989 Tiananmen Square massacre frames his stand as a God-given act of free will. It sets the horrors of the Mao era against one unarmed figure whose refusal still echoes.",
+   "blurb_source": "track:QT6HM2669331"
+  },
+  "spellbound-volume-3": {
+   "title": "Spellbound Volume 3",
+   "type": "album",
+   "genre": "Electronic",
+   "release_date": "2026-08-14",
+   "basis": "pending",
+   "blurb": ""
+  },
+  "rebel-anthem": {
+   "title": "Rebel Anthem",
+   "type": "album",
+   "genre": "Metal",
+   "release_date": "2026-08-14",
+   "basis": "lyrics",
+   "blurb": "Rebel Anthem is bfo.mantis at its most militant, 15 metal tracks aimed at a machine of corrupt officials, courts, central banks and surveillance. Several songs return in reworked versions, and history threads through the whole record, from the Declaration of Independence to Andrew Jackson's bank war. It swings from plain-spoken definitions of tyranny and rebellion to the most apocalyptic imagery in the catalog."
+  },
+  "the-savage-ledger": {
+   "title": "The Savage Ledger",
+   "type": "single",
+   "genre": "Hip Hop/Rap",
+   "release_date": "2026-07-25",
+   "basis": "lyrics",
+   "blurb": "A rapid-fire indictment that reads like a list of grievances: Patriot Act surveillance, the income tax, the Federal Reserve, civil asset forfeiture, qualified immunity and the national debt. It closes on a call to educate and awaken rather than despair.",
+   "blurb_source": "track:QT6FH2601974"
+  },
+  "spellbound-volume-2": {
+   "title": "Spellbound Volume 2",
+   "type": "album",
+   "genre": "Electronic",
+   "release_date": "2026-07-25",
+   "basis": "pending",
+   "blurb": ""
+  },
+  "spellbound-volume-1": {
+   "title": "Spellbound Volume 1",
+   "type": "album",
+   "genre": "Electronic",
+   "release_date": "2026-07-25",
+   "basis": "pending",
+   "blurb": ""
+  },
+  "flock-of-the-tyrants": {
+   "title": "Flock of the Tyrants",
+   "type": "single",
+   "genre": "Rock",
+   "release_date": "2026-07-19",
+   "basis": "lyrics",
+   "blurb": "An angry protest against automated license plate cameras and warrantless tracking that leans on the Fourth Amendment and the Carpenter decision. City halls and police who sign the contracts are cast as the villains, and the demand is to switch the cameras off.",
+   "blurb_source": "track:QT6F92659506"
+  },
+  "the-flock-betrayal": {
+   "title": "The Flock Betrayal",
+   "type": "single",
+   "genre": "Hip Hop/Rap",
+   "release_date": "2026-07-16",
+   "basis": "lyrics",
+   "blurb": "A dense, wordy rap about local officials approving camera networks with no public vote. It paints each deal as a quiet betrayal and ends with a plea to set the open road free.",
+   "blurb_source": "track:QT6F82621394"
+  },
+  "violent-light": {
+   "title": "Violent Light",
+   "type": "single",
+   "genre": "Hip Hop/Rap",
+   "release_date": "2026-07-16",
+   "basis": "lyrics",
+   "blurb": "A furious track about distrust in vote counting, courts and judicial ethics, framed as darkness about to be flooded with light. Its central image is exposure, with the schemers dragged into a glare they cannot escape.",
+   "blurb_source": "track:QT6F82613759"
+  },
+  "evil-eye-contracts": {
+   "title": "EVIL EYE CONTRACTS",
+   "type": "single",
+   "genre": "Hip Hop/Rap",
+   "release_date": "2026-07-15",
+   "basis": "lyrics",
+   "blurb": "Another protest against license plate surveillance that tallies the cities and councils that signed on and the ones that pushed back. Each contract is framed as a betrayal of privacy, and the towns that said no are cheered on.",
+   "blurb_source": "track:QT6F62681643"
+  },
+  "carry-the-star": {
+   "title": "Carry the Star",
+   "type": "single",
+   "genre": "Rock",
+   "release_date": "2026-07-12",
+   "basis": "lyrics",
+   "blurb": "A gentle, encouraging song about the small inner light everyone carries and the way kindness passes it from hand to hand. It trades the catalog's usual thunder for warmth, legacy and quiet self-worth.",
+   "blurb_source": "track:QT6F42637691"
+  },
+  "anvil-s-kiss": {
+   "title": "Anvil's Kiss",
+   "type": "single",
+   "genre": "Rock",
+   "release_date": "2026-07-10",
+   "basis": "lyrics",
+   "blurb": "An anthem of resilience for anyone who has been knocked down, comparing hardship to rough seas and a smith's anvil that toughen rather than break. Scars become medals, and the listener is told they have earned their own light.",
+   "blurb_source": "track:QT6F22689948"
+  },
+  "tinmouth-cathedral-volume-1": {
+   "title": "Tinmouth Cathedral Volume 1",
+   "type": "album",
+   "genre": "Electronic",
+   "release_date": "2026-07-09",
+   "basis": "pending",
+   "blurb": ""
+  },
+  "blazing-stars": {
+   "title": "Blazing Stars",
+   "type": "single",
+   "genre": "Rock",
+   "release_date": "2026-07-07",
+   "basis": "lyrics",
+   "blurb": "Fathers, sons and ordinary men are forged like steel in this anthem of sacrifice, faith and liberty. The tree of liberty and a sky of burning stars carry the promise that simple people can turn the tide.",
+   "blurb_source": "track:QT6EY2616104"
+  },
+  "america-250": {
+   "title": "America 250",
+   "type": "single",
+   "genre": "Rock",
+   "release_date": "2026-07-04",
+   "basis": "lyrics",
+   "blurb": "Written for the nation's 250th anniversary, it marches from Lexington and Valley Forge to the Delaware crossing and on to the present day. Embattled farmers, faith in God and the cost of freedom drive a proud, celebratory refrain.",
+   "blurb_source": "track:QT6EW2622862"
+  },
+  "sacred-steel": {
+   "title": "Sacred Steel",
+   "type": "single",
+   "genre": "Rock",
+   "release_date": "2026-07-04",
+   "basis": "lyrics",
+   "blurb": "A tribute to mothers and the women who pour themselves into their families, pushing back against the idea that nurturing is weakness. Lullabies, meals and sleepless nights become quiet victories with lasting power.",
+   "blurb_source": "track:QT6EV2671151"
+  }
+ },
+ "tracks": {
+  "QTA7T2600629": {
+   "release_slug": "crown-of-ash",
+   "n": 1,
+   "title": "Crown of Ash",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "no_lyrics"
+  },
+  "QT9XM2685551": {
+   "release_slug": "the-only-way",
+   "n": 1,
+   "title": "The Only Way",
+   "basis": "lyrics",
+   "blurb": "A cold-eyed sermon against polite compliance, arguing that ballots, petitions and good manners have never loosened a yoke. Its answer is refusal itself, held up as the one defense of liberty that has always worked."
+  },
+  "QT9XH2693555": {
+   "release_slug": "forge-of-your-light",
+   "n": 1,
+   "title": "Forge of Your Light",
+   "basis": "lyrics",
+   "blurb": "A tribute to a mother pictured as a blacksmith who hammered seven children into shape in the forge of home. Faith, endurance and family legacy ring through every image of fire and tempered metal."
+  },
+  "QT9XH2672245": {
+   "release_slug": "dangerous",
+   "n": 1,
+   "title": "Dangerous",
+   "basis": "lyrics",
+   "blurb": "The title track lays out the album's thesis: free will is a gift from God that no empire can revoke, and being peaceful is not the same as being harmless. Gandhi's refusal to obey is offered as proof that one person's no can outlast armies."
+  },
+  "QT9XH2672246": {
+   "release_slug": "dangerous",
+   "n": 2,
+   "title": "Tha Last Thunderbolt",
+   "basis": "lyrics",
+   "blurb": "A march through Magna Carta, Patrick Henry, Lexington and Jefferson, arguing that a sovereign conscience is the final safeguard once government preys on its own people. The thunderbolt of the title is a single person's refusal."
+  },
+  "QT9XH2672247": {
+   "release_slug": "dangerous",
+   "n": 3,
+   "title": "Guardians of the Free",
+   "basis": "lyrics",
+   "blurb": "A hymn-like call to vigilance about sentinels who keep liberty's flame alive through sacrifice and endless watch. It is one of the album's most stately, ceremonial moments."
+  },
+  "QT9XH2672248": {
+   "release_slug": "dangerous",
+   "n": 4,
+   "title": "Solution or Problem",
+   "basis": "lyrics",
+   "blurb": "A confrontational mirror held up to the listener, built from a chain of either-or choices such as eagle or pig and brother or backstabber. Neutral ground is not an option."
+  },
+  "QT9XH2672249": {
+   "release_slug": "dangerous",
+   "n": 5,
+   "title": "Here to Hell...p",
+   "basis": "lyrics",
+   "blurb": "The album's deepest dive into distrust of official kindness, flipping words like help, safety, equity and reform into their darkest readings. It also traces a cycle in which hardship makes people strong and comfort makes them soft."
+  },
+  "QT9XH2672250": {
+   "release_slug": "dangerous",
+   "n": 6,
+   "title": "Suits",
+   "basis": "lyrics",
+   "blurb": "A slower, brooding look at spin, media narratives and algorithms as tools of mind control. It ends on a hopeful note, with the illusion cracking and people reclaiming their own thinking."
+  },
+  "QT9XH2672251": {
+   "release_slug": "dangerous",
+   "n": 7,
+   "title": "Void means VOID!",
+   "basis": "lyrics",
+   "blurb": "Opening with Marbury v. Madison, the song argues that an unconstitutional law is void from the moment it is written, not after years of court battles. Its anger is aimed at lawmakers and agencies who leave citizens to fight each overreach alone."
+  },
+  "QT9XH2672252": {
+   "release_slug": "dangerous",
+   "n": 8,
+   "title": "Qualified Impunity",
+   "basis": "lyrics",
+   "blurb": "One of the album's angriest songs, an all-out attack on the qualified immunity doctrine that names real victims of police violence and likens the defense to following orders. Its demand is accountability, delivered at full volume."
+  },
+  "QT9XH2672253": {
+   "release_slug": "dangerous",
+   "n": 9,
+   "title": "Earned or Burned",
+   "basis": "lyrics",
+   "blurb": "Aimed at police, judges, soldiers and politicians alike, this song insists respect must be earned and that obeying immoral orders betrays the oath. One conscience, it argues, is enough to force the system to retreat."
+  },
+  "QT9XH2672254": {
+   "release_slug": "dangerous",
+   "n": 10,
+   "title": "First Responder",
+   "basis": "lyrics",
+   "blurb": "Drawing on a school shooting where hundreds of officers waited for more than an hour, the song argues that you are your own first line of defense. Self-reliance and readiness are its whole message."
+  },
+  "QT9XH2672255": {
+   "release_slug": "dangerous",
+   "n": 11,
+   "title": "Hero or Zero",
+   "basis": "lyrics",
+   "blurb": "A rough-edged challenge to police who put their own safety above the people they serve, set against soldiers and others who run toward danger. It closes by honoring the ones who do the job right."
+  },
+  "QT9XH2672256": {
+   "release_slug": "dangerous",
+   "n": 12,
+   "title": "Blue Plague",
+   "basis": "lyrics",
+   "blurb": "The album's most profane broadside against police, rejecting even the idea of a good cop. It is raw, insulting and deliberately unbalanced."
+  },
+  "QT9XH2672257": {
+   "release_slug": "dangerous",
+   "n": 13,
+   "title": "Counted as Cast",
+   "basis": "lyrics",
+   "blurb": "A retelling of the 1946 Battle of Athens in McMinn County, Tennessee, when returning veterans took up arms to force an honest vote count. It celebrates that no one died and treats vigilance as the ongoing price of freedom."
+  },
+  "QT9XH2672258": {
+   "release_slug": "dangerous",
+   "n": 14,
+   "title": "We Are Dangerous",
+   "basis": "lyrics",
+   "blurb": "A working-class rally cry that flips power on its head: rulers depend on the labor and silence of ordinary people and lose everything once those people stop kneeling. Authority is stripped down to costume and props."
+  },
+  "QT9XH2672259": {
+   "release_slug": "dangerous",
+   "n": 15,
+   "title": "Defiance",
+   "basis": "lyrics",
+   "blurb": "The closer gathers every grievance on the album, from surveillance and lockdowns to endless wars, media and police, into one sweeping rejection of the state. It ends by reclaiming the album's title as a promise."
+  },
+  "QT6J22605151": {
+   "release_slug": "road-to-hell",
+   "n": 1,
+   "title": "Road to Hell",
+   "basis": "lyrics",
+   "blurb": "A blunt broadside against trading freedom for promised safety, built on the idea that kind language and good intentions disguise control. It takes hard positions on gun rights and abortion and keeps insisting that words carry real meaning."
+  },
+  "QT6HX2695835": {
+   "release_slug": "blood-waters-the-tree",
+   "n": 1,
+   "title": "Blood Waters the Tree",
+   "basis": "lyrics",
+   "blurb": "A story-song about Elias Hart, a small-town blacksmith of quiet faith who takes up his hammer when tyrants seize his village. His last stand, and his parting words to his daughter beneath an old oak, turn sacrifice into an inheritance."
+  },
+  "QT6HX2631826": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 1,
+   "title": "Gentle Thunder",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631827": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 2,
+   "title": "Quiet Wildfire",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631828": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 3,
+   "title": "Savage Calm",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631829": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 4,
+   "title": "Serene Claw",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631830": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 5,
+   "title": "Somber Tempest",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631831": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 6,
+   "title": "Tranquil Blaze",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631832": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 7,
+   "title": "Silk and Steel",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631833": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 8,
+   "title": "Velvet Storm",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631834": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 9,
+   "title": "Hushed Fury",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631835": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 10,
+   "title": "Tender Rage",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631836": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 11,
+   "title": "Yearning Howl",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631837": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 12,
+   "title": "Blazing Shadow",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631838": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 13,
+   "title": "Silent Frenzy",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631839": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 14,
+   "title": "Solemn Edge",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631840": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 15,
+   "title": "Serene Thunder",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631841": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 16,
+   "title": "Whispering Inferno",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631842": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 17,
+   "title": "Stoic Rage",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HX2631843": {
+   "release_slug": "savage-serenade-volume-3",
+   "n": 18,
+   "title": "Feral Lullaby",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632087": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 1,
+   "title": "Silent Tempest",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632088": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 2,
+   "title": "Velvet Thunder",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632089": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 3,
+   "title": "Gentle Savage",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632090": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 4,
+   "title": "Serene Storm",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632091": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 5,
+   "title": "Whispering Fury",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632092": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 6,
+   "title": "Soft Inferno",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632093": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 7,
+   "title": "Tranquil Rage",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632094": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 8,
+   "title": "Hushed Blaze",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632095": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 9,
+   "title": "Peaceful Wildfire",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632096": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 10,
+   "title": "Tender Maelstrom",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632097": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 11,
+   "title": "Still Flame",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632098": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 12,
+   "title": "Howling Calm",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632099": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 13,
+   "title": "Quiet Claw",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632100": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 14,
+   "title": "Soft Savagery",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632101": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 15,
+   "title": "Serene Fury",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632102": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 16,
+   "title": "Whispering Inferno",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632103": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 17,
+   "title": "Tempests Lullaby",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HS2632104": {
+   "release_slug": "savage-serenade-volume-2",
+   "n": 18,
+   "title": "Mellow Thunder",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HR2651300": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 1,
+   "title": "True Liberty's ROAR",
+   "basis": "lyrics",
+   "blurb": "A song of conviction before God's throne, where judgment and mercy come from the same hand. Freedom here is spiritual, the deliverance of a soul once at home in Egypt and Babylon."
+  },
+  "QT6HR2651301": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 2,
+   "title": "The Rebel Prayer",
+   "basis": "lyrics",
+   "blurb": "One person kneeling in prayer becomes the start of a holy war against tyranny, backed by the God who stood with David and Daniel. It frames resistance to unjust rulers as obedience to God."
+  },
+  "QT6HR2651302": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 3,
+   "title": "Sovereign Flame",
+   "basis": "lyrics",
+   "blurb": "The stories of David and Moses frame a prayer for courage against darkness and tyranny. It ties liberty to the presence of the Spirit."
+  },
+  "QT6HR2651303": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 4,
+   "title": "Sovereign Thunder",
+   "basis": "lyrics",
+   "blurb": "A more abstract, meditative song about authority rising from within, with storm and electrical charge as its central images. Freedom arrives the moment people stop waiting for permission."
+  },
+  "QT6HR2651304": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 5,
+   "title": "To the Bitter End",
+   "basis": "lyrics",
+   "blurb": "A prayer for the Bill of Rights that lists the freedoms the singer sees eroding and asks for the strength to defend them to the very end."
+  },
+  "QT6HR2651305": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 6,
+   "title": "Forge of Fathers",
+   "basis": "lyrics",
+   "blurb": "A kneeling vow to defend the founders' legacy, with the Bill of Rights worn as armor. The singer asks for the resolve to carry a torch handed down through generations."
+  },
+  "QT6HR2651306": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 7,
+   "title": "Endowed in Flame",
+   "basis": "lyrics",
+   "blurb": "A declaration that rights come from the Creator rather than kings or parliaments, set against collectivism and dependence on the state."
+  },
+  "QT6HR2651307": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 8,
+   "title": "Immortal Flame",
+   "basis": "lyrics",
+   "blurb": "Hope as an unstoppable wildfire that rises out of the grave of despair. It is one of the album's most uplifting songs, addressed to listeners as children of God."
+  },
+  "QT6HR2651308": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 9,
+   "title": "Sovereign Dawn",
+   "basis": "lyrics",
+   "blurb": "A philosophical turn inward that weighs negative and positive freedom and the idea of self-ownership. Here the chains are the stories people swallow, and sovereignty begins in the self."
+  },
+  "QT6HR2651309": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 10,
+   "title": "Burning for Liberty",
+   "basis": "lyrics",
+   "blurb": "A rousing anthem for free men under open skies, careful to say its fire is meant to redeem rather than destroy."
+  },
+  "QT6HR2651310": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 11,
+   "title": "Endowed by the Creator",
+   "basis": "lyrics",
+   "blurb": "A straightforward civics lesson in song: rights are God-given, government borrows its power from the people, and rulers who forget that lose their claim."
+  },
+  "QT6HR2651311": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 12,
+   "title": "Forge Eternal",
+   "basis": "lyrics",
+   "blurb": "A personal song of being shattered and remade by grace, where every wound becomes a doorway. It is the album's most intimate and cosmic track."
+  },
+  "QT6HR2651312": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 13,
+   "title": "Endowed Sovereignty",
+   "basis": "lyrics",
+   "blurb": "Asking where liberty comes from, the song answers that it flows from God alone and confesses how far people have drifted into comfortable cages."
+  },
+  "QT6HR2651313": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 14,
+   "title": "Havilah",
+   "basis": "lyrics",
+   "blurb": "A portrait of a woman who rebuilt her life from loss and betrayal and answers hardship with mercy. It is a gentle, admiring song of resilience and grace."
+  },
+  "QT6HR2651314": {
+   "release_slug": "sovereign-heart-of-fire",
+   "n": 15,
+   "title": "Sovereign Heart of Fire",
+   "basis": "lyrics",
+   "blurb": "The title track closes the album in surrender, as the singer gives up the throne of his own heart to Christ. Hope, love and faith become weapons in a war he did not start."
+  },
+  "QT6HR2642231": {
+   "release_slug": "the-ridge",
+   "n": 1,
+   "title": "Ruby Ridge",
+   "basis": "lyrics",
+   "blurb": "An unsparing spoken account of the August 1992 siege at Ruby Ridge, Idaho, told squarely from the Weaver family's side. It recounts the deaths of Sammy and Vicki Weaver in graphic detail and is fiercely critical of the federal response."
+  },
+  "QT6HR2642232": {
+   "release_slug": "the-ridge",
+   "n": 2,
+   "title": "The Ridge",
+   "basis": "lyrics",
+   "blurb": "The same story recast as a hook-driven rap, compressing the standoff into chant-like verses and a chorus that says the raid came because one man refused. It ends as a memorial to Sammy and Vicki."
+  },
+  "QT6HP2682017": {
+   "release_slug": "savage-serenade",
+   "n": 1,
+   "title": "Savage Surrender",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682018": {
+   "release_slug": "savage-serenade",
+   "n": 2,
+   "title": "Blood Kissed",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682019": {
+   "release_slug": "savage-serenade",
+   "n": 3,
+   "title": "Quiet Thorns",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682020": {
+   "release_slug": "savage-serenade",
+   "n": 4,
+   "title": "Feral Edge",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682021": {
+   "release_slug": "savage-serenade",
+   "n": 5,
+   "title": "Crimson Whisper",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682022": {
+   "release_slug": "savage-serenade",
+   "n": 6,
+   "title": "Howling Grace",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682024": {
+   "release_slug": "savage-serenade",
+   "n": 7,
+   "title": "Velvet Ruin",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682026": {
+   "release_slug": "savage-serenade",
+   "n": 8,
+   "title": "Tender Carnage",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682027": {
+   "release_slug": "savage-serenade",
+   "n": 9,
+   "title": "Shards of Devotion",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682028": {
+   "release_slug": "savage-serenade",
+   "n": 10,
+   "title": "Wild and Wanting",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682029": {
+   "release_slug": "savage-serenade",
+   "n": 11,
+   "title": "Ashen Embrace",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682030": {
+   "release_slug": "savage-serenade",
+   "n": 12,
+   "title": "Silent Fury",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682031": {
+   "release_slug": "savage-serenade",
+   "n": 13,
+   "title": "Roses on the Blade",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682032": {
+   "release_slug": "savage-serenade",
+   "n": 14,
+   "title": "Heart of the Storm",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682033": {
+   "release_slug": "savage-serenade",
+   "n": 15,
+   "title": "Edge of Softness",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682034": {
+   "release_slug": "savage-serenade",
+   "n": 16,
+   "title": "Echoes of the Wound",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682035": {
+   "release_slug": "savage-serenade",
+   "n": 17,
+   "title": "Last Savage Prayer",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HP2682036": {
+   "release_slug": "savage-serenade",
+   "n": 18,
+   "title": "Fiercely Grateful",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6HN2654612": {
+   "release_slug": "one-man-invictus",
+   "n": 1,
+   "title": "One Man (Invictus)",
+   "basis": "lyrics",
+   "blurb": "A chant-like opener built from endless variations on a single figure, from the man pushed past his limit to the one who stops the tanks. The point is that ordinary people, one at a time, are what tyranny can never fully control."
+  },
+  "QT6HN2654613": {
+   "release_slug": "one-man-invictus",
+   "n": 2,
+   "title": "One Man (At the Gallows)",
+   "basis": "lyrics",
+   "blurb": "A reworking of the wolf and gallows imagery from Rebel Anthem, this time centered on one man who breaks the silence and turns whispers into thunder."
+  },
+  "QT6HN2654614": {
+   "release_slug": "one-man-invictus",
+   "n": 3,
+   "title": "One Man (Stood)",
+   "basis": "lyrics",
+   "blurb": "The English-language telling of the lone man before the tanks after Tiananmen Square, set against the famines and purges of the Mao era. His disappearance is framed as a defeat for the regime, not for him."
+  },
+  "QT6HN2654615": {
+   "release_slug": "one-man-invictus",
+   "n": 4,
+   "title": "One Man (Burned)",
+   "basis": "lyrics",
+   "blurb": "A reverent account of the Buddhist monk Thich Quang Duc, who set himself on fire in Saigon in 1963 to protest religious persecution. It dwells on his stillness and the peace that made the act so powerful."
+  },
+  "QT6HN2654616": {
+   "release_slug": "one-man-invictus",
+   "n": 5,
+   "title": "One Man (Conviction)",
+   "basis": "lyrics",
+   "blurb": "The story of Desmond Doss, the unarmed medic and conscientious objector who lowered seventy-five wounded men from the ridge at Okinawa. His repeated prayer for one more makes it the album's most tender song of courage."
+  },
+  "QT6HN2654617": {
+   "release_slug": "one-man-invictus",
+   "n": 6,
+   "title": "One Man (The Ghost)",
+   "basis": "lyrics",
+   "blurb": "A swaggering rap about Matt Urban, the soldier who kept returning to the front after wounds that should have ended him. It doubles as a lesson in growing stronger from every blow."
+  },
+  "QT6HN2654618": {
+   "release_slug": "one-man-invictus",
+   "n": 7,
+   "title": "One Man (FRANTIC)",
+   "basis": "lyrics",
+   "blurb": "A dramatic account of the radar-guided night battle off Guadalcanal in November 1942, when USS Washington sank the battleship Kirishima. It celebrates one commander's cool head in the middle of chaos."
+  },
+  "QT6HN2654619": {
+   "release_slug": "one-man-invictus",
+   "n": 8,
+   "title": "One Man (The Swamp Fox)",
+   "basis": "lyrics",
+   "blurb": "A rollicking tale of Francis Marion, the small, limping militia leader who wore down British forces from the Carolina swamps. His hit-and-vanish war becomes a call to be that one defiant person."
+  },
+  "QT6HN2654620": {
+   "release_slug": "one-man-invictus",
+   "n": 9,
+   "title": "One Man (Gandhi)",
+   "basis": "lyrics",
+   "blurb": "Built on Gandhi's refusal to surrender his obedience even under torture, the song portrays nonviolence as sharper than any weapon. A soft-spoken man outlasting an empire is its core image."
+  },
+  "QT6HN2654621": {
+   "release_slug": "one-man-invictus",
+   "n": 10,
+   "title": "One Song (Devotion)",
+   "basis": "lyrics",
+   "blurb": "Joan of Arc tells her own story, from the voices she heard at Domremy through Orleans and Reims to her trial and burning at Rouen. Devotion is the single word that carries her through every stage."
+  },
+  "QT6HN2654622": {
+   "release_slug": "one-man-invictus",
+   "n": 11,
+   "title": "One Man (Leonidas)",
+   "basis": "lyrics",
+   "blurb": "Thermopylae as the stand of the few against an empire's endless ranks, with Leonidas living on in every defiant soul. It prizes choosing how to die over living in chains."
+  },
+  "QT6HN2654623": {
+   "release_slug": "one-man-invictus",
+   "n": 12,
+   "title": "One Man (Immortal Stand)",
+   "basis": "lyrics",
+   "blurb": "The legend of the lone Viking who held the bridge at Stamford Bridge against an English army. It ends by telling the listener that they are the bridge."
+  },
+  "QT6HN2654624": {
+   "release_slug": "one-man-invictus",
+   "n": 13,
+   "title": "One Man (Defiance)",
+   "basis": "lyrics",
+   "blurb": "A roll call of last stands and uprisings, from Thermopylae and Spartacus to Joan of Arc, Masada, the Alamo, Warsaw and Tiananmen. One word is hammered home as the thing that survives them all."
+  },
+  "QT6HN2654625": {
+   "release_slug": "one-man-invictus",
+   "n": 14,
+   "title": "One Man (Heart of Thunder)",
+   "basis": "lyrics",
+   "blurb": "An anthem for the unnamed individual who answers oppression with a roar, unbought and unbowed. Its chorus invites listeners to find that same person in themselves."
+  },
+  "QT6HN2654626": {
+   "release_slug": "one-man-invictus",
+   "n": 15,
+   "title": "One Man Nation (Under God)",
+   "basis": "lyrics",
+   "blurb": "A spoken prayer that closes the album by calling each free person a nation unto himself, sovereign under God and armed. It widens the album's single heroes into a vision of a whole people."
+  },
+  "QT6HM2669331": {
+   "release_slug": "one-man",
+   "n": 1,
+   "title": "One Man - 站着",
+   "basis": "lyrics",
+   "blurb": "Sung in Mandarin, this retelling of the lone man who faced the tanks after the 1989 Tiananmen Square massacre frames his stand as a God-given act of free will. It sets the horrors of the Mao era against one unarmed figure whose refusal still echoes."
+  },
+  "QT6G62685858": {
+   "release_slug": "spellbound-volume-3",
+   "n": 1,
+   "title": "Wayward",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6G62685859": {
+   "release_slug": "spellbound-volume-3",
+   "n": 2,
+   "title": "Adrift",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6G62685860": {
+   "release_slug": "spellbound-volume-3",
+   "n": 3,
+   "title": "Reflections",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6G62685861": {
+   "release_slug": "spellbound-volume-3",
+   "n": 4,
+   "title": "Resonance",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6G62685862": {
+   "release_slug": "spellbound-volume-3",
+   "n": 5,
+   "title": "Trance",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6G62685863": {
+   "release_slug": "spellbound-volume-3",
+   "n": 6,
+   "title": "Within",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6G62685864": {
+   "release_slug": "spellbound-volume-3",
+   "n": 7,
+   "title": "Reunion",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "no_lyrics"
+  },
+  "QT6G62685865": {
+   "release_slug": "spellbound-volume-3",
+   "n": 8,
+   "title": "Bliss",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6G62685866": {
+   "release_slug": "spellbound-volume-3",
+   "n": 9,
+   "title": "Last light",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6G62685867": {
+   "release_slug": "spellbound-volume-3",
+   "n": 10,
+   "title": "Untethered",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6G62685868": {
+   "release_slug": "spellbound-volume-3",
+   "n": 11,
+   "title": "Return",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6G62685869": {
+   "release_slug": "spellbound-volume-3",
+   "n": 12,
+   "title": "Flickering Glimpse",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6G62652781": {
+   "release_slug": "rebel-anthem",
+   "n": 1,
+   "title": "Rebel Anthem",
+   "basis": "lyrics",
+   "blurb": "The opener names the album's target, a deep state machine of corrupt officials, courts and bureaucrats. Its rallying cry is the old maxim that liberty reigns when government fears the people."
+  },
+  "QT6G62652782": {
+   "release_slug": "rebel-anthem",
+   "n": 2,
+   "title": "Rebel Anthem (Reckoning)",
+   "basis": "lyrics",
+   "blurb": "A heavier reworking that leans on the Declaration's long train of abuses and the right to alter or abolish. Forge and anvil imagery turn rebellion into the work of melting chains."
+  },
+  "QT6G62652783": {
+   "release_slug": "rebel-anthem",
+   "n": 3,
+   "title": "The Tree is Thirsty",
+   "basis": "lyrics",
+   "blurb": "Built on Jefferson's tree of liberty, this song casts the people as heirs to 1776 who were raised as lions rather than cattle. Its chorus turns Jefferson's famous image into a defiant rallying cry."
+  },
+  "QT6G62652784": {
+   "release_slug": "rebel-anthem",
+   "n": 4,
+   "title": "The Tree is Thirsty (Sovereign Armageddon)",
+   "basis": "lyrics",
+   "blurb": "An apocalyptic rewrite of the previous track that turns the tree of liberty into an image of total upheaval. It is the darkest and most extreme song on the album."
+  },
+  "QT6G62652785": {
+   "release_slug": "rebel-anthem",
+   "n": 5,
+   "title": "Sovereign Tongue",
+   "basis": "lyrics",
+   "blurb": "A defense of free speech that walks through Brandenburg v. Ohio and the incitement test, then turns to rap lyrics being used as evidence in court. Its stance is that words are not violence and offense is not a crime."
+  },
+  "QT6G62652786": {
+   "release_slug": "rebel-anthem",
+   "n": 6,
+   "title": "They Fear Us",
+   "basis": "lyrics",
+   "blurb": "A darker take on license plate cameras and fusion centers, with lenses that never sleep watching every road. It calls out the officials who signed the contracts and imagines citizens tearing the cameras down."
+  },
+  "QT6G62652787": {
+   "release_slug": "rebel-anthem",
+   "n": 7,
+   "title": "Tree of Liberty (Reignited)",
+   "basis": "lyrics",
+   "blurb": "Farmers, fathers and sons stand against a surveillance state in a song of soil, forge and family. The tree of liberty returns as an inheritance to guard."
+  },
+  "QT6G62652788": {
+   "release_slug": "rebel-anthem",
+   "n": 8,
+   "title": "Blood for the Beast",
+   "basis": "lyrics",
+   "blurb": "A history of American fights over central banking, from Jefferson and Jackson to Lincoln's greenbacks, the Federal Reserve and Kennedy, told as a story of hidden financial power working against the people. It is suspicious and furious in equal measure."
+  },
+  "QT6G62652789": {
+   "release_slug": "rebel-anthem",
+   "n": 9,
+   "title": "The Hydra Bleeds",
+   "basis": "lyrics",
+   "blurb": "A companion piece that tells the same banking story in more detail, centered on Andrew Jackson's war with the Second Bank. The many-headed hydra stands for a power that keeps changing shape."
+  },
+  "QT6G62652790": {
+   "release_slug": "rebel-anthem",
+   "n": 10,
+   "title": "Brotherhood",
+   "basis": "lyrics",
+   "blurb": "A song of loyalty among men rooted in the soil, carrying each other's burdens through loss. It is the album's warmest moment, though it still ends with a call to rise."
+  },
+  "QT6G62652791": {
+   "release_slug": "rebel-anthem",
+   "n": 11,
+   "title": "Pure FURY!",
+   "basis": "lyrics",
+   "blurb": "Framed by the opening and closing of the Declaration of Independence, its middle is an avalanche of shouted single words covering taxes, medicine, surveillance, media and conspiracy theories. It plays like pure rage set to a list."
+  },
+  "QT6G62652792": {
+   "release_slug": "rebel-anthem",
+   "n": 12,
+   "title": "Rebel Anthem (Blood Tax)",
+   "basis": "lyrics",
+   "blurb": "A third version of the title song, focused on the income tax, national banks and inflation as a hidden tax. The forge returns to melt down printing presses and ledgers."
+  },
+  "QT6G62652793": {
+   "release_slug": "rebel-anthem",
+   "n": 13,
+   "title": "At the Gallows",
+   "basis": "lyrics",
+   "blurb": "A wolf stalking through fog stands for power that grows under cover of tolerance and civility. The song argues that delayed rights are denied rights and that complicity feeds tyranny."
+  },
+  "QT6G62652794": {
+   "release_slug": "rebel-anthem",
+   "n": 14,
+   "title": "What Is Tyranny?",
+   "basis": "lyrics",
+   "blurb": "A plain-spoken definition track that names three examples of tyranny: civil asset forfeiture, gun restrictions and the drug war. It is more lesson than rant."
+  },
+  "QT6G62652795": {
+   "release_slug": "rebel-anthem",
+   "n": 15,
+   "title": "What Is Rebellion?",
+   "basis": "lyrics",
+   "blurb": "The closing companion piece defines rebellion as organized, principled resistance rather than chaos, citing the Boston Tea Party, Lexington and the Whiskey Rebellion. It returns to the tree of liberty one last time."
+  },
+  "QT6FH2601974": {
+   "release_slug": "the-savage-ledger",
+   "n": 1,
+   "title": "The Savage Ledger",
+   "basis": "lyrics",
+   "blurb": "A rapid-fire indictment that reads like a list of grievances: Patriot Act surveillance, the income tax, the Federal Reserve, civil asset forfeiture, qualified immunity and the national debt. It closes on a call to educate and awaken rather than despair."
+  },
+  "QT6F92689660": {
+   "release_slug": "spellbound-volume-2",
+   "n": 1,
+   "title": "Fading",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92689661": {
+   "release_slug": "spellbound-volume-2",
+   "n": 2,
+   "title": "Firelight Embers",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92689662": {
+   "release_slug": "spellbound-volume-2",
+   "n": 3,
+   "title": "Soft Wind's",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92689663": {
+   "release_slug": "spellbound-volume-2",
+   "n": 4,
+   "title": "Embers",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92689664": {
+   "release_slug": "spellbound-volume-2",
+   "n": 5,
+   "title": "Sand of Time",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92689665": {
+   "release_slug": "spellbound-volume-2",
+   "n": 6,
+   "title": "Painting Clouds",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "no_lyrics"
+  },
+  "QT6F92689666": {
+   "release_slug": "spellbound-volume-2",
+   "n": 7,
+   "title": "Stolen Time",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92689667": {
+   "release_slug": "spellbound-volume-2",
+   "n": 8,
+   "title": "Nightfall",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92689668": {
+   "release_slug": "spellbound-volume-2",
+   "n": 9,
+   "title": "Endless Moments",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92689669": {
+   "release_slug": "spellbound-volume-2",
+   "n": 10,
+   "title": "Morning Dew",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92689670": {
+   "release_slug": "spellbound-volume-2",
+   "n": 11,
+   "title": "Sun Down",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92689671": {
+   "release_slug": "spellbound-volume-2",
+   "n": 12,
+   "title": "Midnight Rain",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92681190": {
+   "release_slug": "spellbound-volume-1",
+   "n": 1,
+   "title": "Captive",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92681191": {
+   "release_slug": "spellbound-volume-1",
+   "n": 2,
+   "title": "Transfixed",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92681192": {
+   "release_slug": "spellbound-volume-1",
+   "n": 3,
+   "title": "Smitten",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92681193": {
+   "release_slug": "spellbound-volume-1",
+   "n": 4,
+   "title": "Spellbound",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92681194": {
+   "release_slug": "spellbound-volume-1",
+   "n": 5,
+   "title": "lingering",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92681195": {
+   "release_slug": "spellbound-volume-1",
+   "n": 6,
+   "title": "Stoic",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92681196": {
+   "release_slug": "spellbound-volume-1",
+   "n": 7,
+   "title": "Rhythms of the Heart",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92681197": {
+   "release_slug": "spellbound-volume-1",
+   "n": 8,
+   "title": "Country Stars",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92681198": {
+   "release_slug": "spellbound-volume-1",
+   "n": 9,
+   "title": "Mesmerized",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92681199": {
+   "release_slug": "spellbound-volume-1",
+   "n": 10,
+   "title": "Groove",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92681200": {
+   "release_slug": "spellbound-volume-1",
+   "n": 11,
+   "title": "Traveling",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92681201": {
+   "release_slug": "spellbound-volume-1",
+   "n": 12,
+   "title": "Taken",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F92659506": {
+   "release_slug": "flock-of-the-tyrants",
+   "n": 1,
+   "title": "Flock of the Tyrants",
+   "basis": "lyrics",
+   "blurb": "An angry protest against automated license plate cameras and warrantless tracking that leans on the Fourth Amendment and the Carpenter decision. City halls and police who sign the contracts are cast as the villains, and the demand is to switch the cameras off."
+  },
+  "QT6F82621394": {
+   "release_slug": "the-flock-betrayal",
+   "n": 1,
+   "title": "The Flock Betrayal",
+   "basis": "lyrics",
+   "blurb": "A dense, wordy rap about local officials approving camera networks with no public vote. It paints each deal as a quiet betrayal and ends with a plea to set the open road free."
+  },
+  "QT6F82613759": {
+   "release_slug": "violent-light",
+   "n": 1,
+   "title": "Violent Light",
+   "basis": "lyrics",
+   "blurb": "A furious track about distrust in vote counting, courts and judicial ethics, framed as darkness about to be flooded with light. Its central image is exposure, with the schemers dragged into a glare they cannot escape."
+  },
+  "QT6F62681643": {
+   "release_slug": "evil-eye-contracts",
+   "n": 1,
+   "title": "EVIL EYE CONTRACTS",
+   "basis": "lyrics",
+   "blurb": "Another protest against license plate surveillance that tallies the cities and councils that signed on and the ones that pushed back. Each contract is framed as a betrayal of privacy, and the towns that said no are cheered on."
+  },
+  "QT6F42637691": {
+   "release_slug": "carry-the-star",
+   "n": 1,
+   "title": "Carry the Star",
+   "basis": "lyrics",
+   "blurb": "A gentle, encouraging song about the small inner light everyone carries and the way kindness passes it from hand to hand. It trades the catalog's usual thunder for warmth, legacy and quiet self-worth."
+  },
+  "QT6F22689948": {
+   "release_slug": "anvil-s-kiss",
+   "n": 1,
+   "title": "Anvil's Kiss",
+   "basis": "lyrics",
+   "blurb": "An anthem of resilience for anyone who has been knocked down, comparing hardship to rough seas and a smith's anvil that toughen rather than break. Scars become medals, and the listener is told they have earned their own light."
+  },
+  "QT6F22604260": {
+   "release_slug": "tinmouth-cathedral-volume-1",
+   "n": 1,
+   "title": "Tin Cathedral Reverberations",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F22604261": {
+   "release_slug": "tinmouth-cathedral-volume-1",
+   "n": 2,
+   "title": "Rusted Industrial Liturgy",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F22604262": {
+   "release_slug": "tinmouth-cathedral-volume-1",
+   "n": 3,
+   "title": "Echoes of Distortion",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F22604263": {
+   "release_slug": "tinmouth-cathedral-volume-1",
+   "n": 4,
+   "title": "Grunge Machine Vespers",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "no_lyrics"
+  },
+  "QT6F22604264": {
+   "release_slug": "tinmouth-cathedral-volume-1",
+   "n": 5,
+   "title": "Techno Tin Collapse",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F22604265": {
+   "release_slug": "tinmouth-cathedral-volume-1",
+   "n": 6,
+   "title": "Voltage and Rust",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F22604266": {
+   "release_slug": "tinmouth-cathedral-volume-1",
+   "n": 7,
+   "title": "Distorted Altar Storm",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F22604267": {
+   "release_slug": "tinmouth-cathedral-volume-1",
+   "n": 8,
+   "title": "Cathedral Core Decay",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F22604268": {
+   "release_slug": "tinmouth-cathedral-volume-1",
+   "n": 9,
+   "title": "Mechanical Grunge Frequency",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F22604269": {
+   "release_slug": "tinmouth-cathedral-volume-1",
+   "n": 10,
+   "title": "Shadow Pulse Requiem",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F22604270": {
+   "release_slug": "tinmouth-cathedral-volume-1",
+   "n": 11,
+   "title": "EDM Rust Sermon",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6F22604271": {
+   "release_slug": "tinmouth-cathedral-volume-1",
+   "n": 12,
+   "title": "Tinmouth Echo Chamber",
+   "basis": "pending",
+   "blurb": "",
+   "lyrics_status": "instrumental"
+  },
+  "QT6EY2616104": {
+   "release_slug": "blazing-stars",
+   "n": 1,
+   "title": "Blazing Stars",
+   "basis": "lyrics",
+   "blurb": "Fathers, sons and ordinary men are forged like steel in this anthem of sacrifice, faith and liberty. The tree of liberty and a sky of burning stars carry the promise that simple people can turn the tide."
+  },
+  "QT6EW2622862": {
+   "release_slug": "america-250",
+   "n": 1,
+   "title": "America 250",
+   "basis": "lyrics",
+   "blurb": "Written for the nation's 250th anniversary, it marches from Lexington and Valley Forge to the Delaware crossing and on to the present day. Embattled farmers, faith in God and the cost of freedom drive a proud, celebratory refrain."
+  },
+  "QT6EV2671151": {
+   "release_slug": "sacred-steel",
+   "n": 1,
+   "title": "Sacred Steel",
+   "basis": "lyrics",
+   "blurb": "A tribute to mothers and the women who pour themselves into their families, pushing back against the idea that nurturing is weakness. Lullabies, meals and sleepless nights become quiet victories with lasting power."
+  }
+ }
+}
