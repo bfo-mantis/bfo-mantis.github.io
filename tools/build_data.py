@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Regenerate assets/data/releases.js (+ releases.json) and cover art from the DistroKid catalog.
+"""Regenerate assets/data/releases.js (+ releases.json) and cover art from the DistroKid catalog,
+then (unless --no-pages) the static pages, share images, sitemap etc. via tools/build_pages.py.
 
 Usage (from the site root or anywhere):
     python3 tools/build_data.py [--catalog PATH] [--links PATH] [--skip-covers] [--force-covers]
@@ -176,6 +177,8 @@ def main():
                     help="JSON keyed by ISRC: {release_title, track_title, lyrics}; skipped if missing")
     ap.add_argument("--lyrics-status", default="/workspace/lyrics_status.json",
                     help="JSON keyed by ISRC: has_lyrics | instrumental | no_lyrics; skipped if missing")
+    ap.add_argument("--site-url", default="https://bfo-mantis.github.io/", help="absolute URL used for canonical/Open Graph/sitemap")
+    ap.add_argument("--no-pages", action="store_true", help="only write data; skip tools/build_pages.py")
     ap.add_argument("--lyrics-overrides", default=str(ROOT / "content" / "lyrics_overrides"),
                     help="folder of <ISRC>.txt files that fully replace the DistroKid lyrics for that track")
     ap.add_argument("--lyrics-edits", default=str(ROOT / "content" / "lyrics_edits.json"),
@@ -249,6 +252,10 @@ def main():
     print("site ISRCs missing from status:", [k for k in site_isrcs if lstatus and k not in lstatus] or "none")
     print(f"lyrics edits: {n_ed} in {len(edits)} tracks | problems:", edit_log or "none")
     print("cover failures:", failed or "none")
+    if not a.no_pages:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import build_pages
+        build_pages.main(a.site_url)
     return 1 if failed else 0
 
 if __name__ == "__main__":

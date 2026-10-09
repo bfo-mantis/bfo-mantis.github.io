@@ -1,15 +1,28 @@
 # bfo.mantis — static site
 
-Plain HTML/CSS/vanilla JS. No build step, all paths relative.
+Plain HTML/CSS/vanilla JS, all paths relative. Pages are **pre-rendered** by a small Python build
+(no framework, no npm), so they load fast, work without JavaScript and give link previews/search engines real content.
 
 ```
-index.html            home: hero, albums grid, singles grid, bio placeholder
-release.html?r=<slug> release detail (cover, date, genre, tracklist, listen button)
-css/style.css         styles (fonts: Syne + Inter via Google Fonts)
-js/app.js             renders pages from assets/data/releases.js
-assets/data/          releases.js (loaded by pages) + releases.json (same data) — GENERATED
-assets/covers/        <slug>-800 / -400 .jpg + .webp — GENERATED
-tools/build_data.py   regenerates data + covers from the DistroKid catalog
+index.html                    home: hero, albums, singles (+ About once content/about.html has text)   — GENERATED
+release/<slug>/index.html     one page per release: cover, facts, listen + store buttons, tracklist,
+                              lyrics toggles, previous/next release, Open Graph + JSON-LD                — GENERATED
+release.html                  redirect so old release.html?r=<slug> links keep working                  — GENERATED
+404.html                      self-contained not-found page                                             — GENERATED
+sitemap.xml, robots.txt, site.webmanifest, favicon.*, apple-touch-icon.png                              — GENERATED
+css/style.css                 all styles (self-hosted Inter + Syne, font-display: swap)
+js/app.js                     small enhancements only: lyrics loading, compact header, back-to-top,
+                              upcoming/released labels refreshed against today's date
+assets/data/                  releases.json/.js + lyrics/<slug>.json                                    — GENERATED
+assets/covers/                <slug>-800 / -400 .jpg + .webp                                            — GENERATED
+assets/img/                   hero collage, share images (og/), app icons                               — GENERATED
+assets/fonts/                 Inter + Syne woff2 (SIL OFL, licences included)
+content/about.html            artist bio (empty placeholder = About section hidden)
+content/lyrics_edits.json     line-level lyric cleanup/redactions, applied at build time
+content/lyrics_overrides/     <ISRC>.txt artist-supplied lyrics that replace the DistroKid text
+tools/build_data.py           single source: catalog → data, covers, lyrics → then runs build_pages.py
+tools/build_pages.py          data → HTML pages, share images, icons, sitemap, robots.txt
+tools/fonts/                  TTFs used only to draw the share images
 ```
 
 ## Preview locally
@@ -33,8 +46,12 @@ python3 tools/build_data.py --catalog /workspace/bfo_mantis_catalog.json \
   release pages fetch it only when a track is expanded. Instrumentals get an "Instrumental" tag.
 - `--links` takes a JSON list of `{ "title", "hyperfollow_url", "store_links" }` and overrides the catalog by title.
 
+Pages are rebuilt on every run of `build_data.py` (use `--no-pages` to skip, `--site-url` to change the absolute URL used
+for canonical links, Open Graph and the sitemap; default `https://bfo-mantis.github.io/`). To rebuild only the HTML:
+`python3 tools/build_pages.py [--skip-images]`. Don't hand-edit generated files; edit the build scripts, `css/`, `js/` or `content/`.
+
 ## Things to replace
-- **Bio**: the dashed "PLACEHOLDER" block in `index.html` (`#about`).
+- **Bio**: write it in `content/about.html` and rebuild; the About section and nav link appear automatically.
 
 ## Deploy
 **GitHub Pages**: push this folder to a repo (root of the repo), Settings → Pages → Deploy from branch → `main` / root.
