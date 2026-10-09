@@ -116,9 +116,9 @@ def load_overrides(folder):
     if d.is_dir():
         for f in sorted(d.glob("*.txt")):
             text = f.read_text(encoding="utf-8").replace("\r\n", "\n")
-            # drop section labels (lines entirely in parentheses, e.g. "(Chorus)") for consistency with
+            # drop section labels (lines entirely in parentheses or square brackets, e.g. "(Chorus)", "[Verse 1]") for consistency with
             # the other songs; blank lines between sections stay as stanza breaks
-            lines = [l.rstrip() for l in text.split("\n") if not re.fullmatch(r"\s*\(.*\)\s*", l)]
+            lines = [l.rstrip() for l in text.split("\n") if not re.fullmatch(r"\s*(\(.*\)|\[.*\])\s*", l)]
             out[f.stem.strip().upper()] = re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).strip("\n")
     return out
 

@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-09T00:36:39",
+ "generated": "2026-10-09T00:42:12",
  "releases": [
   {
    "slug": "crown-of-ash",
@@ -323,7 +323,8 @@
      "n": 1,
      "title": "Road to Hell",
      "isrc": "QT6J22605151",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "lyrics_source": "artist"
     }
    ],
    "lyrics_file": "assets/data/lyrics/road-to-hell.json"
