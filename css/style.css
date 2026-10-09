@@ -97,6 +97,10 @@ a.count:hover{color:var(--accent)}
 .card-link:hover .title{color:var(--accent)}
 .grid-singles .card .title{font-size:.95rem}
 .card .sub{color:var(--muted);font-size:.83rem;margin:4px 0 0;line-height:1.45}
+.card>.sub{padding:0 2px}
+.glink{color:inherit;text-decoration:underline;text-decoration-color:rgba(163,162,179,.4);text-underline-offset:3px;transition:color .2s,text-decoration-color .2s;border-radius:4px}
+.glink:hover,.glink:focus-visible{color:var(--accent);text-decoration-color:var(--accent)}
+.facts .glink{color:var(--text)}
 .badge{position:absolute;top:10px;left:10px;background:var(--accent);color:var(--accent-ink);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 9px;border-radius:999px}
 .noart{aspect-ratio:1;background:var(--card)}
 
@@ -236,4 +240,27 @@ a.btn-alt:hover{border-color:var(--accent);background:var(--accent-soft)}
   .topbar{flex-wrap:wrap;row-gap:0;min-height:0;padding-top:10px;padding-bottom:4px}
   .is-scrolled .topbar{padding-top:6px;padding-bottom:2px}
   .topbar nav{flex:1 0 100%;justify-content:space-between;gap:0;margin:0 -8px;min-width:0;overflow-x:auto;scrollbar-width:none}
-  .topbar nav::-webkit-scrollbar{display:none}.topbar nav a{white-space:nowrap;padding:8px;font-size:.9rem}.brand{flex:none}}
+  .topbar nav::-webkit-scrollbar{display:none}.topbar nav a{white-space:nowrap;padding:8px clamp(4px,1.6vw,8px);font-size:clamp(.78rem,3.85vw,.9rem)}.brand{flex:none}}
+
+/* ---------- genre pages ---------- */
+.genre-head{padding-top:clamp(28px,5vw,56px)}
+.genre-head h1{font:800 clamp(2.4rem,7vw,5rem)/.98 var(--display);letter-spacing:-.04em;margin:2px 0 14px;overflow-wrap:break-word}
+.genre-stats{margin:0;color:var(--muted);font-size:1.02rem;font-variant-numeric:tabular-nums}
+.genre-head+.cat-section{padding-top:clamp(28px,4vw,48px)}
+.genres-sec{padding-top:clamp(24px,3vw,36px)}
+.ggrid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:clamp(22px,2.6vw,32px) clamp(14px,2vw,24px)}
+@media (max-width:520px){.ggrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}}
+.gcard{min-width:0}
+.gcard-link{display:block;text-decoration:none;border-radius:var(--radius);outline-offset:6px}
+.mosaic{display:grid;grid-template-columns:1fr 1fr;aspect-ratio:1;border-radius:var(--radius);overflow:hidden;background:var(--card);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);transition:transform .35s var(--ease),box-shadow .35s}
+.mosaic img{width:100%;height:100%;object-fit:cover;display:block;transition:filter .35s}
+.gcard-link:hover .mosaic,.gcard-link:focus-visible .mosaic{transform:translateY(-4px);box-shadow:0 22px 44px -18px rgba(0,0,0,.95),0 0 0 1px rgba(200,255,77,.35)}
+.gcard-link:hover .mosaic img{filter:brightness(1.08)}
+.gcard-link:focus-visible{outline:none}.gcard-link:focus-visible .mosaic{box-shadow:0 0 0 3px var(--accent)}
+.ginfo{padding:12px 2px 0}
+.section .gname{font:700 clamp(1.05rem,1.7vw,1.35rem)/1.2 var(--display);margin:0;letter-spacing:-.01em;transition:color .2s;overflow-wrap:break-word}
+.gcard-link:hover .gname{color:var(--accent)}
+.ginfo .sub{color:var(--muted);font-size:.83rem;margin:4px 0 0;line-height:1.45}
+.ginfo .mix{margin-top:0}
+.topbar nav a[aria-current="page"]{color:var(--text);background:rgba(255,255,255,.06)}

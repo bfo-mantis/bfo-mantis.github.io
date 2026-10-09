@@ -15,7 +15,7 @@ Outputs (all GENERATED, all links relative so the site also works from a sub-pat
   assets/img/og/*.jpg            1200x630 share images (home + one per release)
 Lyrics are never written into HTML, JSON-LD or the sitemap; release pages fetch them on demand.
 """
-import argparse, hashlib, html, json, math, re
+import argparse, hashlib, html, json, math, re, unicodedata
 from datetime import date
 from pathlib import Path
 
@@ -182,6 +182,18 @@ def build_images(releases, stats):
         if r["type"] == "album":
             _draw_text(d, (x0, y + 90), f"{n} track{'s' if n != 1 else ''}", _font("Inter.ttf", 28, 500), MUTED)
         bg.save(img / "og" / f"{r['slug']}.jpg", "JPEG", quality=84, optimize=True, progressive=True)
+    # one share image per genre: collage of that genre's covers + the genre name
+    for g, rs in genre_groups(releases):
+        og = _gradient_overlay(collage([r for r in rs if r.get("cover")], W, H, 6))
+        d = ImageDraw.Draw(og)
+        _draw_text(d, (74, 300), "GENRE", _font("Inter.ttf", 28, 700), ACCENT)
+        size = 120
+        while _text_w(g, _font("Syne.ttf", size, 800)) > W - 150 and size > 50:
+            size -= 4
+        _draw_text(d, (70, 342), g, _font("Syne.ttf", size, 800), TEXT)
+        nt = sum(len(r["tracks"]) for r in rs)
+        _draw_text(d, (76, 520), f"{ARTIST} · {len(rs)} release{'s' if len(rs) != 1 else ''} · {nt} tracks", _font("Inter.ttf", 34, 500), MUTED)
+        og.save(img / "og" / f"genre-{genre_slug(g)}.jpg", "JPEG", quality=84, optimize=True, progressive=True)
     # icons: favicon = the accent dot from the wordmark; app icons = the full "bfo.mantis" wordmark
     def wordmark_icon(S):
         im = Image.new("RGB", (S, S), BG); d = ImageDraw.Draw(im)
@@ -232,14 +244,32 @@ def updown(r, today):
     up = date.fromisoformat(r["release_date"]) > today
     return up, ("" if up else " hidden"), (" hidden" if up else "")
 
+def genre_slug(g):
+    """'Hip Hop/Rap' -> 'hip-hop-rap', 'Christian/Gospel' -> 'christian-gospel'."""
+    return re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", g).encode("ascii", "ignore").decode().lower()).strip("-") or "other"
+
+def genre_groups(releases):
+    """[(genre, releases newest first)], most releases first, then by name. Releases without a genre are skipped."""
+    groups = {}
+    for r in releases:
+        if r.get("genre"): groups.setdefault(r["genre"], []).append(r)
+    return sorted(groups.items(), key=lambda kv: (-len(kv[1]), kv[0].lower()))
+
+def genre_href(root, g):
+    return f"{root}genre/{genre_slug(g)}/"
+
+def genre_link(root, g, cls="glink"):
+    return f'<a class="{cls}" href="{genre_href(root, g)}">{e(g)}</a>'
+
 def card(root, r, sizes, today, eager=False):
+    # The genre is its own link, so it sits outside the card link (no nested <a>).
     n = len(r["tracks"])
-    sub = (f"{n} track{'s' if n != 1 else ''} · " if r["type"] == "album" else "") + short_date(r["release_date"]) + (f" · {e(r['genre'])}" if r.get("genre") else "")
+    sub = (f"{n} track{'s' if n != 1 else ''} · " if r["type"] == "album" else "") + short_date(r["release_date"]) + (f" · {genre_link(root, r['genre'])}" if r.get("genre") else "")
     up, hid_up, _ = updown(r, today)
     badge = f'<span class="badge js-upcoming"{hid_up}>Out {short_date(r["release_date"]).rsplit(",", 1)[0]}</span>'
     return (f'<li class="card" data-date="{r["release_date"]}"><a class="card-link" href="{root}release/{r["slug"]}/">'
             f'<div class="art">{picture(root, r, sizes, eager, alt="")}{badge}</div>'
-            f'<div class="info"><h3 class="title">{e(r["title"])}</h3><p class="sub">{sub}</p></div></a></li>')
+            f'<div class="info"><h3 class="title">{e(r["title"])}</h3></div></a><p class="sub">{sub}</p></li>')
 
 CATS = (("vocal", "songs", "Songs"), ("instrumental", "instrumentals", "Instrumentals"))
 def cat_anchor(r):
@@ -249,6 +279,40 @@ def track_counts(releases):
     """Tracks with lyrics count as songs; instrumental-marked tracks and tracks on instrumental releases as instrumentals."""
     songs = sum(1 for r in releases for t in r["tracks"] if t["lyrics"] == "lyrics")
     return songs, sum(len(r["tracks"]) for r in releases) - songs
+
+def cat_sections_html(root, releases, today, eager_albums=4):
+    """Songs / Instrumentals sections, each with Albums and Singles sub-grids (empty groups hidden), newest first."""
+    eager_left = [eager_albums]
+    def sub_grid(anchor, rs, kind):
+        if not rs: return ""
+        plural = f"{kind.lower()}s"
+        if kind == "Album":
+            items = "".join(card(root, r, ALBUM_SIZES, today, eager_left[0] > i) for i, r in enumerate(rs))
+            eager_left[0] = 0
+        else:
+            items = "".join(card(root, r, SINGLE_SIZES, today) for r in rs)
+        return f'''
+    <section class="subsection" id="{anchor}-{plural}" aria-labelledby="{anchor}-{plural}-title">
+      <div class="sub-head"><h3 id="{anchor}-{plural}-title">{kind}s</h3><p class="count">{len(rs)} {plural if len(rs) != 1 else kind.lower()}</p></div>
+      <ul class="grid grid-{plural}">
+        {items}
+      </ul>
+    </section>'''
+    out = ""
+    for cat, anchor, label in CATS:
+        rs = [r for r in releases if r.get("category", "vocal") == cat]
+        if not rs: continue
+        ns, ni = track_counts(rs)
+        nt = ns if cat == "vocal" else ni
+        out += f'''
+  <section id="{anchor}" class="section cat-section" aria-labelledby="{anchor}-title">
+    <div class="section-head">
+      <h2 id="{anchor}-title">{label}</h2>
+      <p class="count">{len(rs)} release{"s" if len(rs) != 1 else ""} · {nt} track{"s" if nt != 1 else ""}</p>
+    </div>{sub_grid(anchor, [r for r in rs if r["type"] == "album"], "Album")}{sub_grid(anchor, [r for r in rs if r["type"] == "single"], "Single")}
+  </section>
+'''
+    return out
 
 ALBUM_SIZES = "(max-width: 520px) 46vw, (max-width: 1240px) 24vw, 280px"
 SINGLE_SIZES = "(max-width: 520px) 46vw, (max-width: 1240px) 16vw, 190px"
@@ -288,7 +352,7 @@ def head(root, *, title, desc, url, og_image, og_alt, og_type="website", extra="
 <link rel="stylesheet" href="{root}css/style.css?v={css_v}">{j}
 </head>'''
 
-def topbar(root, has_about, home=False):
+def topbar(root, has_about, home=False, current=None):
     p = "" if home else root
     about = f'<a href="{p}#about">About</a>' if has_about else ""
     return f'''<a class="skip" href="#main">Skip to content</a>
@@ -297,6 +361,7 @@ def topbar(root, has_about, home=False):
   <nav aria-label="Primary">
     <a href="{p}#songs">Songs</a>
     <a href="{p}#instrumentals">Instrumentals</a>
+    <a href="{root}genres/"{' aria-current="page"' if current == "genres" else ""}>Genres</a>
     {about}
     <a href="{p}#support">Support</a>
   </nav>
@@ -412,35 +477,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None):
               css_v=v["css"], jsonld=ld,
               extra=f'\n<link rel="preload" as="image" href="assets/img/hero-1600.webp" media="(min-width: 601px)" fetchpriority="high">'
                     f'\n<link rel="preload" as="image" href="assets/img/hero-800.webp" media="(max-width: 600px)" fetchpriority="high">')
-    eager_left = [4]
-    def sub_grid(anchor, rs, kind):
-        if not rs: return ""
-        plural = f"{kind.lower()}s"
-        if kind == "Album":
-            items = "".join(card(root, r, ALBUM_SIZES, today, eager_left[0] > i) for i, r in enumerate(rs))
-            eager_left[0] = 0
-        else:
-            items = "".join(card(root, r, SINGLE_SIZES, today) for r in rs)
-        return f'''
-    <section class="subsection" id="{anchor}-{plural}" aria-labelledby="{anchor}-{plural}-title">
-      <div class="sub-head"><h3 id="{anchor}-{plural}-title">{kind}s</h3><p class="count">{len(rs)} {plural if len(rs) != 1 else kind.lower()}</p></div>
-      <ul class="grid grid-{plural}">
-        {items}
-      </ul>
-    </section>'''
-    cat_sections = ""
-    for cat, anchor, label in CATS:
-        rs = [r for r in releases if r.get("category", "vocal") == cat]
-        if not rs: continue
-        nt = n_songs if cat == "vocal" else n_instr
-        cat_sections += f'''
-  <section id="{anchor}" class="section cat-section" aria-labelledby="{anchor}-title">
-    <div class="section-head">
-      <h2 id="{anchor}-title">{label}</h2>
-      <p class="count">{len(rs)} release{"s" if len(rs) != 1 else ""} · {nt} track{"s" if nt != 1 else ""}</p>
-    </div>{sub_grid(anchor, [r for r in rs if r["type"] == "album"], "Album")}{sub_grid(anchor, [r for r in rs if r["type"] == "single"], "Single")}
-  </section>
-'''
+    cat_sections = cat_sections_html(root, releases, today)
     about_sec = (f'''
   <section id="about" class="section about" aria-labelledby="about-title">
     <div class="section-head"><h2 id="about-title">About</h2></div>
@@ -536,7 +573,7 @@ def build_release(releases, i, site, today, v, has_about):
                    f'<span class="pv-note">30s previews</span></div>') if first else ""
     n = len(r["tracks"])
     facts = (f'<li><span>Released</span> <span class="js-upcoming"{hid_up}>Out </span><time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time></li>'
-             + (f'<li><span>Genre</span> {e(r["genre"])}</li>' if r.get("genre") else "")
+             + (f'<li><span>Genre</span> {genre_link(root, r["genre"])}</li>' if r.get("genre") else "")
              + f'<li>{n} track{"s" if n != 1 else ""}</li>'
              + ('<li class="fact-instr">Instrumental</li>' if r.get("category") == "instrumental" else "")
              + (f'<li><span>Label</span> {e(r["label"])}</li>' if r.get("label") else ""))
@@ -591,6 +628,98 @@ def build_release(releases, i, site, today, v, has_about):
 {footer(root, v["js"])}'''
     d = ROOT / "release" / r["slug"]; d.mkdir(parents=True, exist_ok=True)
     (d / "index.html").write_text(page)
+
+def _counts_line(rs):
+    nt = sum(len(r["tracks"]) for r in rs); ns, ni = track_counts(rs)
+    parts = [f"{len(rs)} release{'s' if len(rs) != 1 else ''}", f"{nt} track{'s' if nt != 1 else ''}"]
+    return parts, ns, ni
+
+def build_genres(releases, site, today, v, has_about):
+    groups = genre_groups(releases)
+    gdir = ROOT / "genre"
+    keep = {genre_slug(g) for g, _ in groups}
+    if gdir.exists():   # drop pages for genres that no longer exist
+        for d in gdir.iterdir():
+            if d.is_dir() and d.name not in keep:
+                for f in d.iterdir(): f.unlink()
+                d.rmdir()
+    # ---- one page per genre
+    for g, rs in groups:
+        root = "../../"; slug = genre_slug(g); url = f"{site}genre/{slug}/"
+        parts, ns, ni = _counts_line(rs)
+        mix = " · ".join(x for x in [f"{ns} song{'s' if ns != 1 else ''}" if ns else "", f"{ni} instrumental{'s' if ni != 1 else ''}" if ni else ""] if x)
+        desc = (f"{g} music by {ARTIST}: {parts[0]} and {parts[1]} ({mix}), released on {LABEL_NAME}.")
+        og = site + f"assets/img/og/genre-{slug}.jpg"
+        ld = {"@context": "https://schema.org", "@type": "CollectionPage", "@id": url + "#page", "name": f"{g} — {ARTIST}", "url": url,
+              "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site},
+              "about": {"@type": "Thing", "name": g}, "genre": g,
+              "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [
+                  {"@type": "ListItem", "position": 1, "name": ARTIST, "item": site},
+                  {"@type": "ListItem", "position": 2, "name": "Genres", "item": site + "genres/"},
+                  {"@type": "ListItem", "position": 3, "name": g, "item": url}]},
+              "mainEntity": {"@type": "ItemList", "numberOfItems": len(rs), "itemListElement": [
+                  {"@type": "ListItem", "position": k + 1, "url": f"{site}release/{r['slug']}/",
+                   "item": {"@type": "MusicAlbum", "name": r["title"], "url": f"{site}release/{r['slug']}/", "datePublished": r["release_date"],
+                            "genre": g, "byArtist": {"@type": "MusicGroup", "name": ARTIST}}} for k, r in enumerate(rs)]}}
+        hd = head(root, title=f"{g} — {ARTIST}", desc=desc, url=url, og_image=og,
+                  og_alt=f"{g}: collage of {ARTIST} cover art", css_v=v["css"], jsonld=ld)
+        page = f'''{hd}
+<body class="genre-page">
+{topbar(root, has_about, current="genres")}
+<main id="main">
+  <header class="section genre-head">
+    <a class="back" href="{root}genres/"><span aria-hidden="true">←</span> All genres</a>
+    <p class="eyebrow">Genre</p>
+    <h1>{e(g)}</h1>
+    <p class="genre-stats">{" · ".join(parts)}<span class="sep" aria-hidden="true"> · </span><span class="mix">{mix}</span></p>
+  </header>{cat_sections_html(root, rs, today)}
+</main>
+
+{footer(root, v["js"])}'''
+        d = gdir / slug; d.mkdir(parents=True, exist_ok=True)
+        (d / "index.html").write_text(page)
+    # ---- genres index
+    root = "../"; url = site + "genres/"
+    tiles = []
+    for g, rs in groups:
+        parts, ns, ni = _counts_line(rs)
+        covers = [r for r in rs if r.get("cover")][:4]
+        if len(covers) == 2: covers = [covers[0], covers[1], covers[1], covers[0]]   # checkerboard, always a full 2x2
+        elif covers and len(covers) < 4: covers = (covers * 4)[:4]
+        mosaic = "".join(f'<img src="{root}{r["cover"]["webp_small"]}" width="400" height="400" alt="" loading="lazy" decoding="async">' for r in covers)
+        mix = " · ".join(x for x in [f"{ns} song{'s' if ns != 1 else ''}" if ns else "", f"{ni} instrumental{'s' if ni != 1 else ''}" if ni else ""] if x)
+        tiles.append(f'''<li class="gcard"><a class="gcard-link" href="{genre_href(root, g)}">
+        <div class="mosaic" aria-hidden="true">{mosaic}</div>
+        <div class="ginfo"><h2 class="gname">{e(g).replace("/", "/<wbr>")}</h2><p class="sub">{" · ".join(parts)}</p><p class="sub mix">{mix}</p></div></a></li>''')
+    nrel = sum(len(rs) for _, rs in groups); ntr = sum(len(r["tracks"]) for _, rs in groups for r in rs)
+    desc = f"Browse {ARTIST} by genre: {', '.join(g for g, _ in groups)} — {nrel} releases and {ntr} tracks."
+    ld = {"@context": "https://schema.org", "@type": "CollectionPage", "@id": url + "#page", "name": f"Genres — {ARTIST}", "url": url,
+          "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site},
+          "mainEntity": {"@type": "ItemList", "numberOfItems": len(groups), "itemListElement": [
+              {"@type": "ListItem", "position": k + 1, "name": g, "url": f"{site}genre/{genre_slug(g)}/"} for k, (g, _) in enumerate(groups)]}}
+    hd = head(root, title=f"Genres — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+    page = f'''{hd}
+<body class="genres-page">
+{topbar(root, has_about, current="genres")}
+<main id="main">
+  <header class="section genre-head">
+    <a class="back" href="{root}"><span aria-hidden="true">←</span> Home</a>
+    <p class="eyebrow">Browse</p>
+    <h1>Genres</h1>
+    <p class="genre-stats">{len(groups)} genres · {nrel} releases · {ntr} tracks</p>
+  </header>
+  <section class="section genres-sec" aria-label="All genres">
+    <ul class="ggrid">
+      {"".join(tiles)}
+    </ul>
+  </section>
+</main>
+
+{footer(root, v["js"])}'''
+    (ROOT / "genres").mkdir(exist_ok=True)
+    (ROOT / "genres" / "index.html").write_text(page)
+    return groups
 
 def build_misc(releases, site, v):
     # old URL shim: release.html?r=<slug> -> release/<slug>/
@@ -652,7 +781,8 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
 </body>
 </html>
 ''')
-    urls = [site] + [f"{site}release/{r['slug']}/" for r in releases]
+    urls = ([site] + [f"{site}release/{r['slug']}/" for r in releases] + [site + "genres/"]
+            + [f"{site}genre/{genre_slug(g)}/" for g, _ in genre_groups(releases)])
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
                                       "".join(f"  <url><loc>{e(u)}</loc></url>\n" for u in urls) + "</urlset>\n")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {site}sitemap.xml\n")
@@ -683,8 +813,10 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
                 d.rmdir()
     for i in range(len(releases)):
         build_release(releases, i, site, today, v, has_about)
+    groups = build_genres(releases, site, today, v, has_about)
     build_misc(releases, site, v)
-    print(f"pages: index + {len(releases)} release pages + 404 + release.html shim | sitemap urls: {len(releases) + 1} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
+    print("genres:", ", ".join(f"{g} ({len(rs)} releases, {sum(len(r['tracks']) for r in rs)} tracks)" for g, rs in groups))
+    print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + 404 + release.html shim | sitemap urls: {len(releases) + 2 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
