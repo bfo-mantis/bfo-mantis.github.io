@@ -1,0 +1,6 @@
+{
+ "_note": "User-confirmed per-track status, keyed by ISRC; value \"instrumental\" (or \"no_lyrics\"). Overrides /workspace/lyrics_status.json for tracks with no lyrics on file. Rebuild with tools/build_data.py after editing.",
+ "QT6G62685864": "instrumental",
+ "QT6F92689665": "instrumental",
+ "QT6F22604263": "instrumental"
+}

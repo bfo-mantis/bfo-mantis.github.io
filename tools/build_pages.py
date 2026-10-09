@@ -364,10 +364,25 @@ def release_jsonld(r, site):
     if same: d["sameAs"] = same
     return d
 
+def article(phrase):
+    """'a' or 'an' by sound: vowels, and numbers read with a leading vowel sound (8, 11, 18, 80-89, 800-899, 8000...)."""
+    w = phrase.strip().split(" ")[0].split("-")[0]
+    if w[:1].isdigit():
+        d = "".join(ch for ch in w if ch.isdigit())
+        n = int(d)
+        lead = n
+        while lead >= 1000: lead //= 1000          # 18,000 -> 18; 8,500,000 -> 8
+        an = str(lead)[0] == "8" or lead in (11, 18)
+    else:
+        lw = w.lower()
+        an = lw[:1] in "aeiou" and not lw.startswith(("uni", "use", "usu", "eu", "one"))
+    return "an" if an else "a"
+
 def describe(r):
     n = len(r["tracks"])
     g = (r['genre'] + ' ' if r.get('genre') else '') + ('instrumental ' if r.get("category") == "instrumental" else '')
-    kind = f"a {n}-track {g}album" if r["type"] == "album" else f"a{'n' if g[:1].lower() in 'aeiou' and g else ''} {g}single"
+    body = f"{n}-track {g}album" if r["type"] == "album" else f"{g}single"
+    kind = f"{article(body)} {body}"
     s = f"{r['title']}, {kind} by {ARTIST}, released {r['release_date_display']}" + (f" on {r['label']}" if r.get("label") else "") + "."
     stores = [x["name"] for x in r.get("store_links") or []]
     if stores:

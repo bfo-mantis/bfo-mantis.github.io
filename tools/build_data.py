@@ -245,6 +245,12 @@ def main():
             overrides[o["title"]] = o
     lyrics = json.loads(Path(a.lyrics).read_text()) if a.lyrics and Path(a.lyrics).exists() else {}
     lstatus = json.loads(Path(a.lyrics_status).read_text()) if a.lyrics_status and Path(a.lyrics_status).exists() else {}
+    # user-confirmed per-track overrides (content/track_status_overrides.json, keyed by ISRC) win over lyrics_status
+    tso_path = ROOT / "content" / "track_status_overrides.json"
+    tso = {k: v for k, v in json.loads(tso_path.read_text()).items() if not k.startswith("_")} if tso_path.exists() else {}
+    bad = {k: v for k, v in tso.items() if v not in ("instrumental", "no_lyrics")}
+    if bad: sys.exit(f"track_status_overrides.json: unsupported values {bad}")
+    lstatus = {**lstatus, **tso}
     used, releases, excluded, failed = set(), [], [], []
     for r in cat:
         if ARTIST not in (r.get("artist") or []):
@@ -322,6 +328,9 @@ def main():
     from collections import Counter as _C
     print("track lyrics:", dict(_C(t["lyrics"] for x in releases for t in x["tracks"])), "| lyrics files:", nfiles)
     print("lyrics ISRCs not on site:", [k for k in lyrics if k not in site_isrcs] or "none")
+    tso_lyr = [x["slug"] + " " + t["isrc"] for x in releases for t in x["tracks"] if t["isrc"] in tso and t["lyrics"] == "lyrics"]
+    print(f"track status overrides: {len(tso)}" + (f"; NOT on site: {sorted(set(tso) - site_isrcs)}" if set(tso) - site_isrcs else "")
+          + (f"; ignored (lyrics on file): {tso_lyr}" if tso_lyr else ""))
     print("status ISRCs not on site:", [k for k in lstatus if k not in site_isrcs] or "none")
     print("site ISRCs missing from status:", [k for k in site_isrcs if lstatus and k not in lstatus] or "none")
     print(f"lyrics edits: {n_ed} in {len(edits)} tracks | problems:", edit_log or "none")

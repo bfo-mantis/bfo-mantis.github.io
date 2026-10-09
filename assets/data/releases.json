@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-09T12:52:16",
+ "generated": "2026-10-09T13:07:24",
  "donate_url": null,
  "releases": [
   {
@@ -1534,7 +1534,7 @@
      "n": 7,
      "title": "Reunion",
      "isrc": "QT6G62685864",
-     "lyrics": "none",
+     "lyrics": "instrumental",
      "preview": "assets/audio/previews/spellbound-volume-3/07.mp3"
     },
     {
@@ -1896,7 +1896,7 @@
      "n": 6,
      "title": "Painting Clouds",
      "isrc": "QT6F92689665",
-     "lyrics": "none",
+     "lyrics": "instrumental",
      "preview": "assets/audio/previews/spellbound-volume-2/06.mp3"
     },
     {
@@ -2556,7 +2556,7 @@
      "n": 4,
      "title": "Grunge Machine Vespers",
      "isrc": "QT6F22604263",
-     "lyrics": "none",
+     "lyrics": "instrumental",
      "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/04.mp3"
     },
     {
