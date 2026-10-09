@@ -22,6 +22,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 FONTS = ROOT / "tools" / "fonts"
 ARTIST = "bfo.mantis"
+LABEL_NAME = "bfo.mantis Records"
+COPY_YEAR = 2026   # site-wide footer notice (user-approved wording)
 YTM_ARTIST = "https://music.youtube.com/channel/UCAr9yfuSAyMs5B2Iycvr7-Q"
 BG, ACCENT, TEXT, MUTED = (11, 11, 15), (200, 255, 77), (236, 235, 242), (163, 162, 179)
 
@@ -293,7 +295,7 @@ def topbar(root, has_about, home=False):
 def footer(root, js_v):
     year = date.today().year
     return f'''<footer class="footer">
-  <p>&copy; <span id="year">{year}</span> {ARTIST} · bfo.mantis Records</p>
+  <p>&copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</p>
   <a class="footer-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
 </footer>
 <a class="to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l-7 7m7-7l7 7M12 5v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -329,6 +331,8 @@ def release_jsonld(r, site):
     if r.get("genre"): d["genre"] = r["genre"]
     if r.get("cover"): d["image"] = site + r["cover"]["jpg"]
     if r.get("label"): d["recordLabel"] = {"@type": "Organization", "name": r["label"]}
+    d["copyrightHolder"] = {"@type": "Organization", "name": LABEL_NAME}
+    d["copyrightYear"] = int(r["release_date"][:4])
     same = [s["url"] for s in r.get("store_links") or []]
     if same: d["sameAs"] = same
     return d
@@ -451,7 +455,8 @@ def build_release(releases, i, site, today, v, has_about):
             tracks.append(f'<li class="has-lyrics"><span class="n">{t["n"]}</span><details data-isrc="{e(t["isrc"])}">'
                           f'<summary><span class="tt">{e(t["title"])}</span><span class="ltag" aria-hidden="true">Lyrics</span>'
                           f'<span class="sr-only"> — show lyrics</span></summary>'
-                          f'<div class="lyrics" aria-live="polite">Loading lyrics…</div></details></li>')
+                          f'<div class="lyrics" aria-live="polite">Loading lyrics…</div>'
+                          f'<p class="lcopy">&copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p></details></li>')
         else:
             tag = ' <span class="itag">Instrumental</span>' if t["lyrics"] == "instrumental" else ""
             tracks.append(f'<li><span class="n">{t["n"]}</span><span class="tt">{e(t["title"])}{tag}</span></li>')
@@ -561,7 +566,7 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
   <p class="m">The link may be old or mistyped. Everything from {ARTIST} is on the home page.</p>
   <div class="row"><a class="btn" href="/">Back to home</a><a class="ghost" href="/#albums">Albums</a><a class="ghost" href="/#singles">Singles</a></div>
 </div></main>
-<footer>&copy; {date.today().year} {ARTIST} · bfo.mantis Records</footer>
+<footer>&copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</footer>
 </body>
 </html>
 ''')

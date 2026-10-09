@@ -190,3 +190,4 @@ a.count:hover{color:var(--accent)}
   -webkit-user-select:none;user-select:none;pointer-events:none;margin:0 .08em}
 .rbar-line{width:calc(var(--n,32) * .55em);min-width:min(60%,14em);max-width:100%;margin:0}
 @media (forced-colors:active){.rbar{background:CanvasText;border-color:CanvasText;forced-color-adjust:none}}
+.lcopy{margin:-8px 0 16px 18px;color:var(--muted);font-size:.78rem;letter-spacing:.01em}
