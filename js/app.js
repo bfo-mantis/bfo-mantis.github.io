@@ -40,6 +40,30 @@
   var rel = document.querySelector("article.release[data-lyrics]");
   if (rel) {
     var file = rel.getAttribute("data-lyrics"), lyricsPromise = null;
+    // A track is a plain string, or (when it has redactions) an array of lines; a line is a string or an
+    // array of parts, where a part is a string or {r: n} (a redaction of roughly n characters, bucketed).
+    // Redactions render as empty bars: no text inside, so nothing can be selected, copied or searched.
+    var bar = function (n, whole) {
+      var b = document.createElement("span");
+      b.className = "rbar" + (whole ? " rbar-line" : "");
+      b.setAttribute("role", "img");
+      b.setAttribute("aria-label", "redacted");
+      b.style.setProperty("--n", Math.max(1, Math.min(64, +n || 8)));
+      return b;
+    };
+    var renderLyrics = function (box, v) {
+      box.textContent = "";
+      if (!v) { box.textContent = "Lyrics unavailable."; return; }
+      if (typeof v === "string") { box.textContent = v; return; }   // textContent: no HTML injection
+      v.forEach(function (line, i) {
+        if (i) box.appendChild(document.createTextNode("\n"));
+        if (typeof line === "string") { box.appendChild(document.createTextNode(line)); return; }
+        var whole = line.length === 1 && typeof line[0] === "object";
+        line.forEach(function (p) {
+          box.appendChild(typeof p === "string" ? document.createTextNode(p) : bar(p && p.r, whole));
+        });
+      });
+    };
     var loadLyrics = function () {
       if (!lyricsPromise) lyricsPromise = fetch(file).then(function (res) {
         if (!res.ok) throw new Error(res.status); return res.json();
@@ -51,7 +75,7 @@
         if (!d.open || d.dataset.loaded) return;
         var box = d.querySelector(".lyrics");
         loadLyrics().then(function (map) {
-          box.textContent = map[d.dataset.isrc] || "Lyrics unavailable.";   // textContent: no HTML injection
+          renderLyrics(box, map[d.dataset.isrc]);
           d.dataset.loaded = "1";
         }).catch(function () { box.textContent = "Couldn't load lyrics. Please try again."; lyricsPromise = null; });
       });

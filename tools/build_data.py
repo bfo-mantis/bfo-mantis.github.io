@@ -81,7 +81,38 @@ def track_entry(t, lyrics, lstatus):
     status = "lyrics" if has else ("instrumental" if st == "instrumental" else "none")
     return {"n": t["n"], "title": t["title"], "isrc": isrc, "lyrics": status}
 
-REDACTED = "[redacted]"
+# Redactions are emitted as structured tokens, never as placeholder text, so the published lyrics files
+# contain no searchable marker. Lengths are bucketed so a bar doesn't reveal the exact word length.
+_R = "\ue000"   # private-use sentinel used only inside the build
+
+def _bucket(n, whole_line):
+    step, lo, hi = (16, 16, 64) if whole_line else (8, 8, 48)
+    return max(lo, min(hi, -(-n // step) * step))
+
+def _tok(n, whole_line):
+    return f"{_R}{_bucket(n, whole_line)}{_R}"
+
+def structure_lyrics(text):
+    """Plain string if the track has no redactions; otherwise a list of lines, each either a string or a list
+    of parts where a part is a string or {"r": bucketed_length}. A line made of a single {"r": n} is a
+    whole-line redaction."""
+    if _R not in text:
+        return text
+    out = []
+    for line in text.split("\n"):
+        if _R not in line:
+            out.append(line); continue
+        parts = []
+        for i, chunk in enumerate(line.split(_R)):
+            if i % 2:
+                parts.append({"r": int(chunk)})
+            elif chunk:
+                parts.append(chunk)
+        out.append(parts)
+    return out
+
+def count_redactions(v):
+    return 0 if isinstance(v, str) else sum(1 for l in v if isinstance(l, list) for p in l if isinstance(p, dict))
 
 def apply_lyrics_edits(isrc, text, edits, log):
     """Apply content/lyrics_edits.json to one track. Each edit is checked against a hash of the source line."""
@@ -99,12 +130,12 @@ def apply_lyrics_edits(isrc, text, edits, log):
         if e["action"] == "delete_line":
             drop.add(n)
         elif e["action"] == "redact_line":
-            lines[n - 1] = REDACTED
+            lines[n - 1] = _tok(len(lines_src(text)[n - 1].strip()), True)
         elif e["action"] == "redact_span":
-            a, b = e["span"]; lines[n - 1] = lines[n - 1][:a] + REDACTED + lines[n - 1][b:]
+            a, b = e["span"]; lines[n - 1] = lines[n - 1][:a] + _tok(b - a, False) + lines[n - 1][b:]
     out = "\n".join(l for i, l in enumerate(lines, 1) if i not in drop)
     out = re.sub(r"\n{3,}", "\n\n", out).strip("\n")
-    return out
+    return structure_lyrics(out)
 
 def lines_src(text):
     return text.replace("\r\n", "\n").strip("\n").split("\n")

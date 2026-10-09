@@ -183,3 +183,10 @@ a.count:hover{color:var(--accent)}
 .pl-s{color:var(--muted);font-size:.82rem}
 @media (max-width:620px){.pager{grid-template-columns:1fr}.pager-gap{display:none}.pager-next{flex-direction:row;text-align:left}}
 
+
+/* redaction bars: empty, unselectable boxes that read like a censored document */
+.rbar{display:inline-block;vertical-align:-.2em;height:1.15em;width:calc(var(--n,8) * .5em);max-width:100%;
+  background:#020203;border:1px solid #3d3d4f;border-radius:2px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.6);
+  -webkit-user-select:none;user-select:none;pointer-events:none;margin:0 .08em}
+.rbar-line{width:calc(var(--n,32) * .55em);min-width:min(60%,14em);max-width:100%;margin:0}
+@media (forced-colors:active){.rbar{background:CanvasText;border-color:CanvasText;forced-color-adjust:none}}
