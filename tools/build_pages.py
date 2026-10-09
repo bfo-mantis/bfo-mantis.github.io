@@ -6,7 +6,7 @@ Run automatically at the end of tools/build_data.py, or on its own:
     python3 tools/build_pages.py [--site-url https://bfo-mantis.github.io/]
 
 Outputs (all GENERATED, all links relative so the site also works from a sub-path):
-  index.html                     home (pre-rendered: hero, albums, singles, optional About)
+  index.html                     home (pre-rendered: hero, Songs and Instrumentals, each with albums + singles, optional About)
   release/<slug>/index.html      one static page per release (title, meta, Open Graph, JSON-LD)
   release.html                   tiny redirect so old release.html?r=<slug> links keep working
   404.html                       self-contained "not found" page
@@ -241,6 +241,15 @@ def card(root, r, sizes, today, eager=False):
             f'<div class="art">{picture(root, r, sizes, eager, alt="")}{badge}</div>'
             f'<div class="info"><h3 class="title">{e(r["title"])}</h3><p class="sub">{sub}</p></div></a></li>')
 
+CATS = (("vocal", "songs", "Songs"), ("instrumental", "instrumentals", "Instrumentals"))
+def cat_anchor(r):
+    return "songs" if r.get("category", "vocal") == "vocal" else "instrumentals"
+
+def track_counts(releases):
+    """Tracks with lyrics count as songs; instrumental-marked tracks and tracks on instrumental releases as instrumentals."""
+    songs = sum(1 for r in releases for t in r["tracks"] if t["lyrics"] == "lyrics")
+    return songs, sum(len(r["tracks"]) for r in releases) - songs
+
 ALBUM_SIZES = "(max-width: 520px) 46vw, (max-width: 1240px) 24vw, 280px"
 SINGLE_SIZES = "(max-width: 520px) 46vw, (max-width: 1240px) 16vw, 190px"
 
@@ -286,8 +295,8 @@ def topbar(root, has_about, home=False):
 <header class="topbar" id="top">
   <a class="brand" href="{root or './'}" aria-label="{ARTIST} home">bfo<span>.</span>mantis</a>
   <nav aria-label="Primary">
-    <a href="{p}#albums">Albums</a>
-    <a href="{p}#singles">Singles</a>
+    <a href="{p}#songs">Songs</a>
+    <a href="{p}#instrumentals">Instrumentals</a>
     {about}
     <a href="{p}#support">Support</a>
   </nav>
@@ -357,7 +366,8 @@ def release_jsonld(r, site):
 
 def describe(r):
     n = len(r["tracks"])
-    kind = f"a {n}-track {r['genre'] + ' ' if r.get('genre') else ''}album" if r["type"] == "album" else f"a {r['genre'] + ' ' if r.get('genre') else ''}single"
+    g = (r['genre'] + ' ' if r.get('genre') else '') + ('instrumental ' if r.get("category") == "instrumental" else '')
+    kind = f"a {n}-track {g}album" if r["type"] == "album" else f"a{'n' if g[:1].lower() in 'aeiou' and g else ''} {g}single"
     s = f"{r['title']}, {kind} by {ARTIST}, released {r['release_date_display']}" + (f" on {r['label']}" if r.get("label") else "") + "."
     stores = [x["name"] for x in r.get("store_links") or []]
     if stores:
@@ -372,10 +382,11 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None):
     albums = [r for r in releases if r["type"] == "album"]
     singles = [r for r in releases if r["type"] == "single"]
     ntr = sum(len(r["tracks"]) for r in releases)
+    n_songs, n_instr = track_counts(releases)
     genres = []
     for r in releases:
         if r.get("genre") and r["genre"] not in genres: genres.append(r["genre"])
-    desc = (f"Albums and singles by {ARTIST}: {len(albums)} albums and {len(singles)} singles"
+    desc = (f"Songs and instrumentals by {ARTIST}: {len(albums)} albums and {len(singles)} singles"
             f" ({', '.join(genres[:5])}{' and more' if len(genres) > 5 else ''}), released on bfo.mantis Records.")
     latest = releases[0]
     up, hid_up, hid_rel = updown(latest, today)
@@ -386,6 +397,35 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None):
               css_v=v["css"], jsonld=ld,
               extra=f'\n<link rel="preload" as="image" href="assets/img/hero-1600.webp" media="(min-width: 601px)" fetchpriority="high">'
                     f'\n<link rel="preload" as="image" href="assets/img/hero-800.webp" media="(max-width: 600px)" fetchpriority="high">')
+    eager_left = [4]
+    def sub_grid(anchor, rs, kind):
+        if not rs: return ""
+        plural = f"{kind.lower()}s"
+        if kind == "Album":
+            items = "".join(card(root, r, ALBUM_SIZES, today, eager_left[0] > i) for i, r in enumerate(rs))
+            eager_left[0] = 0
+        else:
+            items = "".join(card(root, r, SINGLE_SIZES, today) for r in rs)
+        return f'''
+    <section class="subsection" id="{anchor}-{plural}" aria-labelledby="{anchor}-{plural}-title">
+      <div class="sub-head"><h3 id="{anchor}-{plural}-title">{kind}s</h3><p class="count">{len(rs)} {plural if len(rs) != 1 else kind.lower()}</p></div>
+      <ul class="grid grid-{plural}">
+        {items}
+      </ul>
+    </section>'''
+    cat_sections = ""
+    for cat, anchor, label in CATS:
+        rs = [r for r in releases if r.get("category", "vocal") == cat]
+        if not rs: continue
+        nt = n_songs if cat == "vocal" else n_instr
+        cat_sections += f'''
+  <section id="{anchor}" class="section cat-section" aria-labelledby="{anchor}-title">
+    <div class="section-head">
+      <h2 id="{anchor}-title">{label}</h2>
+      <p class="count">{len(rs)} release{"s" if len(rs) != 1 else ""} · {nt} track{"s" if nt != 1 else ""}</p>
+    </div>{sub_grid(anchor, [r for r in rs if r["type"] == "album"], "Album")}{sub_grid(anchor, [r for r in rs if r["type"] == "single"], "Single")}
+  </section>
+'''
     about_sec = (f'''
   <section id="about" class="section about" aria-labelledby="about-title">
     <div class="section-head"><h2 id="about-title">About</h2></div>
@@ -406,7 +446,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None):
     <div class="hero-inner">
       <p class="eyebrow">Artist · bfo.mantis Records</p>
       <h1 id="hero-title">bfo<span>.</span>mantis</h1>
-      <p class="hero-meta"><span>{len(albums)} albums · {len(singles)} singles · {ntr} tracks</span>
+      <p class="hero-meta"><span>{n_songs} songs · {n_instr} instrumentals · {len(releases)} releases</span>
         <a class="artist-link" href="{YTM_ARTIST}" target="_blank" rel="noopener">YouTube Music{EXT}{NT}</a></p>
       <a class="hero-latest" href="release/{latest['slug']}/" data-date="{latest['release_date']}">
         {picture(root, latest, "84px", eager=True, alt="")}
@@ -418,25 +458,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None):
     </div>
   </section>
 
-  <section id="albums" class="section" aria-labelledby="albums-title">
-    <div class="section-head">
-      <h2 id="albums-title">Albums</h2>
-      <p class="count">{len(albums)} albums</p>
-    </div>
-    <ul class="grid grid-albums">
-      {"".join(card(root, r, ALBUM_SIZES, today, i < 4) for i, r in enumerate(albums))}
-    </ul>
-  </section>
-
-  <section id="singles" class="section" aria-labelledby="singles-title">
-    <div class="section-head">
-      <h2 id="singles-title">Singles</h2>
-      <p class="count">{len(singles)} singles</p>
-    </div>
-    <ul class="grid grid-singles">
-      {"".join(card(root, r, SINGLE_SIZES, today) for r in singles)}
-    </ul>
-  </section>{about_sec}
+{cat_sections}{about_sec}
 
   <section id="support" class="section support" aria-labelledby="support-title">
     <div class="section-head"><h2 id="support-title">Support bfo.mantis</h2></div>
@@ -501,6 +523,7 @@ def build_release(releases, i, site, today, v, has_about):
     facts = (f'<li><span>Released</span> <span class="js-upcoming"{hid_up}>Out </span><time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time></li>'
              + (f'<li><span>Genre</span> {e(r["genre"])}</li>' if r.get("genre") else "")
              + f'<li>{n} track{"s" if n != 1 else ""}</li>'
+             + ('<li class="fact-instr">Instrumental</li>' if r.get("category") == "instrumental" else "")
              + (f'<li><span>Label</span> {e(r["label"])}</li>' if r.get("label") else ""))
     # previous = older release, next = newer release (list is newest first)
     def pager_link(x, rel, label):
@@ -510,11 +533,16 @@ def build_release(releases, i, site, today, v, has_about):
                 f'<span class="pl-t">{e(x["title"])}</span><span class="pl-s">{"Album" if x["type"] == "album" else "Single"} · {short_date(x["release_date"])}</span></span></a>')
     older = releases[i + 1] if i + 1 < len(releases) else None
     newer = releases[i - 1] if i > 0 else None
-    more = [x for x in releases if x["slug"] != r["slug"] and x["type"] == r["type"]][:6]
+    # "More": same category first (same type, then the other type), then the other category; newest first within each
+    cat = r.get("category", "vocal"); anchor = cat_anchor(r)
+    others = [x for x in releases if x["slug"] != r["slug"]]
+    rank = lambda x: (x.get("category", "vocal") != cat, x["type"] != r["type"])
+    more = sorted(others, key=rank)[:6]   # sorted() is stable, so newest-first order is kept inside each group
+    more_label = "songs" if cat == "vocal" else "instrumentals"
     more_html = (f'''
   <section class="section more" aria-labelledby="more-title">
-    <div class="section-head"><h2 id="more-title">More {"albums" if r["type"] == "album" else "singles"}</h2>
-      <a class="count" href="{root}#{"albums" if r["type"] == "album" else "singles"}">See all</a></div>
+    <div class="section-head"><h2 id="more-title">More {more_label}</h2>
+      <a class="count" href="{root}#{anchor}">See all</a></div>
     <ul class="grid grid-singles">{"".join(card(root, x, SINGLE_SIZES, today) for x in more)}</ul>
   </section>''' if more else "")
     bg = f' style="background-image:url(\'{root}{r["cover"]["jpg_small"]}\')"' if r.get("cover") else ""
@@ -528,7 +556,7 @@ def build_release(releases, i, site, today, v, has_about):
     <div class="cover-col"><div class="cover">{picture(root, r, "(max-width: 820px) 92vw, 560px", eager=True, big=True)}</div>
       <p class="art-copy">Artwork &copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p></div>
     <div class="release-body">
-      <a class="back" href="{root}#{"albums" if r["type"] == "album" else "singles"}"><span aria-hidden="true">←</span> All {"albums" if r["type"] == "album" else "singles"}</a>
+      <a class="back" href="{root}#{anchor}"><span aria-hidden="true">←</span> All {more_label}</a>
       <p class="eyebrow">{kind}<span class="js-upcoming"{hid_up}> · Upcoming</span></p>
       <h1 style="--fit:{word_fit(r["title"]) or 1}">{e(r["title"])}</h1>
       <p class="by">{ARTIST}</p>
@@ -603,7 +631,7 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
   <p class="big" aria-hidden="true">4<span>0</span>4</p>
   <h1>This page doesn’t exist.</h1>
   <p class="m">The link may be old or mistyped. Everything from {ARTIST} is on the home page.</p>
-  <div class="row"><a class="btn" href="/">Back to home</a><a class="ghost" href="/#albums">Albums</a><a class="ghost" href="/#singles">Singles</a></div>
+  <div class="row"><a class="btn" href="/">Back to home</a><a class="ghost" href="/#songs">Songs</a><a class="ghost" href="/#instrumentals">Instrumentals</a></div>
 </div></main>
 <footer>Music, lyrics, artwork and audio previews &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</footer>
 </body>
@@ -627,7 +655,8 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     about = about_html(); has_about = bool(about)
     albums = sum(r["type"] == "album" for r in releases); singles = len(releases) - albums
     if images:
-        build_images(releases, f"{albums} albums · {singles} singles")
+        ns, ni = track_counts(releases)
+        build_images(releases, f"{ns} songs · {ni} instrumentals")
     v = {"css": asset_hash("css/style.css"), "js": asset_hash("js/app.js")}
     build_home(releases, site, today, v, has_about, about, data.get("donate_url"))
     rel = ROOT / "release"

@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-09T12:40:17",
+ "generated": "2026-10-09T12:52:16",
  "donate_url": null,
  "releases": [
   {
@@ -24,7 +24,11 @@
     "jpg_small": "assets/covers/crown-of-ash-400.jpg",
     "webp_small": "assets/covers/crown-of-ash-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -37,7 +41,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/crown-of-ash.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "the-only-way",
@@ -77,7 +83,11 @@
     "jpg_small": "assets/covers/the-only-way-400.jpg",
     "webp_small": "assets/covers/the-only-way-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -89,7 +99,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/the-only-way.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "forge-of-your-light",
@@ -129,7 +141,11 @@
     "jpg_small": "assets/covers/forge-of-your-light-400.jpg",
     "webp_small": "assets/covers/forge-of-your-light-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -142,7 +158,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/forge-of-your-light.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "dangerous",
@@ -186,7 +204,11 @@
     "jpg_small": "assets/covers/dangerous-400.jpg",
     "webp_small": "assets/covers/dangerous-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -296,7 +318,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/dangerous.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "road-to-hell",
@@ -340,7 +364,11 @@
     "jpg_small": "assets/covers/road-to-hell-400.jpg",
     "webp_small": "assets/covers/road-to-hell-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -353,7 +381,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/road-to-hell.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "blood-waters-the-tree",
@@ -397,7 +427,11 @@
     "jpg_small": "assets/covers/blood-waters-the-tree-400.jpg",
     "webp_small": "assets/covers/blood-waters-the-tree-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -409,7 +443,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/blood-waters-the-tree.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "savage-serenade-volume-3",
@@ -453,7 +489,11 @@
     "jpg_small": "assets/covers/savage-serenade-volume-3-400.jpg",
     "webp_small": "assets/covers/savage-serenade-volume-3-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -584,7 +624,9 @@
     }
    ],
    "lyrics_file": null,
-   "download_url": null
+   "download_url": null,
+   "category": "instrumental",
+   "mixed": false
   },
   {
    "slug": "savage-serenade-volume-2",
@@ -628,7 +670,11 @@
     "jpg_small": "assets/covers/savage-serenade-volume-2-400.jpg",
     "webp_small": "assets/covers/savage-serenade-volume-2-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -759,7 +805,9 @@
     }
    ],
    "lyrics_file": null,
-   "download_url": null
+   "download_url": null,
+   "category": "instrumental",
+   "mixed": false
   },
   {
    "slug": "sovereign-heart-of-fire",
@@ -803,7 +851,11 @@
     "jpg_small": "assets/covers/sovereign-heart-of-fire-400.jpg",
     "webp_small": "assets/covers/sovereign-heart-of-fire-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -913,7 +965,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/sovereign-heart-of-fire.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "the-ridge",
@@ -957,7 +1011,11 @@
     "jpg_small": "assets/covers/the-ridge-400.jpg",
     "webp_small": "assets/covers/the-ridge-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -978,7 +1036,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/the-ridge.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "savage-serenade",
@@ -1022,7 +1082,11 @@
     "jpg_small": "assets/covers/savage-serenade-400.jpg",
     "webp_small": "assets/covers/savage-serenade-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -1153,7 +1217,9 @@
     }
    ],
    "lyrics_file": null,
-   "download_url": null
+   "download_url": null,
+   "category": "instrumental",
+   "mixed": false
   },
   {
    "slug": "one-man-invictus",
@@ -1197,7 +1263,11 @@
     "jpg_small": "assets/covers/one-man-invictus-400.jpg",
     "webp_small": "assets/covers/one-man-invictus-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -1307,7 +1377,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/one-man-invictus.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "one-man",
@@ -1343,7 +1415,11 @@
     "jpg_small": "assets/covers/one-man-400.jpg",
     "webp_small": "assets/covers/one-man-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -1355,7 +1431,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/one-man.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "spellbound-volume-3",
@@ -1403,7 +1481,11 @@
     "jpg_small": "assets/covers/spellbound-volume-3-400.jpg",
     "webp_small": "assets/covers/spellbound-volume-3-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -1492,7 +1574,9 @@
     }
    ],
    "lyrics_file": null,
-   "download_url": null
+   "download_url": null,
+   "category": "instrumental",
+   "mixed": false
   },
   {
    "slug": "rebel-anthem",
@@ -1540,7 +1624,11 @@
     "jpg_small": "assets/covers/rebel-anthem-400.jpg",
     "webp_small": "assets/covers/rebel-anthem-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -1650,7 +1738,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/rebel-anthem.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "the-savage-ledger",
@@ -1694,7 +1784,11 @@
     "jpg_small": "assets/covers/the-savage-ledger-400.jpg",
     "webp_small": "assets/covers/the-savage-ledger-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -1706,7 +1800,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/the-savage-ledger.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "spellbound-volume-2",
@@ -1754,7 +1850,11 @@
     "jpg_small": "assets/covers/spellbound-volume-2-400.jpg",
     "webp_small": "assets/covers/spellbound-volume-2-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -1843,7 +1943,9 @@
     }
    ],
    "lyrics_file": null,
-   "download_url": null
+   "download_url": null,
+   "category": "instrumental",
+   "mixed": false
   },
   {
    "slug": "spellbound-volume-1",
@@ -1891,7 +1993,11 @@
     "jpg_small": "assets/covers/spellbound-volume-1-400.jpg",
     "webp_small": "assets/covers/spellbound-volume-1-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -1980,7 +2086,9 @@
     }
    ],
    "lyrics_file": null,
-   "download_url": null
+   "download_url": null,
+   "category": "instrumental",
+   "mixed": false
   },
   {
    "slug": "flock-of-the-tyrants",
@@ -2024,7 +2132,11 @@
     "jpg_small": "assets/covers/flock-of-the-tyrants-400.jpg",
     "webp_small": "assets/covers/flock-of-the-tyrants-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -2036,7 +2148,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/flock-of-the-tyrants.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "the-flock-betrayal",
@@ -2080,7 +2194,11 @@
     "jpg_small": "assets/covers/the-flock-betrayal-400.jpg",
     "webp_small": "assets/covers/the-flock-betrayal-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -2092,7 +2210,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/the-flock-betrayal.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "violent-light",
@@ -2140,7 +2260,11 @@
     "jpg_small": "assets/covers/violent-light-400.jpg",
     "webp_small": "assets/covers/violent-light-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -2152,7 +2276,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/violent-light.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "evil-eye-contracts",
@@ -2200,7 +2326,11 @@
     "jpg_small": "assets/covers/evil-eye-contracts-400.jpg",
     "webp_small": "assets/covers/evil-eye-contracts-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -2212,7 +2342,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/evil-eye-contracts.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "carry-the-star",
@@ -2260,7 +2392,11 @@
     "jpg_small": "assets/covers/carry-the-star-400.jpg",
     "webp_small": "assets/covers/carry-the-star-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -2272,7 +2408,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/carry-the-star.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "anvil-s-kiss",
@@ -2320,7 +2458,11 @@
     "jpg_small": "assets/covers/anvil-s-kiss-400.jpg",
     "webp_small": "assets/covers/anvil-s-kiss-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -2332,7 +2474,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/anvil-s-kiss.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "tinmouth-cathedral-volume-1",
@@ -2380,7 +2524,11 @@
     "jpg_small": "assets/covers/tinmouth-cathedral-volume-1-400.jpg",
     "webp_small": "assets/covers/tinmouth-cathedral-volume-1-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -2469,7 +2617,9 @@
     }
    ],
    "lyrics_file": null,
-   "download_url": null
+   "download_url": null,
+   "category": "instrumental",
+   "mixed": false
   },
   {
    "slug": "blazing-stars",
@@ -2513,7 +2663,11 @@
     "jpg_small": "assets/covers/blazing-stars-400.jpg",
     "webp_small": "assets/covers/blazing-stars-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -2525,7 +2679,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/blazing-stars.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "america-250",
@@ -2573,7 +2729,11 @@
     "jpg_small": "assets/covers/america-250-400.jpg",
     "webp_small": "assets/covers/america-250-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -2585,7 +2745,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/america-250.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   },
   {
    "slug": "sacred-steel",
@@ -2633,7 +2795,11 @@
     "jpg_small": "assets/covers/sacred-steel-400.jpg",
     "webp_small": "assets/covers/sacred-steel-400.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "original_size": [
+     800,
+     800
+    ]
    },
    "tracks": [
     {
@@ -2645,7 +2811,9 @@
     }
    ],
    "lyrics_file": "assets/data/lyrics/sacred-steel.json",
-   "download_url": null
+   "download_url": null,
+   "category": "vocal",
+   "mixed": false
   }
  ]
 }

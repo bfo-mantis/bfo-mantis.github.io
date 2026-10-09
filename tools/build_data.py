@@ -291,6 +291,20 @@ def main():
         for t in x["tracks"]:   # 30 s previews made by tools/make_previews.py (only if the clip exists)
             pv = f"assets/audio/previews/{x['slug']}/{t['n']:02d}.mp3"
             t["preview"] = pv if (ROOT / pv).exists() else None
+    # Songs vs instrumentals: a release is "vocal" if any track has lyrics (DistroKid text or an artist override,
+    # both of which set lyrics == "lyrics"); otherwise "instrumental". A vocal release that also contains tracks
+    # marked instrumental is flagged "mixed" (its instrumental tracks keep their per-track tag on the page).
+    unclassified = []
+    for x in releases:
+        tags = [t["lyrics"] for t in x["tracks"]]
+        x["category"] = "vocal" if "lyrics" in tags else "instrumental"
+        x["mixed"] = x["category"] == "vocal" and "instrumental" in tags
+        if x["category"] == "instrumental":
+            unclassified += [f'{x["slug"]} #{t["n"]} {t["isrc"]}' for t in x["tracks"] if t["lyrics"] != "instrumental"]
+    print("categories: vocal", sum(x["category"] == "vocal" for x in releases),
+          "| instrumental", sum(x["category"] == "instrumental" for x in releases),
+          "| mixed:", [x["slug"] for x in releases if x["mixed"]] or "none",
+          "| instrumental releases with tracks not marked instrumental (no lyrics on file):", unclassified or "none")
     data = {"artist": ARTIST, "generated": datetime.now().isoformat(timespec="seconds"),
             "donate_url": cfg["donate_url"], "releases": releases}
     print("downloads enabled:", sum(1 for x in releases if x["download_url"]), "| donate enabled:", bool(cfg["donate_url"]))
