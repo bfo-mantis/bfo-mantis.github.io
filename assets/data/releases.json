@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-09T12:19:33",
+ "generated": "2026-10-09T12:40:17",
  "donate_url": null,
  "releases": [
   {
@@ -32,7 +32,8 @@
      "title": "Crown of Ash",
      "isrc": "QTA7T2600629",
      "lyrics": "lyrics",
-     "lyrics_source": "artist"
+     "lyrics_source": "artist",
+     "preview": "assets/audio/previews/crown-of-ash/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/crown-of-ash.json",
@@ -83,7 +84,8 @@
      "n": 1,
      "title": "The Only Way",
      "isrc": "QT9XM2685551",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/the-only-way/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/the-only-way.json",
@@ -135,7 +137,8 @@
      "title": "Forge of Your Light",
      "isrc": "QT9XH2693555",
      "lyrics": "lyrics",
-     "lyrics_source": "artist"
+     "lyrics_source": "artist",
+     "preview": "assets/audio/previews/forge-of-your-light/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/forge-of-your-light.json",
@@ -190,91 +193,106 @@
      "n": 1,
      "title": "Dangerous",
      "isrc": "QT9XH2672245",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/01.mp3"
     },
     {
      "n": 2,
      "title": "Tha Last Thunderbolt",
      "isrc": "QT9XH2672246",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/02.mp3"
     },
     {
      "n": 3,
      "title": "Guardians of the Free",
      "isrc": "QT9XH2672247",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/03.mp3"
     },
     {
      "n": 4,
      "title": "Solution or Problem",
      "isrc": "QT9XH2672248",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/04.mp3"
     },
     {
      "n": 5,
      "title": "Here to Hell...p",
      "isrc": "QT9XH2672249",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/05.mp3"
     },
     {
      "n": 6,
      "title": "Suits",
      "isrc": "QT9XH2672250",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/06.mp3"
     },
     {
      "n": 7,
      "title": "Void means VOID!",
      "isrc": "QT9XH2672251",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/07.mp3"
     },
     {
      "n": 8,
      "title": "Qualified Impunity",
      "isrc": "QT9XH2672252",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/08.mp3"
     },
     {
      "n": 9,
      "title": "Earned or Burned",
      "isrc": "QT9XH2672253",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/09.mp3"
     },
     {
      "n": 10,
      "title": "First Responder",
      "isrc": "QT9XH2672254",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/10.mp3"
     },
     {
      "n": 11,
      "title": "Hero or Zero",
      "isrc": "QT9XH2672255",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/11.mp3"
     },
     {
      "n": 12,
      "title": "Blue Plague",
      "isrc": "QT9XH2672256",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/12.mp3"
     },
     {
      "n": 13,
      "title": "Counted as Cast",
      "isrc": "QT9XH2672257",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/13.mp3"
     },
     {
      "n": 14,
      "title": "We Are Dangerous",
      "isrc": "QT9XH2672258",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/14.mp3"
     },
     {
      "n": 15,
      "title": "Defiance",
      "isrc": "QT9XH2672259",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/dangerous/15.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/dangerous.json",
@@ -330,7 +348,8 @@
      "title": "Road to Hell",
      "isrc": "QT6J22605151",
      "lyrics": "lyrics",
-     "lyrics_source": "artist"
+     "lyrics_source": "artist",
+     "preview": "assets/audio/previews/road-to-hell/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/road-to-hell.json",
@@ -385,7 +404,8 @@
      "n": 1,
      "title": "Blood Waters the Tree",
      "isrc": "QT6HX2695835",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/blood-waters-the-tree/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/blood-waters-the-tree.json",
@@ -440,109 +460,127 @@
      "n": 1,
      "title": "Gentle Thunder",
      "isrc": "QT6HX2631826",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/01.mp3"
     },
     {
      "n": 2,
      "title": "Quiet Wildfire",
      "isrc": "QT6HX2631827",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/02.mp3"
     },
     {
      "n": 3,
      "title": "Savage Calm",
      "isrc": "QT6HX2631828",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/03.mp3"
     },
     {
      "n": 4,
      "title": "Serene Claw",
      "isrc": "QT6HX2631829",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/04.mp3"
     },
     {
      "n": 5,
      "title": "Somber Tempest",
      "isrc": "QT6HX2631830",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/05.mp3"
     },
     {
      "n": 6,
      "title": "Tranquil Blaze",
      "isrc": "QT6HX2631831",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/06.mp3"
     },
     {
      "n": 7,
      "title": "Silk and Steel",
      "isrc": "QT6HX2631832",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/07.mp3"
     },
     {
      "n": 8,
      "title": "Velvet Storm",
      "isrc": "QT6HX2631833",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/08.mp3"
     },
     {
      "n": 9,
      "title": "Hushed Fury",
      "isrc": "QT6HX2631834",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/09.mp3"
     },
     {
      "n": 10,
      "title": "Tender Rage",
      "isrc": "QT6HX2631835",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/10.mp3"
     },
     {
      "n": 11,
      "title": "Yearning Howl",
      "isrc": "QT6HX2631836",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/11.mp3"
     },
     {
      "n": 12,
      "title": "Blazing Shadow",
      "isrc": "QT6HX2631837",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/12.mp3"
     },
     {
      "n": 13,
      "title": "Silent Frenzy",
      "isrc": "QT6HX2631838",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/13.mp3"
     },
     {
      "n": 14,
      "title": "Solemn Edge",
      "isrc": "QT6HX2631839",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/14.mp3"
     },
     {
      "n": 15,
      "title": "Serene Thunder",
      "isrc": "QT6HX2631840",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/15.mp3"
     },
     {
      "n": 16,
      "title": "Whispering Inferno",
      "isrc": "QT6HX2631841",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/16.mp3"
     },
     {
      "n": 17,
      "title": "Stoic Rage",
      "isrc": "QT6HX2631842",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/17.mp3"
     },
     {
      "n": 18,
      "title": "Feral Lullaby",
      "isrc": "QT6HX2631843",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-3/18.mp3"
     }
    ],
    "lyrics_file": null,
@@ -597,109 +635,127 @@
      "n": 1,
      "title": "Silent Tempest",
      "isrc": "QT6HS2632087",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/01.mp3"
     },
     {
      "n": 2,
      "title": "Velvet Thunder",
      "isrc": "QT6HS2632088",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/02.mp3"
     },
     {
      "n": 3,
      "title": "Gentle Savage",
      "isrc": "QT6HS2632089",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/03.mp3"
     },
     {
      "n": 4,
      "title": "Serene Storm",
      "isrc": "QT6HS2632090",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/04.mp3"
     },
     {
      "n": 5,
      "title": "Whispering Fury",
      "isrc": "QT6HS2632091",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/05.mp3"
     },
     {
      "n": 6,
      "title": "Soft Inferno",
      "isrc": "QT6HS2632092",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/06.mp3"
     },
     {
      "n": 7,
      "title": "Tranquil Rage",
      "isrc": "QT6HS2632093",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/07.mp3"
     },
     {
      "n": 8,
      "title": "Hushed Blaze",
      "isrc": "QT6HS2632094",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/08.mp3"
     },
     {
      "n": 9,
      "title": "Peaceful Wildfire",
      "isrc": "QT6HS2632095",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/09.mp3"
     },
     {
      "n": 10,
      "title": "Tender Maelstrom",
      "isrc": "QT6HS2632096",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/10.mp3"
     },
     {
      "n": 11,
      "title": "Still Flame",
      "isrc": "QT6HS2632097",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/11.mp3"
     },
     {
      "n": 12,
      "title": "Howling Calm",
      "isrc": "QT6HS2632098",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/12.mp3"
     },
     {
      "n": 13,
      "title": "Quiet Claw",
      "isrc": "QT6HS2632099",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/13.mp3"
     },
     {
      "n": 14,
      "title": "Soft Savagery",
      "isrc": "QT6HS2632100",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/14.mp3"
     },
     {
      "n": 15,
      "title": "Serene Fury",
      "isrc": "QT6HS2632101",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/15.mp3"
     },
     {
      "n": 16,
      "title": "Whispering Inferno",
      "isrc": "QT6HS2632102",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/16.mp3"
     },
     {
      "n": 17,
      "title": "Tempests Lullaby",
      "isrc": "QT6HS2632103",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/17.mp3"
     },
     {
      "n": 18,
      "title": "Mellow Thunder",
      "isrc": "QT6HS2632104",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade-volume-2/18.mp3"
     }
    ],
    "lyrics_file": null,
@@ -754,91 +810,106 @@
      "n": 1,
      "title": "True Liberty's ROAR",
      "isrc": "QT6HR2651300",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/01.mp3"
     },
     {
      "n": 2,
      "title": "The Rebel Prayer",
      "isrc": "QT6HR2651301",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/02.mp3"
     },
     {
      "n": 3,
      "title": "Sovereign Flame",
      "isrc": "QT6HR2651302",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/03.mp3"
     },
     {
      "n": 4,
      "title": "Sovereign Thunder",
      "isrc": "QT6HR2651303",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/04.mp3"
     },
     {
      "n": 5,
      "title": "To the Bitter End",
      "isrc": "QT6HR2651304",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/05.mp3"
     },
     {
      "n": 6,
      "title": "Forge of Fathers",
      "isrc": "QT6HR2651305",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/06.mp3"
     },
     {
      "n": 7,
      "title": "Endowed in Flame",
      "isrc": "QT6HR2651306",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/07.mp3"
     },
     {
      "n": 8,
      "title": "Immortal Flame",
      "isrc": "QT6HR2651307",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/08.mp3"
     },
     {
      "n": 9,
      "title": "Sovereign Dawn",
      "isrc": "QT6HR2651308",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/09.mp3"
     },
     {
      "n": 10,
      "title": "Burning for Liberty",
      "isrc": "QT6HR2651309",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/10.mp3"
     },
     {
      "n": 11,
      "title": "Endowed by the Creator",
      "isrc": "QT6HR2651310",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/11.mp3"
     },
     {
      "n": 12,
      "title": "Forge Eternal",
      "isrc": "QT6HR2651311",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/12.mp3"
     },
     {
      "n": 13,
      "title": "Endowed Sovereignty",
      "isrc": "QT6HR2651312",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/13.mp3"
     },
     {
      "n": 14,
      "title": "Havilah",
      "isrc": "QT6HR2651313",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/14.mp3"
     },
     {
      "n": 15,
      "title": "Sovereign Heart of Fire",
      "isrc": "QT6HR2651314",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sovereign-heart-of-fire/15.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/sovereign-heart-of-fire.json",
@@ -894,14 +965,16 @@
      "title": "Ruby Ridge",
      "isrc": "QT6HR2642231",
      "lyrics": "lyrics",
-     "lyrics_source": "artist"
+     "lyrics_source": "artist",
+     "preview": "assets/audio/previews/the-ridge/01.mp3"
     },
     {
      "n": 2,
      "title": "The Ridge",
      "isrc": "QT6HR2642232",
      "lyrics": "lyrics",
-     "lyrics_source": "artist"
+     "lyrics_source": "artist",
+     "preview": "assets/audio/previews/the-ridge/02.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/the-ridge.json",
@@ -956,109 +1029,127 @@
      "n": 1,
      "title": "Savage Surrender",
      "isrc": "QT6HP2682017",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/01.mp3"
     },
     {
      "n": 2,
      "title": "Blood Kissed",
      "isrc": "QT6HP2682018",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/02.mp3"
     },
     {
      "n": 3,
      "title": "Quiet Thorns",
      "isrc": "QT6HP2682019",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/03.mp3"
     },
     {
      "n": 4,
      "title": "Feral Edge",
      "isrc": "QT6HP2682020",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/04.mp3"
     },
     {
      "n": 5,
      "title": "Crimson Whisper",
      "isrc": "QT6HP2682021",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/05.mp3"
     },
     {
      "n": 6,
      "title": "Howling Grace",
      "isrc": "QT6HP2682022",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/06.mp3"
     },
     {
      "n": 7,
      "title": "Velvet Ruin",
      "isrc": "QT6HP2682024",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/07.mp3"
     },
     {
      "n": 8,
      "title": "Tender Carnage",
      "isrc": "QT6HP2682026",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/08.mp3"
     },
     {
      "n": 9,
      "title": "Shards of Devotion",
      "isrc": "QT6HP2682027",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/09.mp3"
     },
     {
      "n": 10,
      "title": "Wild and Wanting",
      "isrc": "QT6HP2682028",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/10.mp3"
     },
     {
      "n": 11,
      "title": "Ashen Embrace",
      "isrc": "QT6HP2682029",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/11.mp3"
     },
     {
      "n": 12,
      "title": "Silent Fury",
      "isrc": "QT6HP2682030",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/12.mp3"
     },
     {
      "n": 13,
      "title": "Roses on the Blade",
      "isrc": "QT6HP2682031",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/13.mp3"
     },
     {
      "n": 14,
      "title": "Heart of the Storm",
      "isrc": "QT6HP2682032",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/14.mp3"
     },
     {
      "n": 15,
      "title": "Edge of Softness",
      "isrc": "QT6HP2682033",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/15.mp3"
     },
     {
      "n": 16,
      "title": "Echoes of the Wound",
      "isrc": "QT6HP2682034",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/16.mp3"
     },
     {
      "n": 17,
      "title": "Last Savage Prayer",
      "isrc": "QT6HP2682035",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/17.mp3"
     },
     {
      "n": 18,
      "title": "Fiercely Grateful",
      "isrc": "QT6HP2682036",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/savage-serenade/18.mp3"
     }
    ],
    "lyrics_file": null,
@@ -1113,91 +1204,106 @@
      "n": 1,
      "title": "One Man (Invictus)",
      "isrc": "QT6HN2654612",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/01.mp3"
     },
     {
      "n": 2,
      "title": "One Man (At the Gallows)",
      "isrc": "QT6HN2654613",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/02.mp3"
     },
     {
      "n": 3,
      "title": "One Man (Stood)",
      "isrc": "QT6HN2654614",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/03.mp3"
     },
     {
      "n": 4,
      "title": "One Man (Burned)",
      "isrc": "QT6HN2654615",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/04.mp3"
     },
     {
      "n": 5,
      "title": "One Man (Conviction)",
      "isrc": "QT6HN2654616",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/05.mp3"
     },
     {
      "n": 6,
      "title": "One Man (The Ghost)",
      "isrc": "QT6HN2654617",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/06.mp3"
     },
     {
      "n": 7,
      "title": "One Man (FRANTIC)",
      "isrc": "QT6HN2654618",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/07.mp3"
     },
     {
      "n": 8,
      "title": "One Man (The Swamp Fox)",
      "isrc": "QT6HN2654619",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/08.mp3"
     },
     {
      "n": 9,
      "title": "One Man (Gandhi)",
      "isrc": "QT6HN2654620",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/09.mp3"
     },
     {
      "n": 10,
      "title": "One Song (Devotion)",
      "isrc": "QT6HN2654621",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/10.mp3"
     },
     {
      "n": 11,
      "title": "One Man (Leonidas)",
      "isrc": "QT6HN2654622",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/11.mp3"
     },
     {
      "n": 12,
      "title": "One Man (Immortal Stand)",
      "isrc": "QT6HN2654623",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/12.mp3"
     },
     {
      "n": 13,
      "title": "One Man (Defiance)",
      "isrc": "QT6HN2654624",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/13.mp3"
     },
     {
      "n": 14,
      "title": "One Man (Heart of Thunder)",
      "isrc": "QT6HN2654625",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/14.mp3"
     },
     {
      "n": 15,
      "title": "One Man Nation (Under God)",
      "isrc": "QT6HN2654626",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man-invictus/15.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/one-man-invictus.json",
@@ -1244,7 +1350,8 @@
      "n": 1,
      "title": "One Man - 站着",
      "isrc": "QT6HM2669331",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/one-man/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/one-man.json",
@@ -1303,73 +1410,85 @@
      "n": 1,
      "title": "Wayward",
      "isrc": "QT6G62685858",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-3/01.mp3"
     },
     {
      "n": 2,
      "title": "Adrift",
      "isrc": "QT6G62685859",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-3/02.mp3"
     },
     {
      "n": 3,
      "title": "Reflections",
      "isrc": "QT6G62685860",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-3/03.mp3"
     },
     {
      "n": 4,
      "title": "Resonance",
      "isrc": "QT6G62685861",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-3/04.mp3"
     },
     {
      "n": 5,
      "title": "Trance",
      "isrc": "QT6G62685862",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-3/05.mp3"
     },
     {
      "n": 6,
      "title": "Within",
      "isrc": "QT6G62685863",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-3/06.mp3"
     },
     {
      "n": 7,
      "title": "Reunion",
      "isrc": "QT6G62685864",
-     "lyrics": "none"
+     "lyrics": "none",
+     "preview": "assets/audio/previews/spellbound-volume-3/07.mp3"
     },
     {
      "n": 8,
      "title": "Bliss",
      "isrc": "QT6G62685865",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-3/08.mp3"
     },
     {
      "n": 9,
      "title": "Last light",
      "isrc": "QT6G62685866",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-3/09.mp3"
     },
     {
      "n": 10,
      "title": "Untethered",
      "isrc": "QT6G62685867",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-3/10.mp3"
     },
     {
      "n": 11,
      "title": "Return",
      "isrc": "QT6G62685868",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-3/11.mp3"
     },
     {
      "n": 12,
      "title": "Flickering Glimpse",
      "isrc": "QT6G62685869",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-3/12.mp3"
     }
    ],
    "lyrics_file": null,
@@ -1428,91 +1547,106 @@
      "n": 1,
      "title": "Rebel Anthem",
      "isrc": "QT6G62652781",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/01.mp3"
     },
     {
      "n": 2,
      "title": "Rebel Anthem (Reckoning)",
      "isrc": "QT6G62652782",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/02.mp3"
     },
     {
      "n": 3,
      "title": "The Tree is Thirsty",
      "isrc": "QT6G62652783",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/03.mp3"
     },
     {
      "n": 4,
      "title": "The Tree is Thirsty (Sovereign Armageddon)",
      "isrc": "QT6G62652784",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/04.mp3"
     },
     {
      "n": 5,
      "title": "Sovereign Tongue",
      "isrc": "QT6G62652785",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/05.mp3"
     },
     {
      "n": 6,
      "title": "They Fear Us",
      "isrc": "QT6G62652786",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/06.mp3"
     },
     {
      "n": 7,
      "title": "Tree of Liberty (Reignited)",
      "isrc": "QT6G62652787",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/07.mp3"
     },
     {
      "n": 8,
      "title": "Blood for the Beast",
      "isrc": "QT6G62652788",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/08.mp3"
     },
     {
      "n": 9,
      "title": "The Hydra Bleeds",
      "isrc": "QT6G62652789",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/09.mp3"
     },
     {
      "n": 10,
      "title": "Brotherhood",
      "isrc": "QT6G62652790",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/10.mp3"
     },
     {
      "n": 11,
      "title": "Pure FURY!",
      "isrc": "QT6G62652791",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/11.mp3"
     },
     {
      "n": 12,
      "title": "Rebel Anthem (Blood Tax)",
      "isrc": "QT6G62652792",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/12.mp3"
     },
     {
      "n": 13,
      "title": "At the Gallows",
      "isrc": "QT6G62652793",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/13.mp3"
     },
     {
      "n": 14,
      "title": "What Is Tyranny?",
      "isrc": "QT6G62652794",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/14.mp3"
     },
     {
      "n": 15,
      "title": "What Is Rebellion?",
      "isrc": "QT6G62652795",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/rebel-anthem/15.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/rebel-anthem.json",
@@ -1567,7 +1701,8 @@
      "n": 1,
      "title": "The Savage Ledger",
      "isrc": "QT6FH2601974",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/the-savage-ledger/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/the-savage-ledger.json",
@@ -1626,73 +1761,85 @@
      "n": 1,
      "title": "Fading",
      "isrc": "QT6F92689660",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-2/01.mp3"
     },
     {
      "n": 2,
      "title": "Firelight Embers",
      "isrc": "QT6F92689661",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-2/02.mp3"
     },
     {
      "n": 3,
      "title": "Soft Wind's",
      "isrc": "QT6F92689662",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-2/03.mp3"
     },
     {
      "n": 4,
      "title": "Embers",
      "isrc": "QT6F92689663",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-2/04.mp3"
     },
     {
      "n": 5,
      "title": "Sand of Time",
      "isrc": "QT6F92689664",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-2/05.mp3"
     },
     {
      "n": 6,
      "title": "Painting Clouds",
      "isrc": "QT6F92689665",
-     "lyrics": "none"
+     "lyrics": "none",
+     "preview": "assets/audio/previews/spellbound-volume-2/06.mp3"
     },
     {
      "n": 7,
      "title": "Stolen Time",
      "isrc": "QT6F92689666",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-2/07.mp3"
     },
     {
      "n": 8,
      "title": "Nightfall",
      "isrc": "QT6F92689667",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-2/08.mp3"
     },
     {
      "n": 9,
      "title": "Endless Moments",
      "isrc": "QT6F92689668",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-2/09.mp3"
     },
     {
      "n": 10,
      "title": "Morning Dew",
      "isrc": "QT6F92689669",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-2/10.mp3"
     },
     {
      "n": 11,
      "title": "Sun Down",
      "isrc": "QT6F92689670",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-2/11.mp3"
     },
     {
      "n": 12,
      "title": "Midnight Rain",
      "isrc": "QT6F92689671",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-2/12.mp3"
     }
    ],
    "lyrics_file": null,
@@ -1751,73 +1898,85 @@
      "n": 1,
      "title": "Captive",
      "isrc": "QT6F92681190",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-1/01.mp3"
     },
     {
      "n": 2,
      "title": "Transfixed",
      "isrc": "QT6F92681191",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-1/02.mp3"
     },
     {
      "n": 3,
      "title": "Smitten",
      "isrc": "QT6F92681192",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-1/03.mp3"
     },
     {
      "n": 4,
      "title": "Spellbound",
      "isrc": "QT6F92681193",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-1/04.mp3"
     },
     {
      "n": 5,
      "title": "lingering",
      "isrc": "QT6F92681194",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-1/05.mp3"
     },
     {
      "n": 6,
      "title": "Stoic",
      "isrc": "QT6F92681195",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-1/06.mp3"
     },
     {
      "n": 7,
      "title": "Rhythms of the Heart",
      "isrc": "QT6F92681196",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-1/07.mp3"
     },
     {
      "n": 8,
      "title": "Country Stars",
      "isrc": "QT6F92681197",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-1/08.mp3"
     },
     {
      "n": 9,
      "title": "Mesmerized",
      "isrc": "QT6F92681198",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-1/09.mp3"
     },
     {
      "n": 10,
      "title": "Groove",
      "isrc": "QT6F92681199",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-1/10.mp3"
     },
     {
      "n": 11,
      "title": "Traveling",
      "isrc": "QT6F92681200",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-1/11.mp3"
     },
     {
      "n": 12,
      "title": "Taken",
      "isrc": "QT6F92681201",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/spellbound-volume-1/12.mp3"
     }
    ],
    "lyrics_file": null,
@@ -1872,7 +2031,8 @@
      "n": 1,
      "title": "Flock of the Tyrants",
      "isrc": "QT6F92659506",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/flock-of-the-tyrants/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/flock-of-the-tyrants.json",
@@ -1927,7 +2087,8 @@
      "n": 1,
      "title": "The Flock Betrayal",
      "isrc": "QT6F82621394",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/the-flock-betrayal/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/the-flock-betrayal.json",
@@ -1986,7 +2147,8 @@
      "n": 1,
      "title": "Violent Light",
      "isrc": "QT6F82613759",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/violent-light/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/violent-light.json",
@@ -2045,7 +2207,8 @@
      "n": 1,
      "title": "EVIL EYE CONTRACTS",
      "isrc": "QT6F62681643",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/evil-eye-contracts/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/evil-eye-contracts.json",
@@ -2104,7 +2267,8 @@
      "n": 1,
      "title": "Carry the Star",
      "isrc": "QT6F42637691",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/carry-the-star/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/carry-the-star.json",
@@ -2163,7 +2327,8 @@
      "n": 1,
      "title": "Anvil's Kiss",
      "isrc": "QT6F22689948",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/anvil-s-kiss/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/anvil-s-kiss.json",
@@ -2222,73 +2387,85 @@
      "n": 1,
      "title": "Tin Cathedral Reverberations",
      "isrc": "QT6F22604260",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/01.mp3"
     },
     {
      "n": 2,
      "title": "Rusted Industrial Liturgy",
      "isrc": "QT6F22604261",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/02.mp3"
     },
     {
      "n": 3,
      "title": "Echoes of Distortion",
      "isrc": "QT6F22604262",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/03.mp3"
     },
     {
      "n": 4,
      "title": "Grunge Machine Vespers",
      "isrc": "QT6F22604263",
-     "lyrics": "none"
+     "lyrics": "none",
+     "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/04.mp3"
     },
     {
      "n": 5,
      "title": "Techno Tin Collapse",
      "isrc": "QT6F22604264",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/05.mp3"
     },
     {
      "n": 6,
      "title": "Voltage and Rust",
      "isrc": "QT6F22604265",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/06.mp3"
     },
     {
      "n": 7,
      "title": "Distorted Altar Storm",
      "isrc": "QT6F22604266",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/07.mp3"
     },
     {
      "n": 8,
      "title": "Cathedral Core Decay",
      "isrc": "QT6F22604267",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/08.mp3"
     },
     {
      "n": 9,
      "title": "Mechanical Grunge Frequency",
      "isrc": "QT6F22604268",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/09.mp3"
     },
     {
      "n": 10,
      "title": "Shadow Pulse Requiem",
      "isrc": "QT6F22604269",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/10.mp3"
     },
     {
      "n": 11,
      "title": "EDM Rust Sermon",
      "isrc": "QT6F22604270",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/11.mp3"
     },
     {
      "n": 12,
      "title": "Tinmouth Echo Chamber",
      "isrc": "QT6F22604271",
-     "lyrics": "instrumental"
+     "lyrics": "instrumental",
+     "preview": "assets/audio/previews/tinmouth-cathedral-volume-1/12.mp3"
     }
    ],
    "lyrics_file": null,
@@ -2343,7 +2520,8 @@
      "n": 1,
      "title": "Blazing Stars",
      "isrc": "QT6EY2616104",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/blazing-stars/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/blazing-stars.json",
@@ -2402,7 +2580,8 @@
      "n": 1,
      "title": "America 250",
      "isrc": "QT6EW2622862",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/america-250/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/america-250.json",
@@ -2461,7 +2640,8 @@
      "n": 1,
      "title": "Sacred Steel",
      "isrc": "QT6EV2671151",
-     "lyrics": "lyrics"
+     "lyrics": "lyrics",
+     "preview": "assets/audio/previews/sacred-steel/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/sacred-steel.json",

@@ -288,6 +288,9 @@ def main():
     cfg = load_site_config(a.site_config, {x["slug"] for x in releases})
     for x in releases:
         x["download_url"] = cfg["download_url_by_slug"].get(x["slug"])
+        for t in x["tracks"]:   # 30 s previews made by tools/make_previews.py (only if the clip exists)
+            pv = f"assets/audio/previews/{x['slug']}/{t['n']:02d}.mp3"
+            t["preview"] = pv if (ROOT / pv).exists() else None
     data = {"artist": ARTIST, "generated": datetime.now().isoformat(timespec="seconds"),
             "donate_url": cfg["donate_url"], "releases": releases}
     print("downloads enabled:", sum(1 for x in releases if x["download_url"]), "| donate enabled:", bool(cfg["donate_url"]))

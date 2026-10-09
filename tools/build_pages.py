@@ -296,7 +296,7 @@ def topbar(root, has_about, home=False):
 def footer(root, js_v):
     year = date.today().year
     return f'''<footer class="footer">
-  <p>Music, lyrics and artwork &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</p>
+  <p>Music, lyrics, artwork and audio previews &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</p>
   <a class="footer-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
 </footer>
 <a class="to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l-7 7m7-7l7 7M12 5v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -305,6 +305,8 @@ def footer(root, js_v):
 </html>
 '''
 
+PLAY_ICON = '<svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>'
+PAUSE_ICON = '<svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>'
 NT = '<span class="sr-only"> (opens in a new tab)</span>'
 EXT = '<svg class="ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 
@@ -472,16 +474,29 @@ def build_release(releases, i, site, today, v, has_about):
                    "".join(f'<li><a class="store" href="{e(s["url"])}" target="_blank" rel="noopener">{e(s["name"])}{EXT}{NT}</a></li>' for s in stores) +
                    "</ul></div>")
     tracks = []
+    def pv_btn(t):
+        if not t.get("preview"):
+            return '<span class="pv-gap" aria-hidden="true"></span>'
+        return (f'<button type="button" class="pv" data-src="{root}{t["preview"]}" data-title="{e(t["title"])}" '
+                f'aria-label="Play 30-second preview of {e(t["title"])}">{PLAY_ICON}{PAUSE_ICON}</button>')
     for t in r["tracks"]:
+        bar = '<span class="pv-bar" aria-hidden="true"><span></span></span>' if t.get("preview") else ""
         if t["lyrics"] == "lyrics" and r.get("lyrics_file"):
-            tracks.append(f'<li class="has-lyrics"><span class="n">{t["n"]}</span><details data-isrc="{e(t["isrc"])}">'
+            tracks.append(f'<li class="has-lyrics">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<details data-isrc="{e(t["isrc"])}">'
                           f'<summary><span class="tt">{e(t["title"])}</span><span class="ltag" aria-hidden="true">Lyrics</span>'
                           f'<span class="sr-only"> — show lyrics</span></summary>'
                           f'<div class="lyrics" aria-live="polite">Loading lyrics…</div>'
                           f'<p class="lcopy">&copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p></details></li>')
         else:
             tag = ' <span class="itag">Instrumental</span>' if t["lyrics"] == "instrumental" else ""
-            tracks.append(f'<li><span class="n">{t["n"]}</span><span class="tt">{e(t["title"])}{tag}</span></li>')
+            tracks.append(f'<li>{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<span class="tt">{e(t["title"])}{tag}</span></li>')
+    first = next((t for t in r["tracks"] if t.get("preview")), None)
+    preview_bar = (f'<div class="pv-main"><button type="button" class="pv-top" data-first="{root}{first["preview"]}" '
+                   f'aria-label="Play 30-second preview of {e(first["title"])}">{PLAY_ICON}{PAUSE_ICON}'
+                   f'<span class="pv-top-label">Play preview</span></button>'
+                   f'<span class="pv-status"><span class="pv-now">{e(first["title"])}</span>'
+                   f'<span class="pv-time" aria-hidden="true">0:00 / 0:30</span></span>'
+                   f'<span class="pv-note">30s previews</span></div>') if first else ""
     n = len(r["tracks"])
     facts = (f'<li><span>Released</span> <span class="js-upcoming"{hid_up}>Out </span><time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time></li>'
              + (f'<li><span>Genre</span> {e(r["genre"])}</li>' if r.get("genre") else "")
@@ -519,6 +534,7 @@ def build_release(releases, i, site, today, v, has_about):
       <p class="by">{ARTIST}</p>
       <ul class="facts">{facts}</ul>
       <div class="listen">{listen}{buy_html(r.get("download_url"), "Download", "dl-soon")}</div>
+      {preview_bar}
       <h2 class="tracks-title">Tracklist</h2>
       <ol class="tracks">{"".join(tracks)}</ol>
     </div>
@@ -589,7 +605,7 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
   <p class="m">The link may be old or mistyped. Everything from {ARTIST} is on the home page.</p>
   <div class="row"><a class="btn" href="/">Back to home</a><a class="ghost" href="/#albums">Albums</a><a class="ghost" href="/#singles">Singles</a></div>
 </div></main>
-<footer>Music, lyrics and artwork &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</footer>
+<footer>Music, lyrics, artwork and audio previews &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</footer>
 </body>
 </html>
 ''')

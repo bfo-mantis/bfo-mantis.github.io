@@ -36,6 +36,74 @@
     });
   });
 
+  // 30-second previews: one shared <audio preload="none">, so only one clip plays at a time and nothing
+  // downloads until a play button is pressed.
+  var pvButtons = document.querySelectorAll("button.pv");
+  var top = document.querySelector("button.pv-top");
+  if (pvButtons.length) {
+    var audio = new Audio(); audio.preload = "none";
+    var current = null;   // the .pv button whose clip is loaded
+    var main = top && top.closest(".pv-main");
+    var nowEl = main && main.querySelector(".pv-now"), timeEl = main && main.querySelector(".pv-time");
+    var mmss = function (t) { t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ":" + ("0" + t % 60).slice(-2); };
+    var label = function (btn, playing) {
+      btn.setAttribute("aria-label", (playing ? "Pause" : "Play") + " 30-second preview of " + btn.getAttribute("data-title"));
+    };
+    var setState = function (playing) {
+      if (current) {
+        current.classList.toggle("is-playing", playing);
+        label(current, playing);
+        current.closest("li").classList.toggle("pv-active", true);
+      }
+      if (top) {
+        top.classList.toggle("is-playing", playing);
+        var title = current ? current.getAttribute("data-title") : pvButtons[0].getAttribute("data-title");
+        top.setAttribute("aria-label", (playing ? "Pause" : "Play") + " 30-second preview of " + title);
+        top.querySelector(".pv-top-label").textContent = playing ? "Pause preview" : "Play preview";
+        if (nowEl) nowEl.textContent = title;
+      }
+    };
+    var progress = function () {
+      if (!current) return;
+      var d = audio.duration || 30, p = Math.min(1, (audio.currentTime || 0) / d);
+      var bar = current.closest("li").querySelector(".pv-bar > span");
+      if (bar) bar.style.transform = "scaleX(" + p + ")";
+      if (timeEl) timeEl.textContent = mmss(audio.currentTime) + " / " + mmss(d);
+    };
+    var reset = function (btn) {
+      if (!btn) return;
+      btn.classList.remove("is-playing"); label(btn, false);
+      var li = btn.closest("li"); li.classList.remove("pv-active");
+      var bar = li.querySelector(".pv-bar > span"); if (bar) bar.style.transform = "scaleX(0)";
+    };
+    var play = function (btn) {
+      if (current === btn && !audio.paused) { audio.pause(); return; }
+      if (current !== btn) {
+        reset(current); current = btn;
+        audio.src = btn.getAttribute("data-src");
+      }
+      var pr = audio.play();
+      if (pr && pr.catch) pr.catch(function () { setState(false); });
+    };
+    Array.prototype.forEach.call(pvButtons, function (btn) {
+      btn.addEventListener("click", function () { play(btn); });
+    });
+    if (top) top.addEventListener("click", function () { play(current || pvButtons[0]); });
+    audio.addEventListener("play", function () { setState(true); });
+    audio.addEventListener("pause", function () { setState(false); });
+    audio.addEventListener("timeupdate", progress);
+    audio.addEventListener("ended", function () {
+      setState(false); reset(current); audio.currentTime = 0; if (timeEl) timeEl.textContent = "0:00 / 0:30";
+    });
+    audio.addEventListener("error", function () {
+      if (!current) return;
+      setState(false); if (nowEl) nowEl.textContent = "Preview unavailable";
+    });
+    document.addEventListener("keydown", function (ev) {   // Esc stops the preview
+      if (ev.key === "Escape" && !audio.paused) audio.pause();
+    });
+  }
+
   // Lyrics: fetched only when a track is first expanded (keeps the page light).
   var rel = document.querySelector("article.release[data-lyrics]");
   if (rel) {
