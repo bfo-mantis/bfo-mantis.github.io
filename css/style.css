@@ -121,3 +121,10 @@ a{color:inherit}
 @media (max-width:520px){.artist-link{margin:8px 0 0 0}}
 .lcopy{margin:0 0 14px;color:var(--muted);font-size:.78rem;letter-spacing:.01em}
 .art-copy{margin:12px 2px 0;color:var(--muted);font-size:.78rem;letter-spacing:.01em}
+/* future download / donate placeholders */
+.buy{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn-alt{display:inline-flex;align-items:center;gap:8px;border:1px solid #3a3a4a;background:rgba(23,23,31,.8);color:var(--text);font:600 .95rem/1 var(--body);text-decoration:none;padding:11px 18px;border-radius:999px}
+a.btn-alt:hover{border-color:var(--accent)}
+.btn-alt:disabled,.btn-alt[aria-disabled="true"]{color:#8d8c9c;border-style:dashed;background:transparent;cursor:not-allowed;pointer-events:none}
+.soon-tag{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#ffd166;border:1px solid rgba(255,209,102,.45);border-radius:999px;padding:3px 9px}
+.support-line{color:var(--muted);margin:14px 0 0;max-width:60ch}

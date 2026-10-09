@@ -49,6 +49,13 @@
     }).join("");
   }
 
+  // ---------- support (home) ----------
+  var sup = $("support-action");
+  if (sup && data.donate_url) {
+    sup.innerHTML = '<a class="btn-alt" href="' + esc(data.donate_url) + '" target="_blank" rel="noopener">Donate' +
+      '<span class="sr-only"> (opens in a new tab)</span></a>';
+  }
+
   // ---------- release ----------
   var el = $("release");
   if (el) {
@@ -76,6 +83,11 @@
           return '<li><a class="store" href="' + esc(st.url) + '" target="_blank" rel="noopener">' + esc(st.name) + NT + "</a></li>";
         }).join("") + "</ul></div>";
     }
+    // Direct download: real link only when content/site_config.json has a URL; otherwise a disabled placeholder.
+    listen += '<div class="buy">' + (r.download_url
+      ? '<a class="btn-alt" href="' + esc(r.download_url) + '" target="_blank" rel="noopener">Download' + NT + "</a>"
+      : '<button type="button" class="btn-alt" disabled aria-disabled="true" aria-describedby="dl-soon">Download</button>' +
+        '<span class="soon-tag" id="dl-soon">Coming soon</span>') + "</div>";
     el.innerHTML =
       '<div class="cover-col"><div class="cover">' + picture(r, false, true) + "</div>" +
       '<p class="art-copy">Artwork &copy; ' + r.release_date.slice(0, 4) + " bfo.mantis Records. All rights reserved.</p></div>" +

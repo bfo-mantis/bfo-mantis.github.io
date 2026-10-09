@@ -146,6 +146,25 @@ def write_lyrics_files(releases, lyrics, edits=None, log=None, overrides=None):
             (d / f"{r['slug']}.json").write_text(json.dumps(m, ensure_ascii=False)); n += 1
     return n
 
+def load_site_config(path, slugs):
+    """content/site_config.json: future download/donate links. null = disabled 'Coming soon' placeholder.
+    Only https URLs are accepted; anything else is ignored with a warning."""
+    cfg = {"donate_url": None, "download_url_by_slug": {}}
+    p = Path(path) if path else None
+    if p and p.exists():
+        raw = json.loads(p.read_text())
+        cfg["donate_url"] = raw.get("donate_url")
+        cfg["download_url_by_slug"] = dict(raw.get("download_url_by_slug") or {})
+    ok = lambda u: isinstance(u, str) and u.startswith("https://")
+    if cfg["donate_url"] is not None and not ok(cfg["donate_url"]):
+        print("site_config: donate_url ignored (must be https://)"); cfg["donate_url"] = None
+    for k, u in list(cfg["download_url_by_slug"].items()):
+        if k not in slugs:
+            print(f"site_config: unknown slug {k!r} ignored"); cfg["download_url_by_slug"].pop(k); continue
+        if u is not None and not ok(u):
+            print(f"site_config: download_url for {k} ignored (must be https://)"); cfg["download_url_by_slug"][k] = None
+    return cfg
+
 def make_covers(url, slug, force):
     from PIL import Image
     cache = ROOT / "tools" / ".cache"; cache.mkdir(parents=True, exist_ok=True)
@@ -176,6 +195,8 @@ def main():
                     help="JSON keyed by ISRC: {release_title, track_title, lyrics}; skipped if missing")
     ap.add_argument("--lyrics-status", default="/workspace/lyrics_status.json",
                     help="JSON keyed by ISRC: has_lyrics | instrumental | no_lyrics; skipped if missing")
+    ap.add_argument("--site-config", default=str(ROOT / "content" / "site_config.json"),
+                    help="future download/donate links (null = disabled placeholder)")
     ap.add_argument("--lyrics-overrides", default=str(ROOT / "content" / "lyrics_overrides"),
                     help="folder of <ISRC>.txt files that fully replace the DistroKid lyrics for that track")
     ap.add_argument("--lyrics-edits", default=str(ROOT / "content" / "lyrics_edits.json"),
@@ -230,7 +251,12 @@ def main():
     print(f"lyrics overrides: {len(overrides)} applied" + (f"; NOT on site: {sorted(set(overrides) - site_isrcs_o)}" if set(overrides) - site_isrcs_o else ""))
     n_ed = sum(len(v["edits"]) for v in edits.values())
     site_isrcs = {t["isrc"] for x in releases for t in x["tracks"]}
-    data = {"artist": ARTIST, "generated": datetime.now().isoformat(timespec="seconds"), "releases": releases}
+    cfg = load_site_config(a.site_config, {x["slug"] for x in releases})
+    for x in releases:
+        x["download_url"] = cfg["download_url_by_slug"].get(x["slug"])
+    data = {"artist": ARTIST, "generated": datetime.now().isoformat(timespec="seconds"),
+            "donate_url": cfg["donate_url"], "releases": releases}
+    print("downloads enabled:", sum(1 for x in releases if x["download_url"]), "| donate enabled:", bool(cfg["donate_url"]))
     out = ROOT / "assets" / "data"; out.mkdir(parents=True, exist_ok=True)
     js = json.dumps(data, ensure_ascii=False, indent=1)
     (out / "releases.json").write_text(js)
