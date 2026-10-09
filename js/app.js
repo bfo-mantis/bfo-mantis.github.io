@@ -77,7 +77,8 @@
         }).join("") + "</ul></div>";
     }
     el.innerHTML =
-      '<div class="cover">' + picture(r, false, true) + "</div>" +
+      '<div class="cover-col"><div class="cover">' + picture(r, false, true) + "</div>" +
+      '<p class="art-copy">Artwork &copy; ' + r.release_date.slice(0, 4) + " bfo.mantis Records. All rights reserved.</p></div>" +
       "<div>" +
       '<a class="back" href="./#' + (r.type === "album" ? "albums" : "singles") + '">← All releases</a>' +
       '<p class="eyebrow">' + (r.type === "album" ? "Album" : "Single") + (upcoming(r) ? " · Upcoming" : "") + "</p>" +

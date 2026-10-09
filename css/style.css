@@ -120,3 +120,4 @@ a{color:inherit}
 .artist-link:hover{border-color:var(--accent)}
 @media (max-width:520px){.artist-link{margin:8px 0 0 0}}
 .lcopy{margin:0 0 14px;color:var(--muted);font-size:.78rem;letter-spacing:.01em}
+.art-copy{margin:12px 2px 0;color:var(--muted);font-size:.78rem;letter-spacing:.01em}
