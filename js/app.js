@@ -36,6 +36,58 @@
     });
   });
 
+  // Analytics (GoatCounter, only when content/site_config.json sets goatcounter_code; no cookies). Every call is
+  // guarded, so nothing breaks when the script is absent, blocked or still loading.
+  var track = function (path, title) {
+    try {
+      var gc = window.goatcounter;
+      if (gc && typeof gc.count === "function") gc.count({ path: path, title: title || path, event: true });
+    } catch (e) { /* ignore */ }
+  };
+  var slugify = function (s) { return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); };
+  var relSlug = function (el) { var a = el && el.closest("[data-slug]"); return a ? a.getAttribute("data-slug") : ""; };
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest("a.store, a[data-gc]");
+    if (!a) return;
+    if (a.hasAttribute("data-gc")) { track(a.getAttribute("data-gc")); return; }
+    var svc = slugify((a.firstChild && a.firstChild.nodeValue) || a.textContent);
+    track("event/store/" + svc + "/" + relSlug(a));
+  });
+  each("details[data-isrc]", function (d) {
+    d.addEventListener("toggle", function () {
+      if (!d.open) return;
+      var n = d.closest("li").querySelector(".n");
+      track("event/lyrics/" + relSlug(d) + "/" + ("0" + (n ? n.textContent.trim() : "")).slice(-2));
+    });
+  });
+
+  // Mobile menu (<=780px): the toggle opens the nav panel; Esc, an outside click or choosing a link closes it.
+  var navBar = document.querySelector(".topbar"), tog = document.querySelector(".nav-toggle");
+  if (navBar && tog) {
+    var setOpen = function (on, focusBack) {
+      navBar.classList.toggle("nav-open", on); tog.setAttribute("aria-expanded", on ? "true" : "false");
+      if (on) { var a = navBar.querySelector("nav a"); if (a) a.focus(); } else if (focusBack) tog.focus();
+    };
+    tog.addEventListener("click", function () { setOpen(!navBar.classList.contains("nav-open")); });
+    each("nav a", function (a) { a.addEventListener("click", function () { setOpen(false); }); }, navBar);
+    document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && navBar.classList.contains("nav-open")) setOpen(false, true); });
+    document.addEventListener("click", function (ev) { if (navBar.classList.contains("nav-open") && !navBar.contains(ev.target)) setOpen(false); });
+  }
+
+  // "More" store buttons: extras are hidden by CSS (only when JS runs); the toggle reveals them.
+  each(".store-more", function (b) {
+    var ul = document.getElementById(b.getAttribute("aria-controls")); if (!ul) return;
+    var n = b.querySelector(".more-n");
+    b.addEventListener("click", function () {
+      var open = ul.hasAttribute("data-collapsed");
+      if (open) ul.removeAttribute("data-collapsed"); else ul.setAttribute("data-collapsed", "");
+      b.setAttribute("aria-expanded", open ? "true" : "false");
+      b.firstChild.nodeValue = open ? "Fewer" : "More";
+      if (n) n.hidden = open;
+      if (open) { var first = ul.querySelector(".store-extra a"); if (first) first.focus(); }
+    });
+  });
+
   // 30-second previews: one shared <audio preload="none">, so only one clip plays at a time and nothing
   // downloads until a play button is pressed.
   var pvButtons = document.querySelectorAll("button.pv");
@@ -78,9 +130,14 @@
     };
     var play = function (btn) {
       if (current === btn && !audio.paused) { audio.pause(); return; }
+      var fresh = current !== btn || audio.ended || audio.currentTime < 0.5;
       if (current !== btn) {
         reset(current); current = btn;
         audio.src = btn.getAttribute("data-src");
+      }
+      if (fresh) {   // a clip starting (not a resume after pause)
+        var m = /previews\/([^\/]+)\/(\d+)\.mp3/.exec(btn.getAttribute("data-src") || "");
+        if (m) track("event/play/" + m[1] + "/" + m[2]);
       }
       var pr = audio.play();
       if (pr && pr.catch) pr.catch(function () { setState(false); });

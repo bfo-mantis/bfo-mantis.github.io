@@ -1,6 +1,9 @@
 {
- "_note": "Future direct-purchase and donation links. Leave null to show the disabled 'Coming soon' placeholders. Fill in an https:// URL and rebuild (python3 tools/build_data.py --skip-covers) to switch a button on. Don't put prices here; the store sets them.",
+ "_note": "Future direct-purchase, donation and Members Lounge links, and the press contact (an https:// URL or an email address). Leave null to show the disabled 'Coming soon' placeholders. Fill in an https:// URL and rebuild (python3 tools/build_data.py --skip-covers) to switch a button on. Don't put prices here; the store sets them. goatcounter_code: just the GoatCounter site code (e.g. 'bfomantis'); null = no analytics script at all.",
  "donate_url": null,
+ "members_url": null,
+ "press_contact": null,
+ "goatcounter_code": null,
  "download_url_by_slug": {
   "crown-of-ash": null,
   "the-only-way": null,

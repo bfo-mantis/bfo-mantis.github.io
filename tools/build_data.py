@@ -47,7 +47,22 @@ def pick_listen(r):
         return r["distrokid_release_page"], "distrokid_page"
     return None, None
 
-STORE_ORDER = ["Spotify", "YouTube Music", "Apple Music", "iTunes", "Amazon", "Deezer", "Tidal", "iHeartRadio"]
+STORE_ORDER = ["Spotify", "Apple Music", "YouTube Music", "Amazon Music", "iTunes", "Deezer", "TIDAL", "iHeartRadio", "Pandora"]
+PRIMARY_STORES = 4   # the first four (when present) are shown up front; the rest go under "More"
+
+def load_store_links(path):
+    """content/store_links.json: slug -> [{service, url}] (made by tools/merge_store_links.py). https only."""
+    p = Path(path)
+    if not p.exists():
+        return None
+    data = {k: v for k, v in json.loads(p.read_text()).items() if not k.startswith("_")}
+    rank = {n: i for i, n in enumerate(STORE_ORDER)}
+    out = {}
+    for slug, lst in data.items():
+        bad = [x for x in lst if not str(x.get("url", "")).startswith("https://")]
+        if bad: sys.exit(f"store_links.json: non-https URL for {slug}: {bad}")
+        out[slug] = sorted(({"name": x["service"], "url": x["url"]} for x in lst), key=lambda x: rank.get(x["name"], len(STORE_ORDER)))
+    return out
 STORE_NAMES = {"youtube_music": "YouTube Music"}
 
 def clean_stores(sl, rtype="album"):
@@ -181,15 +196,26 @@ def write_lyrics_files(releases, lyrics, edits=None, log=None, overrides=None):
 def load_site_config(path, slugs):
     """content/site_config.json: future download/donate links. null = disabled 'Coming soon' placeholder.
     Only https URLs are accepted; anything else is ignored with a warning."""
-    cfg = {"donate_url": None, "download_url_by_slug": {}}
+    cfg = {"donate_url": None, "members_url": None, "press_contact": None, "goatcounter_code": None, "download_url_by_slug": {}}
     p = Path(path) if path else None
     if p and p.exists():
         raw = json.loads(p.read_text())
         cfg["donate_url"] = raw.get("donate_url")
+        cfg["members_url"] = raw.get("members_url")
+        cfg["press_contact"] = raw.get("press_contact")
+        cfg["goatcounter_code"] = raw.get("goatcounter_code")
         cfg["download_url_by_slug"] = dict(raw.get("download_url_by_slug") or {})
     ok = lambda u: isinstance(u, str) and u.startswith("https://")
     if cfg["donate_url"] is not None and not ok(cfg["donate_url"]):
         print("site_config: donate_url ignored (must be https://)"); cfg["donate_url"] = None
+    if cfg["members_url"] is not None and not ok(cfg["members_url"]):
+        print("site_config: members_url ignored (must be https://)"); cfg["members_url"] = None
+    pc = cfg["press_contact"]
+    if pc is not None and not (ok(pc) or (isinstance(pc, str) and re.fullmatch(r"[^@\s<>\"]+@[^@\s<>\"]+\.[A-Za-z]{2,}", pc))):
+        print("site_config: press_contact ignored (must be an https:// URL or an email address)"); cfg["press_contact"] = None
+    gcode = cfg["goatcounter_code"]
+    if gcode is not None and not (isinstance(gcode, str) and re.fullmatch(r"[a-z0-9][a-z0-9-]{0,62}", gcode)):
+        print("site_config: goatcounter_code ignored (just the site code, e.g. 'bfomantis' for bfomantis.goatcounter.com)"); cfg["goatcounter_code"] = None
     for k, u in list(cfg["download_url_by_slug"].items()):
         if k not in slugs:
             print(f"site_config: unknown slug {k!r} ignored"); cfg["download_url_by_slug"].pop(k); continue
@@ -235,6 +261,10 @@ def main():
                     help="folder of <ISRC>.txt files that fully replace the DistroKid lyrics for that track")
     ap.add_argument("--lyrics-edits", default=str(ROOT / "content" / "lyrics_edits.json"),
                     help="line-level cleanup/redaction edits keyed by ISRC (applied at build time; source untouched)")
+    ap.add_argument("--store-links", default=str(ROOT / "content" / "store_links.json"),
+                    help="direct store links per slug; when present they replace HyperFollow as the listen action")
+    ap.add_argument("--blurbs", default=str(ROOT / "content" / "blurbs.json"),
+                    help="approved release/track blurbs (releases by slug, tracks by ISRC); entries marked pending are skipped")
     ap.add_argument("--skip-covers", action="store_true")
     ap.add_argument("--force-covers", action="store_true")
     a = ap.parse_args()
@@ -251,6 +281,11 @@ def main():
     bad = {k: v for k, v in tso.items() if v not in ("instrumental", "no_lyrics")}
     if bad: sys.exit(f"track_status_overrides.json: unsupported values {bad}")
     lstatus = {**lstatus, **tso}
+    direct = load_store_links(a.store_links)
+    bl = json.loads(Path(a.blurbs).read_text()) if a.blurbs and Path(a.blurbs).exists() else {}
+    ok_blurb = lambda v: (v or {}).get("blurb") if (v or {}).get("basis") != "pending" and (v or {}).get("blurb") else None
+    rel_blurbs = {k: ok_blurb(v) for k, v in (bl.get("releases") or {}).items()}
+    trk_blurbs = {k: ok_blurb(v) for k, v in (bl.get("tracks") or {}).items()}
     used, releases, excluded, failed = set(), [], [], []
     for r in cat:
         if ARTIST not in (r.get("artist") or []):
@@ -261,6 +296,12 @@ def main():
         slug = slugify(r["title"], used)
         d = datetime.strptime(r["release_date"], "%B %d, %Y").date()
         url, src = pick_listen(r)
+        stores = clean_stores(r.get("store_links"), r["type"].lower())
+        if direct is not None:
+            # Direct store links replace the HyperFollow button. HyperFollow stays only as a fallback for a release
+            # with no direct links yet (labelled "Pre-save / listen").
+            stores = direct.get(slug, [])
+            url, src = (None, None) if stores else ((r["hyperfollow_url"], "hyperfollow_fallback") if is_public(r.get("hyperfollow_url")) else (None, None))
         cover = None
         if not a.skip_covers:
             try:
@@ -278,7 +319,7 @@ def main():
             "release_date": d.isoformat(), "release_date_display": r["release_date"],
             "genre": r.get("genre"), "label": r.get("label"), "upc": r.get("upc"),
             "listen_url": url, "listen_source": src,
-            "store_links": clean_stores(r.get("store_links"), r["type"].lower()), "cover": cover,
+            "store_links": stores, "cover": cover,
             "tracks": [track_entry(t, lyrics, lstatus) for t in r["tracklist"]],
         })
     # newest first; stable for equal dates (keeps catalog order)
@@ -294,6 +335,10 @@ def main():
     cfg = load_site_config(a.site_config, {x["slug"] for x in releases})
     for x in releases:
         x["download_url"] = cfg["download_url_by_slug"].get(x["slug"])
+        x["blurb"] = rel_blurbs.get(x["slug"])
+        for t in x["tracks"]:
+            # singles show their song blurb as the release blurb (not repeated on the track row)
+            t["blurb"] = trk_blurbs.get(t["isrc"]) if x["type"] == "album" else None
         for t in x["tracks"]:   # 30 s previews made by tools/make_previews.py (only if the clip exists)
             pv = f"assets/audio/previews/{x['slug']}/{t['n']:02d}.mp3"
             t["preview"] = pv if (ROOT / pv).exists() else None
@@ -312,8 +357,12 @@ def main():
           "| mixed:", [x["slug"] for x in releases if x["mixed"]] or "none",
           "| instrumental releases with tracks not marked instrumental (no lyrics on file):", unclassified or "none")
     data = {"artist": ARTIST, "generated": datetime.now().isoformat(timespec="seconds"),
-            "donate_url": cfg["donate_url"], "releases": releases}
-    print("downloads enabled:", sum(1 for x in releases if x["download_url"]), "| donate enabled:", bool(cfg["donate_url"]))
+            "donate_url": cfg["donate_url"], "members_url": cfg["members_url"], "press_contact": cfg["press_contact"],
+            "goatcounter_code": cfg["goatcounter_code"], "releases": releases}
+    print("blurbs: releases", sum(1 for x in releases if x["blurb"]), "| album tracks", sum(1 for x in releases for t in x["tracks"] if t["blurb"]),
+          "| releases without one:", [x["slug"] for x in releases if not x["blurb"]] or "none")
+    print("downloads enabled:", sum(1 for x in releases if x["download_url"]), "| donate enabled:", bool(cfg["donate_url"]), "| members (Join) enabled:", bool(cfg["members_url"]),
+          "| analytics:", f'GoatCounter ({cfg["goatcounter_code"]})' if cfg["goatcounter_code"] else "off")
     out = ROOT / "assets" / "data"; out.mkdir(parents=True, exist_ok=True)
     js = json.dumps(data, ensure_ascii=False, indent=1)
     (out / "releases.json").write_text(js)
@@ -321,7 +370,7 @@ def main():
     albums = sum(1 for x in releases if x["type"] == "album"); singles = sum(1 for x in releases if x["type"] == "single")
     print(f"releases: {len(releases)} (albums {albums}, singles {singles})")
     print("excluded:", excluded or "none")
-    print("listen sources:", {s: sum(1 for x in releases if x["listen_source"] == s) for s in ("hyperfollow", "store", "distrokid_page", None)})
+    print("listen sources:", {s: sum(1 for x in releases if x["listen_source"] == s) for s in ("hyperfollow", "hyperfollow_fallback", "store", "distrokid_page", None)})
     print("with store buttons:", sum(1 for x in releases if x["store_links"]))
     from collections import Counter
     print("stores:", dict(Counter(st["name"] for x in releases for st in x["store_links"])))

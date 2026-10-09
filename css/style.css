@@ -156,6 +156,13 @@ a.count:hover{color:var(--accent)}
 .store{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);background:rgba(17,17,24,.75);color:var(--text);text-decoration:none;
   font-size:.88rem;font-weight:500;padding:8px 13px 8px 15px;border-radius:999px;transition:border-color .2s,background .2s,color .2s}
 .store:hover{border-color:var(--accent);background:var(--accent-soft)}
+button.store{font:inherit;font-size:.88rem;font-weight:500;cursor:pointer;padding:8px 15px}
+.store-more{color:var(--muted)!important;border-style:dashed!important}
+.store-more[aria-expanded="true"]{color:var(--text)!important}
+.more-li{display:none}
+.js .more-li{display:list-item}
+.js .store-row[data-collapsed] .store-extra{display:none}
+.release-body .pv-main{margin:0 0 4px}
 .tracks-title{font:600 .74rem/1 var(--body);margin:40px 0 12px;color:var(--muted);text-transform:uppercase;letter-spacing:.16em}
 .tracks{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);counter-reset:none}
 .tracks li{position:relative;display:grid;grid-template-columns:34px 2em minmax(0,1fr);gap:6px;padding:0 4px;border-bottom:1px solid var(--line);align-items:baseline}
@@ -234,13 +241,30 @@ a.btn-alt:hover{border-color:var(--accent);background:var(--accent-soft)}
 .pv-time{font-size:.76rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .pv-note{font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 8px;margin-right:4px}
 @media (max-width:420px){.pv-main{border-radius:var(--radius);max-width:100%}.pv-now{max-width:16ch}}
-/* narrow screens: brand on the first row, the four nav links spread across a second row (all visible, no
-   sideways scrolling); the nav still scrolls as a last resort if a very narrow screen can't fit them */
-@media (max-width:560px){html{scroll-padding-top:112px}
-  .topbar{flex-wrap:wrap;row-gap:0;min-height:0;padding-top:10px;padding-bottom:4px}
-  .is-scrolled .topbar{padding-top:6px;padding-bottom:2px}
-  .topbar nav{flex:1 0 100%;justify-content:space-between;gap:0;margin:0 -8px;min-width:0;overflow-x:auto;scrollbar-width:none}
-  .topbar nav::-webkit-scrollbar{display:none}.topbar nav a{white-space:nowrap;padding:8px clamp(4px,1.6vw,8px);font-size:clamp(.78rem,3.85vw,.9rem)}.brand{flex:none}}
+/* narrow screens (<=780px). With JS: a "Menu" button opens the nav as a drop-down panel under the one-row header.
+   Without JS: brand on the first row, nav links wrap onto the rows below (all visible, nothing scrolls sideways). */
+.nav-toggle{display:none}
+@media (max-width:780px){
+  html:not(.js){scroll-padding-top:150px}
+  html:not(.js) .topbar{flex-wrap:wrap;row-gap:0;min-height:0;padding-top:10px;padding-bottom:4px}
+  html:not(.js) .topbar nav{flex:1 0 100%;flex-wrap:wrap;gap:0;margin:0 -8px}
+  html:not(.js) .topbar nav a{white-space:nowrap;padding:8px;font-size:.9rem}
+  .brand{flex:none}
+  .js .nav-toggle{display:inline-flex;align-items:center;gap:9px;background:none;border:1px solid var(--line2);color:var(--text);
+    font:500 .9rem/1 var(--body);padding:9px 14px;border-radius:999px;cursor:pointer;transition:border-color .2s,background .2s}
+  .js .nav-toggle:hover,.js .topbar.nav-open .nav-toggle{border-color:var(--accent);background:var(--accent-soft)}
+  .nav-toggle .bars{position:relative;width:16px;height:2px;background:currentColor;border-radius:2px;transition:background .2s}
+  .nav-toggle .bars::before,.nav-toggle .bars::after{content:"";position:absolute;left:0;width:16px;height:2px;background:currentColor;border-radius:2px;transition:transform .25s var(--ease)}
+  .nav-toggle .bars::before{top:-5px}.nav-toggle .bars::after{top:5px}
+  .topbar.nav-open .nav-toggle .bars{background:transparent}
+  .topbar.nav-open .nav-toggle .bars::before{transform:translateY(5px) rotate(45deg)}
+  .topbar.nav-open .nav-toggle .bars::after{transform:translateY(-5px) rotate(-45deg)}
+  .js .topbar nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:2px;
+    padding:8px var(--pad) 18px;background:#0b0b0f;border-bottom:1px solid var(--line);box-shadow:0 24px 40px -20px rgba(0,0,0,.9)}
+  .js .topbar.nav-open nav{display:flex}
+  .js .topbar nav a{padding:12px 10px;font-size:1.02rem;border-radius:10px;color:var(--text)}
+  .js .topbar nav a[aria-current="page"]{color:var(--accent)}
+}
 
 /* ---------- genre pages ---------- */
 .genre-head{padding-top:clamp(28px,5vw,56px)}
@@ -264,3 +288,53 @@ a.btn-alt:hover{border-color:var(--accent);background:var(--accent-soft)}
 .ginfo .sub{color:var(--muted);font-size:.83rem;margin:4px 0 0;line-height:1.45}
 .ginfo .mix{margin-top:0}
 .topbar nav a[aria-current="page"]{color:var(--text);background:rgba(255,255,255,.06)}
+
+/* ---------- members lounge (placeholder) ---------- */
+.lounge{padding-top:clamp(28px,5vw,56px);max-width:860px}
+.lounge-title{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px;margin:2px 0 14px}
+.lounge-title h1{font:800 clamp(2.3rem,7vw,4.6rem)/.98 var(--display);letter-spacing:-.04em;margin:0}
+.lounge-intro{font-size:clamp(1.08rem,2vw,1.3rem);color:#d4d3de;margin:0 0 clamp(28px,4vw,44px);max-width:46ch}
+.section .lounge-sub{font:600 .78rem/1.2 var(--body);text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin:0 0 16px}
+.perks{list-style:none;margin:0 0 8px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:600px){.perks{grid-template-columns:1fr}}
+.perks li{position:relative;border:1px solid var(--line);background:rgba(17,17,24,.6);border-radius:var(--radius);padding:18px 20px 18px 44px;font-size:1rem;line-height:1.5}
+.perks li::before{content:"";position:absolute;left:20px;top:26px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.lounge .buy{margin-top:26px}
+
+/* ---------- blurbs ---------- */
+.release .blurb{margin:4px 0 22px;color:#d4d3de;font-size:1rem;line-height:1.6;max-width:62ch}
+.tblurb{margin:2px 0 14px;color:var(--muted);font-size:.9rem;line-height:1.55;font-style:italic;max-width:62ch}
+
+/* ---------- press kit ---------- */
+.footer-link{color:var(--muted);text-decoration:none}.footer-link:hover{color:var(--accent)}
+.press{padding-top:clamp(28px,5vw,56px)}
+.press h1{font:800 clamp(1.8rem,11vw,5.5rem)/.95 var(--display);letter-spacing:-.045em;margin:2px 0 14px}
+.press h1 span{color:var(--accent)}
+.pk-tagline{font-size:clamp(1.1rem,2.2vw,1.4rem);color:#d4d3de;margin:0;font-style:italic}
+.pk-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:0}
+.pk-facts div{border:1px solid var(--line);background:rgba(17,17,24,.6);border-radius:var(--radius);padding:14px 18px}
+.pk-facts dt{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;margin-bottom:4px}
+.pk-facts dd{margin:0;font-size:1rem}
+.pk-zip{font-size:.86rem;padding:9px 16px}
+.pk-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:var(--radius)}
+.pk-table{width:100%;border-collapse:collapse;font-size:.92rem}
+.pk-table th,.pk-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:middle}
+.pk-table thead th{color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;background:rgba(17,17,24,.7)}
+.pk-table tbody tr:last-child>*{border-bottom:0}
+.pk-table tbody th{font-weight:600}.pk-table tbody th a{color:var(--text);text-decoration:none}.pk-table tbody th a:hover{color:var(--accent)}
+.pk-cover{width:56px}.pk-cover img{width:44px;height:44px;border-radius:6px;display:block;object-fit:cover}
+.pk-dl{color:var(--accent);text-decoration:none;font-weight:500}.pk-dl:hover{text-decoration:underline}
+.pk-soon{color:var(--muted);margin:0;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.press-page .section-head{flex-wrap:wrap}
+.pk-table-wrap{max-width:100%;min-width:0;position:relative}
+.pk-table td{position:relative}
+/* phones: each release becomes a compact stacked row instead of a wide table */
+@media (max-width:860px){
+  .pk-table thead{display:none}
+  .pk-table,.pk-table tbody{display:block}
+  .pk-table tr{display:grid;grid-template-columns:52px minmax(0,1fr);column-gap:12px;row-gap:2px;padding:12px;border-bottom:1px solid var(--line)}
+  .pk-table tbody tr:last-child{border-bottom:0}
+  .pk-table th,.pk-table td{padding:0;border:0;white-space:normal;font-size:.88rem;color:var(--muted)}
+  .pk-table tbody th{color:var(--text);font-size:.98rem}
+  .pk-cover{grid-row:1 / span 5;width:auto}.pk-cover img{width:52px;height:52px}
+}
