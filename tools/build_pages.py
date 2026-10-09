@@ -289,6 +289,7 @@ def topbar(root, has_about, home=False):
     <a href="{p}#albums">Albums</a>
     <a href="{p}#singles">Singles</a>
     {about}
+    <a href="{p}#support">Support</a>
   </nav>
 </header>'''
 
@@ -306,6 +307,14 @@ def footer(root, js_v):
 
 NT = '<span class="sr-only"> (opens in a new tab)</span>'
 EXT = '<svg class="ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+
+def buy_html(url, label, tag_id):
+    """Future direct download / donation. A real link only when content/site_config.json supplies an https URL
+    (validated in build_data.py); otherwise a disabled, non-clickable placeholder with a "Coming soon" tag."""
+    if url:
+        return f'<div class="buy"><a class="btn-alt" href="{e(url)}" target="_blank" rel="noopener">{label}{NT}</a></div>'
+    return (f'<div class="buy"><button type="button" class="btn-alt" disabled aria-disabled="true" aria-describedby="{tag_id}">{label}</button>'
+            f'<span class="soon-tag" id="{tag_id}">Coming soon</span></div>')
 
 def about_html():
     p = ROOT / "content" / "about.html"
@@ -356,7 +365,7 @@ def describe(r):
     return s
 
 # ---------------------------------------------------------------- pages
-def build_home(releases, site, today, v, has_about, about):
+def build_home(releases, site, today, v, has_about, about, donate_url=None):
     root = ""
     albums = [r for r in releases if r["type"] == "album"]
     singles = [r for r in releases if r["type"] == "single"]
@@ -426,6 +435,12 @@ def build_home(releases, site, today, v, has_about, about):
       {"".join(card(root, r, SINGLE_SIZES, today) for r in singles)}
     </ul>
   </section>{about_sec}
+
+  <section id="support" class="section support" aria-labelledby="support-title">
+    <div class="section-head"><h2 id="support-title">Support bfo.mantis</h2></div>
+    <p class="support-line">bfo.mantis is a small independent artist. Direct support is coming soon.</p>
+    {buy_html(donate_url, "Donate", "donate-soon")}
+  </section>
 </main>
 
 {footer(root, v["js"])}'''
@@ -503,7 +518,7 @@ def build_release(releases, i, site, today, v, has_about):
       <h1 style="--fit:{word_fit(r["title"]) or 1}">{e(r["title"])}</h1>
       <p class="by">{ARTIST}</p>
       <ul class="facts">{facts}</ul>
-      <div class="listen">{listen}</div>
+      <div class="listen">{listen}{buy_html(r.get("download_url"), "Download", "dl-soon")}</div>
       <h2 class="tracks-title">Tracklist</h2>
       <ol class="tracks">{"".join(tracks)}</ol>
     </div>
@@ -598,7 +613,7 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     if images:
         build_images(releases, f"{albums} albums · {singles} singles")
     v = {"css": asset_hash("css/style.css"), "js": asset_hash("js/app.js")}
-    build_home(releases, site, today, v, has_about, about)
+    build_home(releases, site, today, v, has_about, about, data.get("donate_url"))
     rel = ROOT / "release"
     keep = {r["slug"] for r in releases}
     if rel.exists():

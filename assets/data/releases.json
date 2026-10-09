@@ -1,6 +1,7 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-09T11:48:07",
+ "generated": "2026-10-09T12:19:33",
+ "donate_url": null,
  "releases": [
   {
    "slug": "crown-of-ash",
@@ -34,7 +35,8 @@
      "lyrics_source": "artist"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/crown-of-ash.json"
+   "lyrics_file": "assets/data/lyrics/crown-of-ash.json",
+   "download_url": null
   },
   {
    "slug": "the-only-way",
@@ -84,7 +86,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/the-only-way.json"
+   "lyrics_file": "assets/data/lyrics/the-only-way.json",
+   "download_url": null
   },
   {
    "slug": "forge-of-your-light",
@@ -135,7 +138,8 @@
      "lyrics_source": "artist"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/forge-of-your-light.json"
+   "lyrics_file": "assets/data/lyrics/forge-of-your-light.json",
+   "download_url": null
   },
   {
    "slug": "dangerous",
@@ -273,7 +277,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/dangerous.json"
+   "lyrics_file": "assets/data/lyrics/dangerous.json",
+   "download_url": null
   },
   {
    "slug": "road-to-hell",
@@ -328,7 +333,8 @@
      "lyrics_source": "artist"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/road-to-hell.json"
+   "lyrics_file": "assets/data/lyrics/road-to-hell.json",
+   "download_url": null
   },
   {
    "slug": "blood-waters-the-tree",
@@ -382,7 +388,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/blood-waters-the-tree.json"
+   "lyrics_file": "assets/data/lyrics/blood-waters-the-tree.json",
+   "download_url": null
   },
   {
    "slug": "savage-serenade-volume-3",
@@ -538,7 +545,8 @@
      "lyrics": "instrumental"
     }
    ],
-   "lyrics_file": null
+   "lyrics_file": null,
+   "download_url": null
   },
   {
    "slug": "savage-serenade-volume-2",
@@ -694,7 +702,8 @@
      "lyrics": "instrumental"
     }
    ],
-   "lyrics_file": null
+   "lyrics_file": null,
+   "download_url": null
   },
   {
    "slug": "sovereign-heart-of-fire",
@@ -832,7 +841,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/sovereign-heart-of-fire.json"
+   "lyrics_file": "assets/data/lyrics/sovereign-heart-of-fire.json",
+   "download_url": null
   },
   {
    "slug": "the-ridge",
@@ -894,7 +904,8 @@
      "lyrics_source": "artist"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/the-ridge.json"
+   "lyrics_file": "assets/data/lyrics/the-ridge.json",
+   "download_url": null
   },
   {
    "slug": "savage-serenade",
@@ -1050,7 +1061,8 @@
      "lyrics": "instrumental"
     }
    ],
-   "lyrics_file": null
+   "lyrics_file": null,
+   "download_url": null
   },
   {
    "slug": "one-man-invictus",
@@ -1188,7 +1200,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/one-man-invictus.json"
+   "lyrics_file": "assets/data/lyrics/one-man-invictus.json",
+   "download_url": null
   },
   {
    "slug": "one-man",
@@ -1234,7 +1247,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/one-man.json"
+   "lyrics_file": "assets/data/lyrics/one-man.json",
+   "download_url": null
   },
   {
    "slug": "spellbound-volume-3",
@@ -1358,7 +1372,8 @@
      "lyrics": "instrumental"
     }
    ],
-   "lyrics_file": null
+   "lyrics_file": null,
+   "download_url": null
   },
   {
    "slug": "rebel-anthem",
@@ -1500,7 +1515,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/rebel-anthem.json"
+   "lyrics_file": "assets/data/lyrics/rebel-anthem.json",
+   "download_url": null
   },
   {
    "slug": "the-savage-ledger",
@@ -1554,7 +1570,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/the-savage-ledger.json"
+   "lyrics_file": "assets/data/lyrics/the-savage-ledger.json",
+   "download_url": null
   },
   {
    "slug": "spellbound-volume-2",
@@ -1678,7 +1695,8 @@
      "lyrics": "instrumental"
     }
    ],
-   "lyrics_file": null
+   "lyrics_file": null,
+   "download_url": null
   },
   {
    "slug": "spellbound-volume-1",
@@ -1802,7 +1820,8 @@
      "lyrics": "instrumental"
     }
    ],
-   "lyrics_file": null
+   "lyrics_file": null,
+   "download_url": null
   },
   {
    "slug": "flock-of-the-tyrants",
@@ -1856,7 +1875,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/flock-of-the-tyrants.json"
+   "lyrics_file": "assets/data/lyrics/flock-of-the-tyrants.json",
+   "download_url": null
   },
   {
    "slug": "the-flock-betrayal",
@@ -1910,7 +1930,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/the-flock-betrayal.json"
+   "lyrics_file": "assets/data/lyrics/the-flock-betrayal.json",
+   "download_url": null
   },
   {
    "slug": "violent-light",
@@ -1968,7 +1989,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/violent-light.json"
+   "lyrics_file": "assets/data/lyrics/violent-light.json",
+   "download_url": null
   },
   {
    "slug": "evil-eye-contracts",
@@ -2026,7 +2048,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/evil-eye-contracts.json"
+   "lyrics_file": "assets/data/lyrics/evil-eye-contracts.json",
+   "download_url": null
   },
   {
    "slug": "carry-the-star",
@@ -2084,7 +2107,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/carry-the-star.json"
+   "lyrics_file": "assets/data/lyrics/carry-the-star.json",
+   "download_url": null
   },
   {
    "slug": "anvil-s-kiss",
@@ -2142,7 +2166,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/anvil-s-kiss.json"
+   "lyrics_file": "assets/data/lyrics/anvil-s-kiss.json",
+   "download_url": null
   },
   {
    "slug": "tinmouth-cathedral-volume-1",
@@ -2266,7 +2291,8 @@
      "lyrics": "instrumental"
     }
    ],
-   "lyrics_file": null
+   "lyrics_file": null,
+   "download_url": null
   },
   {
    "slug": "blazing-stars",
@@ -2320,7 +2346,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/blazing-stars.json"
+   "lyrics_file": "assets/data/lyrics/blazing-stars.json",
+   "download_url": null
   },
   {
    "slug": "america-250",
@@ -2378,7 +2405,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/america-250.json"
+   "lyrics_file": "assets/data/lyrics/america-250.json",
+   "download_url": null
   },
   {
    "slug": "sacred-steel",
@@ -2436,7 +2464,8 @@
      "lyrics": "lyrics"
     }
    ],
-   "lyrics_file": "assets/data/lyrics/sacred-steel.json"
+   "lyrics_file": "assets/data/lyrics/sacred-steel.json",
+   "download_url": null
   }
  ]
 }

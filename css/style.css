@@ -192,3 +192,10 @@ a.count:hover{color:var(--accent)}
 @media (forced-colors:active){.rbar{background:CanvasText;border-color:CanvasText;forced-color-adjust:none}}
 .lcopy{margin:-8px 0 16px 18px;color:var(--muted);font-size:.78rem;letter-spacing:.01em}
 .art-copy{margin:12px 2px 0;color:var(--muted);font-size:.78rem;letter-spacing:.01em}
+/* future download / donate placeholders */
+.buy{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn-alt{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line2);background:rgba(17,17,24,.75);color:var(--text);font:600 .94rem/1 var(--body);text-decoration:none;padding:11px 18px;border-radius:999px;transition:border-color .2s,background .2s}
+a.btn-alt:hover{border-color:var(--accent);background:var(--accent-soft)}
+.btn-alt:disabled,.btn-alt[aria-disabled="true"]{color:#8d8c9c;border-style:dashed;background:transparent;cursor:not-allowed;pointer-events:none}
+.soon-tag{font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#ffd166;border:1px solid rgba(255,209,102,.45);border-radius:999px;padding:3px 9px}
+.support-line{color:var(--muted);margin:0;max-width:60ch;font-size:1.02rem}
