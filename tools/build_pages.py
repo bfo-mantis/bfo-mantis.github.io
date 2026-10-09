@@ -295,7 +295,7 @@ def topbar(root, has_about, home=False):
 def footer(root, js_v):
     year = date.today().year
     return f'''<footer class="footer">
-  <p>&copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</p>
+  <p>Music, lyrics and artwork &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</p>
   <a class="footer-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
 </footer>
 <a class="to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l-7 7m7-7l7 7M12 5v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -329,7 +329,14 @@ def release_jsonld(r, site):
               **({"isrcCode": t["isrc"]} if t.get("isrc") else {}), "byArtist": {"@type": "MusicGroup", "name": ARTIST}}}
              for t in r["tracks"]]}}
     if r.get("genre"): d["genre"] = r["genre"]
-    if r.get("cover"): d["image"] = site + r["cover"]["jpg"]
+    if r.get("cover"):
+        d["image"] = {"@type": "ImageObject", "contentUrl": site + r["cover"]["jpg"], "url": site + r["cover"]["jpg"],
+                      "width": r["cover"].get("width", 800), "height": r["cover"].get("height", 800),
+                      "caption": f"Cover art for {r['title']} by {ARTIST}",
+                      "copyrightHolder": {"@type": "Organization", "name": LABEL_NAME},
+                      "copyrightYear": int(r["release_date"][:4]),
+                      "copyrightNotice": f"Artwork © {r['release_date'][:4]} {LABEL_NAME}. All rights reserved.",
+                      "creditText": LABEL_NAME}
     if r.get("label"): d["recordLabel"] = {"@type": "Organization", "name": r["label"]}
     d["copyrightHolder"] = {"@type": "Organization", "name": LABEL_NAME}
     d["copyrightYear"] = int(r["release_date"][:4])
@@ -488,7 +495,8 @@ def build_release(releases, i, site, today, v, has_about):
 <main id="main">
   <div class="release-bg"{bg} aria-hidden="true"></div>
   <article class="release" data-date="{r["release_date"]}"{lyr}>
-    <div class="cover-col"><div class="cover">{picture(root, r, "(max-width: 820px) 92vw, 560px", eager=True, big=True)}</div></div>
+    <div class="cover-col"><div class="cover">{picture(root, r, "(max-width: 820px) 92vw, 560px", eager=True, big=True)}</div>
+      <p class="art-copy">Artwork &copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p></div>
     <div class="release-body">
       <a class="back" href="{root}#{"albums" if r["type"] == "album" else "singles"}"><span aria-hidden="true">←</span> All {"albums" if r["type"] == "album" else "singles"}</a>
       <p class="eyebrow">{kind}<span class="js-upcoming"{hid_up}> · Upcoming</span></p>
@@ -566,7 +574,7 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
   <p class="m">The link may be old or mistyped. Everything from {ARTIST} is on the home page.</p>
   <div class="row"><a class="btn" href="/">Back to home</a><a class="ghost" href="/#albums">Albums</a><a class="ghost" href="/#singles">Singles</a></div>
 </div></main>
-<footer>&copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</footer>
+<footer>Music, lyrics and artwork &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</footer>
 </body>
 </html>
 ''')

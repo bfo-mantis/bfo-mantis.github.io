@@ -191,3 +191,4 @@ a.count:hover{color:var(--accent)}
 .rbar-line{width:calc(var(--n,32) * .55em);min-width:min(60%,14em);max-width:100%;margin:0}
 @media (forced-colors:active){.rbar{background:CanvasText;border-color:CanvasText;forced-color-adjust:none}}
 .lcopy{margin:-8px 0 16px 18px;color:var(--muted);font-size:.78rem;letter-spacing:.01em}
+.art-copy{margin:12px 2px 0;color:var(--muted);font-size:.78rem;letter-spacing:.01em}
