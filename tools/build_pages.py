@@ -503,7 +503,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None):
     up, hid_up, hid_rel = updown(latest, today)
     ld = {"@context": "https://schema.org", **music_group(site),
           "album": [{"@type": "MusicAlbum", "name": r["title"], "url": f"{site}release/{r['slug']}/", "datePublished": r["release_date"]} for r in releases]}
-    hd = head(root, title=f"{ARTIST} — Albums & Singles", desc=desc, url=site, og_image=site + "assets/img/og/home.jpg",
+    hd = head(root, title=f"{ARTIST} — Songs & Instrumentals", desc=desc, url=site, og_image=site + "assets/img/og/home.jpg",
               og_alt=f"{ARTIST} wordmark over a collage of cover art", og_type="music.musician" if False else "website",
               css_v=v["css"], jsonld=ld,
               extra=f'\n<link rel="preload" as="image" href="assets/img/hero-1600.webp" media="(min-width: 601px)" fetchpriority="high">'
@@ -907,7 +907,7 @@ def build_misc(releases, site, v):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>{ARTIST}</title>
-<script>(function(){{var s=new URLSearchParams(location.search).get("r"),k={slugs};location.replace(s&&k.indexOf(s)>-1?"release/"+encodeURIComponent(s)+"/":"./");}})();</script>
+<script>(function(){{var s=(new URLSearchParams(location.search).get("r")||"").trim().toLowerCase().replace(/^\/+|\/+$/g,""),k={slugs};location.replace(s&&k.indexOf(s)>-1?"release/"+encodeURIComponent(s)+"/":"./");}})();</script>
 <style>body{{background:#0b0b0f;color:#ecebf2;font:16px/1.6 system-ui,sans-serif;padding:40px}}a{{color:#c8ff4d}}</style>
 </head>
 <body><p>Redirecting… <a href="./">Go to {ARTIST}</a></p></body>
