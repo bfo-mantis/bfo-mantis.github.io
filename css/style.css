@@ -304,6 +304,22 @@ a.btn-alt:hover{border-color:var(--accent);background:var(--accent-soft)}
 /* ---------- blurbs ---------- */
 .release .blurb{margin:4px 0 22px;color:#d4d3de;font-size:1rem;line-height:1.6;max-width:62ch}
 .tblurb{margin:2px 0 14px;color:var(--muted);font-size:.9rem;line-height:1.55;font-style:italic;max-width:62ch}
+/* two-part track blurbs: intro line + "More about this track" (instrumentals); in-depth inside the lyrics dropdown */
+.tracks li.has-blurb{align-items:start}
+.tracks li.has-blurb>.n{padding-top:13px}
+.tcol{min-width:0;padding:13px 4px 12px 0}
+.tcol .tt{display:block}
+.tblurb.tintro{margin:4px 0 0}
+.tracks .tmore{margin:6px 0 0}
+.tracks .tmore summary{display:inline-flex;justify-content:flex-start;gap:8px;padding:6px 0;font-size:.8rem;font-weight:600;letter-spacing:.04em;color:var(--accent);border-radius:6px}
+.tracks .tmore summary::after{width:6px;height:6px;margin:0 0 3px 0}
+.tracks .tmore[open] summary::after{margin-bottom:-3px}
+.tracks .tmore summary:hover{text-decoration:underline;text-underline-offset:3px}
+.tracks .tmore summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.tdepth{margin:4px 0 6px;padding:2px 0 2px 14px;border-left:2px solid rgba(200,255,77,.35);color:#d4d3de;font-size:.93rem;line-height:1.65;max-width:62ch}
+div.tdepth{margin:0 0 16px}
+div.tdepth p{margin:0}
+.tdepth-k{font-size:.66rem!important;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin:0 0 4px!important}
 
 /* ---------- press kit ---------- */
 .footer-link{color:var(--muted);text-decoration:none}.footer-link:hover{color:var(--accent)}

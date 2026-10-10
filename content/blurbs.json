@@ -4,11 +4,15 @@
   "keys": "releases by slug, tracks by ISRC",
   "basis_values": [
    "lyrics",
-   "pending"
+   "pending",
+   "title + Suno style prompts",
+   "title + album position",
+   "title + artist style prompt"
   ],
   "excluded": [
    "LOVELORN (Wetline)"
-  ]
+  ],
+  "track_fields": "blurb (short intro; mirrors intro for compatibility), intro, optional in_depth + in_depth_basis ('Suno style prompt' or 'pending'); in_depth shows under 'More about this track'"
  },
  "artist": {
   "name": "bfo.mantis",
@@ -81,16 +85,16 @@
    "type": "album",
    "genre": "World",
    "release_date": "2026-09-04",
-   "basis": "pending",
-   "blurb": ""
+   "basis": "title + artist style prompt",
+   "blurb": "Savage Serenade Volume 3 keeps the series' habit of pairing calm with violence, but its calm words carry more weight: beside the gentle and quiet ones come somber, solemn, stoic and yearning, as in Somber Tempest, Solemn Edge and Stoic Rage. A few titles reverse the order, such as Savage Calm and Feral Lullaby, while Silk and Steel names a soft material and a hard one side by side, echoing the album's move from nylon strings to steel. The guitar starts out restrained, with sparse single notes and harmonics in a warm, close room, then passes through a mournful folk stretch and a fast, forceful peak before stacked guitars ring together like voices under a high vaulted roof. From there the sound thins to a last chiming harmonic and gives way to quiet, with Feral Lullaby as the closing word."
   },
   "savage-serenade-volume-2": {
    "title": "Savage Serenade Volume 2",
    "type": "album",
    "genre": "World",
    "release_date": "2026-08-28",
-   "basis": "pending",
-   "blurb": ""
+   "basis": "title + artist style prompt",
+   "blurb": "Savage Serenade Volume 2 is built on a single move: a quiet word placed in front of a violent one. Storms, fires and wild creatures are all softened in name, from Silent Tempest and Velvet Thunder to Soft Inferno and Quiet Claw, until Howling Calm and Tempests Lullaby turn the pattern around. The guitar traces a similar arc, starting with whispered single notes and glassy harmonics in what feels like a candlelit wooden room, then widening into a melancholy folk lament and a fast, thunderous climax before overdubbed guitars rise into a cathedral of sound. In the end it all thins out to one fading harmonic and silence, and the last title, Mellow Thunder, leaves the storm rumbling somewhere far off."
   },
   "sovereign-heart-of-fire": {
    "title": "Sovereign Heart of Fire",
@@ -113,8 +117,8 @@
    "type": "album",
    "genre": "Folk",
    "release_date": "2026-08-21",
-   "basis": "pending",
-   "blurb": ""
+   "basis": "title + artist style prompt",
+   "blurb": "Savage Serenade asks one acoustic guitar to be two things at once. The titles spell it out, from Savage Surrender and Tender Carnage to Roses on the Blade and Edge of Softness, setting violence beside devotion in almost every name. The playing follows the same split: drifting harmonics and quiet classical lines break into blazing flamenco strumming and percussive tapping on the guitar body, then settle into a layered tremolo that slowly fades. It closes on Last Savage Prayer and Fiercely Grateful, where the fury and the tenderness finally sound like the same heart."
   },
   "one-man-invictus": {
    "title": "One Man INVICTUS",
@@ -163,16 +167,16 @@
    "type": "album",
    "genre": "Electronic",
    "release_date": "2026-07-25",
-   "basis": "pending",
-   "blurb": ""
+   "basis": "title + Suno style prompts",
+   "blurb": "Spellbound Volume 2 trades the first volume's language of enchantment for the passing of time. Its titles watch a day burn down, from Morning Dew and Sun Down to Nightfall and Midnight Rain, while Sand of Time, Stolen Time and Endless Moments count what is slipping away and Firelight Embers and Embers follow a fire as it dies, all of it set in motion by an opening track called Fading. The sound moves between two worlds: slow, hazy late-night lo-fi built on distant piano, warm synth pads, vinyl crackle and a single ringing twangy note like a last ember, and fingerpicked acoustic country ballads with rolling thunder and soft rain behind them. Later tracks add light electric blues licks and muted ambient synths, so the storm and the fireside end up sharing the same long night."
   },
   "spellbound-volume-1": {
    "title": "Spellbound Volume 1",
    "type": "album",
    "genre": "Electronic",
    "release_date": "2026-07-25",
-   "basis": "pending",
-   "blurb": ""
+   "basis": "title + Suno style prompts",
+   "blurb": "Spellbound Volume 1 is an album about being held, and its titles say so from first to last: it opens on Captive and closes on Taken, with Transfixed, Smitten, Spellbound and Mesmerized in between. Running against that pull are titles about motion and open air, such as Rhythms of the Heart, Groove, Traveling and Country Stars, along with a lone Stoic that sounds like someone trying not to fall. The music starts as an acoustic country rock ballad, with fingerpicked guitar, pedal steel and harmonica under rolling thunder and soft rain, then drifts into long, hazy late-night pieces built on lonely minor-key piano, shimmering guitars, warm synth pads and cello. Along the way it takes darker and more rhythmic turns, from harmonica over chill electronic beats to heavy metal guitars slowed and softened into lo-fi calm, before faint wind and rain return at the close, as if the storm from the opening never quite left."
   },
   "flock-of-the-tyrants": {
    "title": "Flock of the Tyrants",
@@ -409,289 +413,325 @@
    "release_slug": "savage-serenade-volume-3",
    "n": 1,
    "title": "Gentle Thunder",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The album opens with thunder handled carefully, a power that announces itself without frightening anyone. It establishes the soft-word, strong-word pairing that runs through nearly every title that follows.",
+   "lyrics_status": "instrumental",
+   "intro": "The album opens with thunder handled carefully, a power that announces itself without frightening anyone. It establishes the soft-word, strong-word pairing that runs through nearly every title that follows."
   },
   "QT6HX2631827": {
    "release_slug": "savage-serenade-volume-3",
    "n": 2,
    "title": "Quiet Wildfire",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A fire spreading across the hills without a sound. Early in the record, it suggests danger growing just out of earshot.",
+   "lyrics_status": "instrumental",
+   "intro": "A fire spreading across the hills without a sound. Early in the record, it suggests danger growing just out of earshot."
   },
   "QT6HX2631828": {
    "release_slug": "savage-serenade-volume-3",
    "n": 3,
    "title": "Savage Calm",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The first reversal on the album, where the wild word describes the peaceful one. Placed early, it pictures a stillness with teeth.",
+   "lyrics_status": "instrumental",
+   "intro": "The first reversal on the album, where the wild word describes the peaceful one. Placed early, it pictures a stillness with teeth."
   },
   "QT6HX2631829": {
    "release_slug": "savage-serenade-volume-3",
    "n": 4,
    "title": "Serene Claw",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A predator's claw at rest, composed but ready. Closing the album's opening stretch, it keeps the threat in view while the mood stays calm.",
+   "lyrics_status": "instrumental",
+   "intro": "A predator's claw at rest, composed but ready. Closing the album's opening stretch, it keeps the threat in view while the mood stays calm."
   },
   "QT6HX2631830": {
    "release_slug": "savage-serenade-volume-3",
    "n": 5,
    "title": "Somber Tempest",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A storm in mourning rather than in rage, the first of the album's graver titles. It turns the record toward the sorrow of its middle section.",
+   "lyrics_status": "instrumental",
+   "intro": "A storm in mourning rather than in rage, the first of the album's graver titles. It turns the record toward the sorrow of its middle section."
   },
   "QT6HX2631831": {
    "release_slug": "savage-serenade-volume-3",
    "n": 6,
    "title": "Tranquil Blaze",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A steady fire that burns without panic, more hearth than forest fire. In the album's middle, it offers warmth inside the melancholy.",
+   "lyrics_status": "instrumental",
+   "intro": "A steady fire that burns without panic, more hearth than forest fire. In the album's middle, it offers warmth inside the melancholy."
   },
   "QT6HX2631832": {
    "release_slug": "savage-serenade-volume-3",
    "n": 7,
    "title": "Silk and Steel",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The only title on the album joined by 'and', naming a soft material and a hard one as equals. It also mirrors the record's overall journey from nylon-string elegance to steel-string fire.",
+   "lyrics_status": "instrumental",
+   "intro": "The only title on the album joined by 'and', naming a soft material and a hard one as equals. It also mirrors the record's overall journey from nylon-string elegance to steel-string fire."
   },
   "QT6HX2631833": {
    "release_slug": "savage-serenade-volume-3",
    "n": 8,
    "title": "Velvet Storm",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Rough weather wrapped in plush fabric. Near the album's center, the title keeps the storm's threat while muffling its edges.",
+   "lyrics_status": "instrumental",
+   "intro": "Rough weather wrapped in plush fabric. Near the album's center, the title keeps the storm's threat while muffling its edges."
   },
   "QT6HX2631834": {
    "release_slug": "savage-serenade-volume-3",
    "n": 9,
    "title": "Hushed Fury",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Rage kept to a low voice, as if someone nearby were sleeping. At the album's midpoint, the title holds its anger in check.",
+   "lyrics_status": "instrumental",
+   "intro": "Rage kept to a low voice, as if someone nearby were sleeping. At the album's midpoint, the title holds its anger in check."
   },
   "QT6HX2631835": {
    "release_slug": "savage-serenade-volume-3",
    "n": 10,
    "title": "Tender Rage",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Anger that comes from caring too much. Past the middle of the record, the title suggests a fury rooted in love rather than hate.",
+   "lyrics_status": "instrumental",
+   "intro": "Anger that comes from caring too much. Past the middle of the record, the title suggests a fury rooted in love rather than hate."
   },
   "QT6HX2631836": {
    "release_slug": "savage-serenade-volume-3",
    "n": 11,
    "title": "Yearning Howl",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Here the howl is a cry of longing rather than threat, the sound of something calling for what it has lost. In the album's second half, it brings the lament to its rawest point.",
+   "lyrics_status": "instrumental",
+   "intro": "Here the howl is a cry of longing rather than threat, the sound of something calling for what it has lost. In the album's second half, it brings the lament to its rawest point."
   },
   "QT6HX2631837": {
    "release_slug": "savage-serenade-volume-3",
    "n": 12,
    "title": "Blazing Shadow",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Light and darkness collide in one name: a shadow that burns. As the album builds toward its peak, the title imagines a darkness that gives off heat.",
+   "lyrics_status": "instrumental",
+   "intro": "Light and darkness collide in one name: a shadow that burns. As the album builds toward its peak, the title imagines a darkness that gives off heat."
   },
   "QT6HX2631838": {
    "release_slug": "savage-serenade-volume-3",
    "n": 13,
    "title": "Silent Frenzy",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Wild motion with no sound at all, like a storm seen through a window. Late in the record, it points to energy building fast just beneath the surface.",
+   "lyrics_status": "instrumental",
+   "intro": "Wild motion with no sound at all, like a storm seen through a window. Late in the record, it points to energy building fast just beneath the surface."
   },
   "QT6HX2631839": {
    "release_slug": "savage-serenade-volume-3",
    "n": 14,
    "title": "Solemn Edge",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A blade carried with ceremony rather than menace. Near the album's climax, the title gives sharpness a sense of ritual and weight.",
+   "lyrics_status": "instrumental",
+   "intro": "A blade carried with ceremony rather than menace. Near the album's climax, the title gives sharpness a sense of ritual and weight."
   },
   "QT6HX2631840": {
    "release_slug": "savage-serenade-volume-3",
    "n": 15,
    "title": "Serene Thunder",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Thunder heard from a great distance, peaceful in its size. As the album enters its final stretch, the title suggests power settling into something vast and calm.",
+   "lyrics_status": "instrumental",
+   "intro": "Thunder heard from a great distance, peaceful in its size. As the album enters its final stretch, the title suggests power settling into something vast and calm."
   },
   "QT6HX2631841": {
    "release_slug": "savage-serenade-volume-3",
    "n": 16,
    "title": "Whispering Inferno",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Embers that keep talking after the flames have died, passing along the last secrets of a fire. Near the end of the album, it treats the inferno as a memory rather than a threat.",
+   "lyrics_status": "instrumental",
+   "intro": "Embers that keep talking after the flames have died, passing along the last secrets of a fire. Near the end of the album, it treats the inferno as a memory rather than a threat."
   },
   "QT6HX2631842": {
    "release_slug": "savage-serenade-volume-3",
    "n": 17,
    "title": "Stoic Rage",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Rage endured without complaint, carried rather than released. As the next-to-last track, it sounds like the album's fury making peace with itself.",
+   "lyrics_status": "instrumental",
+   "intro": "Rage endured without complaint, carried rather than released. As the next-to-last track, it sounds like the album's fury making peace with itself."
   },
   "QT6HX2631843": {
    "release_slug": "savage-serenade-volume-3",
    "n": 18,
    "title": "Feral Lullaby",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The album closes by flipping its pattern one last time: the wild word comes first, and it describes a song for sleep. It leaves an untamed creature finally soothed into stillness.",
+   "lyrics_status": "instrumental",
+   "intro": "The album closes by flipping its pattern one last time: the wild word comes first, and it describes a song for sleep. It leaves an untamed creature finally soothed into stillness."
   },
   "QT6HS2632087": {
    "release_slug": "savage-serenade-volume-2",
    "n": 1,
    "title": "Silent Tempest",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A storm with the sound turned off opens the album, all of its force held in reserve. It sets the pattern the whole record follows: a gentle word standing guard over a violent one.",
+   "lyrics_status": "instrumental",
+   "intro": "A storm with the sound turned off opens the album, all of its force held in reserve. It sets the pattern the whole record follows: a gentle word standing guard over a violent one."
   },
   "QT6HS2632088": {
    "release_slug": "savage-serenade-volume-2",
    "n": 2,
    "title": "Velvet Thunder",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Thunder you could run your hand across, heavy but smooth. Second on the album, it keeps the opening hushed while hinting at how much weight is waiting.",
+   "lyrics_status": "instrumental",
+   "intro": "Thunder you could run your hand across, heavy but smooth. Second on the album, it keeps the opening hushed while hinting at how much weight is waiting."
   },
   "QT6HS2632089": {
    "release_slug": "savage-serenade-volume-2",
    "n": 3,
    "title": "Gentle Savage",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Here the wild creature itself is softened, the series name turned into a near-contradiction. Early in the record, it suggests a ferocity that has learned to be kind.",
+   "lyrics_status": "instrumental",
+   "intro": "Here the wild creature itself is softened, the series name turned into a near-contradiction. Early in the record, it suggests a ferocity that has learned to be kind."
   },
   "QT6HS2632090": {
    "release_slug": "savage-serenade-volume-2",
    "n": 4,
    "title": "Serene Storm",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The calm that can live inside bad weather. As the album's opening stretch winds down, the title pictures turbulence watched from somewhere peaceful.",
+   "lyrics_status": "instrumental",
+   "intro": "The calm that can live inside bad weather. As the album's opening stretch winds down, the title pictures turbulence watched from somewhere peaceful."
   },
   "QT6HS2632091": {
    "release_slug": "savage-serenade-volume-2",
    "n": 5,
    "title": "Whispering Fury",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Anger spoken under the breath, too low to hear but impossible to miss. Moving into the album's middle, it hints that the quiet is starting to strain.",
+   "lyrics_status": "instrumental",
+   "intro": "Anger spoken under the breath, too low to hear but impossible to miss. Moving into the album's middle, it hints that the quiet is starting to strain."
   },
   "QT6HS2632092": {
    "release_slug": "savage-serenade-volume-2",
    "n": 6,
    "title": "Soft Inferno",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The first of the album's fire titles, a blaze described as if it were a blanket. It carries the record into its middle stretch, where warmth and loss begin to sit side by side.",
+   "lyrics_status": "instrumental",
+   "intro": "The first of the album's fire titles, a blaze described as if it were a blanket. It carries the record into its middle stretch, where warmth and loss begin to sit side by side."
   },
   "QT6HS2632093": {
    "release_slug": "savage-serenade-volume-2",
    "n": 7,
    "title": "Tranquil Rage",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Fury at rest but not gone. Near the center of the album, the title holds a feeling that has stopped shouting without ever letting go.",
+   "lyrics_status": "instrumental",
+   "intro": "Fury at rest but not gone. Near the center of the album, the title holds a feeling that has stopped shouting without ever letting go."
   },
   "QT6HS2632094": {
    "release_slug": "savage-serenade-volume-2",
    "n": 8,
    "title": "Hushed Blaze",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A fire burning without a crackle. The title continues the album's run of flames, keeping the heat close and the sound low.",
+   "lyrics_status": "instrumental",
+   "intro": "A fire burning without a crackle. The title continues the album's run of flames, keeping the heat close and the sound low."
   },
   "QT6HS2632095": {
    "release_slug": "savage-serenade-volume-2",
    "n": 9,
    "title": "Peaceful Wildfire",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A wildfire is the very picture of something out of control, and here it is called peaceful. At the album's midpoint, the title pushes its contrast about as far as it will go.",
+   "lyrics_status": "instrumental",
+   "intro": "A wildfire is the very picture of something out of control, and here it is called peaceful. At the album's midpoint, the title pushes its contrast about as far as it will go."
   },
   "QT6HS2632096": {
    "release_slug": "savage-serenade-volume-2",
    "n": 10,
    "title": "Tender Maelstrom",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A whirlpool that pulls you under gently. As the album turns from its middle toward its climax, the title imagines being swept away by something that means no harm.",
+   "lyrics_status": "instrumental",
+   "intro": "A whirlpool that pulls you under gently. As the album turns from its middle toward its climax, the title imagines being swept away by something that means no harm."
   },
   "QT6HS2632097": {
    "release_slug": "savage-serenade-volume-2",
    "n": 11,
    "title": "Still Flame",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A single flame that doesn't flicker, the quietest fire on the record. It marks a pause in the album's second half, just before the energy gathers.",
+   "lyrics_status": "instrumental",
+   "intro": "A single flame that doesn't flicker, the quietest fire on the record. It marks a pause in the album's second half, just before the energy gathers."
   },
   "QT6HS2632098": {
    "release_slug": "savage-serenade-volume-2",
    "n": 12,
    "title": "Howling Calm",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The album flips its own pattern: now the loud word describes the quiet one. Coming late in the record, the title suggests a calm so intense it seems to cry out.",
+   "lyrics_status": "instrumental",
+   "intro": "The album flips its own pattern: now the loud word describes the quiet one. Coming late in the record, the title suggests a calm so intense it seems to cry out."
   },
   "QT6HS2632099": {
    "release_slug": "savage-serenade-volume-2",
    "n": 13,
    "title": "Quiet Claw",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A claw drawn without a sound, the stillness of a predator before it strikes. Its place late in the album makes it feel like tension coiling toward release.",
+   "lyrics_status": "instrumental",
+   "intro": "A claw drawn without a sound, the stillness of a predator before it strikes. Its place late in the album makes it feel like tension coiling toward release."
   },
   "QT6HS2632100": {
    "release_slug": "savage-serenade-volume-2",
    "n": 14,
    "title": "Soft Savagery",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The series name rewritten as a gentle force rather than a brutal one. Near the album's peak, the title keeps the wildness and takes the cruelty out of it.",
+   "lyrics_status": "instrumental",
+   "intro": "The series name rewritten as a gentle force rather than a brutal one. Near the album's peak, the title keeps the wildness and takes the cruelty out of it."
   },
   "QT6HS2632101": {
    "release_slug": "savage-serenade-volume-2",
    "n": 15,
    "title": "Serene Fury",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Rage met with total composure. In the album's final stretch, the title sounds like a storm that has been absorbed rather than defeated.",
+   "lyrics_status": "instrumental",
+   "intro": "Rage met with total composure. In the album's final stretch, the title sounds like a storm that has been absorbed rather than defeated."
   },
   "QT6HS2632102": {
    "release_slug": "savage-serenade-volume-2",
    "n": 16,
    "title": "Whispering Inferno",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A great fire speaking in a low voice, joining the album's whisper and flame images in one name. Late in the record, it gathers the earlier blazes into a single glow.",
+   "lyrics_status": "instrumental",
+   "intro": "A great fire speaking in a low voice, joining the album's whisper and flame images in one name. Late in the record, it gathers the earlier blazes into a single glow."
   },
   "QT6HS2632103": {
    "release_slug": "savage-serenade-volume-2",
    "n": 17,
    "title": "Tempests Lullaby",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The storm sings the listener to sleep, reversing the gentle-word-first pattern one more time. As the next-to-last track, it signals that the album is ready to rest.",
+   "lyrics_status": "instrumental",
+   "intro": "The storm sings the listener to sleep, reversing the gentle-word-first pattern one more time. As the next-to-last track, it signals that the album is ready to rest."
   },
   "QT6HS2632104": {
    "release_slug": "savage-serenade-volume-2",
    "n": 18,
    "title": "Mellow Thunder",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The album closes much as it opened, with weather softened to a murmur. The final title leaves thunder rolling far away, still present but no longer a threat.",
+   "lyrics_status": "instrumental",
+   "intro": "The album closes much as it opened, with weather softened to a murmur. The final title leaves thunder rolling far away, still present but no longer a threat."
   },
   "QT6HR2651300": {
    "release_slug": "sovereign-heart-of-fire",
@@ -816,145 +856,163 @@
    "release_slug": "savage-serenade",
    "n": 1,
    "title": "Savage Surrender",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The opener puts the album's contradiction right in its name: something wild that chooses to lay down its arms. As the first track, it sets the tone for a record where fierce and gentle are never far apart.",
+   "lyrics_status": "instrumental",
+   "intro": "The opener puts the album's contradiction right in its name: something wild that chooses to lay down its arms. As the first track, it sets the tone for a record where fierce and gentle are never far apart."
   },
   "QT6HP2682018": {
    "release_slug": "savage-serenade",
    "n": 2,
    "title": "Blood Kissed",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A title that joins a wound to a kiss, as if tenderness and injury arrived in the same moment. Early in the album, it carries the opening's quiet forward with a darker, redder edge.",
+   "lyrics_status": "instrumental",
+   "intro": "A title that joins a wound to a kiss, as if tenderness and injury arrived in the same moment. Early in the album, it carries the opening's quiet forward with a darker, redder edge."
   },
   "QT6HP2682019": {
    "release_slug": "savage-serenade",
    "n": 3,
    "title": "Quiet Thorns",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Thorns that make no sound: beauty with a hidden sting. It keeps the early part of the album soft on the surface while hinting that something sharper waits just underneath.",
+   "lyrics_status": "instrumental",
+   "intro": "Thorns that make no sound: beauty with a hidden sting. It keeps the early part of the album soft on the surface while hinting that something sharper waits just underneath."
   },
   "QT6HP2682020": {
    "release_slug": "savage-serenade",
    "n": 4,
    "title": "Feral Edge",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The first title on the album with no softer word to balance it, pointing to something untamed and sharp. It marks the record's turn from the hush of the opening toward wilder ground.",
+   "lyrics_status": "instrumental",
+   "intro": "The first title on the album with no softer word to balance it, pointing to something untamed and sharp. It marks the record's turn from the hush of the opening toward wilder ground."
   },
   "QT6HP2682021": {
    "release_slug": "savage-serenade",
    "n": 5,
    "title": "Crimson Whisper",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Crimson is the color of blood and passion, and here it arrives as a whisper rather than a shout. The title pulls the album back toward intimacy just after its first flash of wildness.",
+   "lyrics_status": "instrumental",
+   "intro": "Crimson is the color of blood and passion, and here it arrives as a whisper rather than a shout. The title pulls the album back toward intimacy just after its first flash of wildness."
   },
   "QT6HP2682022": {
    "release_slug": "savage-serenade",
    "n": 6,
    "title": "Howling Grace",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The cry of an animal set beside the poise of a prayer or a dancer. Closing out the album's first third, the title holds both without choosing between them.",
+   "lyrics_status": "instrumental",
+   "intro": "The cry of an animal set beside the poise of a prayer or a dancer. Closing out the album's first third, the title holds both without choosing between them."
   },
   "QT6HP2682024": {
    "release_slug": "savage-serenade",
    "n": 7,
    "title": "Velvet Ruin",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Destruction wrapped in something soft enough to touch. In the middle of the album, the title suggests a collapse that comes slowly and almost gently.",
+   "lyrics_status": "instrumental",
+   "intro": "Destruction wrapped in something soft enough to touch. In the middle of the album, the title suggests a collapse that comes slowly and almost gently."
   },
   "QT6HP2682026": {
    "release_slug": "savage-serenade",
    "n": 8,
    "title": "Tender Carnage",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The starkest pairing on the record: slaughter described as tender. Sitting near the album's center, it states the theme of Savage Serenade as bluntly as any title here.",
+   "lyrics_status": "instrumental",
+   "intro": "The starkest pairing on the record: slaughter described as tender. Sitting near the album's center, it states the theme of Savage Serenade as bluntly as any title here."
   },
   "QT6HP2682027": {
    "release_slug": "savage-serenade",
    "n": 9,
    "title": "Shards of Devotion",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Devotion broken into pieces that can still cut. The title imagines a loyalty that survives being shattered, sharp-edged but still whole in its intent.",
+   "lyrics_status": "instrumental",
+   "intro": "Devotion broken into pieces that can still cut. The title imagines a loyalty that survives being shattered, sharp-edged but still whole in its intent."
   },
   "QT6HP2682028": {
    "release_slug": "savage-serenade",
    "n": 10,
    "title": "Wild and Wanting",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Hunger and wildness side by side, a title about desire with no leash on it. Just past the album's midpoint, it leans fully into the savage half of the record.",
+   "lyrics_status": "instrumental",
+   "intro": "Hunger and wildness side by side, a title about desire with no leash on it. Just past the album's midpoint, it leans fully into the savage half of the record."
   },
   "QT6HP2682029": {
    "release_slug": "savage-serenade",
    "n": 11,
    "title": "Ashen Embrace",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "An embrace after the fire, holding on to what is left once everything has burned. The title brings warmth and devastation together in a single gesture.",
+   "lyrics_status": "instrumental",
+   "intro": "An embrace after the fire, holding on to what is left once everything has burned. The title brings warmth and devastation together in a single gesture."
   },
   "QT6HP2682030": {
    "release_slug": "savage-serenade",
    "n": 12,
    "title": "Silent Fury",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Rage held in, with all its force and none of its noise. The title captures the album's habit of putting its fiercest feelings into its quietest words.",
+   "lyrics_status": "instrumental",
+   "intro": "Rage held in, with all its force and none of its noise. The title captures the album's habit of putting its fiercest feelings into its quietest words."
   },
   "QT6HP2682031": {
    "release_slug": "savage-serenade",
    "n": 13,
    "title": "Roses on the Blade",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The album's clearest picture of its theme: a flower laid across a knife, love and violence touching. Coming late in the record, it gathers the opposites of every title before it into one image.",
+   "lyrics_status": "instrumental",
+   "intro": "The album's clearest picture of its theme: a flower laid across a knife, love and violence touching. Coming late in the record, it gathers the opposites of every title before it into one image."
   },
   "QT6HP2682032": {
    "release_slug": "savage-serenade",
    "n": 14,
    "title": "Heart of the Storm",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The still center inside the chaos, or the storm itself beating like a heart. As the album heads toward its climax, the title points to the place where the fury runs deepest.",
+   "lyrics_status": "instrumental",
+   "intro": "The still center inside the chaos, or the storm itself beating like a heart. As the album heads toward its climax, the title points to the place where the fury runs deepest."
   },
   "QT6HP2682033": {
    "release_slug": "savage-serenade",
    "n": 15,
    "title": "Edge of Softness",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A mirror of Feral Edge from earlier in the record, this time giving the edge to gentleness. As the album nears its close, tenderness begins to take back ground.",
+   "lyrics_status": "instrumental",
+   "intro": "A mirror of Feral Edge from earlier in the record, this time giving the edge to gentleness. As the album nears its close, tenderness begins to take back ground."
   },
   "QT6HP2682034": {
    "release_slug": "savage-serenade",
    "n": 16,
    "title": "Echoes of the Wound",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "What lingers after the hurt has passed. Close to the end, the title looks back on the album's battles as something remembered rather than something still happening.",
+   "lyrics_status": "instrumental",
+   "intro": "What lingers after the hurt has passed. Close to the end, the title looks back on the album's battles as something remembered rather than something still happening."
   },
   "QT6HP2682035": {
    "release_slug": "savage-serenade",
    "n": 17,
    "title": "Last Savage Prayer",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Savagery and prayer meet one final time, as if the wildness itself has turned to devotion. As the next-to-last track, it begins the album's resolution.",
+   "lyrics_status": "instrumental",
+   "intro": "Savagery and prayer meet one final time, as if the wildness itself has turned to devotion. As the next-to-last track, it begins the album's resolution."
   },
   "QT6HP2682036": {
    "release_slug": "savage-serenade",
    "n": 18,
    "title": "Fiercely Grateful",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The album ends by giving its fierceness to gratitude instead of rage. The closing title makes peace between the two sides of Savage Serenade, ending on thanks said with full force.",
+   "lyrics_status": "instrumental",
+   "intro": "The album ends by giving its fierceness to gratitude instead of rage. The closing title makes peace between the two sides of Savage Serenade, ending on thanks said with full force."
   },
   "QT6HN2654612": {
    "release_slug": "one-man-invictus",
@@ -1280,193 +1338,288 @@
    "release_slug": "spellbound-volume-2",
    "n": 1,
    "title": "Fading",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + album position",
+   "blurb": "The album opens with something already slipping away. As the first title, it sets up a record about time passing, where things dim before they are fully seen.",
+   "lyrics_status": "instrumental",
+   "intro": "The album opens with something already slipping away. As the first title, it sets up a record about time passing, where things dim before they are fully seen.",
+   "in_depth": "The album opens in late-night haze, with a lonely piano setting a minor-key mood before a gentle pulse, shimmering guitars, hazy synth pads and subtle cello gather around it. Faint wind and rain move in the background, and melodies drift up only to dissolve again. The slow, seamless long-form flow never holds onto anything for long, which suits a title about things slipping out of sight.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/112f3643-57aa-41e9-b84e-af9d7006bee9"
   },
   "QT6F92689661": {
    "release_slug": "spellbound-volume-2",
    "n": 2,
    "title": "Firelight Embers",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + album position",
+   "blurb": "The glow left in the hearth once the flames have settled. Early in the album, it sets a warm, quiet scene for the night ahead.",
+   "lyrics_status": "instrumental",
+   "intro": "The glow left in the hearth once the flames have settled. Early in the album, it sets a warm, quiet scene for the night ahead.",
+   "in_depth": "One twangy note rings out and fades again and again, like a glowing coal that refuses to go out, and everything else settles around it. Distant piano, hazy synth pads and slow brushed beats drift through vinyl crackle and faint sounds of fire and wind. The long-form mood is cozy and melancholy at once, a room lit only by what is left in the hearth.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/7fa49388-21b7-4019-bf75-fbb2449559c2"
   },
   "QT6F92689662": {
    "release_slug": "spellbound-volume-2",
    "n": 3,
    "title": "Soft Wind's",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + album position",
+   "blurb": "A gentle breeze, the kind that stirs a fire rather than putting it out. Third on the album, it adds air and movement to the opening's warm stillness.",
+   "lyrics_status": "instrumental",
+   "intro": "A gentle breeze, the kind that stirs a fire rather than putting it out. Third on the album, it adds air and movement to the opening's warm stillness.",
+   "in_depth": "Here the same ringing note and soft lo-fi bed feel less like a fire and more like air moving through a quiet house. Faint wind sounds stir behind hazy pads and a distant piano, while small reversed echoes and soft swells come and go like gusts. Slow and hypnotic over its long-form stretch, it keeps everything gentle, a breeze that never turns into weather.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/e126a867-9f1b-4084-b20b-19b99887fecd"
   },
   "QT6F92689663": {
    "release_slug": "spellbound-volume-2",
    "n": 4,
    "title": "Embers",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + album position",
+   "blurb": "The fire again, burned lower now, with only the coals left. Two tracks after Firelight Embers, the title shows how far the night has already gone.",
+   "lyrics_status": "instrumental",
+   "intro": "The fire again, burned lower now, with only the coals left. Two tracks after Firelight Embers, the title shows how far the night has already gone.",
+   "in_depth": "Embers centers on the heart of this sound: a lone twangy note and a slow, steady pulse, with piano and warm pads moving softly around them. Tiny changes in how the note decays, like coals brightening and dimming, keep the long-form drift alive beneath the vinyl crackle. It is the album's quietest kind of warmth, heat that lingers after the light is gone.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/e25f78a4-f63b-4842-b7de-e862360bda92"
   },
   "QT6F92689664": {
    "release_slug": "spellbound-volume-2",
    "n": 5,
    "title": "Sand of Time",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + album position",
+   "blurb": "Grains running through an hourglass, time made visible as it drains away. Near the center of the album, it names the theme the other titles keep circling.",
+   "lyrics_status": "instrumental",
+   "intro": "Grains running through an hourglass, time made visible as it drains away. Near the center of the album, it names the theme the other titles keep circling.",
+   "in_depth": "The ringing note becomes a kind of clock, each pluck decaying slowly like grains falling through glass. Around it, soft melodies wind through hazy synths, distant piano and delicate brushed beats at a very slow pace, with faint harmonic blooms and whispered swells marking the time. The seamless long-form flow makes the hours feel both endless and gone, just as the title suggests.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/5f1666f0-b598-48e5-bfcd-fee4fe32813a"
   },
   "QT6F92689665": {
    "release_slug": "spellbound-volume-2",
    "n": 6,
    "title": "Painting Clouds",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "no_lyrics"
+   "basis": "title + album position",
+   "blurb": "A daydream title: someone lying back and shaping the sky into pictures. In the middle of the album, it offers an open-air pause from the night and the passing hours.",
+   "lyrics_status": "no_lyrics",
+   "intro": "A daydream title: someone lying back and shaping the sky into pictures. In the middle of the album, it offers an open-air pause from the night and the passing hours.",
+   "in_depth": "The album steps outside into the acoustic country ballad sound that opened Volume 1: steady fingerpicked guitar and light percussion, with pedal steel and harmonica following the mood. Soft rain and rolling thunder sit in the background and build with each dramatic peak. With weather passing overhead, it fits a title about lying back and watching the sky change shape.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/e1a9996b-b08a-4920-935c-8beaae37450e"
   },
   "QT6F92689666": {
    "release_slug": "spellbound-volume-2",
    "n": 7,
    "title": "Stolen Time",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + album position",
+   "blurb": "Moments taken when no one is watching, precious because they weren't supposed to last. Past the album's midpoint, it turns the passage of time into something tender and secret.",
+   "lyrics_status": "instrumental",
+   "intro": "Moments taken when no one is watching, precious because they weren't supposed to last. Past the album's midpoint, it turns the passage of time into something tender and secret.",
+   "in_depth": "A stripped-back acoustic country rock ballad, built on steady fingerpicked guitar and light percussion. Rolling thunder and soft rain fill the space around it and swell at each dramatic turn, so the quiet moments feel sheltered from the storm outside. That sense of a private pocket away from the world matches a title about time taken for yourself.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/5aee5b70-8807-4332-9d5e-fca211aee0a8"
   },
   "QT6F92689667": {
    "release_slug": "spellbound-volume-2",
    "n": 8,
    "title": "Nightfall",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + album position",
+   "blurb": "The day finally gives way to dark. Arriving in the album's second half, it marks the hour the record has been drifting toward.",
+   "lyrics_status": "instrumental",
+   "intro": "The day finally gives way to dark. Arriving in the album's second half, it marks the hour the record has been drifting toward.",
+   "in_depth": "Nightfall keeps to the same plain pairing of fingerpicked guitar and light percussion, set against rain and distant thunder. As each peak arrives, the storm rises with it, like dusk deepening into a stormy dark. The arrangement stays simple and close, letting the weather tell the listener that the day is over.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/24e52536-6f78-4273-a721-01b34fe63f65"
   },
   "QT6F92689668": {
    "release_slug": "spellbound-volume-2",
    "n": 9,
    "title": "Endless Moments",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + album position",
+   "blurb": "A wish for time to stop, set against an album full of time running out. Late in the record, it holds onto a feeling as if it could last forever.",
+   "lyrics_status": "instrumental",
+   "intro": "A wish for time to stop, set against an album full of time running out. Late in the record, it holds onto a feeling as if it could last forever.",
+   "in_depth": "Syncopated fingerpicked guitar leads over minimal brushed percussion, with rolling thunder and soft rain weaving through the mix. The weather swells as the music rises, light electric blues licks join in the fuller passages, and muted synth pads add a floating, trance-like layer underneath. The steady patterns and drifting pads make time feel suspended, holding on to the moment the title wishes would last.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/c97c2d6a-efaf-447b-8ac7-3af587520644"
   },
   "QT6F92689669": {
    "release_slug": "spellbound-volume-2",
    "n": 10,
    "title": "Morning Dew",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + album position",
+   "blurb": "Dawn arrives out of order, after Nightfall rather than before it. Late in the album, the title brings fresh light and cool air into the long night.",
+   "lyrics_status": "instrumental",
+   "intro": "Dawn arrives out of order, after Nightfall rather than before it. Late in the album, the title brings fresh light and cool air into the long night.",
+   "in_depth": "Morning Dew hears the same blend of fingerpicked guitar, brushed percussion and soft rain as the cool, damp hour just after a storm. Syncopated patterns move gently forward while rain and thunder drift through the mix, muted synth pads hang in the air like mist, and bluesy electric licks catch the light in the fuller sections. It feels like the world rinsed clean.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/ad7868a2-fb54-48bf-9272-775389205fcc"
   },
   "QT6F92689670": {
    "release_slug": "spellbound-volume-2",
    "n": 11,
    "title": "Sun Down",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + album position",
+   "blurb": "The light leaves again, as if the album's day were turning on a loop. As the next-to-last title, it hands the story back to the dark.",
+   "lyrics_status": "instrumental",
+   "intro": "The light leaves again, as if the album's day were turning on a loop. As the next-to-last title, it hands the story back to the dark.",
+   "in_depth": "As the light goes, the fingerpicked guitar and brushed percussion pick up a dusky, bluesy edge, with electric licks joining in the fuller passages. Rolling thunder and rain rise with each swell, and muted ambient synths stretch out beneath them like a sky darkening toward night. It is the album's last look at daylight before the dark closes in.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/73d16c7e-6249-4d23-9e2e-27b83eb0ba02"
   },
   "QT6F92689671": {
    "release_slug": "spellbound-volume-2",
    "n": 12,
    "title": "Midnight Rain",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + album position",
+   "blurb": "The album ends in the deepest part of the night, with rain falling. As the closing title, it leaves the turning day and the dying fire under one last soft storm.",
+   "lyrics_status": "instrumental",
+   "intro": "The album ends in the deepest part of the night, with rain falling. As the closing title, it leaves the turning day and the dying fire under one last soft storm.",
+   "in_depth": "",
+   "in_depth_basis": "pending"
   },
   "QT6F92681190": {
    "release_slug": "spellbound-volume-1",
    "n": 1,
    "title": "Captive",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The album begins with its narrator already caught. As the opening title, it sets up a record about being held by a feeling rather than fighting it.",
+   "lyrics_status": "instrumental",
+   "intro": "The album begins with its narrator already caught. As the opening title, it sets up a record about being held by a feeling rather than fighting it.",
+   "in_depth": "The album opens on its most traditional sound: an acoustic country rock ballad carried by steady fingerpicked guitar and light percussion. Rolling thunder and soft rain fill the background and rise with each dramatic peak, while pedal steel and harmonica follow the emotion closely. It feels like being kept indoors by a storm, which suits a title about being caught and held in place.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/7d53c4b5-4a29-47d1-a6ae-d3fc3bc1e797"
   },
   "QT6F92681191": {
    "release_slug": "spellbound-volume-1",
    "n": 2,
    "title": "Transfixed",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Unable to look away, frozen in place by what's in front of you. Second on the album, it deepens the opening's spell from capture to fascination.",
+   "lyrics_status": "instrumental",
+   "intro": "Unable to look away, frozen in place by what's in front of you. Second on the album, it deepens the opening's spell from capture to fascination.",
+   "in_depth": "A slow, dreamy turn on the album, where the country ballad gives way to late-night haze. A lonely minor-key piano reaches out with unanswered longing, then a soft pulse, shimmering guitars, warm synth pads and swelling cello wind around it, with half-remembered melodies that surface and fade like memories. It never breaks the trance, drifting for more than six minutes like someone who can't look away.",
+   "in_depth_basis": "Suno style prompt (user-approved text)",
+   "suno_url": "https://suno.com/song/78a6bcba-b741-4f7b-b233-a4fd82ecb21b"
   },
   "QT6F92681192": {
    "release_slug": "spellbound-volume-1",
    "n": 3,
    "title": "Smitten",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The lightest word in the album's language of enchantment, the giddy first rush of falling for someone. Early on, it gives the spell a warm and hopeful face.",
+   "lyrics_status": "instrumental",
+   "intro": "The lightest word in the album's language of enchantment, the giddy first rush of falling for someone. Early on, it gives the spell a warm and hopeful face.",
+   "in_depth": "Smitten stays in the late-night lo-fi haze but lets a little light in. A lonely minor-key piano starts things off before brushed beats, shimmering guitar, warm synth pads and soft cello gather around it, with small, unexpected harmonic shifts arriving like the flutter of a new crush. The long-form drift stays relaxed and dreamy, the sound of someone too happily distracted to notice the hours passing.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/8cb2752e-9b86-4638-aa7f-7eae2f17b841"
   },
   "QT6F92681193": {
    "release_slug": "spellbound-volume-1",
    "n": 4,
    "title": "Spellbound",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The title track names what the first three have been describing. Placed fourth, it marks the moment the enchantment is complete.",
+   "lyrics_status": "instrumental",
+   "intro": "The title track names what the first three have been describing. Placed fourth, it marks the moment the enchantment is complete.",
+   "in_depth": "The title track sinks fully into the trance. Interlocking melodies circle a distant piano, wrapped in deep reverb and tape warmth, while faint reversed textures and ghostly fragments of tune flicker in and out. Nothing breaks the spell: gentle builds rise and fall across a long-form stretch with no sudden changes, keeping the listener exactly where the title says they are.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/60916608-6150-492c-99da-b254de7ccaf1"
   },
   "QT6F92681194": {
    "release_slug": "spellbound-volume-1",
    "n": 5,
    "title": "lingering",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Staying a little longer than you meant to, unwilling to let a moment end. Moving into the album's middle, it slows the pace and lets the feeling settle.",
+   "lyrics_status": "instrumental",
+   "intro": "Staying a little longer than you meant to, unwilling to let a moment end. Moving into the album's middle, it slows the pace and lets the feeling settle.",
+   "in_depth": "A slow, low-key piece whose echoing, winding lines take their time, as if reluctant to move on. A soft, somber rhythm keeps it steady while hints of distortion creep in and the sound gradually builds, though it never loses its calm. A touch of whimsy runs under the haunting mood, like a fond memory you can't quite let go of.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/b372a778-e030-4521-a9b3-17872bfb7869"
   },
   "QT6F92681195": {
    "release_slug": "spellbound-volume-1",
    "n": 6,
    "title": "Stoic",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The one title on the album that pushes back, a refusal to show what you feel. Near the center of the record, it reads as an attempt to resist the pull the surrounding titles keep describing.",
+   "lyrics_status": "instrumental",
+   "intro": "The one title on the album that pushes back, a refusal to show what you feel. Near the center of the record, it reads as an attempt to resist the pull the surrounding titles keep describing.",
+   "in_depth": "Built from the same slow, haunting materials as lingering, Stoic leans on their discipline rather than their wistfulness. The rhythm is deliberate and controlled, the mood somber and low-key, and distorted textures press against a calm surface that refuses to crack. As it builds, the restraint becomes the point: strong feeling held carefully in check, just as the title suggests.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/10278694-5555-4638-ba44-9379e1c8644d"
   },
   "QT6F92681196": {
    "release_slug": "spellbound-volume-1",
    "n": 7,
    "title": "Rhythms of the Heart",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A pulse quickened or steadied by someone else. In the album's middle, it turns the theme from being captured to the body keeping time with the feeling.",
+   "lyrics_status": "instrumental",
+   "intro": "A pulse quickened or steadied by someone else. In the album's middle, it turns the theme from being captured to the body keeping time with the feeling.",
+   "in_depth": "A lonely harmonica opens over faint, pulsing synths, and soft violin brings in a classical warmth. From there chill techno beats grow more intricate like a quickening heartbeat, distorted acoustic guitar adds a raw groove, and the drums swell into a full, textured crescendo. It is the album's clearest meeting of country roots and electronic pulse, a heart finding its rhythm one layer at a time.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/d611b446-c5e4-4711-8c3e-d2021cb4c5ce"
   },
   "QT6F92681197": {
    "release_slug": "spellbound-volume-1",
    "n": 8,
    "title": "Country Stars",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A night sky far from city lights, the kind of view that belongs to back roads and porches. The title opens the album's second half outward, from the heart to the wide country around it.",
+   "lyrics_status": "instrumental",
+   "intro": "A night sky far from city lights, the kind of view that belongs to back roads and porches. The title opens the album's second half outward, from the heart to the wide country around it.",
+   "in_depth": "Here the same mix of harmonica, violin and electronic beats plays like a drive under an open night sky. The lone harmonica sets a back-road mood over a faint synth shimmer, then the rhythm builds steadily, roughened by distorted acoustic guitar, until the drums carry everything into a wide, textured climax. It brings the open country of the title into the album's electronic world.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/e3f8069f-acad-4ce7-8ae8-ff7343ac4d31"
   },
   "QT6F92681198": {
    "release_slug": "spellbound-volume-1",
    "n": 9,
    "title": "Mesmerized",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The spell returns, stronger after a stretch of open air. Late in the album, the title pulls the listener back into the trance of the first tracks.",
+   "lyrics_status": "instrumental",
+   "intro": "The spell returns, stronger after a stretch of open air. Late in the album, the title pulls the listener back into the trance of the first tracks.",
+   "in_depth": "The album's heaviest sound at its softest volume: a lo-fi take on metal where downtuned, distorted guitars sit far back behind vinyl crackle and brushed beats. Palm-muted chugs and shimmering leads drift rather than strike, with brief, airy breakdowns that fade back to calm. Over its long-form stretch the weight turns hypnotic, which fits a title about being held in a trance.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/655720a1-b59e-4d7f-bc25-8a7491c8c0ed"
   },
   "QT6F92681199": {
    "release_slug": "spellbound-volume-1",
    "n": 10,
    "title": "Groove",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "A settled rhythm, the easy feeling of falling into step. In the album's last third, it suggests the enchantment has become comfortable rather than overwhelming.",
+   "lyrics_status": "instrumental",
+   "intro": "A settled rhythm, the easy feeling of falling into step. In the album's last third, it suggests the enchantment has become comfortable rather than overwhelming.",
+   "in_depth": "Groove returns to the late-night piano sound and gives it steady footing. A sparse piano opening gives way to layered pads and brushed beats at an easy, unhurried pace, while winding minor-key melodies and ghostly echoes move over the top. Small harmonic shifts keep the long-form flow from standing still, making it an easy rhythm to fall into and stay in.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/ebfcf198-b6ef-4200-987e-c918f22e1e80"
   },
   "QT6F92681200": {
    "release_slug": "spellbound-volume-1",
    "n": 11,
    "title": "Traveling",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "Movement down the road, whether running from the spell or carrying it along. As the next-to-last title, it puts some miles behind the story before the ending.",
+   "lyrics_status": "instrumental",
+   "intro": "Movement down the road, whether running from the spell or carrying it along. As the next-to-last title, it puts some miles behind the story before the ending.",
+   "in_depth": "Traveling hears the same sparse piano and layered pads as a long journey through the dark. Brushed beats keep a patient forward motion and minor-key melodies wind past like scenery, with ghostly echoes and harmonic turns marking the miles. Deep reverb and tape warmth make it feel like a night drive with the radio low, where the road matters more than the arrival.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/797f3270-a00b-4652-9f4b-8090689e1f50"
   },
   "QT6F92681201": {
    "release_slug": "spellbound-volume-1",
    "n": 12,
    "title": "Taken",
-   "basis": "pending",
-   "blurb": "",
-   "lyrics_status": "instrumental"
+   "basis": "title + artist style prompt",
+   "blurb": "The album closes where it began, with someone caught, but now the word sounds as much like a choice as a capture. Taken answers Captive, leaving the record fully under the spell.",
+   "lyrics_status": "instrumental",
+   "intro": "The album closes where it began, with someone caught, but now the word sounds as much like a choice as a capture. Taken answers Captive, leaving the record fully under the spell.",
+   "in_depth": "The closing track brings the album's late-night sound to its most cinematic and calm. A lonely piano gives way to shimmering guitars, hazy synth pads and subtle cello, while faint wind and rain drift in the background, an echo of the storm that opened the record. Ghostly melodies appear and fade across a long-form stretch, ending the album with the spell fully settled.",
+   "in_depth_basis": "Suno style prompt",
+   "suno_url": "https://suno.com/song/b840dd47-a021-480f-aab6-b4c569ea939c"
   },
   "QT6F92659506": {
    "release_slug": "flock-of-the-tyrants",

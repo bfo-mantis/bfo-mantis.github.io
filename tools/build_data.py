@@ -289,9 +289,13 @@ def main():
     lstatus = {**lstatus, **tso}
     direct = load_store_links(a.store_links)
     bl = json.loads(Path(a.blurbs).read_text()) if a.blurbs and Path(a.blurbs).exists() else {}
-    ok_blurb = lambda v: (v or {}).get("blurb") if (v or {}).get("basis") != "pending" and (v or {}).get("blurb") else None
+    # Track entries may be two-part: "intro" (short road map; "blurb" mirrors it for compatibility) and "in_depth"
+    # (longer, shown behind "More about this track"; skipped while in_depth_basis is "pending" or the text is empty).
+    ok_blurb = lambda v: ((v or {}).get("intro") or (v or {}).get("blurb")) if (v or {}).get("basis") != "pending" and ((v or {}).get("intro") or (v or {}).get("blurb")) else None
+    ok_depth = lambda v: (v or {}).get("in_depth") if ok_blurb(v) and (v or {}).get("in_depth_basis") != "pending" and (v or {}).get("in_depth") else None
     rel_blurbs = {k: ok_blurb(v) for k, v in (bl.get("releases") or {}).items()}
     trk_blurbs = {k: ok_blurb(v) for k, v in (bl.get("tracks") or {}).items()}
+    trk_depth = {k: ok_depth(v) for k, v in (bl.get("tracks") or {}).items()}
     used, releases, excluded, failed = set(), [], [], []
     for r in cat:
         if ARTIST not in (r.get("artist") or []):
@@ -345,6 +349,7 @@ def main():
         for t in x["tracks"]:
             # singles show their song blurb as the release blurb (not repeated on the track row)
             t["blurb"] = trk_blurbs.get(t["isrc"]) if x["type"] == "album" else None
+            t["blurb_in_depth"] = trk_depth.get(t["isrc"]) if x["type"] == "album" else None
         for t in x["tracks"]:   # 30 s previews made by tools/make_previews.py (only if the clip exists)
             pv = f"assets/audio/previews/{x['slug']}/{t['n']:02d}.mp3"
             t["preview"] = pv if (ROOT / pv).exists() else None
@@ -365,7 +370,7 @@ def main():
     data = {"artist": ARTIST, "generated": datetime.now().isoformat(timespec="seconds"),
             "donate_url": cfg["donate_url"], "members_url": cfg["members_url"], "email_signup_url": cfg["email_signup_url"], "community_url": cfg["community_url"], "press_contact": cfg["press_contact"],
             "goatcounter_code": cfg["goatcounter_code"], "releases": releases}
-    print("blurbs: releases", sum(1 for x in releases if x["blurb"]), "| album tracks", sum(1 for x in releases for t in x["tracks"] if t["blurb"]),
+    print("blurbs: releases", sum(1 for x in releases if x["blurb"]), "| album tracks", sum(1 for x in releases for t in x["tracks"] if t["blurb"]), "| in-depth", sum(1 for x in releases for t in x["tracks"] if t.get("blurb_in_depth")),
           "| releases without one:", [x["slug"] for x in releases if not x["blurb"]] or "none")
     print("downloads enabled:", sum(1 for x in releases if x["download_url"]), "| donate enabled:", bool(cfg["donate_url"]), "| members (Join) enabled:", bool(cfg["members_url"]), "| email sign-up enabled:", bool(cfg["email_signup_url"]), "| community enabled:", bool(cfg["community_url"]),
           "| analytics:", f'GoatCounter ({cfg["goatcounter_code"]})' if cfg["goatcounter_code"] else "off")

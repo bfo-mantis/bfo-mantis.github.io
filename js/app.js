@@ -61,6 +61,13 @@
       track("event/lyrics/" + relSlug(d) + "/" + ("0" + (n ? n.textContent.trim() : "")).slice(-2));
     });
   });
+  each("details.tmore", function (d) {
+    d.addEventListener("toggle", function () {
+      if (!d.open) return;
+      var n = d.closest("li").querySelector(".n");
+      track("event/blurb/" + relSlug(d) + "/" + ("0" + (n ? n.textContent.trim() : "")).slice(-2));
+    });
+  });
 
   // Mobile menu (<=780px): the toggle opens the nav panel; Esc, an outside click or choosing a link closes it.
   var navBar = document.querySelector(".topbar"), tog = document.querySelector(".nav-toggle");

@@ -691,11 +691,20 @@ def build_release(releases, i, site, today, v, has_about):
                           f'<summary><span class="tt">{e(t["title"])}</span><span class="ltag" aria-hidden="true">Lyrics</span>'
                           f'<span class="sr-only"> — show lyrics</span></summary>'
                           + (f'<p class="tblurb">{e(t["blurb"])}</p>' if t.get("blurb") else "")
+                          + (f'<div class="tdepth"><p class="tdepth-k">More about this track</p><p>{e(t["blurb_in_depth"])}</p></div>' if t.get("blurb_in_depth") else "")
                           + f'<div class="lyrics" aria-live="polite">Loading lyrics…</div>'
                           f'<p class="lcopy">&copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p></details></li>')
         else:
             tag = ' <span class="itag">Instrumental</span>' if t["lyrics"] == "instrumental" else ""
-            tracks.append(f'<li>{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<span class="tt">{e(t["title"])}{tag}</span></li>')
+            if t.get("blurb"):
+                # Instrumental / no-lyrics track with a blurb: intro as a short line under the title, in-depth text
+                # behind an expandable "More about this track".
+                more = (f'<details class="tmore"><summary>More about this track</summary><p class="tdepth">{e(t["blurb_in_depth"])}</p></details>'
+                        if t.get("blurb_in_depth") else "")
+                tracks.append(f'<li class="has-blurb">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<div class="tcol">'
+                              f'<span class="tt">{e(t["title"])}{tag}</span><p class="tblurb tintro">{e(t["blurb"])}</p>{more}</div></li>')
+            else:
+                tracks.append(f'<li>{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<span class="tt">{e(t["title"])}{tag}</span></li>')
     preview_bar, first = preview_main(root, r)
     n = len(r["tracks"])
     facts = (f'<li><span>Released</span> <span class="js-upcoming"{hid_up}>Out </span><time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time></li>'
