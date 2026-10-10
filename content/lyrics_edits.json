@@ -7,7 +7,8 @@
    "redact_line": "replace whole line with [redacted]",
    "redact_span": "replace chars [start,end) of the line with [redacted]"
   },
-  "safety": "line_sha256_16 must match the source line or the edit is skipped with a warning"
+  "safety": "line_sha256_16 must match the source line or the edit is skipped with a warning",
+  "override_edits": "tracks.<ISRC>.override_edits: redactions in content/lyrics_overrides text. The words are not stored in the repo; the override file holds a marker (⟦redacted:N⟧ span or ⟦redacted-line:N⟧ whole line). Records hold reason, count and a hash of the original text only."
  },
  "tracks": {
   "QT9XH2672254": {
@@ -139,6 +140,36 @@
      "line_sha256_16": "62eb53ac04af1964",
      "reason": "transcription artifact"
     }
+   ],
+   "override_edits": [
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "unproven allegation against a named individual/company",
+     "count": 1,
+     "match_sha256_16": "8c951a0ac664bb51"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "unproven allegation against a named individual/company",
+     "count": 1,
+     "match_sha256_16": "f791c8b174abc56b"
+    },
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "unproven allegation against a named individual/company",
+     "count": 1,
+     "match_sha256_16": "6a30673795249fc3"
+    },
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "unproven allegation against a named individual/company",
+     "count": 1,
+     "match_sha256_16": "9d8cdb0272a2653f"
+    }
    ]
   },
   "QT6G62652788": {
@@ -183,6 +214,29 @@
      "action": "redact_line",
      "line_sha256_16": "272147bb7582902c",
      "reason": "incitement/call for violence against people or officials"
+    }
+   ],
+   "override_edits": [
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 2,
+     "match_sha256_16": "90808d4c1bacf411"
+    },
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "hate speech: slur/ethnic or religious targeting",
+     "count": 1,
+     "match_sha256_16": "a542d86d41697262"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "de23e525b3e660ee"
     }
    ]
   },
@@ -241,6 +295,22 @@
      "line_sha256_16": "6b23565e9f5d0cb6",
      "reason": "incitement/call for violence against people or officials"
     }
+   ],
+   "override_edits": [
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 4,
+     "match_sha256_16": "9d728f37d9bc32b1"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 2,
+     "match_sha256_16": "6189ae19a7d8dc13"
+    }
    ]
   },
   "QT6HN2654618": {
@@ -253,6 +323,15 @@
      "action": "redact_line",
      "line_sha256_16": "8135b98d4950c1e7",
      "reason": "hate speech: slur/ethnic or religious targeting"
+    }
+   ],
+   "override_edits": [
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "hate speech: slur/ethnic or religious targeting",
+     "count": 1,
+     "match_sha256_16": "4b48996c97671429"
     }
    ]
   },
@@ -278,6 +357,22 @@
      "line_sha256_16": "1f9592825d49d7a3",
      "reason": "incitement/call for violence against people or officials"
     }
+   ],
+   "override_edits": [
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "hate speech: disability slur",
+     "count": 1,
+     "match_sha256_16": "bd331fb1d24298f5"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "64acdd6279a79b61"
+    }
    ]
   },
   "QT6G62652783": {
@@ -290,6 +385,15 @@
      "action": "redact_line",
      "line_sha256_16": "4917bd30c45f1008",
      "reason": "incitement/call for violence against people or officials"
+    }
+   ],
+   "override_edits": [
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "f1d2f1aeed9a4189"
     }
    ]
   },
@@ -444,6 +548,71 @@
      "line_sha256_16": "92ba0530a647f868",
      "reason": "incitement/call for violence against people or officials"
     }
+   ],
+   "override_edits": [
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "82d47bd7f242f579"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "8c56f8fa49e3cb77"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "5594eb11ea904342"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "dfca2fcb5b4d8987"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "threat against people or their families",
+     "count": 1,
+     "match_sha256_16": "ea291904f2cea252"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "threat against people or their families",
+     "count": 1,
+     "match_sha256_16": "207f6e96aaf8ef7d"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "e59d5d4772cbac26"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "42c68b2b37ae553f"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "f659d3b612fea75d"
+    }
    ]
   },
   "QT9XH2672259": {
@@ -475,6 +644,29 @@
      "line_sha256_16": "ac08aefba8a01798",
      "reason": "threat against people or their families"
     }
+   ],
+   "override_edits": [
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "dehumanizing language about migrants",
+     "count": 1,
+     "match_sha256_16": "63e3a0b8590f8ac1"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "threat against people or their families",
+     "count": 1,
+     "match_sha256_16": "325135c9c3b91d24"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "threat against people or their families",
+     "count": 1,
+     "match_sha256_16": "4112264d3cd048dc"
+    }
    ]
   },
   "QT9XH2672251": {
@@ -487,6 +679,15 @@
      "action": "redact_line",
      "line_sha256_16": "f109828fb827d657",
      "reason": "incitement/call for violence against people or officials"
+    }
+   ],
+   "override_edits": [
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "f109828fb827d657"
     }
    ]
   },

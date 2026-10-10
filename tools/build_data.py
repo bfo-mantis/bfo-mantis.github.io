@@ -155,6 +155,35 @@ def apply_lyrics_edits(isrc, text, edits, log):
 def lines_src(text):
     return text.replace("\r\n", "\n").strip("\n").split("\n")
 
+_LABEL_WORDS = re.compile(r"\b(verse|chorus|pre-?chorus|refrain|bridge|hook|intro|outro|coda|interlude|breakdown|instrumental|spoken|"
+                          r"sing|sung|whisper\w*|fad\w*|build\w*|slow\w*|tempo|bpm|style|beat|drums?|guitars?|strings|choir|choral|"
+                          r"thunder|rumble|percussion|radar|cannon|crescendo|shout\w*|scream\w*|layered|harmon\w*|soaring|reverent|"
+                          r"intensity|climax|anthem|think|read it|repeat|tag|final)\b", re.I)
+
+def _is_label(line):
+    s = line.strip()
+    if re.fullmatch(r"(\[[^\]]*\]\s*)+", s): return True
+    if re.fullmatch(r"\(.*\)", s): return bool(_LABEL_WORDS.search(s))
+    return False
+
+_MARK = re.compile(r"\u27e6redacted(-line)?:(\d+)\u27e7")
+
+def apply_override_edits(isrc, text, edits, log):
+    """Redactions in artist-supplied override text. The redacted words are never stored in the repo (the whole repo
+    is public): the override file carries a marker instead, "\u27e6redacted:N\u27e7" for a span of about N characters, or a
+    line that is only "\u27e6redacted-line:N\u27e7" for a whole line. Markers become the same structured tokens as DistroKid
+    redactions. content/lyrics_edits.json -> tracks.<ISRC>.override_edits records each redaction (reason, count and a
+    hash of the original text, no text) and the build checks the marker count against it."""
+    found = 0
+    def sub(m):
+        nonlocal found; found += 1
+        return _tok(int(m.group(2)), bool(m.group(1)))
+    out = _MARK.sub(sub, text)
+    expected = sum(e.get("count", 1) for e in (edits.get(isrc) or {}).get("override_edits", []))
+    if found != expected:
+        log.append(f"{isrc}: {found} redaction markers in override, {expected} recorded in lyrics_edits.json")
+    return out
+
 def load_overrides(folder):
     """content/lyrics_overrides/<ISRC>.txt: authoritative lyrics from the artist. Used as-is except:
     line endings normalised, section-label lines removed, leading/trailing blank lines trimmed."""
@@ -163,9 +192,11 @@ def load_overrides(folder):
     if d.is_dir():
         for f in sorted(d.glob("*.txt")):
             text = f.read_text(encoding="utf-8").replace("\r\n", "\n")
-            # drop section labels (lines entirely in parentheses or square brackets, e.g. "(Chorus)", "[Verse 1]") for consistency with
-            # the other songs; blank lines between sections stay as stanza breaks
-            lines = [l.rstrip() for l in text.split("\n") if not re.fullmatch(r"\s*(\(.*\)|\[.*\])\s*", l)]
+            # drop section labels / performance notes for consistency with the other songs: any line entirely in square
+            # brackets ("[Verse 1]"), and lines entirely in parentheses that read as a label or direction ("(Chorus)",
+            # "(Bridge – slower)"). A parenthesised line that is actually sung, e.g. "(Oh Havilah… rise and shine…)", stays.
+            # Blank lines between sections stay as stanza breaks.
+            lines = [l.rstrip() for l in text.split("\n") if not _is_label(l)]
             out[f.stem.strip().upper()] = re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).strip("\n")
     return out
 
@@ -183,9 +214,9 @@ def write_lyrics_files(releases, lyrics, edits=None, log=None, overrides=None):
             if t["isrc"] in overrides:
                 # artist-supplied text replaces the DistroKid text entirely; lyrics_edits.json is not applied
                 t["lyrics"] = "lyrics"; t["lyrics_source"] = "artist"
-                m[t["isrc"]] = overrides[t["isrc"]]
-                if (edits or {}).get(t["isrc"]):
-                    log.append(f"{t['isrc']}: override present, {len(edits[t['isrc']]['edits'])} lyrics_edits entries skipped")
+                # line/hash edits target the DistroKid text and are skipped; override_edits (matched by text) are applied
+                m[t["isrc"]] = structure_lyrics(apply_override_edits(t["isrc"], overrides[t["isrc"]], edits or {}, log))
+
             elif t["lyrics"] == "lyrics":
                 m[t["isrc"]] = apply_lyrics_edits(t["isrc"], lyrics[t["isrc"]]["lyrics"], edits or {}, log)
         r["lyrics_file"] = f"assets/data/lyrics/{r['slug']}.json" if m else None
