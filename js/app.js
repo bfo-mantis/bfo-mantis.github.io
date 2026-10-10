@@ -16,7 +16,7 @@
 
   // Compact header + back-to-top button once the page is scrolled.
   var body = document.body, ticking = false, st = {};
-  var narrow = window.matchMedia ? matchMedia("(max-width: 780px)") : null;
+  var narrow = window.matchMedia ? matchMedia("(max-width: 960px)") : null;
   var set = function (cls, on) { if (st[cls] !== on) { st[cls] = on; body.classList.toggle(cls, on); } };
   var onScroll = function () {
     ticking = false;
@@ -69,7 +69,7 @@
     });
   });
 
-  // Mobile menu (<=780px): the toggle opens the nav panel; Esc, an outside click or choosing a link closes it.
+  // Mobile menu (<=960px): the toggle opens the nav panel; Esc, an outside click or choosing a link closes it.
   var navBar = document.querySelector(".topbar"), tog = document.querySelector(".nav-toggle");
   if (navBar && tog) {
     var setOpen = function (on, focusBack) {
@@ -397,5 +397,204 @@
         }).catch(function () { box.textContent = "Couldn't load lyrics. Please try again."; lyricsPromise = null; });
       });
     }, rel);
+  }
+
+  // Deep links to a track (#t3, used by search results): open its lyrics / "More about this track" and bring it into view.
+  var openTrack = function () {
+    var m = /^#t(\d+)$/.exec(location.hash); if (!m) return;
+    var li = document.getElementById("t" + m[1]); if (!li) return;
+    var d = li.querySelector("details"); if (d && !d.open) d.open = true;
+    li.classList.add("t-hit"); setTimeout(function () { li.classList.remove("t-hit"); }, 2400);
+    requestAnimationFrame(function () { li.scrollIntoView({ block: "center" }); });
+  };
+  openTrack(); window.addEventListener("hashchange", openTrack);
+
+  // Site search: the header button opens a modal <dialog>; the index (assets/data/search.json, built by
+  // tools/build_pages.py from the published, already-redacted data) is fetched on first open. "/" or Ctrl/Cmd+K opens it.
+  var sBtn = document.querySelector(".search-btn");
+  if (sBtn && typeof document.createElement("dialog").showModal === "function") {
+    var sRoot = sBtn.getAttribute("data-idx").replace(/assets\/data\/search\.json.*$/, "");
+    var idx = null, idxP = null, sDlg, sIn, sOut, sStat, lastQ = "", tmr = 0;
+    var norm = function (s) {
+      return String(s || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+        .replace(/['’`]/g, "").replace(/&/g, " and ").replace(/[^a-z0-9]+/g, " ").trim();
+    };
+    var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+    var lev1 = function (a, b) {   // edit distance <= 1 (typo tolerance)
+      if (a === b) return true;
+      var la = a.length, lb = b.length; if (Math.abs(la - lb) > 1) return false;
+      var i = 0, j = 0, d = 0;
+      while (i < la && j < lb) {
+        if (a[i] === b[j]) { i++; j++; continue; }
+        if (++d > 1) return false;
+        if (la > lb) i++; else if (lb > la) j++; else { i++; j++; }
+      }
+      return d + (la - i) + (lb - j) <= 1;
+    };
+    // token score against a normalized field: 3 = whole word, 2 = word prefix, 1 = inside a word / one typo away
+    var tokScore = function (tok, f, words) {
+      var at = f.indexOf(tok);
+      if (at > -1) {
+        var pre = at === 0 || f[at - 1] === " ", post = at + tok.length === f.length || f[at + tok.length] === " ";
+        return pre && post ? 3 : pre ? 2 : 1;
+      }
+      if (tok.length >= 4) for (var k = 0; k < words.length; k++) if (words[k].length >= 4 && lev1(tok, words[k])) return 1;
+      return 0;
+    };
+    var prep = function (d) {
+      var R = d.r.map(function (r) {
+        var o = { slug: r[0], title: r[1], type: r[2] === "a" ? "Album" : "Single", genre: r[3], year: r[4], art: r[5], blurb: r[6], instr: !!r[7] };
+        o.f = [norm(o.title), norm([o.type, o.genre, o.year, o.instr ? "instrumental" : "songs"].join(" ")), norm(o.blurb)];
+        return o;
+      });
+      var T = d.t.map(function (t) {
+        var r = R[t[0]];
+        var o = { r: r, n: t[1], title: t[2], kind: t[3], blurb: t[4], lyr: t[5] };
+        o.f = [norm(o.title), norm([r.title, o.kind === "i" ? "instrumental" : "", r.genre].join(" ")), norm(o.blurb), norm(o.lyr)];
+        return o;
+      });
+      var P = d.p.map(function (p) { var o = { title: p[0], path: p[1], desc: p[2] }; o.f = [norm(o.title), "", norm(o.desc)]; return o; });
+      [R, T, P].forEach(function (L) { L.forEach(function (o) { o.w = o.f.map(function (f) { return f ? f.split(" ") : []; }); }); });
+      return { R: R, T: T, P: P };
+    };
+    var W = [10, 3, 1.5, 1];   // field weights: title, meta, blurb, lyrics
+    var score = function (o, toks, qn) {
+      var total = 0, best = -1;
+      for (var i = 0; i < toks.length; i++) {
+        var top = 0, tf = -1;
+        for (var f = 0; f < o.f.length; f++) {
+          if (!o.f[f]) continue;
+          var s = tokScore(toks[i], o.f[f], o.w[f]) * W[f];
+          if (s > top) { top = s; tf = f; }
+        }
+        if (!top) return null;   // every word must match somewhere
+        total += top; if (tf > best) best = tf;   // deepest field needed decides which snippet to show
+      }
+      if (o.f[0] === qn) total += 40; else if (o.f[0].indexOf(qn) === 0) total += 20; else if (toks.length > 1 && o.f[0].indexOf(qn) > -1) total += 12;
+      for (var f2 = 2; f2 < o.f.length; f2++) if (toks.length > 1 && o.f[f2].indexOf(qn) > -1) total += 6 * W[f2];   // exact phrase
+      return { s: total, field: best };
+    };
+    var hl = function (text, toks) {
+      var out = esc(text);
+      var parts = toks.filter(function (t) { return t.length > 1; }).sort(function (a, b) { return b.length - a.length; })
+        .map(function (t) { return t.split("").map(function (c) { return c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }).join("['’]?"); });
+      if (!parts.length) return out;
+      return out.replace(new RegExp("(" + parts.join("|") + ")", "gi"), "<mark>$1</mark>");
+    };
+    var snippet = function (text, toks, qn) {   // the best-matching line (lyrics) or a window around the first hit (blurbs)
+      var lines = String(text).split("\n"), bestL = "", bestS = -1;
+      lines.forEach(function (l) {
+        var n = norm(l), s = 0;
+        toks.forEach(function (t) { if (n.indexOf(t) > -1) s++; });
+        if (qn && n.indexOf(qn) > -1) s += toks.length;
+        if (s > bestS) { bestS = s; bestL = l; }
+      });
+      if (bestL.length > 140) {
+        var low = bestL.toLowerCase(), at = Math.max(0, low.indexOf(toks[0]) - 50);
+        bestL = (at > 0 ? "…" : "") + bestL.slice(at, at + 130) + (at + 130 < bestL.length ? "…" : "");
+      }
+      return bestL;
+    };
+    var thumb = function (r) { return r && r.art ? '<img src="' + esc(sRoot + r.art) + '" alt="" width="44" height="44" loading="lazy" decoding="async">' : '<span class="sr-ph" aria-hidden="true"></span>'; };
+    var CAP = { R: 6, T: 12, P: 5 };
+    var run = function () {
+      var q = sIn.value, qn = norm(q);
+      if (qn === lastQ) return; lastQ = qn;
+      if (!idx) return;
+      if (!qn) { sOut.innerHTML = ""; sStat.textContent = ""; sIn.setAttribute("aria-expanded", "false"); return; }
+      var toks = qn.split(" ").filter(function (t) { return t !== "or" && t !== "the" && t !== "a" || qn.split(" ").length === 1; });
+      if (!toks.length) toks = qn.split(" ");
+      var html = "", count = 0;
+      [["R", "Releases"], ["T", "Tracks"], ["P", "Pages"]].forEach(function (g) {
+        var hits = [];
+        idx[g[0]].forEach(function (o) { var s = score(o, toks, qn); if (s) hits.push({ o: o, s: s.s, f: s.field }); });
+        if (!hits.length) return;
+        hits.sort(function (a, b) { return b.s - a.s; });
+        count += hits.length;
+        var shown = hits.slice(0, CAP[g[0]]);
+        html += '<section class="sr-g" aria-label="' + g[1] + '"><h3 class="sr-h">' + g[1] + '<span>' + (hits.length > shown.length ? shown.length + " of " + hits.length : hits.length) + "</span></h3><ul>";
+        shown.forEach(function (h) {
+          var o = h.o, href, art, title, meta, snip = "";
+          if (g[0] === "R") {
+            href = sRoot + "release/" + o.slug + "/"; art = thumb(o); title = o.title;
+            meta = [o.type, o.genre, o.year].concat(o.instr ? ["Instrumental"] : []).join(" · ");
+            if (h.f === 2) snip = snippet(o.blurb, toks, qn);
+          } else if (g[0] === "T") {
+            href = sRoot + "release/" + o.r.slug + "/#t" + o.n; art = thumb(o.r); title = o.title;
+            meta = "Track " + o.n + " · " + o.r.title + (o.kind === "i" ? " · Instrumental" : "");
+            if (h.f === 3) snip = "\u201C" + snippet(o.lyr, toks, qn) + "\u201D"; else if (h.f === 2) snip = snippet(o.blurb, toks, qn);
+          } else {
+            href = sRoot + o.path; art = '<span class="sr-ph sr-pg" aria-hidden="true"></span>'; title = o.title; meta = o.desc;
+          }
+          html += '<li><a class="sr-a" href="' + esc(href) + '">' + art + '<span class="sr-t"><span class="sr-tt">' + hl(title, toks) + '</span><span class="sr-m">' + hl(meta, toks) + "</span>"
+            + (snip ? '<span class="sr-s">' + hl(snip, toks) + "</span>" : "") + "</span></a></li>";
+        });
+        html += "</ul></section>";
+      });
+      sOut.innerHTML = html || '<p class="sr-none">No matches for \u201C' + esc(q) + '\u201D. Try a song title, an album, a genre or a line from the lyrics.</p>';
+      sStat.textContent = count ? count + " result" + (count === 1 ? "" : "s") : "No results";
+      sIn.setAttribute("aria-expanded", count ? "true" : "false");
+    };
+    var load = function () {
+      if (!idxP) idxP = fetch(sBtn.getAttribute("data-idx")).then(function (r) { if (!r.ok) throw r; return r.json(); })
+        .then(function (d) { idx = prep(d); lastQ = null; run(); })
+        .catch(function () { idxP = null; sStat.textContent = "Search couldn\u2019t load. Please try again."; });
+      return idxP;
+    };
+    var build = function () {
+      sDlg = document.createElement("dialog");
+      sDlg.className = "search-dlg"; sDlg.setAttribute("aria-labelledby", "search-h");
+      sDlg.innerHTML = '<div class="sd-box"><h2 class="sr-only" id="search-h">Search bfo.mantis</h2>'
+        + '<div class="sd-bar">' + sBtn.querySelector("svg").outerHTML
+        + '<input type="search" id="search-q" class="sd-in" placeholder="Search songs, albums, lyrics…" autocomplete="off" spellcheck="false" enterkeyhint="search" role="combobox" aria-expanded="false" aria-controls="search-out" aria-autocomplete="list" aria-describedby="search-stat" aria-label="Search songs, albums, lyrics and pages">'
+        + '<button type="button" class="sd-close" aria-label="Close search"><span class="sd-esc" aria-hidden="true">Esc</span><svg class="sd-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button></div>'
+        + '<p class="sr-only" id="search-stat" aria-live="polite"></p>'
+        + '<div class="sd-out" id="search-out"></div>'
+        + '<p class="sd-foot"><span><kbd>↑</kbd><kbd>↓</kbd> to move</span><span><kbd>Enter</kbd> to open</span><span><kbd>Esc</kbd> to close</span></p></div>';
+      document.body.appendChild(sDlg);
+      sIn = sDlg.querySelector(".sd-in"); sOut = sDlg.querySelector(".sd-out"); sStat = sDlg.querySelector("#search-stat");
+      sIn.addEventListener("input", function () { clearTimeout(tmr); tmr = setTimeout(run, 90); });
+      sDlg.querySelector(".sd-close").addEventListener("click", function () { sDlg.close(); });
+      sDlg.addEventListener("click", function (ev) { if (ev.target === sDlg) sDlg.close(); });   // backdrop
+      sDlg.addEventListener("close", function () { document.documentElement.classList.remove("search-open"); sBtn.focus(); });
+      sOut.addEventListener("click", function (ev) {
+        var a = ev.target.closest && ev.target.closest("a.sr-a"); if (!a) return;
+        track("event/search/" + (a.closest(".sr-g").getAttribute("aria-label") || "").toLowerCase());
+        var u = new URL(a.href, location.href);
+        if (u.pathname === location.pathname && u.hash) { ev.preventDefault(); sDlg.close(); if (location.hash === u.hash) openTrack(); else location.hash = u.hash; }
+        else sDlg.close();
+      });
+      sDlg.addEventListener("keydown", function (ev) {
+        // Esc always closes (a search field would otherwise just clear itself); don't also stop the preview
+        if (ev.key === "Escape") { ev.preventDefault(); ev.stopPropagation(); sDlg.close(); return; }
+        var links = Array.prototype.slice.call(sDlg.querySelectorAll("a.sr-a"));
+        if (ev.key === "ArrowDown" || ev.key === "ArrowUp") {
+          if (!links.length) return;
+          ev.preventDefault();
+          var i = links.indexOf(document.activeElement), next = ev.key === "ArrowDown" ? i + 1 : i - 1;
+          if (next < 0) sIn.focus(); else links[Math.min(next, links.length - 1)].focus();
+        } else if (ev.key === "Enter" && document.activeElement === sIn && links.length) { ev.preventDefault(); links[0].click(); }
+        else if (ev.key === "Tab") {   // focus trap, in reading order: field, results, close
+          var f = [sIn].concat(links, [sDlg.querySelector(".sd-close")]);
+          var at = f.indexOf(document.activeElement);
+          ev.preventDefault();
+          f[(at + (ev.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+        }
+      });
+    };
+    var openSearch = function () {
+      if (!sDlg) build();
+      if (sDlg.open) { sIn.focus(); return; }
+      if (navBar && navBar.classList.contains("nav-open")) { navBar.classList.remove("nav-open"); if (tog) tog.setAttribute("aria-expanded", "false"); }
+      document.documentElement.classList.add("search-open");
+      sDlg.showModal(); sIn.focus(); sIn.select();
+      if (!idx) { sStat.textContent = "Loading search…"; load(); }
+    };
+    sBtn.addEventListener("click", openSearch);
+    document.addEventListener("keydown", function (ev) {
+      var t = ev.target, typing = t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName));
+      if ((ev.key === "k" || ev.key === "K") && (ev.metaKey || ev.ctrlKey) && !ev.altKey) { ev.preventDefault(); openSearch(); }
+      else if (ev.key === "/" && !typing && !ev.metaKey && !ev.ctrlKey && !ev.altKey && !document.querySelector("dialog[open]")) { ev.preventDefault(); openSearch(); }
+    });
   }
 })();

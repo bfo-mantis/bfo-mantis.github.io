@@ -359,6 +359,8 @@ def head(root, *, title, desc, url, og_image, og_alt, og_type="website", extra="
 <link rel="stylesheet" href="{root}css/style.css?v={css_v}">{j}{goatcounter_tag()}
 </head>'''
 
+SEARCH_V = "0"   # content hash of assets/data/search.json, set by main() before any page is written
+SEARCH_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>'
 HAS_MERCH = False   # set by main() when content/merch.json has items (Merch page + nav link)
 
 def topbar(root, has_about, home=False, current=None):
@@ -383,8 +385,10 @@ def topbar(root, has_about, home=False, current=None):
         <a href="{root}help/"{cur("help")}>Other ways to help</a>
       </div>
     </div>
+    <a href="{root}community/"{cur("community")}>Community</a>
     <a href="{root}lounge/"{cur("lounge")}>Lounge</a>{merch}
   </nav>
+  <button type="button" class="search-btn" data-idx="{root}assets/data/search.json?v={SEARCH_V}" aria-haspopup="dialog" aria-keyshortcuts="/ Control+K Meta+K" aria-label="Search the site" title="Search (/ or Ctrl+K)">{SEARCH_ICON}<span class="search-lbl">Search</span></button>
 </header>'''
 
 def footer(root, js_v):
@@ -695,7 +699,7 @@ def build_release(releases, i, site, today, v, has_about):
     for t in r["tracks"]:
         bar = '<span class="pv-bar" aria-hidden="true"><span></span></span>' if t.get("preview") else ""
         if t["lyrics"] == "lyrics" and r.get("lyrics_file"):
-            tracks.append(f'<li class="has-lyrics">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<details data-isrc="{e(t["isrc"])}">'
+            tracks.append(f'<li class="has-lyrics" id="t{t["n"]}">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<details data-isrc="{e(t["isrc"])}">'
                           f'<summary><span class="tt">{e(t["title"])}</span><span class="ltag" aria-hidden="true">Lyrics</span>'
                           f'<span class="sr-only"> — show lyrics</span></summary>'
                           + (f'<p class="tblurb">{e(t["blurb"])}</p>' if t.get("blurb") else "")
@@ -709,10 +713,10 @@ def build_release(releases, i, site, today, v, has_about):
                 # behind an expandable "More about this track".
                 more = (f'<details class="tmore"><summary>More about this track</summary><p class="tdepth">{e(t["blurb_in_depth"])}</p></details>'
                         if t.get("blurb_in_depth") else "")
-                tracks.append(f'<li class="has-blurb">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<div class="tcol">'
+                tracks.append(f'<li class="has-blurb" id="t{t["n"]}">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<div class="tcol">'
                               f'<span class="tt">{e(t["title"])}{tag}</span><p class="tblurb tintro">{e(t["blurb"])}</p>{more}</div></li>')
             else:
-                tracks.append(f'<li>{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<span class="tt">{e(t["title"])}{tag}</span></li>')
+                tracks.append(f'<li id="t{t["n"]}">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<span class="tt">{e(t["title"])}{tag}</span></li>')
     preview_bar, first = preview_main(root, r)
     n = len(r["tracks"])
     facts = (f'<li><span>Released</span> <span class="js-upcoming"{hid_up}>Out </span><time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time></li>'
@@ -1308,6 +1312,61 @@ def testimonial_card(root, t):
             f'<figcaption><a class="tm-who" href="{e(t["url"])}" target="_blank" rel="noopener nofollow ugc" data-gc="event/testimonial">'
             f'{e(t["handle"].strip())}<span class="tm-src"> on {src}</span>{NT}</a>{about}{when}</figcaption></figure></li>')
 
+def _lyric_text(v):
+    """Plain lyric text from the published (already redacted) lyrics JSON. Redactions ({"r": n} parts) are never
+    expanded: they become an ellipsis, so the index can only contain text that is already public on the site."""
+    if isinstance(v, str):
+        lines = v.split("\n")
+    else:
+        lines = []
+        for ln in v or []:
+            if isinstance(ln, str): lines.append(ln)
+            else: lines.append(" ".join(x if isinstance(x, str) else "…" for x in ln))
+    seen, out = set(), []
+    for ln in lines:   # drop repeated lines (choruses) to keep the index small
+        ln = re.sub(r"\s+", " ", ln).strip(); k = re.sub(r"[^\w]+", "", ln.lower())
+        if ln and k not in seen:
+            seen.add(k); out.append(ln)
+    return "\n".join(out)
+
+def build_search_index(releases, has_about, about):
+    """assets/data/search.json: compact client-side search index (lazy-loaded by js/app.js on first open).
+    r: [slug, title, type(a/s), genre, year, cover thumb, blurb, instrumental(0/1)]
+    t: [release index, track n, title, kind(l=lyrics, i=instrumental, ""), blurb, lyrics]
+    p: [title, path, description]. Kept out of search engines by robots.txt."""
+    rs, ts = [], []
+    lyr_cache = {}
+    for ri, r in enumerate(releases):
+        thumb = (r.get("cover") or {}).get("jpg_small") or ""
+        rs.append([r["slug"], r["title"], "a" if r["type"] == "album" else "s", r.get("genre") or "", r["release_date"][:4], thumb,
+                   r.get("blurb") or "", 1 if r.get("category") == "instrumental" else 0])
+        lf = r.get("lyrics_file")
+        if lf and lf not in lyr_cache:
+            fp = ROOT / lf
+            lyr_cache[lf] = json.loads(fp.read_text()) if fp.exists() else {}
+        L = lyr_cache.get(lf) or {}
+        for t in r["tracks"]:
+            kind = "l" if t["lyrics"] == "lyrics" else ("i" if t["lyrics"] in ("instrumental", "no_lyrics") else "")
+            bl = " ".join(x for x in (t.get("blurb"), t.get("blurb_in_depth")) if x)
+            ts.append([ri, t["n"], t["title"], kind, bl, _lyric_text(L.get(t["isrc"])) if kind == "l" else ""])
+    strip = lambda h: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", h or "")).strip()
+    pages = [["Start here", "start/", "Ten tracks to start with: the essentials for new listeners."],
+             ["Community", "community/", COMMUNITY_INTRO + " What listeners are saying."],
+             ["Members Lounge", "lounge/", "The bfo.mantis members lounge."],
+             ["Press kit", "press/", "Press kit: bio, photos, cover art and the one-sheet."],
+             ["Other ways to help", "help/", "Support bfo.mantis: follow, share, subscribe, donate."],
+             ["Links", "links/", "Every bfo.mantis link: streaming services, socials and releases."],
+             ["Genres", "genres/", "Browse the catalog by genre."]]
+    if has_about:
+        pages.append(["About", "#about", strip(about)[:280]])
+    for g, grs in genre_groups(releases):
+        n = sum(len(x["tracks"]) for x in grs)
+        pages.append([f"{g}", f"genre/{genre_slug(g)}/", f"Genre · {len(grs)} release{'s' if len(grs) != 1 else ''} · {n} tracks"])
+    data = {"r": rs, "t": ts, "p": pages}
+    out = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+    (ROOT / "assets" / "data" / "search.json").write_text(out)
+    return len(out.encode())
+
 def build_community(releases, site, v, has_about, community_url=None):
     """community/: country picker (all ISO 3166-1 countries) + a per-country card whose 'Join your country's room' button
     is live only when content/site_config.json sets community_url (https). No listener numbers anywhere: DistroKid gives
@@ -1368,7 +1427,7 @@ def build_community(releases, site, v, has_about, community_url=None):
 '''
     page = f'''{hd}
 <body class="community-page">
-{topbar(root, has_about)}
+{topbar(root, has_about, current="community")}
 <main id="main">
   <section class="section community" aria-labelledby="community-title">
     <a class="back" href="{root}"><span aria-hidden="true">←</span> Home</a>
@@ -1540,7 +1599,7 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
                                       "".join(f"  <url><loc>{e(u)}</loc></url>\n" for u in urls) + "</urlset>\n")
     # Lyrics live only in assets/data/lyrics/*.json (fetched on demand by release pages); keep them out of search.
     # GitHub Pages can't send X-Robots-Tag headers, so robots.txt is the lever.
-    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /assets/data/lyrics/\n\nSitemap: {site}sitemap.xml\n")
+    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /assets/data/lyrics/\nDisallow: /assets/data/search.json\n\nSitemap: {site}sitemap.xml\n")
     (ROOT / "site.webmanifest").write_text(json.dumps({
         "name": ARTIST, "short_name": ARTIST, "start_url": "./", "display": "standalone",
         "background_color": "#0b0b0f", "theme_color": "#0b0b0f",
@@ -1602,6 +1661,9 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
         ns, ni = track_counts(releases)
         build_images(releases, f"{ns} songs · {ni} instrumentals")
     v = {"css": asset_hash("css/style.css"), "js": asset_hash("js/app.js")}
+    global SEARCH_V
+    idx_bytes = build_search_index(releases, has_about, about)
+    SEARCH_V = asset_hash("assets/data/search.json")
     build_home(releases, site, today, v, has_about, about, data.get("donate_url"), data.get("email_signup_url"))
     rel = ROOT / "release"
     keep = {r["slug"] for r in releases}
@@ -1622,6 +1684,7 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     build_help(site, v, has_about)
     n_start = build_start(releases, site, v, has_about)
     build_misc(releases, site, v)
+    print(f"search index: assets/data/search.json {idx_bytes / 1024:.0f} KB")
     print("genres:", ", ".join(f"{g} ({len(rs)} releases, {sum(len(r['tracks']) for r in rs)} tracks)" for g, rs in groups))
     print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + lounge + press + links + community + help + start ({n_start} essentials) (covers zip {zsize / 1e6:.1f} MB) + 404 + release.html shim | sitemap urls: {len(releases) + 8 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
 
