@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-10T01:52:45",
+ "generated": "2026-10-10T11:00:22",
  "donate_url": null,
  "members_url": null,
  "email_signup_url": null,
@@ -51,12 +51,24 @@
    "listen_source": null,
    "store_links": [
     {
-     "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/crown-of-ash-single/6820737340?uo=4"
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/5tVqF2MpHeBVkN7csACzSq"
     },
     {
-     "name": "iTunes",
-     "url": "https://music.apple.com/us/album/crown-of-ash-single/6820737340?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=Z5IKzO42BfY"
+    },
+    {
+     "name": "Amazon Music",
+     "url": "https://music.amazon.com/albums/B0HMBL7HCX"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/568128320"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/crown-of-ash-438584491"
     }
    ],
    "cover": {
