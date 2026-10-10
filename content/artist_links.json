@@ -1,0 +1,8 @@
+{
+  "_note": "Artist-level profile links for the links/ page and press one-sheet. Each was derived from the artist link on existing bfo.mantis store pages (DANGEROUS, Rebel Anthem, Sacred Steel) and opened in headless Chrome on 2026-10-09 to confirm the profile is bfo.mantis. Only add a link here after the same check.",
+  "links": [
+    {"name": "Spotify", "url": "https://open.spotify.com/artist/3YGFJxdkAYfDegFTXSCZzn", "verified": "2026-10-09"},
+    {"name": "Apple Music", "url": "https://music.apple.com/us/artist/bfo-mantis/6787273976", "verified": "2026-10-09"},
+    {"name": "YouTube Music", "url": "https://music.youtube.com/channel/UCAr9yfuSAyMs5B2Iycvr7-Q", "verified": "2026-10-09"}
+  ]
+}

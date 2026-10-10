@@ -16,6 +16,7 @@
 
   // Compact header + back-to-top button once the page is scrolled.
   var body = document.body, ticking = false, st = {};
+  var narrow = window.matchMedia ? matchMedia("(max-width: 780px)") : null;
   var set = function (cls, on) { if (st[cls] !== on) { st[cls] = on; body.classList.toggle(cls, on); } };
   var onScroll = function () {
     ticking = false;
@@ -146,18 +147,196 @@
       btn.addEventListener("click", function () { play(btn); });
     });
     if (top) top.addEventListener("click", function () { play(current || pvButtons[0]); });
-    audio.addEventListener("play", function () { setState(true); });
-    audio.addEventListener("pause", function () { setState(false); });
-    audio.addEventListener("timeupdate", progress);
+    // Mini-player: a bar fixed to the bottom of the viewport while a clip is loaded (title, cover, play/pause, progress,
+    // close). Built on first play; the shared <audio> keeps playing while the page scrolls.
+    var mini = null, miniPP, miniT, miniS, miniArt, miniTime, miniBar;
+    var svgPlay = '<svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>';
+    var svgPause = '<svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>';
+    var buildMini = function () {
+      mini = document.createElement("div");
+      mini.className = "mini"; mini.hidden = true;
+      mini.setAttribute("role", "region"); mini.setAttribute("aria-label", "Preview player");
+      mini.innerHTML = '<img class="mini-art" alt="" width="44" height="44"><div class="mini-meta"><span class="mini-t"></span><span class="mini-s"></span></div>' +
+        '<span class="mini-time" aria-hidden="true">0:00 / 0:30</span>' +
+        '<button type="button" class="mini-pp" aria-label="Pause preview">' + svgPlay + svgPause + '</button>' +
+        '<button type="button" class="mini-x" aria-label="Close preview player"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>' +
+        '<span class="mini-prog" aria-hidden="true"><span></span></span>';
+      document.body.appendChild(mini);
+      miniPP = mini.querySelector(".mini-pp"); miniT = mini.querySelector(".mini-t"); miniS = mini.querySelector(".mini-s");
+      miniArt = mini.querySelector(".mini-art"); miniTime = mini.querySelector(".mini-time"); miniBar = mini.querySelector(".mini-prog > span");
+      miniPP.addEventListener("click", function () { if (current) play(current); });
+      mini.querySelector(".mini-x").addEventListener("click", closeMini);
+    };
+    var showMini = function () {
+      if (!current) return;
+      if (!mini) buildMini();
+      miniT.textContent = current.getAttribute("data-title") || "";
+      var rel = current.getAttribute("data-rel") || "", href = current.getAttribute("data-href");
+      miniS.textContent = "";
+      if (rel && href && location.pathname.replace(/index\.html$/, "") !== new URL(href, location.href).pathname) {
+        var a = document.createElement("a"); a.href = href; a.textContent = rel; miniS.appendChild(a);
+      } else miniS.textContent = rel ? rel + " · 30s preview" : "30s preview";
+      var art = current.getAttribute("data-art");
+      if (art) { if (miniArt.getAttribute("src") !== art) miniArt.src = art; miniArt.hidden = false; } else miniArt.hidden = true;
+      if (mini.hidden) { mini.hidden = false; body.classList.add("has-mini"); fabUpdate(); }
+    };
+    var closeMini = function () {
+      audio.pause();
+      var btn = current; setState(false); reset(btn); audio.currentTime = 0;
+      if (timeEl) timeEl.textContent = "0:00 / 0:30";
+      if (mini) { mini.hidden = true; body.classList.remove("has-mini"); }
+      fabUpdate();
+      if (btn && btn.offsetParent) btn.focus(); else if (top) top.focus();
+    };
+    var miniState = function (playing) {
+      if (!mini || !current) return;
+      miniPP.classList.toggle("is-playing", playing);
+      miniPP.setAttribute("aria-label", (playing ? "Pause" : "Play") + " preview of " + current.getAttribute("data-title"));
+    };
+    var miniProgress = function () {
+      if (!mini || mini.hidden) return;
+      var d = audio.duration || 30;
+      miniBar.style.transform = "scaleX(" + Math.min(1, (audio.currentTime || 0) / d) + ")";
+      miniTime.textContent = mmss(audio.currentTime) + " / " + mmss(d);
+    };
+
+    // Phones: a floating "Play latest" / "Play preview" button once the page's main player has scrolled out of view
+    // (hidden while the mini-player is open). The page gets matching bottom padding so nothing ends up underneath it.
+    var fab = null, mainOut = false;
+    var fabUpdate = function () {
+      if (!fab) return;
+      var on = mainOut && (!mini || mini.hidden) && narrow && narrow.matches;
+      fab.classList.toggle("is-on", !!on);
+      fab.tabIndex = on ? 0 : -1; fab.setAttribute("aria-hidden", on ? "false" : "true");
+      body.classList.toggle("has-fab", !!on);
+    };
+    if (main) {
+      fab = document.createElement("button");
+      fab.type = "button"; fab.className = "fab-play"; fab.tabIndex = -1; fab.setAttribute("aria-hidden", "true");
+      fab.innerHTML = svgPlay + "<span></span>";
+      fab.querySelector("span").textContent = main.getAttribute("data-fab") || "Play preview";
+      document.body.appendChild(fab);
+      fab.addEventListener("click", function () { play(current || pvButtons[0]); });
+      // the main player counts as "out of view" once it has scrolled above the viewport (rAF-throttled, read-only)
+      var fabTick = false;
+      var fabCheck = function () {
+        fabTick = false;
+        if (!narrow || !narrow.matches) { if (mainOut) { mainOut = false; fabUpdate(); } return; }
+        var out = main.getBoundingClientRect().bottom < 72;   // i.e. behind or above the sticky header
+        if (out !== mainOut) { mainOut = out; fabUpdate(); }
+      };
+      window.addEventListener("scroll", function () { if (!fabTick) { fabTick = true; requestAnimationFrame(fabCheck); } }, { passive: true });
+      window.addEventListener("load", fabCheck);
+      if (narrow && narrow.addEventListener) narrow.addEventListener("change", fabCheck);
+    }
+
+    audio.addEventListener("play", function () { setState(true); showMini(); miniState(true); });
+    audio.addEventListener("pause", function () { setState(false); miniState(false); });
+    audio.addEventListener("timeupdate", function () { progress(); miniProgress(); });
     audio.addEventListener("ended", function () {
-      setState(false); reset(current); audio.currentTime = 0; if (timeEl) timeEl.textContent = "0:00 / 0:30";
+      setState(false); miniState(false); reset(current); audio.currentTime = 0; if (timeEl) timeEl.textContent = "0:00 / 0:30";
+      if (miniBar) miniBar.style.transform = "scaleX(0)";
     });
     audio.addEventListener("error", function () {
       if (!current) return;
-      setState(false); if (nowEl) nowEl.textContent = "Preview unavailable";
+      setState(false); miniState(false); if (nowEl) nowEl.textContent = "Preview unavailable";
     });
-    document.addEventListener("keydown", function (ev) {   // Esc stops the preview
-      if (ev.key === "Escape" && !audio.paused) audio.pause();
+    document.addEventListener("keydown", function (ev) {   // Esc stops the preview (unless it is closing the lightbox)
+      if (ev.key === "Escape" && !audio.paused && !document.querySelector("dialog[open]")) audio.pause();
+    });
+  }
+
+  // Cover lightbox (release pages): the cover links to the 800px JPG; with JS it opens in a modal <dialog> instead.
+  // Esc and the close button close it; Tab stays inside; focus returns to the cover link.
+  each("a[data-lightbox]", function (a) {
+    var dlg = document.getElementById(a.getAttribute("data-lightbox"));
+    if (!dlg || typeof dlg.showModal !== "function") return;
+    var img = dlg.querySelector("img"), close = dlg.querySelector(".lb-close");
+    a.addEventListener("click", function (ev) {
+      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button) return;   // let "open in new tab" work
+      ev.preventDefault();
+      if (!img.getAttribute("src")) img.src = img.getAttribute("data-src");
+      dlg.showModal(); close.focus();
+      track("event/cover/" + relSlug(a));
+    });
+    close.addEventListener("click", function () { dlg.close(); });
+    dlg.addEventListener("click", function (ev) { if (ev.target === dlg) dlg.close(); });   // backdrop
+    dlg.addEventListener("close", function () { a.focus(); });
+    dlg.addEventListener("keydown", function (ev) {
+      if (ev.key !== "Tab") return;
+      var f = dlg.querySelectorAll("button, [href], [tabindex]:not([tabindex='-1'])");
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+      else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+    });
+  });
+
+  // Nav "Support" group (Donate + Other ways to help): a disclosure on wide screens; flat inside the phone menu.
+  each(".nav-group", function (g) {
+    var b = g.querySelector(".nav-sub-btn"); if (!b) return;
+    var setG = function (on, focusBtn) { g.classList.toggle("is-open", on); b.setAttribute("aria-expanded", on ? "true" : "false"); if (!on && focusBtn) b.focus(); };
+    b.addEventListener("click", function () { var on = !g.classList.contains("is-open"); setG(on); if (on) { var a = g.querySelector(".nav-sub a"); if (a) a.focus(); } });
+    g.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && g.classList.contains("is-open")) { ev.stopPropagation(); setG(false, true); } });
+    g.addEventListener("focusout", function (ev) { if (!g.contains(ev.relatedTarget)) setG(false); });
+    document.addEventListener("click", function (ev) { if (!g.contains(ev.target)) setG(false); });
+    each("a", function (a) { a.addEventListener("click", function () { setG(false); }); }, g);
+  });
+
+  // Share buttons: Web Share API where available, otherwise copy the link. Counted as event/share/<slug>.
+  each(".share-btn", function (b) {
+    var status = b.parentNode.querySelector(".share-status"), t = null;
+    var say = function (m) { if (!status) return; status.textContent = m; clearTimeout(t); t = setTimeout(function () { status.textContent = ""; }, 4000); };
+    b.addEventListener("click", function () {
+      var url = b.getAttribute("data-share-url"), title = b.getAttribute("data-share-title");
+      track("event/share/" + (b.getAttribute("data-share-slug") || "site"));
+      if (navigator.share) {
+        navigator.share({ title: title, url: url }).catch(function () { /* cancelled */ });
+        return;
+      }
+      var fallback = function () {
+        var i = document.createElement("input"); i.value = url; i.setAttribute("readonly", ""); i.style.position = "fixed"; i.style.opacity = "0";
+        document.body.appendChild(i); i.select();
+        var ok = false; try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+        document.body.removeChild(i);
+        say(ok ? "Link copied" : "Copy this link: " + url);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function () { say("Link copied"); }, fallback);
+      else fallback();
+    });
+  });
+
+  // Email sign-up (only live when email_signup_url is configured): count the submission.
+  document.addEventListener("submit", function (ev) {
+    var f = ev.target;
+    if (f && f.hasAttribute && f.hasAttribute("data-gc")) track(f.getAttribute("data-gc"));
+  });
+
+  // Community: filter the country list and show the chosen country's card.
+  var ccq = document.getElementById("cc-q"), ccList = document.getElementById("cc-list");
+  if (ccq && ccList) {
+    var ccBtns = ccList.querySelectorAll(".cc"), ccCount = document.getElementById("cc-count"), ccNone = document.getElementById("cc-none");
+    var norm = function (t) { return String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); };
+    ccq.addEventListener("input", function () {
+      var q = norm(ccq.value.trim()), n = 0;
+      Array.prototype.forEach.call(ccBtns, function (b) {
+        var hit = !q || norm(b.getAttribute("data-name")).indexOf(q) > -1 || b.getAttribute("data-cc").toLowerCase() === q;
+        b.parentNode.hidden = !hit; if (hit) n++;
+      });
+      ccCount.textContent = n + (n === 1 ? " country" : " countries");
+      ccNone.hidden = n > 0;
+    });
+    var join = document.querySelector(".cc-join");
+    Array.prototype.forEach.call(ccBtns, function (b) {
+      b.addEventListener("click", function () {
+        Array.prototype.forEach.call(ccBtns, function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        var name = b.getAttribute("data-name");
+        document.getElementById("cc-flag").textContent = b.querySelector(".cc-flag").textContent;
+        document.getElementById("cc-h").textContent = name;
+        document.getElementById("cc-p").textContent = "A room for fans of bfo.mantis in " + name + " to talk about their favorite songs.";
+        if (join && join.tagName === "A") join.setAttribute("data-gc", "event/community/" + b.getAttribute("data-cc").toLowerCase());
+        if (narrow && narrow.matches) document.getElementById("cc-card").scrollIntoView({ block: "nearest" });
+      });
     });
   }
 
