@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-09T22:35:59",
+ "generated": "2026-10-09T22:57:53",
  "donate_url": null,
  "members_url": null,
  "email_signup_url": null,
@@ -325,6 +325,7 @@
      "title": "Hero or Zero",
      "isrc": "QT9XH2672255",
      "lyrics": "lyrics",
+     "lyrics_source": "artist",
      "blurb": "A rough-edged challenge to police who put their own safety above the people they serve, set against soldiers and others who run toward danger. It closes by honoring the ones who do the job right.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/dangerous/11.mp3"
