@@ -605,6 +605,12 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
       </div>
     </div>
   </section>'''
+    tms = testimonials(releases)[:3]
+    listeners_strip = (f'''
+  <section class="section listeners listeners-home" aria-labelledby="tmh-title">
+    <div class="section-head"><h2 id="tmh-title">Listeners say</h2><a class="count" href="community/#listeners">More from listeners</a></div>
+    <ul class="tm-list">{"".join(testimonial_card(root, t) for t in tms)}</ul>
+  </section>''' if tms else "")
     about_sec = (f'''
   <section id="about" class="section about" aria-labelledby="about-title">
     <div class="section-head"><h2 id="about-title">About</h2></div>
@@ -637,7 +643,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
     </div>
   </section>
   <p class="start-cta"><a href="start/" data-gc="event/start/home"><span class="k">New here?</span> <strong>Start here</strong> with ten tracks that cover the whole catalog<span aria-hidden="true"> →</span></a></p>
-{featured}
+{featured}{listeners_strip}
 {cat_sections}{about_sec}
 
   <section id="support" class="section support" aria-labelledby="support-title">
@@ -1267,6 +1273,41 @@ COMMUNITY_INTRO = "Find fans of bfo.mantis in your country and talk about your f
 def flag(cc):
     return "".join(chr(0x1F1E6 + ord(c) - 65) for c in cc.upper()) if len(cc) == 2 and cc.isalpha() else ""
 
+def testimonials(releases):
+    """Approved listener comments from content/testimonials.json, newest first. Quotes are rendered verbatim (HTML-escaped)."""
+    p = ROOT / "content" / "testimonials.json"
+    if not p.exists():
+        return []
+    bys = {r["slug"]: r for r in releases}
+    out = []
+    for t in json.loads(p.read_text()).get("items", []):
+        if t.get("approved") is not True or not (t.get("quote") or "").strip() or not (t.get("handle") or "").strip():
+            continue
+        if not str(t.get("url") or "").startswith("https://"):
+            print(f"testimonials: skipped (needs an https url): {t.get('handle')}"); continue
+        r = bys.get(t.get("release")); tr = None
+        if r and t.get("track"):
+            tr = next((x for x in r["tracks"] if x["n"] == t["track"]), None)
+        out.append({**t, "_rel": r, "_trk": tr})
+    return sorted(out, key=lambda t: t.get("date") or "", reverse=True)
+
+def testimonial_card(root, t):
+    r, tr = t["_rel"], t["_trk"]
+    about = ""
+    if r:
+        name = tr["title"] if tr else r["title"]
+        about = f' <span class="tm-on">on <a href="{root}release/{r["slug"]}/">{e(name)}</a></span>'
+    when = ""
+    if t.get("date"):
+        try:
+            d = date.fromisoformat(t["date"]); when = f' <time class="tm-date" datetime="{d.isoformat()}">{d.strftime("%b")} {d.day}, {d.year}</time>'
+        except ValueError:
+            pass
+    src = e(t.get("source") or "the original comment")
+    return (f'<li class="tm"><figure><blockquote cite="{e(t["url"])}"><p>{e(t["quote"].strip())}</p></blockquote>'
+            f'<figcaption><a class="tm-who" href="{e(t["url"])}" target="_blank" rel="noopener nofollow ugc" data-gc="event/testimonial">'
+            f'{e(t["handle"].strip())}<span class="tm-src"> on {src}</span>{NT}</a>{about}{when}</figcaption></figure></li>')
+
 def build_community(releases, site, v, has_about, community_url=None):
     """community/: country picker (all ISO 3166-1 countries) + a per-country card whose 'Join your country's room' button
     is live only when content/site_config.json sets community_url (https). No listener numbers anywhere: DistroKid gives
@@ -1313,6 +1354,18 @@ def build_community(releases, site, v, has_about, community_url=None):
         f'<span class="fs-t">{e(r["title"])}</span><span class="fs-s">{"Album" if r["type"] == "album" else "Single"}'
         f'{(" · " + e(r["genre"])) if r.get("genre") else ""}{" · Instrumental" if r.get("category") == "instrumental" else ""}</span></a></li>'
         for r in releases)
+    tms = testimonials(releases)
+    if tms:
+        tm_body = f'<ul class="tm-list">{"".join(testimonial_card(root, t) for t in tms)}</ul>'
+    else:
+        tm_body = ('<p class="pk-soon tm-soon"><span class="soon-tag">Coming soon</span> '
+                   'Favorite comments from listeners will appear here.</p>')
+    listeners_sec = f'''
+  <section class="section listeners" id="listeners" aria-labelledby="tm-title">
+    <div class="section-head"><h2 id="tm-title">What listeners are saying</h2>{f'<p class="count">{len(tms)} comment{"s" if len(tms) != 1 else ""}</p>' if tms else ""}</div>
+    {tm_body}
+  </section>
+'''
     page = f'''{hd}
 <body class="community-page">
 {topbar(root, has_about)}
@@ -1324,7 +1377,7 @@ def build_community(releases, site, v, has_about, community_url=None):
     <p class="lounge-intro">{e(COMMUNITY_INTRO)}</p>
     {f'<p class="cc-stat"><strong>Listened to in {len(heard)} countries</strong><span>{e(cdata.get("source_line") or "")}</span></p>' if heard else '<p class="pk-soon cc-note"><span class="soon-tag">Coming soon</span> Country listener highlights.</p>'}
   </section>
-
+{listeners_sec}
   <section class="section" aria-labelledby="cc-title">
     <div class="section-head"><h2 id="cc-title">Find your country</h2><p class="count" id="cc-count" aria-live="polite">{len(cs)} countries</p></div>
     {'<p class="cc-legend"><span class="cc-dot" aria-hidden="true"></span> Countries where bfo.mantis has listeners</p>' if heard else ""}

@@ -1,0 +1,4 @@
+{
+  "_note": "Listener comments for the 'What listeners are saying' section (community/ page) and the home-page 'Listeners say' strip. Only entries with \"approved\": true render; the quote is shown verbatim and credited to the handle exactly as written, linked to the source comment. Fields: quote, handle, source (e.g. YouTube), url (https link to the comment), release (release slug, optional), track (track number on that release, optional), date (YYYY-MM-DD), approved (true/false). With no approved entries the community page shows a 'Coming soon' placeholder and the home strip is hidden.",
+  "items": []
+}

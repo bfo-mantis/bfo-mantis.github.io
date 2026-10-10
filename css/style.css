@@ -628,3 +628,14 @@ html:not(.js) .lbl-wide{display:none}html:not(.js) .lbl-narrow{display:inline}
 .start .ess .pv-bar{bottom:0}
 .start-more{margin:26px 0 0;color:var(--muted)}
 @media (max-width:520px){.start .ess li{grid-template-columns:60px minmax(0,1fr);gap:12px;padding:12px}.start .ess .num{display:none}.start .ess .art{width:60px;height:60px}}
+/* "What listeners are saying" (community/) + home "Listeners say" strip; only rendered with approved entries */
+.tm-list{list-style:none;margin:0;padding:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.tm figure{margin:0;height:100%;display:flex;flex-direction:column;gap:12px;padding:18px 20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
+.tm blockquote{margin:0;padding-left:14px;border-left:3px solid var(--accent)}
+.tm blockquote p{margin:0;font-size:1.02rem;line-height:1.55;color:var(--text);white-space:pre-line;overflow-wrap:anywhere}
+.tm figcaption{margin-top:auto;font-size:.88rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:2px 8px}
+.tm-who{color:var(--text);font-weight:600;text-decoration:none;overflow-wrap:anywhere}
+.tm-who:hover{color:var(--accent)}
+.tm-src{font-weight:400;color:var(--muted)}
+.tm-on a{color:inherit}
+.tm-soon{margin:0}
