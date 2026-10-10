@@ -733,3 +733,23 @@ html.search-open{overflow:hidden}
 .mzoom::backdrop{background:rgba(5,5,8,.88)}
 .mzoom img{display:block;width:100%;height:auto;border-radius:10px}
 .mzoom-x{position:absolute;top:8px;right:8px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:1.6rem;cursor:pointer}
+
+/* Discord */
+.dc-ico{width:1.25em;height:1.25em;flex:none;display:inline-block;vertical-align:-.22em}
+.dc-btn{display:inline-flex;align-items:center;gap:.5em}
+.dc-hero{margin:22px 0 16px;padding:18px 20px;border:1px solid var(--line2);border-radius:var(--radius);background:var(--card);display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;max-width:860px}
+.dc-hero-t{display:flex;gap:14px;align-items:flex-start;min-width:0;flex:1 1 360px}
+.dc-hero-t>.dc-ico{width:40px;height:40px;color:#8b9bff;margin-top:2px}
+.section .dc-h{font:700 1.2rem/1.25 var(--display);letter-spacing:-.01em;margin:0 0 4px}
+.dc-hero .cta-p{margin:0;max-width:60ch}
+.cc-dc-note{font-size:.86rem;color:var(--muted);margin:-4px 0 12px}
+.dc-cta{margin:16px 0 0;max-width:560px}
+.dc-cta a{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(--line2);border-radius:var(--radius);background:var(--card);color:var(--text);text-decoration:none;transition:border-color .2s var(--ease)}
+.dc-cta a:hover,.dc-cta a:focus-visible{border-color:#8b9bff}
+.dc-cta .dc-ico{color:#8b9bff;width:24px;height:24px}
+.dc-cta .k{color:var(--muted);font-size:.92rem}
+.dc-cta .arr{margin-left:auto;color:var(--muted)}
+.dc-note{display:flex;align-items:center;flex-wrap:wrap;gap:6px 8px;margin:18px 0 0;color:var(--muted)}
+.dc-note .dc-ico{color:#8b9bff}
+.dc-note a{color:var(--text);text-decoration:underline;text-decoration-color:rgba(200,255,77,.5);text-underline-offset:3px}
+.help-card .dc-btn{margin:6px 0 12px}

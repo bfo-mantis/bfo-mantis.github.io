@@ -391,11 +391,23 @@ def topbar(root, has_about, home=False, current=None):
   <button type="button" class="search-btn" data-idx="{root}assets/data/search.json?v={SEARCH_V}" aria-haspopup="dialog" aria-keyshortcuts="/ Control+K Meta+K" aria-label="Search the site" title="Search (/ or Ctrl+K)">{SEARCH_ICON}<span class="search-lbl">Search</span></button>
 </header>'''
 
+DISCORD = None   # content/site_config.json discord_url (validated in build_data.py); None = previous "Coming soon" state
+DISCORD_ICON = ('<svg class="dc-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="'
+                'M7.2 5.6c1.5-.6 3.1-.9 4.8-.9s3.3.3 4.8.9c1.8 2.6 2.8 5.5 2.7 9.2-1.6 1.3-3.3 2.1-5 2.6l-1.1-1.8'
+                'c-.9.2-1.6.2-2.4.2s-1.5 0-2.4-.2l-1.1 1.8c-1.7-.5-3.4-1.3-5-2.6-.1-3.7.9-6.6 2.7-9.2z'
+                'M7.9 12.2a1.5 1.7 0 1 0 3 0a1.5 1.7 0 1 0-3 0zM13.1 12.2a1.5 1.7 0 1 0 3 0a1.5 1.7 0 1 0-3 0z"/></svg>')
+DISCORD_NOTE = "Regional rooms are being set up inside the server; until they open, everyone meets in #general."
+
+def discord_btn(label="Join the Discord", cls="btn", event="event/discord"):
+    return (f'<a class="{cls} dc-btn" href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="{e(event)}">'
+            f'{DISCORD_ICON}<span>{e(label)}</span>{NT}</a>')
+
 def footer(root, js_v):
     year = date.today().year
+    dc_foot = (f'<a class="footer-link" href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/footer">Discord{NT}</a>' if DISCORD else "")
     return f'''<footer class="footer">
   <p>Music, lyrics, artwork and audio previews &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</p>
-  <nav class="footer-nav" aria-label="Footer"><a class="footer-link" href="{root}help/">Ways to help</a><a class="footer-link" href="{root}community/">Community</a><a class="footer-link" href="{root}merch/">Merch</a><a class="footer-link" href="{root}links/">Links</a><a class="footer-link" href="{root}press/">Press kit</a></nav>
+  <nav class="footer-nav" aria-label="Footer"><a class="footer-link" href="{root}help/">Ways to help</a><a class="footer-link" href="{root}community/">Community</a>{dc_foot}<a class="footer-link" href="{root}merch/">Merch</a><a class="footer-link" href="{root}links/">Links</a><a class="footer-link" href="{root}press/">Press kit</a></nav>
   <a class="footer-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
 </footer>
 <a class="to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l-7 7m7-7l7 7M12 5v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -659,6 +671,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
     <p class="support-line">bfo.mantis is a small independent artist. Direct support is coming soon.</p>
     {buy_html(donate_url, "Support the next release", "donate-soon", "event/donate")}
     {help_link(root)}
+    {f'<p class="dc-cta"><a href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/home">{DISCORD_ICON}<span><strong>Join the Discord</strong> <span class="k">Talk with other fans of bfo.mantis</span></span><span aria-hidden="true" class="arr">→</span>{NT}</a></p>' if DISCORD else ""}
     <div class="cta-grid">{lounge_cta(root, "home")}{signup_html(signup_url, "home-su")}</div>
   </section>
 </main>
@@ -933,6 +946,7 @@ def build_lounge(site, v, has_about, members_url=None, signup_url=None):
     <p class="lounge-intro">{e(LOUNGE_INTRO)}</p>
     <h2 class="lounge-sub">What members will get</h2>
     <ul class="perks">{items}</ul>
+    {f'<p class="dc-note">{DISCORD_ICON}<span>The community space is open now on Discord.</span> <a href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/lounge">Join the Discord<span aria-hidden="true"> →</span>{NT}</a></p>' if DISCORD else ""}
     {buy_html(members_url, "Join", "join-soon", "event/join")}
     {help_link(root)}
     <div class="cta-grid lounge-signup">{signup_html(signup_url, "lounge-su")}</div>
@@ -1381,7 +1395,7 @@ def build_links(releases, site, today, v, has_about, tagline):
     <h2 class="lk-h">bfo.mantis</h2>
     <ul class="lk-list">
       <li><a class="lk" href="{root}lounge/"><span>Members Lounge</span><span class="soon-tag">Coming soon</span></a></li>
-      <li><a class="lk" href="{root}community/"><span>Community</span></a></li>
+      <li><a class="lk" href="{root}community/"><span>Community</span></a></li>{f'<li><a class="lk" href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/links"><span>Discord</span>{NT}</a></li>' if DISCORD else ""}
       <li><a class="lk" href="{root}#support"><span>Support</span></a></li>
       <li><a class="lk" href="{root}help/"><span>Other ways to help</span></a></li>
       <li><a class="lk" href="{root}press/"><span>Press kit</span></a></li>
@@ -1476,7 +1490,8 @@ def build_search_index(releases, has_about, about):
             ts.append([ri, t["n"], t["title"], kind, bl, _lyric_text(L.get(t["isrc"])) if kind == "l" else ""])
     strip = lambda h: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", h or "")).strip()
     pages = [["Start here", "start/", "My ten tracks, ranked by intensity and impact: the ten that make the case for liberty as God-given free will."],
-             ["Community", "community/", COMMUNITY_INTRO + " What listeners are saying."],
+             ["Community", "community/", COMMUNITY_INTRO + " What listeners are saying."]] + ([
+             ["Discord", "community/#discord", "Join the bfo.mantis Discord server and talk about the songs with other fans, by country and region."]] if DISCORD else []) + [
              ["Members Lounge", "lounge/", "The bfo.mantis members lounge."],
              ["Press kit", "press/", "Press kit: bio, photos, cover art and the one-sheet."],
              ["Other ways to help", "help/", "Support bfo.mantis: follow, share, subscribe, donate."],
@@ -1528,7 +1543,9 @@ def build_community(releases, site, v, has_about, community_url=None):
     <ol class="world">{world}</ol>
     <p class="art-copy">{e(cdata.get("source_line") or "")}</p>
   </section>''' if heard else "")
-    if community_url:
+    if DISCORD:
+        join = discord_btn("Talk in Discord", "btn cc-join", "event/discord/community")
+    elif community_url:
         join = (f'<a class="btn cc-join" href="{e(community_url)}" target="_blank" rel="noopener" data-gc="event/community">'
                 f'Join your country\u2019s room{NT}</a>')
     else:
@@ -1560,6 +1577,9 @@ def build_community(releases, site, v, has_about, community_url=None):
     <p class="eyebrow">bfo.mantis</p>
     <h1 id="community-title">Community</h1>
     <p class="lounge-intro">{e(COMMUNITY_INTRO)}</p>
+    {f'''<div class="dc-hero" id="discord"><div class="dc-hero-t">{DISCORD_ICON}<div><h2 class="dc-h">Join the bfo.mantis Discord</h2>
+      <p class="cta-p">Talk about the songs with other fans, and find the room for your country or region. {e(DISCORD_NOTE)}</p></div></div>
+      {discord_btn("Join the Discord", "btn", "event/discord/community-hero")}</div>''' if DISCORD else ""}
     {f'<p class="cc-stat"><strong>Listened to in {len(heard)} countries</strong><span>{e(cdata.get("source_line") or "")}</span></p>' if heard else '<p class="pk-soon cc-note"><span class="soon-tag">Coming soon</span> Country listener highlights.</p>'}
   </section>
 {listeners_sec}
@@ -1573,10 +1593,11 @@ def build_community(releases, site, v, has_about, community_url=None):
         <ul class="cc-list" id="cc-list" aria-label="Countries">{items}</ul>
         <p class="cc-none" id="cc-none" hidden>No country matches that search.</p>
       </div>
-      <div class="cc-card" id="cc-card" aria-live="polite">
+      <div class="cc-card" id="cc-card" aria-live="polite"{' data-room="discord"' if DISCORD else ""}>
         <p class="cc-flagbig" aria-hidden="true" id="cc-flag">🌍</p>
         <h3 class="cc-h" id="cc-h">Choose your country</h3>
         <p class="cta-p" id="cc-p">Pick a country from the list to find its room.</p>
+        {f'<p class="cc-dc-note">{e(DISCORD_NOTE)}</p>' if DISCORD else ""}
         {join}
       </div>
     </div>
@@ -1638,8 +1659,12 @@ def build_help(site, v, has_about):
         card(5, "Share", f'<p>Send the site to someone, or post it wherever you talk about music.</p>'
                          f'{share_html(site, ARTIST, "site", "Share bfo.mantis")}<noscript><p class="help-url">{e(site)}</p></noscript>'),
         card(6, "Tell a friend", "<p>Know someone who would like these songs? Play them one next time you\u2019re together.</p>"),
-        card(7, "Join the community", f'<ul class="help-links"><li><a href="{root}community/">Community</a> <span class="soon-tag">Coming soon</span></li>'
-                                      f'<li><a href="{root}lounge/">Members Lounge</a> <span class="soon-tag">Coming soon</span></li></ul>'),
+        (card(7, "Join the community", f'<p>Join the community on Discord: talk about the songs with other fans of {ARTIST}.</p>'
+                                       f'{discord_btn("Join the community on Discord", "btn-alt", "event/discord/help")}'
+                                       f'<ul class="help-links"><li><a href="{root}community/">Community</a></li>'
+                                       f'<li><a href="{root}lounge/">Members Lounge</a> <span class="soon-tag">Coming soon</span></li></ul>') if DISCORD else
+         card(7, "Join the community", f'<ul class="help-links"><li><a href="{root}community/">Community</a> <span class="soon-tag">Coming soon</span></li>'
+                                      f'<li><a href="{root}lounge/">Members Lounge</a> <span class="soon-tag">Coming soon</span></li></ul>')),
     ]
     page = f'''{hd}
 <body class="help-page">
@@ -1790,7 +1815,8 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
         ns, ni = track_counts(releases)
         build_images(releases, f"{ns} songs · {ni} instrumentals")
     v = {"css": asset_hash("css/style.css"), "js": asset_hash("js/app.js")}
-    global SEARCH_V
+    global SEARCH_V, DISCORD
+    DISCORD = data.get("discord_url")
     idx_bytes = build_search_index(releases, has_about, about)
     SEARCH_V = asset_hash("assets/data/search.json")
     build_home(releases, site, today, v, has_about, about, data.get("donate_url"), data.get("email_signup_url"))
