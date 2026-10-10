@@ -614,6 +614,8 @@ html:not(.js) .lbl-wide{display:none}html:not(.js) .lbl-narrow{display:inline}
 .start-cta strong{color:var(--accent)}
 .start h1{font:800 clamp(2rem,7vw,4.6rem)/.98 var(--display);letter-spacing:-.04em;margin:2px 0 14px;overflow-wrap:break-word}
 .start .lead{font-size:clamp(1.02rem,1.8vw,1.18rem);line-height:1.6;color:var(--muted);max-width:60ch;margin:0 0 6px}
+.start .lead+.lead{margin-top:12px}
+.start-closing{font-size:clamp(1rem,1.6vw,1.1rem);line-height:1.6;color:var(--muted);max-width:60ch;margin:26px 0 0}
 .start ol.ess{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:12px;border:0}
 .start .ess li{display:grid;grid-template-columns:2em 72px minmax(0,1fr);gap:16px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);position:relative;overflow:hidden}
 .start .ess .num{font-variant-numeric:tabular-nums;color:var(--muted);text-align:right}

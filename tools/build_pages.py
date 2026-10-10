@@ -645,7 +645,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
       </a>
     </div>
   </section>
-  <p class="start-cta"><a href="start/" data-gc="event/start/home"><span class="k">New here?</span> <strong>Start here</strong> with ten tracks that cover the whole catalog<span aria-hidden="true"> →</span></a></p>
+  <p class="start-cta"><a href="start/" data-gc="event/start/home"><span class="k">New here?</span> <strong>Start here</strong> with ten tracks that make the case<span aria-hidden="true"> →</span></a></p>
 {featured}{listeners_strip}
 {cat_sections}{about_sec}
 
@@ -1407,7 +1407,7 @@ def build_search_index(releases, has_about, about):
             bl = " ".join(x for x in (t.get("blurb"), t.get("blurb_in_depth")) if x)
             ts.append([ri, t["n"], t["title"], kind, bl, _lyric_text(L.get(t["isrc"])) if kind == "l" else ""])
     strip = lambda h: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", h or "")).strip()
-    pages = [["Start here", "start/", "Ten tracks to start with: the essentials for new listeners."],
+    pages = [["Start here", "start/", "My ten tracks, ranked by intensity and impact: the ten that make the case for liberty as God-given free will."],
              ["Community", "community/", COMMUNITY_INTRO + " What listeners are saying."],
              ["Members Lounge", "lounge/", "The bfo.mantis members lounge."],
              ["Press kit", "press/", "Press kit: bio, photos, cover art and the one-sheet."],
@@ -1672,7 +1672,9 @@ def build_start(releases, site, v, has_about):
     cfg = json.loads(p.read_text())
     R = {r["slug"]: r for r in releases}
     root = "../"; url = site + "start/"
-    h1 = "Ten tracks to start with"
+    h1 = cfg.get("heading") or "Ten tracks to start with"
+    intro = cfg["intro"] if isinstance(cfg["intro"], list) else [cfg["intro"]]
+    desc = cfg.get("description") or intro[0]
     items = []
     for i, it in enumerate(cfg["items"], 1):
         r = R.get(it["release"])
@@ -1685,8 +1687,8 @@ def build_start(releases, site, v, has_about):
   <div class="ess-body"><h2><a href="{root}release/{r["slug"]}/">{e(t["title"])}</a></h2><p class="meta">{cat} · {e(r.get("genre") or "")} · {where}</p><p class="why">{e(it["reason"])}</p></div>
   <span class="pv-bar" aria-hidden="true"><span></span></span></li>''')
     ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"{cfg['title']} — {ARTIST}", "url": url,
-          "description": cfg["intro"], "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}, "about": music_group(site)}
-    hd = head(root, title=f"{cfg['title']}: {h1.lower()} — {ARTIST}", desc=cfg["intro"], url=url, og_image=site + "assets/img/og/home.jpg",
+          "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}, "about": music_group(site)}
+    hd = head(root, title=f"{cfg['title']}: {h1} — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
               og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
     page = f'''{hd}
 <body class="start-page">
@@ -1695,8 +1697,9 @@ def build_start(releases, site, v, has_about):
   <section class="section start" aria-labelledby="start-title">
     <p class="eyebrow">{e(cfg["title"])}</p>
     <h1 id="start-title">{h1}</h1>
-    <p class="lead">{e(cfg["intro"])}</p>
+    {"".join(f'<p class="lead">{e(x)}</p>' for x in intro)}
     <ol class="ess tracks">{"".join(items)}</ol>
+    {f'<p class="start-closing">{e(cfg["closing"])}</p>' if cfg.get("closing") else ""}
     <p class="start-more"><a href="{root}#songs">Browse all songs</a> · <a href="{root}#instrumentals">Instrumentals</a> · <a href="{root}genres/">Genres</a></p>
   </section>
 </main>

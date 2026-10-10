@@ -1,57 +1,63 @@
 {
-  "_note": "'Start here' essentials for new listeners (user-approved picks, published 2026-10-10). Reasons follow the live blurbs in content/blurbs.json and catalog facts only; no lyric quotes. Built by tools/build_pages.py (build_start) into start/; indexed, in the sitemap, linked from the nav and the home page.",
+  "_note": "'Start here': the user's own ten tracks, ranked by intensity and impact (user-written intro, reasons and closing; published 2026-10-10). Text is the user's, verbatim apart from typographic quotes. Built by tools/build_pages.py (build_start) into start/.",
   "title": "Start here",
-  "intro": "New to bfo.mantis? These ten tracks cover every corner of the catalog, from rock and metal to gospel, hip hop and the instrumental series. Press play on any of them for a 30-second preview.",
+  "heading": "Ten tracks that make the case",
+  "description": "My ten tracks, chosen for thesis fidelity and ranked by intensity and impact: liberty as a God-given free will no state can revoke.",
+  "intro": [
+    "My ten tracks, chosen for thesis fidelity and ranked by intensity and impact.",
+    "The thesis is that liberty is a God-given free will no state can revoke, that the decisive act is one person’s refusal to kneel, and that this refusal is both civic and spiritual. The list runs from highest to lowest intensity while still representing the full range of the argument."
+  ],
+  "closing": "These ten move from the most aggressive institutional and spiritual confrontations through the historical and personal proofs to the quieter affirmations of grace and ordinary light. Together they cover the full thesis without requiring the entire catalog.",
   "items": [
-    {
-      "release": "dangerous",
-      "track": 1,
-      "reason": "The title track of DANGEROUS sets out the idea behind much of the catalog: being peaceful is not the same as being harmless."
-    },
-    {
-      "release": "one-man-invictus",
-      "track": 5,
-      "reason": "The story of Desmond Doss, the unarmed medic at Okinawa, and the most tender song of courage on One Man INVICTUS."
-    },
-    {
-      "release": "carry-the-star",
-      "track": 1,
-      "reason": "A gentle single about the small light everyone carries, proof that the catalog has warmth as well as thunder."
-    },
     {
       "release": "rebel-anthem",
       "track": 1,
-      "reason": "The opener of the most militant album in the catalog, and the clearest statement of what it stands against."
+      "reason": "Highest intensity. The clearest, most direct statement of the institutional target and the maxim “when the government fears the people, liberty reigns.” Forge, anvil, and Declaration language make the right to alter or abolish concrete. Maximum impact as the militant thesis statement."
     },
     {
-      "release": "the-ridge",
+      "release": "dangerous",
+      "track": 1,
+      "reason": "Core argument in its purest form: free will is a gift from God that no empire can revoke; peaceful is not harmless. Gandhi’s refusal is the proof. Highest conceptual impact; the track the rest of the catalog orbits."
+    },
+    {
+      "release": "sovereign-heart-of-fire",
+      "track": 1,
+      "reason": "Spiritual peak. Conviction before the throne, judgment and mercy from the same hand, liberty as deliverance from Egypt and Babylon. Highest intensity on the worship side; turns resistance into obedience to God."
+    },
+    {
+      "release": "one-man-invictus",
+      "track": 1,
+      "reason": "The individual-stand thesis as chant and historical roll call (Tank Man, etc.). “When the government fears the people, that’s liberty.” High intensity, high impact as the album’s organizing idea made into a single track."
+    },
+    {
+      "release": "dangerous",
       "track": 2,
-      "reason": "A hook-driven retelling of the 1992 siege at Ruby Ridge that ends as a memorial to Sammy and Vicki Weaver."
+      "reason": "Historical and legal backbone: Magna Carta, Patrick Henry, Lexington, Jefferson, sovereign conscience as the final safeguard. High intensity through the march of precedent; strong impact as the intellectual spine of the rock material."
+    },
+    {
+      "release": "sovereign-heart-of-fire",
+      "track": 2,
+      "reason": "One person kneeling becomes the start of a holy war. David and Daniel as the pattern. Bridges the militant and worship lanes; high emotional and theological impact."
     },
     {
       "release": "crown-of-ash",
       "track": 1,
-      "reason": "A slow, solemn ballad sung to a fallen tyrant, weighing mercy against the widows, orphans and graves he left behind."
+      "reason": "Solemn reckoning after the fight. Mercy weighed against widows, orphans, and graves. Lower intensity, high impact as the moral aftermath and the folk voice of the catalog."
     },
     {
       "release": "sovereign-heart-of-fire",
       "track": 14,
-      "reason": "A gentle portrait of a woman who rebuilt her life after loss, from the worship album Sovereign Heart of Fire."
+      "reason": "The resilience and grace counterweight. A woman rebuilt after loss and betrayal, answering hardship with mercy. Low intensity, necessary impact so the thesis does not collapse into pure rage."
     },
     {
-      "release": "savage-serenade",
-      "track": 1,
-      "reason": "The opener of Savage Serenade, a solo acoustic guitar album where fierce and gentle are never far apart. The title says it: something wild that chooses to lay down its arms."
+      "release": "the-ridge",
+      "track": 2,
+      "reason": "Specific historical case (Ruby Ridge) in hip-hop form, ending as memorial. Medium intensity, high impact as the most concrete institutional critique in a different genre voice."
     },
     {
-      "release": "savage-serenade-volume-2",
+      "release": "carry-the-star",
       "track": 1,
-      "reason": "A storm with the sound turned off opens Savage Serenade Volume 2, setting the album's pattern of a gentle word standing guard over a violent one."
-    },
-    {
-      "release": "tinmouth-cathedral-volume-1",
-      "track": 1,
-      "reason": "The opener of Tinmouth Cathedral Volume 1, the earliest instrumental album in the catalog: a cathedral made of tin, where the sacred and the industrial share one roof."
+      "reason": "Quiet rock single about the small light each person carries. Lowest intensity, still high thesis impact: the ordinary individual as the carrier of the same free will defended in the heavier tracks."
     }
   ]
 }
