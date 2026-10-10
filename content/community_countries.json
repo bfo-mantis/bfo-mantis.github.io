@@ -1,0 +1,523 @@
+{
+ "_note": "Countries where bfo.mantis is listened to, ranked by YouTube views over the last 365 days (DistroKid Stats > YouTube, Views by Country). View counts are deliberately NOT stored here (this folder is public); only the rank order and each country's most-played bfo.mantis release. The export's 'ZZ' row (unknown region, mislabelled IT, 0 views) is excluded; seven countries DistroKid lists with a most-played release but 0 counted views are kept and rank last. Country names come from the ISO list (the export gives Serbia only as 'RS'). Regenerate from the private export /workspace/bfo_mantis_countries.json.",
+ "source_line": "Based on YouTube listening, last 12 months.",
+ "report_date": "2026-10-09",
+ "countries": [
+  {
+   "rank": 1,
+   "iso2": "US",
+   "country": "United States",
+   "top_release_slug": "sovereign-heart-of-fire"
+  },
+  {
+   "rank": 2,
+   "iso2": "FR",
+   "country": "France",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 3,
+   "iso2": "UA",
+   "country": "Ukraine",
+   "top_release_slug": "savage-serenade-volume-2"
+  },
+  {
+   "rank": 4,
+   "iso2": "DE",
+   "country": "Germany",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 5,
+   "iso2": "TH",
+   "country": "Thailand",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 6,
+   "iso2": "CA",
+   "country": "Canada",
+   "top_release_slug": "the-ridge"
+  },
+  {
+   "rank": 6,
+   "iso2": "PH",
+   "country": "Philippines",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 8,
+   "iso2": "BR",
+   "country": "Brazil",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 8,
+   "iso2": "ZA",
+   "country": "South Africa",
+   "top_release_slug": "one-man-invictus"
+  },
+  {
+   "rank": 10,
+   "iso2": "MA",
+   "country": "Morocco",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 11,
+   "iso2": "JP",
+   "country": "Japan",
+   "top_release_slug": "tinmouth-cathedral-volume-1"
+  },
+  {
+   "rank": 11,
+   "iso2": "MX",
+   "country": "Mexico",
+   "top_release_slug": "dangerous"
+  },
+  {
+   "rank": 13,
+   "iso2": "IQ",
+   "country": "Iraq",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 13,
+   "iso2": "RU",
+   "country": "Russian Federation",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 13,
+   "iso2": "GB",
+   "country": "United Kingdom",
+   "top_release_slug": "dangerous"
+  },
+  {
+   "rank": 16,
+   "iso2": "IT",
+   "country": "Italy",
+   "top_release_slug": "savage-serenade-volume-3"
+  },
+  {
+   "rank": 16,
+   "iso2": "PL",
+   "country": "Poland",
+   "top_release_slug": "tinmouth-cathedral-volume-1"
+  },
+  {
+   "rank": 16,
+   "iso2": "ES",
+   "country": "Spain",
+   "top_release_slug": "rebel-anthem"
+  },
+  {
+   "rank": 19,
+   "iso2": "AU",
+   "country": "Australia",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 19,
+   "iso2": "IN",
+   "country": "India",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 19,
+   "iso2": "JO",
+   "country": "Jordan",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 22,
+   "iso2": "IL",
+   "country": "Israel",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 22,
+   "iso2": "RS",
+   "country": "Serbia",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 24,
+   "iso2": "BE",
+   "country": "Belgium",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 24,
+   "iso2": "ID",
+   "country": "Indonesia",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 24,
+   "iso2": "NL",
+   "country": "Netherlands",
+   "top_release_slug": "tinmouth-cathedral-volume-1"
+  },
+  {
+   "rank": 27,
+   "iso2": "CL",
+   "country": "Chile",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 27,
+   "iso2": "HK",
+   "country": "Hong Kong",
+   "top_release_slug": "rebel-anthem"
+  },
+  {
+   "rank": 27,
+   "iso2": "MY",
+   "country": "Malaysia",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 27,
+   "iso2": "TR",
+   "country": "Türkiye",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 27,
+   "iso2": "AE",
+   "country": "United Arab Emirates",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 32,
+   "iso2": "EG",
+   "country": "Egypt",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 32,
+   "iso2": "KR",
+   "country": "South Korea",
+   "top_release_slug": "tinmouth-cathedral-volume-1"
+  },
+  {
+   "rank": 34,
+   "iso2": "SA",
+   "country": "Saudi Arabia",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 35,
+   "iso2": "DZ",
+   "country": "Algeria",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 35,
+   "iso2": "GT",
+   "country": "Guatemala",
+   "top_release_slug": "tinmouth-cathedral-volume-1"
+  },
+  {
+   "rank": 35,
+   "iso2": "LY",
+   "country": "Libya",
+   "top_release_slug": "sovereign-heart-of-fire"
+  },
+  {
+   "rank": 35,
+   "iso2": "NO",
+   "country": "Norway",
+   "top_release_slug": "dangerous"
+  },
+  {
+   "rank": 35,
+   "iso2": "PK",
+   "country": "Pakistan",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 35,
+   "iso2": "SK",
+   "country": "Slovakia",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 35,
+   "iso2": "VN",
+   "country": "Vietnam",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 42,
+   "iso2": "AT",
+   "country": "Austria",
+   "top_release_slug": "tinmouth-cathedral-volume-1"
+  },
+  {
+   "rank": 42,
+   "iso2": "BD",
+   "country": "Bangladesh",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 42,
+   "iso2": "FI",
+   "country": "Finland",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 42,
+   "iso2": "GR",
+   "country": "Greece",
+   "top_release_slug": "savage-serenade-volume-2"
+  },
+  {
+   "rank": 42,
+   "iso2": "HU",
+   "country": "Hungary",
+   "top_release_slug": "spellbound-volume-2"
+  },
+  {
+   "rank": 42,
+   "iso2": "NZ",
+   "country": "New Zealand",
+   "top_release_slug": "the-flock-betrayal"
+  },
+  {
+   "rank": 42,
+   "iso2": "RO",
+   "country": "Romania",
+   "top_release_slug": "the-ridge"
+  },
+  {
+   "rank": 42,
+   "iso2": "TW",
+   "country": "Taiwan",
+   "top_release_slug": "sovereign-heart-of-fire"
+  },
+  {
+   "rank": 50,
+   "iso2": "AR",
+   "country": "Argentina",
+   "top_release_slug": "tinmouth-cathedral-volume-1"
+  },
+  {
+   "rank": 50,
+   "iso2": "BY",
+   "country": "Belarus",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 50,
+   "iso2": "BG",
+   "country": "Bulgaria",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 50,
+   "iso2": "IE",
+   "country": "Ireland",
+   "top_release_slug": "sacred-steel"
+  },
+  {
+   "rank": 50,
+   "iso2": "KE",
+   "country": "Kenya",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 50,
+   "iso2": "PG",
+   "country": "Papua New Guinea",
+   "top_release_slug": "savage-serenade-volume-2"
+  },
+  {
+   "rank": 50,
+   "iso2": "PE",
+   "country": "Peru",
+   "top_release_slug": "tinmouth-cathedral-volume-1"
+  },
+  {
+   "rank": 50,
+   "iso2": "SE",
+   "country": "Sweden",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 50,
+   "iso2": "VE",
+   "country": "Venezuela",
+   "top_release_slug": "tinmouth-cathedral-volume-1"
+  },
+  {
+   "rank": 50,
+   "iso2": "ZW",
+   "country": "Zimbabwe",
+   "top_release_slug": "savage-serenade-volume-3"
+  },
+  {
+   "rank": 60,
+   "iso2": "AZ",
+   "country": "Azerbaijan",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 60,
+   "iso2": "BO",
+   "country": "Bolivia",
+   "top_release_slug": "forge-of-your-light"
+  },
+  {
+   "rank": 60,
+   "iso2": "KH",
+   "country": "Cambodia",
+   "top_release_slug": "tinmouth-cathedral-volume-1"
+  },
+  {
+   "rank": 60,
+   "iso2": "CO",
+   "country": "Colombia",
+   "top_release_slug": "forge-of-your-light"
+  },
+  {
+   "rank": 60,
+   "iso2": "CR",
+   "country": "Costa Rica",
+   "top_release_slug": "tinmouth-cathedral-volume-1"
+  },
+  {
+   "rank": 60,
+   "iso2": "HR",
+   "country": "Croatia",
+   "top_release_slug": "rebel-anthem"
+  },
+  {
+   "rank": 60,
+   "iso2": "CZ",
+   "country": "Czechia",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 60,
+   "iso2": "DK",
+   "country": "Denmark",
+   "top_release_slug": "savage-serenade-volume-3"
+  },
+  {
+   "rank": 60,
+   "iso2": "EC",
+   "country": "Ecuador",
+   "top_release_slug": "savage-serenade-volume-3"
+  },
+  {
+   "rank": 60,
+   "iso2": "GE",
+   "country": "Georgia",
+   "top_release_slug": "savage-serenade-volume-2"
+  },
+  {
+   "rank": 60,
+   "iso2": "KZ",
+   "country": "Kazakhstan",
+   "top_release_slug": "forge-of-your-light"
+  },
+  {
+   "rank": 60,
+   "iso2": "KW",
+   "country": "Kuwait",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 60,
+   "iso2": "NI",
+   "country": "Nicaragua",
+   "top_release_slug": "the-ridge"
+  },
+  {
+   "rank": 60,
+   "iso2": "PT",
+   "country": "Portugal",
+   "top_release_slug": "savage-serenade-volume-3"
+  },
+  {
+   "rank": 60,
+   "iso2": "PR",
+   "country": "Puerto Rico",
+   "top_release_slug": "savage-serenade-volume-3"
+  },
+  {
+   "rank": 60,
+   "iso2": "SG",
+   "country": "Singapore",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 60,
+   "iso2": "LK",
+   "country": "Sri Lanka",
+   "top_release_slug": "rebel-anthem"
+  },
+  {
+   "rank": 60,
+   "iso2": "CH",
+   "country": "Switzerland",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 60,
+   "iso2": "TN",
+   "country": "Tunisia",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 60,
+   "iso2": "UG",
+   "country": "Uganda",
+   "top_release_slug": "dangerous"
+  },
+  {
+   "rank": 80,
+   "iso2": "EE",
+   "country": "Estonia",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 80,
+   "iso2": "GU",
+   "country": "Guam",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 80,
+   "iso2": "LV",
+   "country": "Latvia",
+   "top_release_slug": "savage-serenade-volume-3"
+  },
+  {
+   "rank": 80,
+   "iso2": "LB",
+   "country": "Lebanon",
+   "top_release_slug": "the-ridge"
+  },
+  {
+   "rank": 80,
+   "iso2": "LT",
+   "country": "Lithuania",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 80,
+   "iso2": "MK",
+   "country": "North Macedonia",
+   "top_release_slug": "savage-serenade"
+  },
+  {
+   "rank": 80,
+   "iso2": "SI",
+   "country": "Slovenia",
+   "top_release_slug": "dangerous"
+  }
+ ]
+}

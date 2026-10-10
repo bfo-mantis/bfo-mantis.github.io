@@ -333,7 +333,13 @@
         var name = b.getAttribute("data-name");
         document.getElementById("cc-flag").textContent = b.querySelector(".cc-flag").textContent;
         document.getElementById("cc-h").textContent = name;
-        document.getElementById("cc-p").textContent = "A room for fans of bfo.mantis in " + name + " to talk about their favorite songs.";
+        var ccp = document.getElementById("cc-p"), top_ = b.getAttribute("data-top");
+        ccp.textContent = "A room for fans of bfo.mantis in " + name + " to talk about their favorite songs.";
+        if (top_) {
+          ccp.appendChild(document.createTextNode(" bfo.mantis has listeners here. Most played: "));
+          var ta = document.createElement("a"); ta.href = b.getAttribute("data-top-href"); ta.textContent = top_; ccp.appendChild(ta);
+          ccp.appendChild(document.createTextNode("."));
+        }
         if (join && join.tagName === "A") join.setAttribute("data-gc", "event/community/" + b.getAttribute("data-cc").toLowerCase());
         if (narrow && narrow.matches) document.getElementById("cc-card").scrollIntoView({ block: "nearest" });
       });

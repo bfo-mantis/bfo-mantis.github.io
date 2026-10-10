@@ -1263,12 +1263,34 @@ def build_community(releases, site, v, has_about, community_url=None):
     root = "../"; url = site + "community/"
     cs = json.loads((ROOT / "content" / "countries.json").read_text())["countries"]
     desc = f"{COMMUNITY_INTRO} Pick your country and share the {ARTIST} songs you love."
+    # Where the music is heard: rank order only (content/community_countries.json holds no view counts)
+    cp = ROOT / "content" / "community_countries.json"
+    cdata = json.loads(cp.read_text()) if cp.exists() else {"countries": []}
+    bys = {r["slug"]: r for r in releases}
+    heard = [c for c in cdata.get("countries", []) if c.get("top_release_slug") in bys]
+    heard_by = {c["iso2"]: c for c in heard}
+    if heard: desc = f"{COMMUNITY_INTRO} Listened to in {len(heard)} countries. Find yours and share the {ARTIST} songs you love."
     ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"Community — {ARTIST}", "url": url,
           "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}, "about": music_group(site)}
     hd = head(root, title=f"Community — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
               og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
-    items = "".join(f'<li><button type="button" class="cc" data-cc="{c["code"]}" data-name="{e(c["name"])}" aria-pressed="false">'
-                    f'<span class="cc-flag" aria-hidden="true">{flag(c["code"])}</span><span class="cc-name">{e(c["name"])}</span></button></li>' for c in cs)
+    def cc_item(c):
+        h = heard_by.get(c["code"])
+        extra = (f' data-top="{e(bys[h["top_release_slug"]]["title"])}" data-top-href="{root}release/{h["top_release_slug"]}/"' if h else "")
+        return (f'<li><button type="button" class="cc{" cc-heard" if h else ""}" data-cc="{c["code"]}" data-name="{e(c["name"])}"{extra} aria-pressed="false">'
+                f'<span class="cc-flag" aria-hidden="true">{flag(c["code"])}</span><span class="cc-name">{e(c["name"])}</span>'
+                + ('<span class="cc-dot" aria-hidden="true"></span><span class="sr-only"> (listeners here)</span>' if h else "") + '</button></li>')
+    items = "".join(cc_item(c) for c in cs)
+    world = "".join(
+        f'<li><span class="w-rank">#{c["rank"]}</span><span class="w-flag" aria-hidden="true">{flag(c["iso2"])}</span>'
+        f'<span class="w-c">{e(c["country"])}</span><span class="w-top"><span class="w-k">Most played</span> '
+        f'<a href="{root}release/{c["top_release_slug"]}/">{e(bys[c["top_release_slug"]]["title"])}</a></span></li>' for c in heard)
+    heard_sec = (f'''
+  <section class="section" aria-labelledby="world-title">
+    <div class="section-head"><h2 id="world-title">Where bfo.mantis is heard</h2><p class="count">Ranked by listening</p></div>
+    <ol class="world">{world}</ol>
+    <p class="art-copy">{e(cdata.get("source_line") or "")}</p>
+  </section>''' if heard else "")
     if community_url:
         join = (f'<a class="btn cc-join" href="{e(community_url)}" target="_blank" rel="noopener" data-gc="event/community">'
                 f'Join your country\u2019s room{NT}</a>')
@@ -1289,11 +1311,12 @@ def build_community(releases, site, v, has_about, community_url=None):
     <p class="eyebrow">bfo.mantis</p>
     <h1 id="community-title">Community</h1>
     <p class="lounge-intro">{e(COMMUNITY_INTRO)}</p>
-    <p class="pk-soon cc-note"><span class="soon-tag">Coming soon</span> Country listener highlights.</p>
+    {f'<p class="cc-stat"><strong>Listened to in {len(heard)} countries</strong><span>{e(cdata.get("source_line") or "")}</span></p>' if heard else '<p class="pk-soon cc-note"><span class="soon-tag">Coming soon</span> Country listener highlights.</p>'}
   </section>
 
   <section class="section" aria-labelledby="cc-title">
     <div class="section-head"><h2 id="cc-title">Find your country</h2><p class="count" id="cc-count" aria-live="polite">{len(cs)} countries</p></div>
+    {'<p class="cc-legend"><span class="cc-dot" aria-hidden="true"></span> Countries where bfo.mantis has listeners</p>' if heard else ""}
     <div class="cc-wrap">
       <div class="cc-pick">
         <label class="su-label" for="cc-q">Search countries</label>
@@ -1309,6 +1332,8 @@ def build_community(releases, site, v, has_about, community_url=None):
       </div>
     </div>
   </section>
+
+{heard_sec}
 
   <section class="section" aria-labelledby="fav-title">
     <div class="section-head"><h2 id="fav-title">Favorite song</h2></div>
@@ -1339,8 +1364,11 @@ def help_link(root, cls="help-link"):
 def build_help(site, v, has_about):
     root = "../"; url = site + "help/"
     title = "Other ways to help"
+    lead = ("Every movement starts with one person who refuses to stay quiet. One share, one follow, one friend told about a song: "
+            "that\u2019s how a single voice becomes a crowd. You don\u2019t need a stage or a fortune to stand with bfo.mantis. "
+            "You just need to carry the signal one step further than it was.")   # user-approved wording
     intro = "Not every kind of support costs money. Here\u2019s how to help get the word out and grow the community."
-    desc = f"{title}: follow {ARTIST}, save songs and add them to playlists, subscribe, comment, share and join the community."
+    desc = "Every movement starts with one person who refuses to stay quiet."   # first sentence of the approved lead
     ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"{title} — {ARTIST}", "url": url,
           "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}, "about": music_group(site)}
     hd = head(root, title=f"{title} — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
@@ -1372,7 +1400,8 @@ def build_help(site, v, has_about):
     <a class="back" href="{root}#support"><span aria-hidden="true">←</span> Support</a>
     <p class="eyebrow">Support bfo.mantis</p>
     <h1 id="help-title">{title}</h1>
-    <p class="lounge-intro">{e(intro)}</p>
+    <p class="help-lead">{e(lead)}</p>
+    <p class="help-intro">{e(intro)}</p>
     <ul class="help-grid">{"".join(cards)}</ul>
   </section>
 </main>
