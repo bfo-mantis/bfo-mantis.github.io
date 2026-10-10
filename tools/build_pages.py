@@ -371,6 +371,7 @@ def topbar(root, has_about, home=False, current=None):
   <a class="brand" href="{root or './'}" aria-label="{ARTIST} home">bfo<span>.</span>mantis</a>
   <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"></span>Menu</button>
   <nav id="site-nav" aria-label="Primary">
+    <a href="{root}start/"{cur("start")}>Start here</a>
     <a href="{p}#songs">Songs</a>
     <a href="{p}#instrumentals">Instrumentals</a>
     <a href="{root}genres/"{cur("genres")}>Genres</a>
@@ -635,6 +636,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
       </a>
     </div>
   </section>
+  <p class="start-cta"><a href="start/" data-gc="event/start/home"><span class="k">New here?</span> <strong>Start here</strong> with ten tracks that cover the whole catalog<span aria-hidden="true"> →</span></a></p>
 {featured}
 {cat_sections}{about_sec}
 
@@ -1479,7 +1481,7 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
 </body>
 </html>
 ''')
-    urls = ([site] + [f"{site}release/{r['slug']}/" for r in releases] + [site + "genres/", site + "lounge/", site + "press/", site + "links/", site + "community/", site + "help/"]
+    urls = ([site] + [f"{site}release/{r['slug']}/" for r in releases] + [site + "genres/", site + "lounge/", site + "press/", site + "links/", site + "community/", site + "help/", site + "start/"]
             + [f"{site}genre/{genre_slug(g)}/" for g, _ in genre_groups(releases)])
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
                                       "".join(f"  <url><loc>{e(u)}</loc></url>\n" for u in urls) + "</urlset>\n")
@@ -1491,6 +1493,48 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
         "background_color": "#0b0b0f", "theme_color": "#0b0b0f",
         "icons": [{"src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png"},
                   {"src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png"}]}, indent=1) + "\n")
+
+def build_start(releases, site, v, has_about):
+    """'Start here': ten essential tracks for new listeners, from content/start.json (user-approved picks)."""
+    p = ROOT / "content" / "start.json"
+    if not p.exists():
+        return 0
+    cfg = json.loads(p.read_text())
+    R = {r["slug"]: r for r in releases}
+    root = "../"; url = site + "start/"
+    h1 = "Ten tracks to start with"
+    items = []
+    for i, it in enumerate(cfg["items"], 1):
+        r = R.get(it["release"])
+        t = next((x for x in (r or {}).get("tracks", []) if x["n"] == it["track"]), None)
+        if not t:
+            print(f"start: skipped missing {it['release']} #{it['track']}"); continue
+        cat = "Instrumental" if r.get("category") == "instrumental" else "Song"
+        where = f'track {t["n"]} of {e(r["title"])}' if r["type"] == "album" else "single"
+        items.append(f'''<li><span class="num">{i}</span><span class="art">{picture(root, r, "72px", alt="")}{pv_button(root, r, t)}</span>
+  <div class="ess-body"><h2><a href="{root}release/{r["slug"]}/">{e(t["title"])}</a></h2><p class="meta">{cat} · {e(r.get("genre") or "")} · {where}</p><p class="why">{e(it["reason"])}</p></div>
+  <span class="pv-bar" aria-hidden="true"><span></span></span></li>''')
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"{cfg['title']} — {ARTIST}", "url": url,
+          "description": cfg["intro"], "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}, "about": music_group(site)}
+    hd = head(root, title=f"{cfg['title']}: {h1.lower()} — {ARTIST}", desc=cfg["intro"], url=url, og_image=site + "assets/img/og/home.jpg",
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+    page = f'''{hd}
+<body class="start-page">
+{topbar(root, has_about, current="start")}
+<main id="main">
+  <section class="section start" aria-labelledby="start-title">
+    <p class="eyebrow">{e(cfg["title"])}</p>
+    <h1 id="start-title">{h1}</h1>
+    <p class="lead">{e(cfg["intro"])}</p>
+    <ol class="ess tracks">{"".join(items)}</ol>
+    <p class="start-more"><a href="{root}#songs">Browse all songs</a> · <a href="{root}#instrumentals">Instrumentals</a> · <a href="{root}genres/">Genres</a></p>
+  </section>
+</main>
+
+{footer(root, v["js"])}'''
+    (ROOT / "start").mkdir(exist_ok=True)
+    (ROOT / "start" / "index.html").write_text(page)
+    return len(items)
 
 def main(site_url="https://bfo-mantis.github.io/", images=True):
     site = site_url.rstrip("/") + "/"
@@ -1523,9 +1567,10 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     build_links(releases, site, today, v, has_about, tagline)
     build_community(releases, site, v, has_about, data.get("community_url"))
     build_help(site, v, has_about)
+    n_start = build_start(releases, site, v, has_about)
     build_misc(releases, site, v)
     print("genres:", ", ".join(f"{g} ({len(rs)} releases, {sum(len(r['tracks']) for r in rs)} tracks)" for g, rs in groups))
-    print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + lounge + press + links + community + help (covers zip {zsize / 1e6:.1f} MB) + 404 + release.html shim | sitemap urls: {len(releases) + 7 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
+    print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + lounge + press + links + community + help + start ({n_start} essentials) (covers zip {zsize / 1e6:.1f} MB) + 404 + release.html shim | sitemap urls: {len(releases) + 8 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()

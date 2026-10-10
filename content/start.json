@@ -1,0 +1,57 @@
+{
+  "_note": "'Start here' essentials for new listeners (user-approved picks, published 2026-10-10). Reasons follow the live blurbs in content/blurbs.json and catalog facts only; no lyric quotes. Built by tools/build_pages.py (build_start) into start/; indexed, in the sitemap, linked from the nav and the home page.",
+  "title": "Start here",
+  "intro": "New to bfo.mantis? These ten tracks cover every corner of the catalog, from rock and metal to gospel, hip hop and the instrumental series. Press play on any of them for a 30-second preview.",
+  "items": [
+    {
+      "release": "dangerous",
+      "track": 1,
+      "reason": "The title track of DANGEROUS sets out the idea behind much of the catalog: being peaceful is not the same as being harmless."
+    },
+    {
+      "release": "one-man-invictus",
+      "track": 5,
+      "reason": "The story of Desmond Doss, the unarmed medic at Okinawa, and the most tender song of courage on One Man INVICTUS."
+    },
+    {
+      "release": "carry-the-star",
+      "track": 1,
+      "reason": "A gentle single about the small light everyone carries, proof that the catalog has warmth as well as thunder."
+    },
+    {
+      "release": "rebel-anthem",
+      "track": 1,
+      "reason": "The opener of the most militant album in the catalog, and the clearest statement of what it stands against."
+    },
+    {
+      "release": "the-ridge",
+      "track": 2,
+      "reason": "A hook-driven retelling of the 1992 siege at Ruby Ridge that ends as a memorial to Sammy and Vicki Weaver."
+    },
+    {
+      "release": "crown-of-ash",
+      "track": 1,
+      "reason": "A slow, solemn ballad sung to a fallen tyrant, weighing mercy against the widows, orphans and graves he left behind."
+    },
+    {
+      "release": "sovereign-heart-of-fire",
+      "track": 14,
+      "reason": "A gentle portrait of a woman who rebuilt her life after loss, from the worship album Sovereign Heart of Fire."
+    },
+    {
+      "release": "savage-serenade",
+      "track": 1,
+      "reason": "The opener of Savage Serenade, a solo acoustic guitar album where fierce and gentle are never far apart. The title says it: something wild that chooses to lay down its arms."
+    },
+    {
+      "release": "savage-serenade-volume-2",
+      "track": 1,
+      "reason": "A storm with the sound turned off opens Savage Serenade Volume 2, setting the album's pattern of a gentle word standing guard over a violent one."
+    },
+    {
+      "release": "tinmouth-cathedral-volume-1",
+      "track": 1,
+      "reason": "The opener of Tinmouth Cathedral Volume 1, the earliest instrumental album in the catalog: a cathedral made of tin, where the sacred and the industrial share one roof."
+    }
+  ]
+}
