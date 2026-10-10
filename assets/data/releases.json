@@ -1,10 +1,37 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-09T22:57:53",
+ "generated": "2026-10-10T01:52:45",
  "donate_url": null,
  "members_url": null,
  "email_signup_url": null,
  "community_url": null,
+ "merch_url": null,
+ "merch_items": [
+  {
+   "release": "dangerous",
+   "kind": "T-shirt",
+   "name": "DANGEROUS tee",
+   "url": null
+  },
+  {
+   "release": "rebel-anthem",
+   "kind": "Poster",
+   "name": "Rebel Anthem poster",
+   "url": null
+  },
+  {
+   "release": "crown-of-ash",
+   "kind": "Hoodie",
+   "name": "Crown of Ash hoodie",
+   "url": null
+  },
+  {
+   "release": "spellbound-volume-1",
+   "kind": "Art print",
+   "name": "Spellbound art print",
+   "url": null
+  }
+ ],
  "press_contact": null,
  "goatcounter_code": "bfomantis",
  "releases": [

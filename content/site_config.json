@@ -1,9 +1,36 @@
 {
-  "_note": "Future direct-purchase, donation and Members Lounge links, the email sign-up form action (community_url: the https:// address of the fan community (the Community page's 'Join your country's room' button opens it); email_signup_url: the https:// endpoint of a newsletter service's sign-up form, which receives a POST with an 'email' field), and the press contact (an https:// URL or an email address). Leave null to show the disabled 'Coming soon' placeholders. Fill in an https:// URL and rebuild (python3 tools/build_data.py --skip-covers) to switch a button on. Don't put prices here; the store sets them. goatcounter_code: just the GoatCounter site code (e.g. 'bfomantis'); null = no analytics script at all.",
+  "_note": "Future direct-purchase, donation and Members Lounge links, the email sign-up form action (community_url: the https:// address of the fan community (the Community page's 'Join your country's room' button opens it); email_signup_url: the https:// endpoint of a newsletter service's sign-up form, which receives a POST with an 'email' field), and the press contact (an https:// URL or an email address). Leave null to show the disabled 'Coming soon' placeholders. Fill in an https:// URL and rebuild (python3 tools/build_data.py --skip-covers) to switch a button on. Don't put prices here; the store sets them. goatcounter_code: just the GoatCounter site code (e.g. 'bfomantis'); null = no analytics script at all. merch_url: the https:// address of the merch store; while null the Merch page (merch/) shows 'Coming soon' with disabled buttons. merch_items: the product cards on the Merch page (release = release slug whose cover art is shown, kind, name, url). An item's own https url makes just that button live; otherwise it uses merch_url. No prices here.",
   "donate_url": null,
   "members_url": null,
   "email_signup_url": null,
   "community_url": null,
+  "merch_url": null,
+  "merch_items": [
+    {
+      "release": "dangerous",
+      "kind": "T-shirt",
+      "name": "DANGEROUS tee",
+      "url": null
+    },
+    {
+      "release": "rebel-anthem",
+      "kind": "Poster",
+      "name": "Rebel Anthem poster",
+      "url": null
+    },
+    {
+      "release": "crown-of-ash",
+      "kind": "Hoodie",
+      "name": "Crown of Ash hoodie",
+      "url": null
+    },
+    {
+      "release": "spellbound-volume-1",
+      "kind": "Art print",
+      "name": "Spellbound art print",
+      "url": null
+    }
+  ],
   "press_contact": null,
   "goatcounter_code": "bfomantis",
   "download_url_by_slug": {

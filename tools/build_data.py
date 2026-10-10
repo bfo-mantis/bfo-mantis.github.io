@@ -227,7 +227,7 @@ def write_lyrics_files(releases, lyrics, edits=None, log=None, overrides=None):
 def load_site_config(path, slugs):
     """content/site_config.json: future download/donate links. null = disabled 'Coming soon' placeholder.
     Only https URLs are accepted; anything else is ignored with a warning."""
-    cfg = {"donate_url": None, "members_url": None, "email_signup_url": None, "community_url": None, "press_contact": None, "goatcounter_code": None, "download_url_by_slug": {}}
+    cfg = {"donate_url": None, "members_url": None, "email_signup_url": None, "community_url": None, "merch_url": None, "merch_items": [], "press_contact": None, "goatcounter_code": None, "download_url_by_slug": {}}
     p = Path(path) if path else None
     if p and p.exists():
         raw = json.loads(p.read_text())
@@ -235,6 +235,8 @@ def load_site_config(path, slugs):
         cfg["members_url"] = raw.get("members_url")
         cfg["email_signup_url"] = raw.get("email_signup_url")
         cfg["community_url"] = raw.get("community_url")
+        cfg["merch_url"] = raw.get("merch_url")
+        cfg["merch_items"] = list(raw.get("merch_items") or [])
         cfg["press_contact"] = raw.get("press_contact")
         cfg["goatcounter_code"] = raw.get("goatcounter_code")
         cfg["download_url_by_slug"] = dict(raw.get("download_url_by_slug") or {})
@@ -247,6 +249,16 @@ def load_site_config(path, slugs):
         print("site_config: email_signup_url ignored (must be https://)"); cfg["email_signup_url"] = None
     if cfg["community_url"] is not None and not ok(cfg["community_url"]):
         print("site_config: community_url ignored (must be https://)"); cfg["community_url"] = None
+    if cfg["merch_url"] is not None and not ok(cfg["merch_url"]):
+        print("site_config: merch_url ignored (must be https://)"); cfg["merch_url"] = None
+    items = []
+    for it in cfg["merch_items"]:
+        if not isinstance(it, dict) or it.get("release") not in slugs or not it.get("name"):
+            print(f"site_config: merch item ignored (needs a known release slug and a name): {it!r}"); continue
+        if it.get("url") is not None and not ok(it.get("url")):
+            print(f"site_config: merch item url for {it['name']!r} ignored (must be https://)"); it = {**it, "url": None}
+        items.append({"release": it["release"], "kind": it.get("kind") or "", "name": it["name"], "url": it.get("url")})
+    cfg["merch_items"] = items
     pc = cfg["press_contact"]
     if pc is not None and not (ok(pc) or (isinstance(pc, str) and re.fullmatch(r"[^@\s<>\"]+@[^@\s<>\"]+\.[A-Za-z]{2,}", pc))):
         print("site_config: press_contact ignored (must be an https:// URL or an email address)"); cfg["press_contact"] = None
@@ -399,11 +411,11 @@ def main():
           "| mixed:", [x["slug"] for x in releases if x["mixed"]] or "none",
           "| instrumental releases with tracks not marked instrumental (no lyrics on file):", unclassified or "none")
     data = {"artist": ARTIST, "generated": datetime.now().isoformat(timespec="seconds"),
-            "donate_url": cfg["donate_url"], "members_url": cfg["members_url"], "email_signup_url": cfg["email_signup_url"], "community_url": cfg["community_url"], "press_contact": cfg["press_contact"],
+            "donate_url": cfg["donate_url"], "members_url": cfg["members_url"], "email_signup_url": cfg["email_signup_url"], "community_url": cfg["community_url"], "merch_url": cfg["merch_url"], "merch_items": cfg["merch_items"], "press_contact": cfg["press_contact"],
             "goatcounter_code": cfg["goatcounter_code"], "releases": releases}
     print("blurbs: releases", sum(1 for x in releases if x["blurb"]), "| album tracks", sum(1 for x in releases for t in x["tracks"] if t["blurb"]), "| in-depth", sum(1 for x in releases for t in x["tracks"] if t.get("blurb_in_depth")),
           "| releases without one:", [x["slug"] for x in releases if not x["blurb"]] or "none")
-    print("downloads enabled:", sum(1 for x in releases if x["download_url"]), "| donate enabled:", bool(cfg["donate_url"]), "| members (Join) enabled:", bool(cfg["members_url"]), "| email sign-up enabled:", bool(cfg["email_signup_url"]), "| community enabled:", bool(cfg["community_url"]),
+    print("downloads enabled:", sum(1 for x in releases if x["download_url"]), "| donate enabled:", bool(cfg["donate_url"]), "| members (Join) enabled:", bool(cfg["members_url"]), "| email sign-up enabled:", bool(cfg["email_signup_url"]), "| community enabled:", bool(cfg["community_url"]), "| merch enabled:", bool(cfg["merch_url"]),
           "| analytics:", f'GoatCounter ({cfg["goatcounter_code"]})' if cfg["goatcounter_code"] else "off")
     out = ROOT / "assets" / "data"; out.mkdir(parents=True, exist_ok=True)
     js = json.dumps(data, ensure_ascii=False, indent=1)

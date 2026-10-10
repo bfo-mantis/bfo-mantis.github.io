@@ -432,13 +432,13 @@
       return d + (la - i) + (lb - j) <= 1;
     };
     // token score against a normalized field: 3 = whole word, 2 = word prefix, 1 = inside a word / one typo away
-    var tokScore = function (tok, f, words) {
+    var tokScore = function (tok, f, words, fuzzy) {
       var at = f.indexOf(tok);
       if (at > -1) {
         var pre = at === 0 || f[at - 1] === " ", post = at + tok.length === f.length || f[at + tok.length] === " ";
         return pre && post ? 3 : pre ? 2 : 1;
       }
-      if (tok.length >= 4) for (var k = 0; k < words.length; k++) if (words[k].length >= 4 && lev1(tok, words[k])) return 1;
+      if (fuzzy && tok.length >= 4) for (var k = 0; k < words.length; k++) if (words[k].length >= 4 && lev1(tok, words[k])) return 1;
       return 0;
     };
     var prep = function (d) {
@@ -454,17 +454,19 @@
         return o;
       });
       var P = d.p.map(function (p) { var o = { title: p[0], path: p[1], desc: p[2] }; o.f = [norm(o.title), "", norm(o.desc)]; return o; });
-      [R, T, P].forEach(function (L) { L.forEach(function (o) { o.w = o.f.map(function (f) { return f ? f.split(" ") : []; }); }); });
-      return { R: R, T: T, P: P };
+      var all = [];
+      [R, T, P].forEach(function (L) { L.forEach(function (o) { o.w = o.f.map(function (f) { return f ? f.split(" ") : []; }); all.push(o.f.join(" ")); }); });
+      return { R: R, T: T, P: P, all: " " + all.join(" ") + " " };
     };
     var W = [10, 3, 1.5, 1];   // field weights: title, meta, blurb, lyrics
+    var fz = [];   // per query word: allow one-typo matches only when the word appears nowhere in the index as typed
     var score = function (o, toks, qn) {
       var total = 0, best = -1;
       for (var i = 0; i < toks.length; i++) {
         var top = 0, tf = -1;
         for (var f = 0; f < o.f.length; f++) {
           if (!o.f[f]) continue;
-          var s = tokScore(toks[i], o.f[f], o.w[f]) * W[f];
+          var s = tokScore(toks[i], o.f[f], o.w[f], fz[i]) * W[f];
           if (s > top) { top = s; tf = f; }
         }
         if (!top) return null;   // every word must match somewhere
@@ -504,6 +506,7 @@
       if (!qn) { sOut.innerHTML = ""; sStat.textContent = ""; sIn.setAttribute("aria-expanded", "false"); return; }
       var toks = qn.split(" ").filter(function (t) { return t !== "or" && t !== "the" && t !== "a" || qn.split(" ").length === 1; });
       if (!toks.length) toks = qn.split(" ");
+      fz = toks.map(function (t) { return idx.all.indexOf(t) < 0; });
       var html = "", count = 0;
       [["R", "Releases"], ["T", "Tracks"], ["P", "Pages"]].forEach(function (g) {
         var hits = [];

@@ -361,13 +361,11 @@ def head(root, *, title, desc, url, og_image, og_alt, og_type="website", extra="
 
 SEARCH_V = "0"   # content hash of assets/data/search.json, set by main() before any page is written
 SEARCH_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>'
-HAS_MERCH = False   # set by main() when content/merch.json has items (Merch page + nav link)
 
 def topbar(root, has_about, home=False, current=None):
     p = "" if home else root
     about = f'<a href="{p}#about">About</a>' if has_about else ""
     cur = lambda k: ' aria-current="page"' if current == k else ""
-    merch = f'<a href="{root}merch/"{cur("merch")}>Merch</a>' if HAS_MERCH else ""
     return f'''<a class="skip" href="#main">Skip to content</a>
 <header class="topbar" id="top">
   <a class="brand" href="{root or './'}" aria-label="{ARTIST} home">bfo<span>.</span>mantis</a>
@@ -379,14 +377,15 @@ def topbar(root, has_about, home=False, current=None):
     <a href="{root}genres/"{cur("genres")}>Genres</a>
     {about}
     <div class="nav-group">
-      <button type="button" class="nav-sub-btn" aria-expanded="false" aria-controls="nav-support"{' aria-current="page"' if current == "help" else ""}>Support<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button type="button" class="nav-sub-btn" aria-expanded="false" aria-controls="nav-support"{' aria-current="page"' if current in ("help", "merch") else ""}>Support<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div class="nav-sub" id="nav-support">
         <a href="{p}#support"><span class="lbl-wide">Donate</span><span class="lbl-narrow">Support</span></a>
         <a href="{root}help/"{cur("help")}>Other ways to help</a>
+        <a href="{root}merch/"{cur("merch")}>Merch</a>
       </div>
     </div>
     <a href="{root}community/"{cur("community")}>Community</a>
-    <a href="{root}lounge/"{cur("lounge")}>Lounge</a>{merch}
+    <a href="{root}lounge/"{cur("lounge")}>Lounge</a>
   </nav>
   <button type="button" class="search-btn" data-idx="{root}assets/data/search.json?v={SEARCH_V}" aria-haspopup="dialog" aria-keyshortcuts="/ Control+K Meta+K" aria-label="Search the site" title="Search (/ or Ctrl+K)">{SEARCH_ICON}<span class="search-lbl">Search</span></button>
 </header>'''
@@ -395,7 +394,7 @@ def footer(root, js_v):
     year = date.today().year
     return f'''<footer class="footer">
   <p>Music, lyrics, artwork and audio previews &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</p>
-  <nav class="footer-nav" aria-label="Footer"><a class="footer-link" href="{root}help/">Ways to help</a><a class="footer-link" href="{root}community/">Community</a><a class="footer-link" href="{root}links/">Links</a><a class="footer-link" href="{root}press/">Press kit</a></nav>
+  <nav class="footer-nav" aria-label="Footer"><a class="footer-link" href="{root}help/">Ways to help</a><a class="footer-link" href="{root}community/">Community</a><a class="footer-link" href="{root}merch/">Merch</a><a class="footer-link" href="{root}links/">Links</a><a class="footer-link" href="{root}press/">Press kit</a></nav>
   <a class="footer-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
 </footer>
 <a class="to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l-7 7m7-7l7 7M12 5v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -924,6 +923,64 @@ def build_lounge(site, v, has_about, members_url=None, signup_url=None):
     (ROOT / "lounge").mkdir(exist_ok=True)
     (ROOT / "lounge" / "index.html").write_text(page)
 
+MERCH_LINE = "Shirts, posters and more featuring bfo.mantis artwork are on the way."
+
+def build_merch(releases, site, v, has_about, merch_url=None, items=None):
+    """merch/: 'Coming soon' until content/site_config.json sets merch_url (https, validated in build_data.py).
+    Product cards (merch_items) use real cover art; no prices. An item's own url makes only that button live."""
+    root = "../"; url = site + "merch/"
+    bys = {r["slug"]: r for r in releases}
+    live = bool(merch_url)
+    desc = MERCH_LINE + ("" if live else " Coming soon.")
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"Merch — {ARTIST}", "url": url,
+          "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}, "about": music_group(site)}
+    hd = head(root, title=f"Merch — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+    cards = []
+    for i, it in enumerate(items or []):
+        r = bys.get(it["release"])
+        if not r: continue
+        href = it.get("url") or merch_url
+        if href:
+            btn = (f'<a class="btn-alt mc-btn" href="{e(href)}" target="_blank" rel="noopener" data-gc="event/merch/{e(it["release"])}">'
+                   f'Shop{NT}<span class="sr-only"> {e(it["name"])}</span></a>')
+            tag = ""
+        else:
+            btn = (f'<button type="button" class="btn-alt mc-btn" disabled aria-disabled="true" aria-describedby="mc-soon-{i}">'
+                   f'Shop<span class="sr-only"> {e(it["name"])}</span></button>')
+            tag = f'<span class="soon-tag" id="mc-soon-{i}">Coming soon</span>'
+        cards.append(f'''<li class="mc">
+      <div class="mc-art mc-{slug_(it.get("kind") or "item")}">{picture(root, r, "(max-width: 600px) 90vw, 280px", alt=f"{r['title']} cover art")}</div>
+      <div class="mc-body"><p class="mc-k">{e(it.get("kind") or "")}</p><h2 class="mc-t">{e(it["name"])}</h2>
+        <p class="mc-from">Artwork from <a href="{root}release/{r["slug"]}/">{e(r["title"])}</a></p>
+        <div class="buy">{btn}{tag}</div></div>
+    </li>''')
+    title_tag = "" if live else '<span class="soon-tag">Coming soon</span>'
+    store = (f'<div class="buy"><a class="btn" href="{e(merch_url)}" target="_blank" rel="noopener" data-gc="event/merch">Visit the store{NT}</a></div>'
+             if live else f'<p class="merch-follow">Want to know when it opens? <a href="{root}help/">Follow bfo.mantis</a> where you listen.</p>')
+    note = "" if live else '<p class="art-copy merch-note">Product ideas shown with album artwork. Final items may differ.</p>'
+    page = f'''{hd}
+<body class="merch-page">
+{topbar(root, has_about, current="merch")}
+<main id="main">
+  <section class="section merch" aria-labelledby="merch-title">
+    <a class="back" href="{root}"><span aria-hidden="true">←</span> Home</a>
+    <p class="eyebrow">bfo.mantis</p>
+    <div class="lounge-title"><h1 id="merch-title">Merch</h1>{title_tag}</div>
+    <p class="lounge-intro">{e(MERCH_LINE)}</p>
+    {store}
+  </section>
+  <section class="section merch-grid-sec" aria-label="Merch items">
+    <ul class="mgrid">{"".join(cards)}</ul>
+    {note}
+  </section>
+</main>
+
+{footer(root, v["js"])}'''
+    (ROOT / "merch").mkdir(exist_ok=True)
+    (ROOT / "merch" / "index.html").write_text(page)
+    return len(cards)
+
 def build_covers_zip(releases):
     """assets/press/bfo-mantis-cover-art.zip: every 800px cover JPG + a notice. Deterministic (fixed timestamps), so an
     unchanged set of covers gives a byte-identical zip and no git churn."""
@@ -1355,6 +1412,7 @@ def build_search_index(releases, has_about, about):
              ["Members Lounge", "lounge/", "The bfo.mantis members lounge."],
              ["Press kit", "press/", "Press kit: bio, photos, cover art and the one-sheet."],
              ["Other ways to help", "help/", "Support bfo.mantis: follow, share, subscribe, donate."],
+             ["Merch", "merch/", "Shirts, posters and more featuring bfo.mantis artwork."],
              ["Links", "links/", "Every bfo.mantis link: streaming services, socials and releases."],
              ["Genres", "genres/", "Browse the catalog by genre."]]
     if has_about:
@@ -1593,7 +1651,7 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
 </body>
 </html>
 ''')
-    urls = ([site] + [f"{site}release/{r['slug']}/" for r in releases] + [site + "genres/", site + "lounge/", site + "press/", site + "links/", site + "community/", site + "help/", site + "start/"]
+    urls = ([site] + [f"{site}release/{r['slug']}/" for r in releases] + [site + "genres/", site + "lounge/", site + "press/", site + "links/", site + "community/", site + "help/", site + "start/", site + "merch/"]
             + [f"{site}genre/{genre_slug(g)}/" for g, _ in genre_groups(releases)])
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
                                       "".join(f"  <url><loc>{e(u)}</loc></url>\n" for u in urls) + "</urlset>\n")
@@ -1683,10 +1741,11 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     build_community(releases, site, v, has_about, data.get("community_url"))
     build_help(site, v, has_about)
     n_start = build_start(releases, site, v, has_about)
+    n_merch = build_merch(releases, site, v, has_about, data.get("merch_url"), data.get("merch_items"))
     build_misc(releases, site, v)
     print(f"search index: assets/data/search.json {idx_bytes / 1024:.0f} KB")
     print("genres:", ", ".join(f"{g} ({len(rs)} releases, {sum(len(r['tracks']) for r in rs)} tracks)" for g, rs in groups))
-    print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + lounge + press + links + community + help + start ({n_start} essentials) (covers zip {zsize / 1e6:.1f} MB) + 404 + release.html shim | sitemap urls: {len(releases) + 8 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
+    print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + lounge + press + links + community + help + start ({n_start} essentials) + merch ({n_merch} items, {"live" if data.get("merch_url") else "coming soon"}) (covers zip {zsize / 1e6:.1f} MB) + 404 + release.html shim | sitemap urls: {len(releases) + 9 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
