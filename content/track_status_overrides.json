@@ -2,6 +2,5 @@
  "_note": "User-confirmed per-track status, keyed by ISRC; value \"instrumental\", \"no_lyrics\", or \"lyrics_pending\" (a song whose lyrics are not on file yet: listed under Songs with \"Lyrics coming soon\"). Overrides /workspace/lyrics_status.json for tracks with no lyrics on file. Rebuild with tools/build_data.py after editing.",
  "QT6G62685864": "instrumental",
  "QT6F92689665": "instrumental",
- "QT6F22604263": "instrumental",
- "QTA7U2699820": "lyrics_pending"
+ "QT6F22604263": "instrumental"
 }

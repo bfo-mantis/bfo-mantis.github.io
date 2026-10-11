@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-11T06:55:29",
+ "generated": "2026-10-11T07:01:19",
  "donate_url": null,
  "members_url": null,
  "email_signup_url": null,
@@ -63,15 +63,16 @@
      "n": 1,
      "title": "Unextracted",
      "isrc": "QTA7U2699820",
-     "lyrics": "pending",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
      "blurb": null,
-     "blurb_in_depth": null,
+     "blurb_in_depth": "It's built at a steady 108 BPM in a small live room, and everything stays tight and dry: short rhythmic guitar figures, bass locked to the kick, a sparse snare and no pads to soften the edges. The close-miked vocal stays precise instead of belting and lets a little grit in only where the pulse surges. The chorus opens on the second syllable of \"unextracted.\" The song starts with the click of a pen and ends with the heartbeat alone, then silence.",
      "preview": null
     }
    ],
-   "lyrics_file": null,
+   "lyrics_file": "assets/data/lyrics/unextracted.json",
    "download_url": null,
-   "blurb": null,
+   "blurb": "Unextracted is a taut rock anthem about the one thing no contract can take. The papers slide across the table, they price the breath and offer silver for the hand, but the pulse under the wrist keeps its own time. The song insists that pulse was never theirs to claim.",
    "category": "vocal",
    "mixed": false
   },

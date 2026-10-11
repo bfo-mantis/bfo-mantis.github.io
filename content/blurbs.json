@@ -28,6 +28,15 @@
   "optional_wetline_sentence": "Optional sentence, only if the user confirms Wetline is part of the label: \"The label is also connected to Wetline, a separate artist.\" (In the catalog, Wetline's album LOVELORN is credited to Wetline Records, not bfo.mantis Records.)"
  },
  "releases": {
+  "unextracted": {
+   "title": "Unextracted",
+   "type": "single",
+   "genre": "Rock",
+   "release_date": "2026-10-11",
+   "basis": "user-approved text",
+   "blurb": "Unextracted is a taut rock anthem about the one thing no contract can take. The papers slide across the table, they price the breath and offer silver for the hand, but the pulse under the wrist keeps its own time. The song insists that pulse was never theirs to claim.",
+   "blurb_source": "track:QTA7U2699820"
+  },
   "crown-of-ash": {
    "title": "Crown of Ash",
    "type": "single",
@@ -1866,6 +1875,19 @@
    "title": "Sacred Steel",
    "basis": "lyrics",
    "blurb": "A tribute to mothers and the women who pour themselves into their families, pushing back against the idea that nurturing is weakness. Lullabies, meals and sleepless nights become quiet victories with lasting power."
+  },
+  "QTA7U2699820": {
+   "release_slug": "unextracted",
+   "n": 1,
+   "title": "Unextracted",
+   "basis": "user-approved text",
+   "blurb": "Unextracted is a taut rock anthem about the one thing no contract can take. The papers slide across the table, they price the breath and offer silver for the hand, but the pulse under the wrist keeps its own time. The song insists that pulse was never theirs to claim.",
+   "lyrics_status": "lyrics",
+   "intro": "Unextracted is a taut rock anthem about the one thing no contract can take. The papers slide across the table, they price the breath and offer silver for the hand, but the pulse under the wrist keeps its own time. The song insists that pulse was never theirs to claim.",
+   "intro_basis": "user-approved text",
+   "in_depth": "It's built at a steady 108 BPM in a small live room, and everything stays tight and dry: short rhythmic guitar figures, bass locked to the kick, a sparse snare and no pads to soften the edges. The close-miked vocal stays precise instead of belting and lets a little grit in only where the pulse surges. The chorus opens on the second syllable of \"unextracted.\" The song starts with the click of a pen and ends with the heartbeat alone, then silence.",
+   "in_depth_basis": "user-approved text (from Suno style prompt)",
+   "suno_url": "https://suno.com/song/64011e03-e096-4ebd-a74c-5e79dae84200"
   }
  }
 }
