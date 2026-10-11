@@ -277,7 +277,7 @@ def cat_anchor(r):
 
 def track_counts(releases):
     """Tracks with lyrics count as songs; instrumental-marked tracks and tracks on instrumental releases as instrumentals."""
-    songs = sum(1 for r in releases for t in r["tracks"] if t["lyrics"] == "lyrics")
+    songs = sum(1 for r in releases for t in r["tracks"] if t["lyrics"] in ("lyrics", "pending"))
     return songs, sum(len(r["tracks"]) for r in releases) - songs
 
 def cat_sections_html(root, releases, today, eager_albums=4):
@@ -706,7 +706,8 @@ def build_release(releases, i, site, today, v, has_about):
                           + f'<div class="lyrics" aria-live="polite">Loading lyrics…</div>'
                           f'<p class="lcopy">&copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p></details></li>')
         else:
-            tag = ' <span class="itag">Instrumental</span>' if t["lyrics"] == "instrumental" else ""
+            tag = (' <span class="itag">Instrumental</span>' if t["lyrics"] == "instrumental"
+                   else ' <span class="itag itag-pending">Lyrics coming soon</span>' if t["lyrics"] == "pending" else "")
             if t.get("blurb"):
                 # Instrumental / no-lyrics track with a blurb: intro as a short line under the title, in-depth text
                 # behind an expandable "More about this track".

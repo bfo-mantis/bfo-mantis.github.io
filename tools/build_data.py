@@ -93,7 +93,8 @@ def track_entry(t, lyrics, lstatus):
     isrc = t.get("isrc")
     has = bool(isrc in lyrics and (lyrics[isrc].get("lyrics") or "").strip())
     st = lstatus.get(isrc)
-    status = "lyrics" if has else ("instrumental" if st == "instrumental" else "none")
+    # "lyrics_pending": a vocal song whose lyrics aren't on file yet (counts as a song, shows "Lyrics coming soon")
+    status = "lyrics" if has else ("instrumental" if st == "instrumental" else ("pending" if st == "lyrics_pending" else "none"))
     return {"n": t["n"], "title": t["title"], "isrc": isrc, "lyrics": status}
 
 # Redactions are emitted as structured tokens, never as placeholder text, so the published lyrics files
@@ -327,7 +328,7 @@ def main():
     # user-confirmed per-track overrides (content/track_status_overrides.json, keyed by ISRC) win over lyrics_status
     tso_path = ROOT / "content" / "track_status_overrides.json"
     tso = {k: v for k, v in json.loads(tso_path.read_text()).items() if not k.startswith("_")} if tso_path.exists() else {}
-    bad = {k: v for k, v in tso.items() if v not in ("instrumental", "no_lyrics")}
+    bad = {k: v for k, v in tso.items() if v not in ("instrumental", "no_lyrics", "lyrics_pending")}
     if bad: sys.exit(f"track_status_overrides.json: unsupported values {bad}")
     lstatus = {**lstatus, **tso}
     direct = load_store_links(a.store_links)
@@ -402,7 +403,7 @@ def main():
     unclassified = []
     for x in releases:
         tags = [t["lyrics"] for t in x["tracks"]]
-        x["category"] = "vocal" if "lyrics" in tags else "instrumental"
+        x["category"] = "vocal" if ("lyrics" in tags or "pending" in tags) else "instrumental"
         x["mixed"] = x["category"] == "vocal" and "instrumental" in tags
         if x["category"] == "instrumental":
             unclassified += [f'{x["slug"]} #{t["n"]} {t["isrc"]}' for t in x["tracks"] if t["lyrics"] != "instrumental"]
