@@ -587,7 +587,10 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
     feat = max(out_now or with_pv, key=lambda r: r["release_date"]) if with_pv else None
     featured = ""
     if feat:
-        pm, _ = preview_main(root, feat, "Play latest")
+        # "Latest release" only when the featured release really is the newest one out; otherwise "Featured"
+        newest_out = max((r for r in releases if date.fromisoformat(r["release_date"]) <= today), key=lambda r: r["release_date"], default=None)
+        flabel = "Latest release" if newest_out is None or newest_out["slug"] == feat["slug"] else "Featured"
+        pm, _ = preview_main(root, feat, "Play latest" if flabel == "Latest release" else "Play preview")
         shown = [t for t in feat["tracks"] if t.get("preview")][:5]
         ftracks = "".join(f'<li>{pv_button(root, feat, t)}<span class="n">{t["n"]}</span><span class="pv-bar" aria-hidden="true"><span></span></span>'
                           f'<span class="tt">{e(t["title"])}</span></li>' for t in shown)
@@ -599,7 +602,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
     <div class="feat" data-slug="{feat["slug"]}">
       <a class="feat-art" href="release/{feat["slug"]}/" tabindex="-1" aria-hidden="true">{picture(root, feat, "(max-width: 600px) 38vw, 260px", alt="")}</a>
       <div class="feat-body">
-        <p class="eyebrow">Latest release · {fkind}{(" · " + e(feat["genre"])) if feat.get("genre") else ""}</p>
+        <p class="eyebrow">{flabel} · {fkind}{(" · " + e(feat["genre"])) if feat.get("genre") else ""}</p>
         <h3 class="feat-title"><a href="release/{feat["slug"]}/">{e(feat["title"])}</a></h3>
         {f'<p class="feat-blurb">{e(short_blurb(feat["blurb"]))}</p>' if feat.get("blurb") else ""}
         {pm}
@@ -692,7 +695,9 @@ def build_release(releases, i, site, today, v, has_about):
                   + "".join(li(x) for x in main_) + "".join(li(x, ' class="store-extra"') for x in extra) + more_btn + "</ul></div>")
     elif r.get("listen_url"):
         listen = (f'<a class="btn" href="{e(r["listen_url"])}" target="_blank" rel="noopener" data-gc="event/store/hyperfollow/{r["slug"]}">'
-                  f'<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Pre-save / listen{NT}</a>')
+                  f'<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'
+                  # "Listen" once the release date has passed; "Pre-save / listen" only while it's upcoming (app.js flips these on the day)
+                  f'<span class="js-released"{hid_rel}>Listen</span><span class="js-upcoming"{hid_up}>Pre-save / listen</span>{NT}</a>')
     tracks = []
     pv_btn = lambda t: pv_button(root, r, t)
     for t in r["tracks"]:
@@ -1213,7 +1218,8 @@ def _svg_to_png(svg, png, width):
 def store_list_html(root, r, cls="pk-stores"):
     st = r.get("store_links") or []
     if not st and r.get("listen_url"):
-        st = [{"name": "Pre-save / listen", "url": r["listen_url"]}]
+        out = date.fromisoformat(r["release_date"]) <= date.today()
+        st = [{"name": "Listen" if out else "Pre-save / listen", "url": r["listen_url"]}]
     return (f'<ul class="{cls}">' + "".join(f'<li><a class="store" href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["name"])}{NT}</a></li>' for x in st)
             + "</ul>") if st else ""
 
