@@ -393,7 +393,8 @@ def main():
         for t in x["tracks"]:
             # singles show their song blurb as the release blurb (not repeated on the track row)
             t["blurb"] = trk_blurbs.get(t["isrc"]) if x["type"] == "album" else None
-            t["blurb_in_depth"] = trk_depth.get(t["isrc"]) if x["type"] == "album" else None
+            # singles: the intro is the release blurb, but the in-depth part still shows on the track as "More about this track"
+            t["blurb_in_depth"] = trk_depth.get(t["isrc"])
         for t in x["tracks"]:   # 30 s previews made by tools/make_previews.py (only if the clip exists)
             pv = f"assets/audio/previews/{x['slug']}/{t['n']:02d}.mp3"
             t["preview"] = pv if (ROOT / pv).exists() else None
