@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-13T05:29:06",
+ "generated": "2026-10-13T06:44:38",
  "donate_url": null,
  "members_url": null,
  "email_signup_url": null,
@@ -47,9 +47,14 @@
    "genre": "Rock",
    "label": "bfo.mantis Records",
    "upc": "700486847075",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/freeborn",
-   "listen_source": "hyperfollow_fallback",
-   "store_links": [],
+   "listen_url": null,
+   "listen_source": null,
+   "store_links": [
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=foQlgcvFsuc"
+    }
+   ],
    "cover": {
     "jpg": "assets/covers/freeborn-800.jpg",
     "webp": "assets/covers/freeborn-800.webp",
