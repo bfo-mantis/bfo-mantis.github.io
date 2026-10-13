@@ -263,6 +263,17 @@
   "file": "assets/audio/previews/forge-of-your-light/01.mp3",
   "src_size": 59881090
  },
+ "QTA7W2619114": {
+  "slug": "freeborn",
+  "track": 1,
+  "title": "Freeborn",
+  "start": 75.0,
+  "length": 30.0,
+  "track_length": 278.4,
+  "method": "override",
+  "file": "assets/audio/previews/freeborn/01.mp3",
+  "src_size": 80179330
+ },
  "QT6HM2669331": {
   "slug": "one-man",
   "track": 1,
