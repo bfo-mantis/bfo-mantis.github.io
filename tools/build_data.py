@@ -99,10 +99,15 @@ def track_entry(t, lyrics, lstatus):
     yt = TRACK_YT.get(isrc) or {}
     for k in ("youtube_music_url", "youtube_url"):
         if yt.get(k): out[k] = yt[k]
+    if TRACK_VIS.get(isrc): out["visualizer_url"] = TRACK_VIS[isrc]
     return out
 
 # content/track_youtube.json: verified per-track YouTube Music / YouTube links keyed by ISRC
 _TY = ROOT / "content" / "track_youtube.json"
+# content/track_visualizers.json: {ISRC: url} of PUBLIC official visualizer/video links; only listed tracks get the button
+_TV = ROOT / "content" / "track_visualizers.json"
+TRACK_VIS = {k: v for k, v in (json.loads(_TV.read_text()) if _TV.exists() else {}).items()
+             if not k.startswith("_") and isinstance(v, str) and v.startswith("https://")}
 TRACK_YT = {k: v for k, v in (json.loads(_TY.read_text()) if _TY.exists() else {}).items() if not k.startswith("_")}
 
 # Redactions are emitted as structured tokens, never as placeholder text, so the published lyrics files

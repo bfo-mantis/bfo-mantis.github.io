@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-13T06:47:06",
+ "generated": "2026-10-13T07:06:01",
  "donate_url": null,
  "members_url": null,
  "email_signup_url": null,
@@ -51,8 +51,20 @@
    "listen_source": null,
    "store_links": [
     {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/freeborn-single/6822269112?app=music"
+    },
+    {
      "name": "YouTube Music",
      "url": "https://music.youtube.com/watch?v=foQlgcvFsuc"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/freeborn-single/6822269112?app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1120096032"
     }
    ],
    "cover": {
@@ -402,6 +414,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=cCbQXqFTB8c",
      "youtube_url": "https://www.youtube.com/watch?v=cCbQXqFTB8c",
+     "visualizer_url": "https://youtu.be/CExbHCkOz1s",
      "blurb": "The title track lays out the album's thesis: free will is a gift from God that no empire can revoke, and being peaceful is not the same as being harmless. Gandhi's refusal to obey is offered as proof that one person's no can outlast armies.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/dangerous/01.mp3"

@@ -24,6 +24,7 @@ FONTS = ROOT / "tools" / "fonts"
 ARTIST = "bfo.mantis"
 LABEL_NAME = "bfo.mantis Records"
 COPY_YEAR = 2026   # site-wide footer notice (user-approved wording)
+YT_CHANNEL = "https://www.youtube.com/@bfo.mantis"   # user's own channel (UCrdG9YmCFzrp1DKxmSd3z8Q): visualizers, official videos
 YTM_ARTIST = "https://music.youtube.com/channel/UCAr9yfuSAyMs5B2Iycvr7-Q"
 BG, ACCENT, TEXT, MUTED = (11, 11, 15), (200, 255, 77), (236, 235, 242), (163, 162, 179)
 
@@ -638,7 +639,8 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
       <p class="eyebrow">Artist · bfo.mantis Records</p>
       <h1 id="hero-title">bfo<span>.</span>mantis</h1>
       <p class="hero-meta"><span>{n_songs} songs · {n_instr} instrumentals · {len(releases)} releases</span>
-        <a class="artist-link" href="{YTM_ARTIST}" target="_blank" rel="noopener">YouTube Music{EXT}{NT}</a></p>
+        <a class="artist-link" href="{YTM_ARTIST}" target="_blank" rel="noopener">YouTube Music{EXT}{NT}</a>
+        <a class="artist-link" href="{YT_CHANNEL}" target="_blank" rel="noopener">YouTube (videos){EXT}{NT}</a></p>
       <a class="hero-latest" href="release/{latest['slug']}/" data-date="{latest['release_date']}">
         {picture(root, latest, "84px", eager=True, alt="")}
         <span class="hl-text"><span class="k"><span class="js-released"{hid_rel}>Latest release</span><span class="js-upcoming"{hid_up}>Out {short_date(latest['release_date'])}</span></span>
@@ -701,7 +703,7 @@ def build_release(releases, i, site, today, v, has_about):
     tracks = []
     pv_btn = lambda t: pv_button(root, r, t)
     def tyt(t):
-        a = [(t[k], lab, aria) for k, lab, aria in (("youtube_music_url", "YT Music", "YouTube Music"), ("youtube_url", "YouTube", "YouTube")) if t.get(k)]
+        a = [(t[k], lab, aria) for k, lab, aria in (("youtube_music_url", "YT Music", "YouTube Music"), ("youtube_url", "YouTube", "YouTube"), ("visualizer_url", "Official visualizer", "YouTube (official visualizer)")) if t.get(k)]
         return ("" if not a else '<span class="tyt">' + "".join(
             f'<a href="{e(u)}" target="_blank" rel="noopener" aria-label="{e(t["title"])} on {aria} (opens in a new tab)">{lab}</a>' for u, lab, aria in a) + "</span>")
     for t in r["tracks"]:
