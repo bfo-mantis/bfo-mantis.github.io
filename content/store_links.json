@@ -18,8 +18,20 @@
    "url": "https://music.youtube.com/watch?v=foQlgcvFsuc"
   },
   {
+   "service": "Amazon Music",
+   "url": "https://music.amazon.com/albums/B0HMW9X2YJ"
+  },
+  {
    "service": "Deezer",
    "url": "https://www.deezer.com/album/1120096032"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/freeborn-439674920"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/569348487"
   }
  ],
  "unextracted": [

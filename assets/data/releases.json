@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-13T07:13:17",
+ "generated": "2026-10-13T10:44:18",
  "donate_url": null,
  "members_url": null,
  "email_signup_url": null,
@@ -63,12 +63,24 @@
      "url": "https://music.youtube.com/watch?v=foQlgcvFsuc"
     },
     {
+     "name": "Amazon Music",
+     "url": "https://music.amazon.com/albums/B0HMW9X2YJ"
+    },
+    {
      "name": "iTunes",
      "url": "https://music.apple.com/us/album/freeborn-single/6822269112?app=itunes"
     },
     {
      "name": "Deezer",
      "url": "https://www.deezer.com/album/1120096032"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/569348487"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/freeborn-439674920"
     }
    ],
    "cover": {
