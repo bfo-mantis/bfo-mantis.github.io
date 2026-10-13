@@ -1,0 +1,731 @@
+{
+ "_note": "Per-track YouTube links by ISRC. Source: DistroKid Audit Bot /workspace/youtube_links_for_site.json (official album playlists on bfo.mantis - Topic, oEmbed-matched); Freeborn verified via YouTube Music search (yt-dlp, 278 s, album Freeborn). Spot-checked Oct 13, 2026.",
+ "QTA7U2699820": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=ORQf1xwi10I",
+  "youtube_url": "https://www.youtube.com/watch?v=ORQf1xwi10I"
+ },
+ "QTA7T2600629": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=Z5IKzO42BfY",
+  "youtube_url": "https://www.youtube.com/watch?v=Z5IKzO42BfY"
+ },
+ "QT9XM2685551": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=RXX3WOO5qT8",
+  "youtube_url": "https://www.youtube.com/watch?v=RXX3WOO5qT8"
+ },
+ "QT9XH2693555": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=eEoSBpC9muM",
+  "youtube_url": "https://www.youtube.com/watch?v=eEoSBpC9muM"
+ },
+ "QT9XH2672245": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=cCbQXqFTB8c",
+  "youtube_url": "https://www.youtube.com/watch?v=cCbQXqFTB8c"
+ },
+ "QT9XH2672246": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=bt2ympDnvx8",
+  "youtube_url": "https://www.youtube.com/watch?v=bt2ympDnvx8"
+ },
+ "QT9XH2672247": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=ixCBnSOmxno",
+  "youtube_url": "https://www.youtube.com/watch?v=ixCBnSOmxno"
+ },
+ "QT9XH2672248": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=9rLZIDCvZOg",
+  "youtube_url": "https://www.youtube.com/watch?v=9rLZIDCvZOg"
+ },
+ "QT9XH2672249": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=CVkI6Nhwhdg",
+  "youtube_url": "https://www.youtube.com/watch?v=CVkI6Nhwhdg"
+ },
+ "QT9XH2672250": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=qgs0Hd8IOMM",
+  "youtube_url": "https://www.youtube.com/watch?v=qgs0Hd8IOMM"
+ },
+ "QT9XH2672251": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=Bd1Ifgw6o58",
+  "youtube_url": "https://www.youtube.com/watch?v=Bd1Ifgw6o58"
+ },
+ "QT9XH2672252": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=rbqgH1ZcItQ",
+  "youtube_url": "https://www.youtube.com/watch?v=rbqgH1ZcItQ"
+ },
+ "QT9XH2672253": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=ZwKMW8YDiOA",
+  "youtube_url": "https://www.youtube.com/watch?v=ZwKMW8YDiOA"
+ },
+ "QT9XH2672254": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=nJ68Aur4_iw",
+  "youtube_url": "https://www.youtube.com/watch?v=nJ68Aur4_iw"
+ },
+ "QT9XH2672255": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=oZD3oIlYMLM",
+  "youtube_url": "https://www.youtube.com/watch?v=oZD3oIlYMLM"
+ },
+ "QT9XH2672256": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=4r2epVMG7Rc",
+  "youtube_url": "https://www.youtube.com/watch?v=4r2epVMG7Rc"
+ },
+ "QT9XH2672257": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=65Gz13OzIlc",
+  "youtube_url": "https://www.youtube.com/watch?v=65Gz13OzIlc"
+ },
+ "QT9XH2672258": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=rjo7W38w0Ec",
+  "youtube_url": "https://www.youtube.com/watch?v=rjo7W38w0Ec"
+ },
+ "QT9XH2672259": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=pp1zeDELCNA",
+  "youtube_url": "https://www.youtube.com/watch?v=pp1zeDELCNA"
+ },
+ "QT6J22605151": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=OKf-wEggw8U",
+  "youtube_url": "https://www.youtube.com/watch?v=OKf-wEggw8U"
+ },
+ "QT6HX2695835": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=Vnr7fyw-tRc",
+  "youtube_url": "https://www.youtube.com/watch?v=Vnr7fyw-tRc"
+ },
+ "QT6HX2631826": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=chae1Xp-Qtg",
+  "youtube_url": "https://www.youtube.com/watch?v=chae1Xp-Qtg"
+ },
+ "QT6HX2631827": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=kH2VI3tJ_Zw",
+  "youtube_url": "https://www.youtube.com/watch?v=kH2VI3tJ_Zw"
+ },
+ "QT6HX2631828": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=9tYDcHksXGA",
+  "youtube_url": "https://www.youtube.com/watch?v=9tYDcHksXGA"
+ },
+ "QT6HX2631829": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=qZ0ra70IER4",
+  "youtube_url": "https://www.youtube.com/watch?v=qZ0ra70IER4"
+ },
+ "QT6HX2631830": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=qxGNhX4qHMw",
+  "youtube_url": "https://www.youtube.com/watch?v=qxGNhX4qHMw"
+ },
+ "QT6HX2631831": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=uC1Oj-Xq0dE",
+  "youtube_url": "https://www.youtube.com/watch?v=uC1Oj-Xq0dE"
+ },
+ "QT6HX2631832": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=2IACP3cmqLQ",
+  "youtube_url": "https://www.youtube.com/watch?v=2IACP3cmqLQ"
+ },
+ "QT6HX2631833": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=6E75cSJQE5s",
+  "youtube_url": "https://www.youtube.com/watch?v=6E75cSJQE5s"
+ },
+ "QT6HX2631834": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=Y-4SvuD3F10",
+  "youtube_url": "https://www.youtube.com/watch?v=Y-4SvuD3F10"
+ },
+ "QT6HX2631835": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=-pqKd7oSP_M",
+  "youtube_url": "https://www.youtube.com/watch?v=-pqKd7oSP_M"
+ },
+ "QT6HX2631836": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=XHpcoryEuiw",
+  "youtube_url": "https://www.youtube.com/watch?v=XHpcoryEuiw"
+ },
+ "QT6HX2631837": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=YpgNdO4aW0U",
+  "youtube_url": "https://www.youtube.com/watch?v=YpgNdO4aW0U"
+ },
+ "QT6HX2631838": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=UZlFQsUg-OA",
+  "youtube_url": "https://www.youtube.com/watch?v=UZlFQsUg-OA"
+ },
+ "QT6HX2631839": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=kcnmc21Lha4",
+  "youtube_url": "https://www.youtube.com/watch?v=kcnmc21Lha4"
+ },
+ "QT6HX2631840": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=LJFde0-uCsE",
+  "youtube_url": "https://www.youtube.com/watch?v=LJFde0-uCsE"
+ },
+ "QT6HX2631841": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=6qIPr8fzwu4",
+  "youtube_url": "https://www.youtube.com/watch?v=6qIPr8fzwu4"
+ },
+ "QT6HX2631842": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=49aSd4Z09V4",
+  "youtube_url": "https://www.youtube.com/watch?v=49aSd4Z09V4"
+ },
+ "QT6HX2631843": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=rLBOstc56VY",
+  "youtube_url": "https://www.youtube.com/watch?v=rLBOstc56VY"
+ },
+ "QT6HS2632087": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=1I0GEaoGAx8",
+  "youtube_url": "https://www.youtube.com/watch?v=1I0GEaoGAx8"
+ },
+ "QT6HS2632088": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=JI0buvMxDWM",
+  "youtube_url": "https://www.youtube.com/watch?v=JI0buvMxDWM"
+ },
+ "QT6HS2632089": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=unng3OWYyE4",
+  "youtube_url": "https://www.youtube.com/watch?v=unng3OWYyE4"
+ },
+ "QT6HS2632090": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=iUkx8sQZc9Y",
+  "youtube_url": "https://www.youtube.com/watch?v=iUkx8sQZc9Y"
+ },
+ "QT6HS2632091": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=bdLhtmi-hmk",
+  "youtube_url": "https://www.youtube.com/watch?v=bdLhtmi-hmk"
+ },
+ "QT6HS2632092": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=sxLExL4iiXA",
+  "youtube_url": "https://www.youtube.com/watch?v=sxLExL4iiXA"
+ },
+ "QT6HS2632093": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=RhblINZlfZw",
+  "youtube_url": "https://www.youtube.com/watch?v=RhblINZlfZw"
+ },
+ "QT6HS2632094": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=jPRLO9K0T38",
+  "youtube_url": "https://www.youtube.com/watch?v=jPRLO9K0T38"
+ },
+ "QT6HS2632095": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=QqPzOdztvFA",
+  "youtube_url": "https://www.youtube.com/watch?v=QqPzOdztvFA"
+ },
+ "QT6HS2632096": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=gYnJEVnonVA",
+  "youtube_url": "https://www.youtube.com/watch?v=gYnJEVnonVA"
+ },
+ "QT6HS2632097": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=peCxmJ4wef4",
+  "youtube_url": "https://www.youtube.com/watch?v=peCxmJ4wef4"
+ },
+ "QT6HS2632098": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=5KHqRIoNEGY",
+  "youtube_url": "https://www.youtube.com/watch?v=5KHqRIoNEGY"
+ },
+ "QT6HS2632099": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=mw-78U8HTJY",
+  "youtube_url": "https://www.youtube.com/watch?v=mw-78U8HTJY"
+ },
+ "QT6HS2632100": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=oEa128Hyyq8",
+  "youtube_url": "https://www.youtube.com/watch?v=oEa128Hyyq8"
+ },
+ "QT6HS2632101": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=4QrZWpkPyVg",
+  "youtube_url": "https://www.youtube.com/watch?v=4QrZWpkPyVg"
+ },
+ "QT6HS2632102": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=kGeFkyhD37Y",
+  "youtube_url": "https://www.youtube.com/watch?v=kGeFkyhD37Y"
+ },
+ "QT6HS2632103": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=cN61RSM-04E",
+  "youtube_url": "https://www.youtube.com/watch?v=cN61RSM-04E"
+ },
+ "QT6HS2632104": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=rZ1U2W8mDEE",
+  "youtube_url": "https://www.youtube.com/watch?v=rZ1U2W8mDEE"
+ },
+ "QT6HR2651300": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=QMuerEB8UaU",
+  "youtube_url": "https://www.youtube.com/watch?v=QMuerEB8UaU"
+ },
+ "QT6HR2651301": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=5K6Gi9umy60",
+  "youtube_url": "https://www.youtube.com/watch?v=5K6Gi9umy60"
+ },
+ "QT6HR2651302": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=xIbyynucS1I",
+  "youtube_url": "https://www.youtube.com/watch?v=xIbyynucS1I"
+ },
+ "QT6HR2651303": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=WHl-xKJd5Cc",
+  "youtube_url": "https://www.youtube.com/watch?v=WHl-xKJd5Cc"
+ },
+ "QT6HR2651304": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=-L4E89K_8h0",
+  "youtube_url": "https://www.youtube.com/watch?v=-L4E89K_8h0"
+ },
+ "QT6HR2651305": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=3XWqF_N7F-w",
+  "youtube_url": "https://www.youtube.com/watch?v=3XWqF_N7F-w"
+ },
+ "QT6HR2651306": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=vI6qILq58c0",
+  "youtube_url": "https://www.youtube.com/watch?v=vI6qILq58c0"
+ },
+ "QT6HR2651307": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=Kbj5ChgWM-s",
+  "youtube_url": "https://www.youtube.com/watch?v=Kbj5ChgWM-s"
+ },
+ "QT6HR2651308": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=WnFWX1O875k",
+  "youtube_url": "https://www.youtube.com/watch?v=WnFWX1O875k"
+ },
+ "QT6HR2651309": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=p5A-YGuJQ-4",
+  "youtube_url": "https://www.youtube.com/watch?v=p5A-YGuJQ-4"
+ },
+ "QT6HR2651310": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=0nWu19aEWUs",
+  "youtube_url": "https://www.youtube.com/watch?v=0nWu19aEWUs"
+ },
+ "QT6HR2651311": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=8-9QcQZVngI",
+  "youtube_url": "https://www.youtube.com/watch?v=8-9QcQZVngI"
+ },
+ "QT6HR2651312": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=KwbehMOWf54",
+  "youtube_url": "https://www.youtube.com/watch?v=KwbehMOWf54"
+ },
+ "QT6HR2651313": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=0wRlWbt3iUk",
+  "youtube_url": "https://www.youtube.com/watch?v=0wRlWbt3iUk"
+ },
+ "QT6HR2651314": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=vVarrHjV5WE",
+  "youtube_url": "https://www.youtube.com/watch?v=vVarrHjV5WE"
+ },
+ "QT6HR2642231": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=ApazxklgkT0",
+  "youtube_url": "https://www.youtube.com/watch?v=ApazxklgkT0"
+ },
+ "QT6HR2642232": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=O1PudclpQGE",
+  "youtube_url": "https://www.youtube.com/watch?v=O1PudclpQGE"
+ },
+ "QT6HP2682017": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=XtbgYeU0R2o",
+  "youtube_url": "https://www.youtube.com/watch?v=XtbgYeU0R2o"
+ },
+ "QT6HP2682018": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=7n0ZQeneh_E",
+  "youtube_url": "https://www.youtube.com/watch?v=7n0ZQeneh_E"
+ },
+ "QT6HP2682019": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=U-wv7QPy_Og",
+  "youtube_url": "https://www.youtube.com/watch?v=U-wv7QPy_Og"
+ },
+ "QT6HP2682020": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=myQZqVtnZoM",
+  "youtube_url": "https://www.youtube.com/watch?v=myQZqVtnZoM"
+ },
+ "QT6HP2682021": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=nY24Kjlxwog",
+  "youtube_url": "https://www.youtube.com/watch?v=nY24Kjlxwog"
+ },
+ "QT6HP2682022": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=ENBbJ6QTojs",
+  "youtube_url": "https://www.youtube.com/watch?v=ENBbJ6QTojs"
+ },
+ "QT6HP2682024": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=xm0U-oQaomY",
+  "youtube_url": "https://www.youtube.com/watch?v=xm0U-oQaomY"
+ },
+ "QT6HP2682026": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=CjBka9dzqJU",
+  "youtube_url": "https://www.youtube.com/watch?v=CjBka9dzqJU"
+ },
+ "QT6HP2682027": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=-m4jKwdKgTk",
+  "youtube_url": "https://www.youtube.com/watch?v=-m4jKwdKgTk"
+ },
+ "QT6HP2682028": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=PDD1dsOemDA",
+  "youtube_url": "https://www.youtube.com/watch?v=PDD1dsOemDA"
+ },
+ "QT6HP2682029": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=XO1wVwbL7iQ",
+  "youtube_url": "https://www.youtube.com/watch?v=XO1wVwbL7iQ"
+ },
+ "QT6HP2682030": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=pph9KPTcBOo",
+  "youtube_url": "https://www.youtube.com/watch?v=pph9KPTcBOo"
+ },
+ "QT6HP2682031": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=I8-YaOlG0hE",
+  "youtube_url": "https://www.youtube.com/watch?v=I8-YaOlG0hE"
+ },
+ "QT6HP2682032": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=dNOdfCkMbuM",
+  "youtube_url": "https://www.youtube.com/watch?v=dNOdfCkMbuM"
+ },
+ "QT6HP2682033": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=zhiPjdLkdtM",
+  "youtube_url": "https://www.youtube.com/watch?v=zhiPjdLkdtM"
+ },
+ "QT6HP2682034": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=aHPOXnbkpu0",
+  "youtube_url": "https://www.youtube.com/watch?v=aHPOXnbkpu0"
+ },
+ "QT6HP2682035": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=QjBlY46oSNs",
+  "youtube_url": "https://www.youtube.com/watch?v=QjBlY46oSNs"
+ },
+ "QT6HP2682036": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=sY2JypM2AuY",
+  "youtube_url": "https://www.youtube.com/watch?v=sY2JypM2AuY"
+ },
+ "QT6HN2654612": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=VpxSaSvhyss",
+  "youtube_url": "https://www.youtube.com/watch?v=VpxSaSvhyss"
+ },
+ "QT6HN2654613": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=HraLUk3Ak0s",
+  "youtube_url": "https://www.youtube.com/watch?v=HraLUk3Ak0s"
+ },
+ "QT6HN2654614": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=UrFABOS2miM",
+  "youtube_url": "https://www.youtube.com/watch?v=UrFABOS2miM"
+ },
+ "QT6HN2654615": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=QcCVHnE8xkg",
+  "youtube_url": "https://www.youtube.com/watch?v=QcCVHnE8xkg"
+ },
+ "QT6HN2654616": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=l89forGSAio",
+  "youtube_url": "https://www.youtube.com/watch?v=l89forGSAio"
+ },
+ "QT6HN2654617": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=YA0ipbb1UVU",
+  "youtube_url": "https://www.youtube.com/watch?v=YA0ipbb1UVU"
+ },
+ "QT6HN2654618": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=Bh4ZBImRVqE",
+  "youtube_url": "https://www.youtube.com/watch?v=Bh4ZBImRVqE"
+ },
+ "QT6HN2654619": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=wccLJTJstg8",
+  "youtube_url": "https://www.youtube.com/watch?v=wccLJTJstg8"
+ },
+ "QT6HN2654620": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=UR4XspL3YmQ",
+  "youtube_url": "https://www.youtube.com/watch?v=UR4XspL3YmQ"
+ },
+ "QT6HN2654621": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=qxNKBYRZ1wk",
+  "youtube_url": "https://www.youtube.com/watch?v=qxNKBYRZ1wk"
+ },
+ "QT6HN2654622": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=IDSm9BnjMqU",
+  "youtube_url": "https://www.youtube.com/watch?v=IDSm9BnjMqU"
+ },
+ "QT6HN2654623": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=eKMT8ac4_a8",
+  "youtube_url": "https://www.youtube.com/watch?v=eKMT8ac4_a8"
+ },
+ "QT6HN2654624": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=qSQ-fAZAdvc",
+  "youtube_url": "https://www.youtube.com/watch?v=qSQ-fAZAdvc"
+ },
+ "QT6HN2654625": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=gf8PT4ooSXw",
+  "youtube_url": "https://www.youtube.com/watch?v=gf8PT4ooSXw"
+ },
+ "QT6HN2654626": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=AyFU_At3p3M",
+  "youtube_url": "https://www.youtube.com/watch?v=AyFU_At3p3M"
+ },
+ "QT6HM2669331": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=K84VWeeV7hI",
+  "youtube_url": "https://www.youtube.com/watch?v=K84VWeeV7hI"
+ },
+ "QT6G62685858": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=niO8thbf6mM",
+  "youtube_url": "https://www.youtube.com/watch?v=niO8thbf6mM"
+ },
+ "QT6G62685859": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=tO3q4Q8hdPY",
+  "youtube_url": "https://www.youtube.com/watch?v=tO3q4Q8hdPY"
+ },
+ "QT6G62685860": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=ErfdhTt1F_g",
+  "youtube_url": "https://www.youtube.com/watch?v=ErfdhTt1F_g"
+ },
+ "QT6G62685861": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=Ba7EpSV3E70",
+  "youtube_url": "https://www.youtube.com/watch?v=Ba7EpSV3E70"
+ },
+ "QT6G62685862": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=WBgLNbe4rew",
+  "youtube_url": "https://www.youtube.com/watch?v=WBgLNbe4rew"
+ },
+ "QT6G62685863": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=8yLZsAE4ZfA",
+  "youtube_url": "https://www.youtube.com/watch?v=8yLZsAE4ZfA"
+ },
+ "QT6G62685864": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=ajxCiBcjolY",
+  "youtube_url": "https://www.youtube.com/watch?v=ajxCiBcjolY"
+ },
+ "QT6G62685865": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=yYnPeaPXssI",
+  "youtube_url": "https://www.youtube.com/watch?v=yYnPeaPXssI"
+ },
+ "QT6G62685866": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=WN6Tx880GT8",
+  "youtube_url": "https://www.youtube.com/watch?v=WN6Tx880GT8"
+ },
+ "QT6G62685867": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=dAMAcWRUsA0",
+  "youtube_url": "https://www.youtube.com/watch?v=dAMAcWRUsA0"
+ },
+ "QT6G62685868": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=HthP9o3RFXQ",
+  "youtube_url": "https://www.youtube.com/watch?v=HthP9o3RFXQ"
+ },
+ "QT6G62685869": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=2-F5REL4-hk",
+  "youtube_url": "https://www.youtube.com/watch?v=2-F5REL4-hk"
+ },
+ "QT6G62652781": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=p8fFjI4j9Jw",
+  "youtube_url": "https://www.youtube.com/watch?v=p8fFjI4j9Jw"
+ },
+ "QT6G62652782": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=I_ImUjsB5zg",
+  "youtube_url": "https://www.youtube.com/watch?v=I_ImUjsB5zg"
+ },
+ "QT6G62652783": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=2iFAmdOhPyU",
+  "youtube_url": "https://www.youtube.com/watch?v=2iFAmdOhPyU"
+ },
+ "QT6G62652784": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=t6-uHrayW_Q",
+  "youtube_url": "https://www.youtube.com/watch?v=t6-uHrayW_Q"
+ },
+ "QT6G62652785": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=gcmbv-M9boI",
+  "youtube_url": "https://www.youtube.com/watch?v=gcmbv-M9boI"
+ },
+ "QT6G62652786": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=mUeWjp0-YAo",
+  "youtube_url": "https://www.youtube.com/watch?v=mUeWjp0-YAo"
+ },
+ "QT6G62652787": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=s0wPZaRg0lg",
+  "youtube_url": "https://www.youtube.com/watch?v=s0wPZaRg0lg"
+ },
+ "QT6G62652788": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=Mfp7u9X3XLs",
+  "youtube_url": "https://www.youtube.com/watch?v=Mfp7u9X3XLs"
+ },
+ "QT6G62652789": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=Lp6_jKX7U78",
+  "youtube_url": "https://www.youtube.com/watch?v=Lp6_jKX7U78"
+ },
+ "QT6G62652790": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=YaMuecZR8L8",
+  "youtube_url": "https://www.youtube.com/watch?v=YaMuecZR8L8"
+ },
+ "QT6G62652791": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=eLCNJjqJmiQ",
+  "youtube_url": "https://www.youtube.com/watch?v=eLCNJjqJmiQ"
+ },
+ "QT6G62652792": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=IeDCNWvAgbs",
+  "youtube_url": "https://www.youtube.com/watch?v=IeDCNWvAgbs"
+ },
+ "QT6G62652793": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=elvFOWiolA0",
+  "youtube_url": "https://www.youtube.com/watch?v=elvFOWiolA0"
+ },
+ "QT6G62652794": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=J-7b4yfIa-Y",
+  "youtube_url": "https://www.youtube.com/watch?v=J-7b4yfIa-Y"
+ },
+ "QT6G62652795": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=k_gHMq9rFKE",
+  "youtube_url": "https://www.youtube.com/watch?v=k_gHMq9rFKE"
+ },
+ "QT6FH2601974": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=5Udnn6WVlw0",
+  "youtube_url": "https://www.youtube.com/watch?v=5Udnn6WVlw0"
+ },
+ "QT6F92689660": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=imdj1KJbw4Y",
+  "youtube_url": "https://www.youtube.com/watch?v=imdj1KJbw4Y"
+ },
+ "QT6F92689661": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=s-YmQIfAFx8",
+  "youtube_url": "https://www.youtube.com/watch?v=s-YmQIfAFx8"
+ },
+ "QT6F92689662": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=clYIGHJLLfQ",
+  "youtube_url": "https://www.youtube.com/watch?v=clYIGHJLLfQ"
+ },
+ "QT6F92689663": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=fwYjcnWJtf4",
+  "youtube_url": "https://www.youtube.com/watch?v=fwYjcnWJtf4"
+ },
+ "QT6F92689664": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=C_IEBPJE3EE",
+  "youtube_url": "https://www.youtube.com/watch?v=C_IEBPJE3EE"
+ },
+ "QT6F92689665": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=PGL-7A_bt_I",
+  "youtube_url": "https://www.youtube.com/watch?v=PGL-7A_bt_I"
+ },
+ "QT6F92689666": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=gVf-RWnXk64",
+  "youtube_url": "https://www.youtube.com/watch?v=gVf-RWnXk64"
+ },
+ "QT6F92689667": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=7SkmvHfKp_E",
+  "youtube_url": "https://www.youtube.com/watch?v=7SkmvHfKp_E"
+ },
+ "QT6F92689668": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=O0G_Sv-dac8",
+  "youtube_url": "https://www.youtube.com/watch?v=O0G_Sv-dac8"
+ },
+ "QT6F92689669": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=iNecxMGkV-U",
+  "youtube_url": "https://www.youtube.com/watch?v=iNecxMGkV-U"
+ },
+ "QT6F92689670": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=yYXFFQpwmVY",
+  "youtube_url": "https://www.youtube.com/watch?v=yYXFFQpwmVY"
+ },
+ "QT6F92689671": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=_K65eRhUXf8",
+  "youtube_url": "https://www.youtube.com/watch?v=_K65eRhUXf8"
+ },
+ "QT6F92681190": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=WuZ68mQKQK8",
+  "youtube_url": "https://www.youtube.com/watch?v=WuZ68mQKQK8"
+ },
+ "QT6F92681191": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=1K4Rs_dpYQo",
+  "youtube_url": "https://www.youtube.com/watch?v=1K4Rs_dpYQo"
+ },
+ "QT6F92681192": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=dXrd1GM14Js",
+  "youtube_url": "https://www.youtube.com/watch?v=dXrd1GM14Js"
+ },
+ "QT6F92681193": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=rYweRYcHjLE",
+  "youtube_url": "https://www.youtube.com/watch?v=rYweRYcHjLE"
+ },
+ "QT6F92681194": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=R6PPpnSK17g",
+  "youtube_url": "https://www.youtube.com/watch?v=R6PPpnSK17g"
+ },
+ "QT6F92681195": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=njy5KR527v0",
+  "youtube_url": "https://www.youtube.com/watch?v=njy5KR527v0"
+ },
+ "QT6F92681196": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=Ge_meVnATP0",
+  "youtube_url": "https://www.youtube.com/watch?v=Ge_meVnATP0"
+ },
+ "QT6F92681197": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=Vnq7Y_CKzRg",
+  "youtube_url": "https://www.youtube.com/watch?v=Vnq7Y_CKzRg"
+ },
+ "QT6F92681198": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=kTrdQtcDGjI",
+  "youtube_url": "https://www.youtube.com/watch?v=kTrdQtcDGjI"
+ },
+ "QT6F92681199": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=-7yFHUsFb5g",
+  "youtube_url": "https://www.youtube.com/watch?v=-7yFHUsFb5g"
+ },
+ "QT6F92681200": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=KeO7mMOueJI",
+  "youtube_url": "https://www.youtube.com/watch?v=KeO7mMOueJI"
+ },
+ "QT6F92681201": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=-s9cdgJc-hk",
+  "youtube_url": "https://www.youtube.com/watch?v=-s9cdgJc-hk"
+ },
+ "QT6F92659506": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=IDHsWfp7lV8",
+  "youtube_url": "https://www.youtube.com/watch?v=IDHsWfp7lV8"
+ },
+ "QT6F82621394": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=MT-ncpW6Cg8",
+  "youtube_url": "https://www.youtube.com/watch?v=MT-ncpW6Cg8"
+ },
+ "QT6F82613759": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=ahDOxpNMcSw",
+  "youtube_url": "https://www.youtube.com/watch?v=ahDOxpNMcSw"
+ },
+ "QT6F62681643": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=4Q9Z-MhILFo",
+  "youtube_url": "https://www.youtube.com/watch?v=4Q9Z-MhILFo"
+ },
+ "QT6F42637691": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=w2BBWG4RK4g",
+  "youtube_url": "https://www.youtube.com/watch?v=w2BBWG4RK4g"
+ },
+ "QT6F22689948": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=jX9Bj5XSI2Q",
+  "youtube_url": "https://www.youtube.com/watch?v=jX9Bj5XSI2Q"
+ },
+ "QT6F22604260": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=g5FCDVE-_k4",
+  "youtube_url": "https://www.youtube.com/watch?v=g5FCDVE-_k4"
+ },
+ "QT6F22604261": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=5M3Jo-4PqnA",
+  "youtube_url": "https://www.youtube.com/watch?v=5M3Jo-4PqnA"
+ },
+ "QT6F22604262": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=ILFRc9ZzLZE",
+  "youtube_url": "https://www.youtube.com/watch?v=ILFRc9ZzLZE"
+ },
+ "QT6F22604263": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=-oD3AqA5eiQ",
+  "youtube_url": "https://www.youtube.com/watch?v=-oD3AqA5eiQ"
+ },
+ "QT6F22604264": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=EHmEP0Ud6vA",
+  "youtube_url": "https://www.youtube.com/watch?v=EHmEP0Ud6vA"
+ },
+ "QT6F22604265": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=a5Gsj2BbQOk",
+  "youtube_url": "https://www.youtube.com/watch?v=a5Gsj2BbQOk"
+ },
+ "QT6F22604266": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=PQlr1insmpM",
+  "youtube_url": "https://www.youtube.com/watch?v=PQlr1insmpM"
+ },
+ "QT6F22604267": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=gGm3c8_epw4",
+  "youtube_url": "https://www.youtube.com/watch?v=gGm3c8_epw4"
+ },
+ "QT6F22604268": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=nUZXE8QKtyk",
+  "youtube_url": "https://www.youtube.com/watch?v=nUZXE8QKtyk"
+ },
+ "QT6F22604269": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=PoOzMllx8Go",
+  "youtube_url": "https://www.youtube.com/watch?v=PoOzMllx8Go"
+ },
+ "QT6F22604270": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=NEy7BLlGtf0",
+  "youtube_url": "https://www.youtube.com/watch?v=NEy7BLlGtf0"
+ },
+ "QT6F22604271": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=eTyWKzBIfIM",
+  "youtube_url": "https://www.youtube.com/watch?v=eTyWKzBIfIM"
+ },
+ "QT6EY2616104": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=xSD70Nbl1Ck",
+  "youtube_url": "https://www.youtube.com/watch?v=xSD70Nbl1Ck"
+ },
+ "QT6EW2622862": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=bJmX1t5CoxM",
+  "youtube_url": "https://www.youtube.com/watch?v=bJmX1t5CoxM"
+ },
+ "QT6EV2671151": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=Wm5s1bqJTXs",
+  "youtube_url": "https://www.youtube.com/watch?v=Wm5s1bqJTXs"
+ },
+ "QTA7W2619114": {
+  "youtube_music_url": "https://music.youtube.com/watch?v=foQlgcvFsuc",
+  "youtube_url": "https://www.youtube.com/watch?v=foQlgcvFsuc"
+ }
+}

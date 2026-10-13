@@ -715,3 +715,7 @@ html.search-open{overflow:hidden}
 .mc-from a{color:inherit}
 .mc .buy{margin-top:auto}
 .merch-note{margin-top:18px}
+/* per-track YouTube Music / YouTube links */
+.tt .tyt{display:inline-flex;gap:6px;margin-left:10px;vertical-align:middle}
+.tt .tyt a{font-size:.72rem;line-height:1;padding:3px 7px;border:1px solid var(--line);border-radius:999px;color:inherit;opacity:.75;text-decoration:none;white-space:nowrap}
+.tt .tyt a:hover,.tt .tyt a:focus-visible{opacity:1;border-color:currentColor}

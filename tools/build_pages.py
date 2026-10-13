@@ -700,11 +700,15 @@ def build_release(releases, i, site, today, v, has_about):
                   f'<span class="js-released"{hid_rel}>Listen</span><span class="js-upcoming"{hid_up}>Pre-save / listen</span>{NT}</a>')
     tracks = []
     pv_btn = lambda t: pv_button(root, r, t)
+    def tyt(t):
+        a = [(t[k], lab, aria) for k, lab, aria in (("youtube_music_url", "YT Music", "YouTube Music"), ("youtube_url", "YouTube", "YouTube")) if t.get(k)]
+        return ("" if not a else '<span class="tyt">' + "".join(
+            f'<a href="{e(u)}" target="_blank" rel="noopener" aria-label="{e(t["title"])} on {aria} (opens in a new tab)">{lab}</a>' for u, lab, aria in a) + "</span>")
     for t in r["tracks"]:
         bar = '<span class="pv-bar" aria-hidden="true"><span></span></span>' if t.get("preview") else ""
         if t["lyrics"] == "lyrics" and r.get("lyrics_file"):
             tracks.append(f'<li class="has-lyrics" id="t{t["n"]}">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<details data-isrc="{e(t["isrc"])}">'
-                          f'<summary><span class="tt">{e(t["title"])}</span><span class="ltag" aria-hidden="true">Lyrics</span>'
+                          f'<summary><span class="tt">{e(t["title"])}{tyt(t)}</span><span class="ltag" aria-hidden="true">Lyrics</span>'
                           f'<span class="sr-only"> — show lyrics</span></summary>'
                           + (f'<p class="tblurb">{e(t["blurb"])}</p>' if t.get("blurb") else "")
                           + (f'<div class="tdepth"><p class="tdepth-k">More about this track</p><p>{e(t["blurb_in_depth"])}</p></div>' if t.get("blurb_in_depth") else "")
@@ -719,9 +723,9 @@ def build_release(releases, i, site, today, v, has_about):
                 more = (f'<details class="tmore"><summary>More about this track</summary><p class="tdepth">{e(t["blurb_in_depth"])}</p></details>'
                         if t.get("blurb_in_depth") else "")
                 tracks.append(f'<li class="has-blurb" id="t{t["n"]}">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<div class="tcol">'
-                              f'<span class="tt">{e(t["title"])}{tag}</span><p class="tblurb tintro">{e(t["blurb"])}</p>{more}</div></li>')
+                              f'<span class="tt">{e(t["title"])}{tag}{tyt(t)}</span><p class="tblurb tintro">{e(t["blurb"])}</p>{more}</div></li>')
             else:
-                tracks.append(f'<li id="t{t["n"]}">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<span class="tt">{e(t["title"])}{tag}</span></li>')
+                tracks.append(f'<li id="t{t["n"]}">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<span class="tt">{e(t["title"])}{tag}{tyt(t)}</span></li>')
     preview_bar, first = preview_main(root, r)
     n = len(r["tracks"])
     facts = (f'<li><span>Released</span> <span class="js-upcoming"{hid_up}>Out </span><time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time></li>'
