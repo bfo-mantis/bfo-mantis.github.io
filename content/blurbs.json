@@ -28,6 +28,15 @@
   "optional_wetline_sentence": "Optional sentence, only if the user confirms Wetline is part of the label: \"The label is also connected to Wetline, a separate artist.\" (In the catalog, Wetline's album LOVELORN is credited to Wetline Records, not bfo.mantis Records.)"
  },
  "releases": {
+  "freeborn": {
+   "title": "Freeborn",
+   "type": "single",
+   "genre": "Rock",
+   "release_date": "2026-10-13",
+   "basis": "lyrics",
+   "blurb": "Freeborn is a roll-call rock anthem about the one right nobody hands you. It marches from a London pillory to an emperor's table at Worms, a Maryland farm, a Montgomery bus and a Prague square, and finds the same thing at every stop: a crown built on a million nods, brought down by a single No.",
+   "blurb_source": "track:QTA7W2619114"
+  },
   "unextracted": {
    "title": "Unextracted",
    "type": "single",
@@ -279,6 +288,18 @@
   }
  },
  "tracks": {
+  "QTA7W2619114": {
+   "release_slug": "freeborn",
+   "n": 1,
+   "title": "Freeborn",
+   "basis": "lyrics",
+   "blurb": "Freeborn is a roll-call rock anthem about the one right nobody hands you. It marches from a London pillory to an emperor's table at Worms, a Maryland farm, a Montgomery bus and a Prague square, and finds the same thing at every stop: a crown built on a million nods, brought down by a single No.",
+   "lyrics_status": "lyrics",
+   "intro": "Freeborn is a roll-call rock anthem about the one right nobody hands you. It marches from a London pillory to an emperor's table at Worms, a Maryland farm, a Montgomery bus and a Prague square, and finds the same thing at every stop: a crown built on a million nods, brought down by a single No.",
+   "intro_basis": "lyrics",
+   "in_depth": "Freeborn opens on a single drum and a voice in the dark, then walks the long road of one word. It passes a cart-tail in London mud, a pile of books on an emperor's table, a whip in Maryland, a bus seat in Montgomery and keys shaking in a Prague November. At every stop the crowd grows from one throat, until the last No stands bare in the silence.",
+   "in_depth_basis": "lyrics"
+  },
   "QTA7T2600629": {
    "release_slug": "crown-of-ash",
    "n": 1,
