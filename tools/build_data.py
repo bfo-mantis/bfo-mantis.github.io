@@ -95,7 +95,15 @@ def track_entry(t, lyrics, lstatus):
     st = lstatus.get(isrc)
     # "lyrics_pending": a vocal song whose lyrics aren't on file yet (counts as a song, shows "Lyrics coming soon")
     status = "lyrics" if has else ("instrumental" if st == "instrumental" else ("pending" if st == "lyrics_pending" else "none"))
-    return {"n": t["n"], "title": t["title"], "isrc": isrc, "lyrics": status}
+    out = {"n": t["n"], "title": t["title"], "isrc": isrc, "lyrics": status}
+    yt = TRACK_YT.get(isrc) or {}
+    for k in ("youtube_music_url", "youtube_url"):
+        if yt.get(k): out[k] = yt[k]
+    return out
+
+# content/track_youtube.json: verified per-track YouTube Music / YouTube links keyed by ISRC
+_TY = ROOT / "content" / "track_youtube.json"
+TRACK_YT = {k: v for k, v in (json.loads(_TY.read_text()) if _TY.exists() else {}).items() if not k.startswith("_")}
 
 # Redactions are emitted as structured tokens, never as placeholder text, so the published lyrics files
 # contain no searchable marker. Lengths are bucketed so a bar doesn't reveal the exact word length.
