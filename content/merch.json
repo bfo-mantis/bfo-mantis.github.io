@@ -1,0 +1,20 @@
+{
+  "_note": "Merch collections. Leave buy_url empty for a disabled 'Coming soon' button; set an https:// buy_url to make that item's Shop button live. Images: assets/merch/<image>-600/-1200 .jpg/.webp (tools/make_merch_mockups.py).",
+  "collections": [
+    {
+      "id": "freeborn",
+      "title": "Freeborn collection",
+      "release": "freeborn",
+      "intro": "Artwork from the single Freeborn: the shattered crown, the lone figure and the crowd that answers No.",
+      "items": [
+        {"id": "freeborn-tee-crown-figure", "kind": "T-shirt", "name": "Freeborn crown tee", "desc": "Black tee with the falling crown and lone figure in one-colour white.", "image": "freeborn-tee-crown-figure", "buy_url": ""},
+        {"id": "freeborn-tee-wordmark", "kind": "T-shirt", "name": "Freeborn wordmark tee", "desc": "Cream tee with the FREEBORN wordmark over the crowd strip.", "image": "freeborn-tee-wordmark", "buy_url": ""},
+        {"id": "freeborn-hoodie", "kind": "Hoodie", "name": "Freeborn hoodie", "desc": "Charcoal pullover hoodie with the white crown and cream wordmark.", "image": "freeborn-hoodie", "buy_url": ""},
+        {"id": "freeborn-poster", "kind": "Poster", "name": "Freeborn poster, 18×24", "desc": "The full Freeborn poster artwork, printed 18×24 inches.", "image": "freeborn-poster", "buy_url": ""},
+        {"id": "freeborn-sticker", "kind": "Sticker", "name": "Freeborn crown sticker", "desc": "Die-cut sticker of the cracked red-marked crown.", "image": "freeborn-sticker", "buy_url": ""},
+        {"id": "freeborn-tote", "kind": "Tote bag", "name": "Freeborn tote", "desc": "Natural canvas tote with the standing figure and wordmark.", "image": "freeborn-tote", "buy_url": ""},
+        {"id": "freeborn-mug", "kind": "Mug", "name": "Freeborn mug", "desc": "Black mug wrapped with the Freeborn cover art.", "image": "freeborn-mug", "buy_url": ""}
+      ]
+    }
+  ]
+}

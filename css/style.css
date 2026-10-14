@@ -719,3 +719,17 @@ html.search-open{overflow:hidden}
 .tt .tyt{display:inline-flex;gap:6px;margin-left:10px;vertical-align:middle}
 .tt .tyt a{font-size:.72rem;line-height:1;padding:3px 7px;border:1px solid var(--line);border-radius:999px;color:inherit;opacity:.75;text-decoration:none;white-space:nowrap}
 .tt .tyt a:hover,.tt .tyt a:focus-visible{opacity:1;border-color:currentColor}
+/* ---------- merch collections (content/merch.json) ---------- */
+.section.merch-col{padding-top:clamp(18px,3vw,32px)}
+.section .mcol-t{margin:0;font:800 clamp(1.5rem,4.5vw,2.2rem)/1.05 var(--display);letter-spacing:-.03em}
+.mcol-intro{color:var(--muted);margin:8px 0 20px;max-width:62ch}
+.mc-art.mc-mock{padding:0;background:#18181f;cursor:zoom-in}
+.mc-art.mc-mock img{border-radius:0;box-shadow:none;transition:transform .3s}
+.mc-art.mc-mock:hover img{transform:scale(1.03)}
+.mc-d{margin:2px 0 12px;font-size:.9rem;color:var(--muted)}
+.merch-grid-sec .mcol-t{margin-bottom:18px}
+.merch-teaser{margin:14px 0 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.mzoom{border:0;padding:0;background:transparent;max-width:min(92vw,900px)}
+.mzoom::backdrop{background:rgba(5,5,8,.88)}
+.mzoom img{display:block;width:100%;height:auto;border-radius:10px}
+.mzoom-x{position:absolute;top:8px;right:8px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:1.6rem;cursor:pointer}

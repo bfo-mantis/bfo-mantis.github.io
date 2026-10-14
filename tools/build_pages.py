@@ -666,6 +666,13 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
 {footer(root, v["js"])}'''
     (ROOT / "index.html").write_text(page)
 
+def merch_teaser(root, slug):
+    c = next((c for c in load_merch_collections() if c.get("release") == slug), None)
+    if not c: return ""
+    n = len(c.get("items") or [])
+    return (f'<p class="merch-teaser"><span class="soon-tag">Merch: coming soon</span> '
+            f'<a href="{root}merch/#{e(c["id"])}">See the {e(c["title"])} ({n} items)<span aria-hidden="true"> →</span></a></p>')
+
 def build_release(releases, i, site, today, v, has_about):
     r = releases[i]
     root = "../../"
@@ -788,6 +795,7 @@ def build_release(releases, i, site, today, v, has_about):
       <ul class="facts">{facts}</ul>
       {preview_bar}
       <div class="listen">{listen}{buy_html(r.get("download_url"), "Download", "dl-soon", f"event/download/{r['slug']}")}
+        {merch_teaser(root, r["slug"])}
         <p class="lounge-note">{e(LOUNGE_CTA)} <a href="{root}lounge/">Join the Lounge<span aria-hidden="true"> →</span></a></p>
         {share_html(url, f"{r['title']} by {ARTIST}", r["slug"], "Share", "share-sm")}</div>
       <h2 class="tracks-title">Tracklist</h2>
@@ -937,6 +945,48 @@ def build_lounge(site, v, has_about, members_url=None, signup_url=None):
 
 MERCH_LINE = "Shirts, posters and more featuring bfo.mantis artwork are on the way."
 
+def load_merch_collections():
+    """content/merch.json -> list of collections (data-driven; empty buy_url = 'Coming soon')."""
+    f = ROOT / "content" / "merch.json"
+    if not f.exists(): return []
+    cols = json.loads(f.read_text()).get("collections") or []
+    for c in cols:
+        for it in c.get("items") or []:
+            u = (it.get("buy_url") or "").strip()
+            it["buy_url"] = u if u.startswith("https://") else ""
+    return cols
+
+def merch_collection_html(root, c, bys):
+    r = bys.get(c.get("release"))
+    cards = []
+    for i, it in enumerate(c.get("items") or []):
+        im, nm = it["image"], e(it["name"])
+        tid = f'mcs-{e(it["id"])}'
+        if it["buy_url"]:
+            btn = (f'<a class="btn-alt mc-btn" href="{e(it["buy_url"])}" target="_blank" rel="noopener" data-gc="event/merch/{e(it["id"])}">'
+                   f'Shop{NT}<span class="sr-only"> {nm}</span></a>'); tag = ""
+        else:
+            btn = (f'<button type="button" class="btn-alt mc-btn" disabled aria-disabled="true" aria-describedby="{tid}">'
+                   f'Shop<span class="sr-only"> {nm}</span></button>'); tag = f'<span class="soon-tag" id="{tid}">Coming soon</span>'
+        alt = f'{it["name"]} mockup'
+        cards.append(f'''<li class="mc mc-photo">
+      <a class="mc-art mc-mock" href="{root}assets/merch/{im}-1200.jpg" data-zoom aria-label="Enlarge {nm}"><picture><source type="image/webp" srcset="{root}assets/merch/{im}-600.webp 600w, {root}assets/merch/{im}-1200.webp 1200w" sizes="(max-width: 600px) 90vw, 300px"><img src="{root}assets/merch/{im}-600.jpg" srcset="{root}assets/merch/{im}-600.jpg 600w, {root}assets/merch/{im}-1200.jpg 1200w" sizes="(max-width: 600px) 90vw, 300px" width="600" height="600" alt="{e(alt)}" loading="lazy" decoding="async"></picture></a>
+      <div class="mc-body"><p class="mc-k">{e(it.get("kind") or "")}</p><h3 class="mc-t">{nm}</h3>
+        <p class="mc-d">{e(it.get("desc") or "")}</p>
+        <div class="buy">{btn}{tag}</div></div>
+    </li>''')
+    rel = f' <a href="{root}release/{r["slug"]}/">Hear {e(r["title"])}<span aria-hidden="true"> →</span></a>' if r else ""
+    return f'''<section class="section merch-col" id="{e(c["id"])}" aria-labelledby="mcol-{e(c["id"])}">
+    <div class="lounge-title"><h2 id="mcol-{e(c["id"])}" class="mcol-t">{e(c["title"])}</h2><span class="soon-tag">Coming soon</span></div>
+    <p class="mcol-intro">{e(c.get("intro") or "")}{rel}</p>
+    <ul class="mgrid">{"".join(cards)}</ul>
+  </section>'''
+
+ZOOM_JS = '''<dialog class="mzoom" id="mzoom" aria-label="Enlarged merch image"><button type="button" class="mzoom-x" aria-label="Close">×</button><img alt=""></dialog>
+<script>(function(){var d=document.getElementById("mzoom");if(!d||!d.showModal)return;var im=d.querySelector("img");
+document.querySelectorAll("a[data-zoom]").forEach(function(a){a.addEventListener("click",function(ev){ev.preventDefault();im.src=a.href;im.alt=a.querySelector("img").alt;d.showModal();});});
+d.addEventListener("click",function(ev){if(ev.target===d||ev.target.classList.contains("mzoom-x"))d.close();});})();</script>'''
+
 def build_merch(releases, site, v, has_about, merch_url=None, items=None):
     """merch/: 'Coming soon' until content/site_config.json sets merch_url (https, validated in build_data.py).
     Product cards (merch_items) use real cover art; no prices. An item's own url makes only that button live."""
@@ -971,6 +1021,8 @@ def build_merch(releases, site, v, has_about, merch_url=None, items=None):
     store = (f'<div class="buy"><a class="btn" href="{e(merch_url)}" target="_blank" rel="noopener" data-gc="event/merch">Visit the store{NT}</a></div>'
              if live else f'<p class="merch-follow">Want to know when it opens? <a href="{root}help/">Follow bfo.mantis</a> where you listen.</p>')
     note = "" if live else '<p class="art-copy merch-note">Product ideas shown with album artwork. Final items may differ.</p>'
+    cols = load_merch_collections()
+    cols_html = "\n  ".join(merch_collection_html(root, c, bys) for c in cols)
     page = f'''{hd}
 <body class="merch-page">
 {topbar(root, has_about, current="merch")}
@@ -982,16 +1034,19 @@ def build_merch(releases, site, v, has_about, merch_url=None, items=None):
     <p class="lounge-intro">{e(MERCH_LINE)}</p>
     {store}
   </section>
-  <section class="section merch-grid-sec" aria-label="Merch items">
+  {cols_html}
+  <section class="section merch-grid-sec" aria-label="More merch ideas">
+    {'<h2 class="mcol-t">More from the catalog</h2>' if cols else ''}
     <ul class="mgrid">{"".join(cards)}</ul>
     {note}
   </section>
 </main>
+{ZOOM_JS if cols else ""}
 
 {footer(root, v["js"])}'''
     (ROOT / "merch").mkdir(exist_ok=True)
     (ROOT / "merch" / "index.html").write_text(page)
-    return len(cards)
+    return len(cards) + sum(len(c.get("items") or []) for c in cols)
 
 def build_covers_zip(releases):
     """assets/press/bfo-mantis-cover-art.zip: every 800px cover JPG + a notice. Deterministic (fixed timestamps), so an
