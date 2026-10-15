@@ -396,7 +396,7 @@ DISCORD_ICON = ('<svg class="dc-ico" viewBox="0 0 24 24" aria-hidden="true"><pat
                 'M7.2 5.6c1.5-.6 3.1-.9 4.8-.9s3.3.3 4.8.9c1.8 2.6 2.8 5.5 2.7 9.2-1.6 1.3-3.3 2.1-5 2.6l-1.1-1.8'
                 'c-.9.2-1.6.2-2.4.2s-1.5 0-2.4-.2l-1.1 1.8c-1.7-.5-3.4-1.3-5-2.6-.1-3.7.9-6.6 2.7-9.2z'
                 'M7.9 12.2a1.5 1.7 0 1 0 3 0a1.5 1.7 0 1 0-3 0zM13.1 12.2a1.5 1.7 0 1 0 3 0a1.5 1.7 0 1 0-3 0z"/></svg>')
-DISCORD_NOTE = "Regional rooms are being set up inside the server; until they open, everyone meets in #general."
+DISCORD_NOTE = "Everyone meets in #general."
 
 def discord_btn(label="Join the Discord", cls="btn", event="event/discord"):
     return (f'<a class="{cls} dc-btn" href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="{e(event)}">'
@@ -1491,7 +1491,7 @@ def build_search_index(releases, has_about, about):
     strip = lambda h: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", h or "")).strip()
     pages = [["Start here", "start/", "My ten tracks, ranked by intensity and impact: the ten that make the case for liberty as God-given free will."],
              ["Community", "community/", COMMUNITY_INTRO + " What listeners are saying."]] + ([
-             ["Discord", "community/#discord", "Join the bfo.mantis Discord server and talk about the songs with other fans, by country and region."]] if DISCORD else []) + [
+             ["Discord", "community/#discord", "Join the bfo.mantis Discord server and talk about the songs with other fans."]] if DISCORD else []) + [
              ["Members Lounge", "lounge/", "The bfo.mantis members lounge."],
              ["Press kit", "press/", "Press kit: bio, photos, cover art and the one-sheet."],
              ["Other ways to help", "help/", "Support bfo.mantis: follow, share, subscribe, donate."],
@@ -1578,7 +1578,7 @@ def build_community(releases, site, v, has_about, community_url=None):
     <h1 id="community-title">Community</h1>
     <p class="lounge-intro">{e(COMMUNITY_INTRO)}</p>
     {f'''<div class="dc-hero" id="discord"><div class="dc-hero-t">{DISCORD_ICON}<div><h2 class="dc-h">Join the bfo.mantis Discord</h2>
-      <p class="cta-p">Talk about the songs with other fans, and find the room for your country or region. {e(DISCORD_NOTE)}</p></div></div>
+      <p class="cta-p">Come talk about the songs with fans from everywhere. {e(DISCORD_NOTE)}</p></div></div>
       {discord_btn("Join the Discord", "btn", "event/discord/community-hero")}</div>''' if DISCORD else ""}
     {f'<p class="cc-stat"><strong>Listened to in {len(heard)} countries</strong><span>{e(cdata.get("source_line") or "")}</span></p>' if heard else '<p class="pk-soon cc-note"><span class="soon-tag">Coming soon</span> Country listener highlights.</p>'}
   </section>
@@ -1596,7 +1596,7 @@ def build_community(releases, site, v, has_about, community_url=None):
       <div class="cc-card" id="cc-card" aria-live="polite"{' data-room="discord"' if DISCORD else ""}>
         <p class="cc-flagbig" aria-hidden="true" id="cc-flag">🌍</p>
         <h3 class="cc-h" id="cc-h">Choose your country</h3>
-        <p class="cta-p" id="cc-p">Pick a country from the list to find its room.</p>
+        <p class="cta-p" id="cc-p">Pick a country from the list to see what it plays.</p>
         {f'<p class="cc-dc-note">{e(DISCORD_NOTE)}</p>' if DISCORD else ""}
         {join}
       </div>
