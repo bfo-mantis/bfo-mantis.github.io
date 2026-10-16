@@ -719,5 +719,19 @@
    "service": "iHeartRadio",
    "url": "https://www.iheart.com/artist/id-51258457/albums/id-414233331"
   }
+ ],
+ "for-your-own-good": [
+  {
+   "service": "Apple Music",
+   "url": "https://music.apple.com/us/album/for-your-own-good-single/6823468150?app=music"
+  },
+  {
+   "service": "iTunes",
+   "url": "https://music.apple.com/us/album/for-your-own-good-single/6823468150?app=itunes"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1122925912"
+  }
  ]
 }
