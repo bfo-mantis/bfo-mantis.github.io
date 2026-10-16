@@ -28,6 +28,15 @@
   "optional_wetline_sentence": "Optional sentence, only if the user confirms Wetline is part of the label: \"The label is also connected to Wetline, a separate artist.\" (In the catalog, Wetline's album LOVELORN is credited to Wetline Records, not bfo.mantis Records.)"
  },
  "releases": {
+  "for-your-own-good": {
+   "title": "For Your Own Good",
+   "type": "single",
+   "genre": "Rock",
+   "release_date": "2026-10-16",
+   "basis": "lyrics",
+   "blurb": "For Your Own Good is dark protest rock that sings its warning like a lullaby. From Juvenal's bread and games to parish care, wartime papers and emergencies that never end, every chain arrives wearing a favor and asking only for the keys. Hard times forge the builders; soft times hand the keys away. The velvet comes off the blade, and one lone voice answers with a single word: No.",
+   "blurb_source": "track:QTA7Y2605766"
+  },
   "freeborn": {
    "title": "Freeborn",
    "type": "single",
@@ -288,6 +297,18 @@
   }
  },
  "tracks": {
+  "QTA7Y2605766": {
+   "release_slug": "for-your-own-good",
+   "n": 1,
+   "title": "For Your Own Good",
+   "basis": "lyrics",
+   "blurb": "For Your Own Good is dark protest rock that sings its warning like a lullaby. From Juvenal's bread and games to parish care, wartime papers and emergencies that never end, every chain arrives wearing a favor and asking only for the keys. Hard times forge the builders; soft times hand the keys away. The velvet comes off the blade, and one lone voice answers with a single word: No.",
+   "lyrics_status": "lyrics",
+   "intro": "For Your Own Good is dark protest rock that sings its warning like a lullaby. From Juvenal's bread and games to parish care, wartime papers and emergencies that never end, every chain arrives wearing a favor and asking only for the keys. Hard times forge the builders; soft times hand the keys away. The velvet comes off the blade, and one lone voice answers with a single word: No.",
+   "intro_basis": "lyrics",
+   "in_depth": "For Your Own Good opens on a dry voice and a single cello drone, then sings its threat sweetly. The verses walk the long ledger of kindness turned to control: taxed hearthstones, stamped files, prohibition's badge and boot, wire and watchtowers. The builders' sons trade powder and names for quiet nights. Then the bridge hammers like an anvil, the polish breaks into a shout, and the band falls away to leave one word standing in silence.",
+   "in_depth_basis": "lyrics"
+  },
   "QTA7W2619114": {
    "release_slug": "freeborn",
    "n": 1,
