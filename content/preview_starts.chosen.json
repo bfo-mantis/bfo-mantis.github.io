@@ -252,6 +252,17 @@
   "file": "assets/audio/previews/flock-of-the-tyrants/01.mp3",
   "src_size": 67046524
  },
+ "QTA7Y2605766": {
+  "slug": "for-your-own-good",
+  "track": 1,
+  "title": "For Your Own Good",
+  "start": 78.0,
+  "length": 30.0,
+  "track_length": 299.96,
+  "method": "override",
+  "file": "assets/audio/previews/for-your-own-good/01.mp3",
+  "src_size": 86388610
+ },
  "QT9XH2693555": {
   "slug": "forge-of-your-light",
   "track": 1,
