@@ -722,6 +722,10 @@
  ],
  "for-your-own-good": [
   {
+   "service": "Spotify",
+   "url": "https://open.spotify.com/album/6DOimbZDF5m7zMH6o6M0tG"
+  },
+  {
    "service": "Apple Music",
    "url": "https://music.apple.com/us/album/for-your-own-good-single/6823468150?app=music"
   },
@@ -730,8 +734,24 @@
    "url": "https://music.apple.com/us/album/for-your-own-good-single/6823468150?app=itunes"
   },
   {
+   "service": "YouTube Music",
+   "url": "https://music.youtube.com/playlist?list=OLAK5uy_n9c8o1aaxLYH_Jhp6rBBrMRnpjJzYGOfk"
+  },
+  {
+   "service": "Amazon Music",
+   "url": "https://music.amazon.com/albums/B0HN6ZHL75"
+  },
+  {
    "service": "Deezer",
    "url": "https://www.deezer.com/album/1122925912"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/for-your-own-good-440543274"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/570354272"
   }
  ]
 }
