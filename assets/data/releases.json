@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-17T09:19:16",
+ "generated": "2026-10-17T09:29:07",
  "donate_url": null,
  "members_url": null,
  "email_signup_url": null,
@@ -52,8 +52,20 @@
    "listen_source": null,
    "store_links": [
     {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/6DOimbZDF5m7zMH6o6M0tG"
+    },
+    {
      "name": "Apple Music",
      "url": "https://music.apple.com/us/album/for-your-own-good-single/6823468150?app=music"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/playlist?list=OLAK5uy_n9c8o1aaxLYH_Jhp6rBBrMRnpjJzYGOfk"
+    },
+    {
+     "name": "Amazon Music",
+     "url": "https://music.amazon.com/albums/B0HN6ZHL75"
     },
     {
      "name": "iTunes",
@@ -62,6 +74,14 @@
     {
      "name": "Deezer",
      "url": "https://www.deezer.com/album/1122925912"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/570354272"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/for-your-own-good-440543274"
     }
    ],
    "cover": {
@@ -78,6 +98,8 @@
      "title": "For Your Own Good",
      "isrc": "QTA7Y2605766",
      "lyrics": "lyrics",
+     "youtube_music_url": "https://music.youtube.com/watch?v=OX16PAZ_oJ8",
+     "youtube_url": "https://www.youtube.com/watch?v=OX16PAZ_oJ8",
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": "For Your Own Good opens on a dry voice and a single cello drone, then sings its threat sweetly. The verses walk the long ledger of kindness turned to control: taxed hearthstones, stamped files, prohibition's badge and boot, wire and watchtowers. The builders' sons trade powder and names for quiet nights. Then the bridge hammers like an anvil, the polish breaks into a shout, and the band falls away to leave one word standing in silence.",
