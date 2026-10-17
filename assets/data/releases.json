@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-16T13:37:11",
+ "generated": "2026-10-17T09:19:16",
  "donate_url": null,
  "members_url": null,
  "email_signup_url": null,
@@ -81,7 +81,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": "For Your Own Good opens on a dry voice and a single cello drone, then sings its threat sweetly. The verses walk the long ledger of kindness turned to control: taxed hearthstones, stamped files, prohibition's badge and boot, wire and watchtowers. The builders' sons trade powder and names for quiet nights. Then the bridge hammers like an anvil, the polish breaks into a shout, and the band falls away to leave one word standing in silence.",
-     "preview": null
+     "preview": "assets/audio/previews/for-your-own-good/01.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/for-your-own-good.json",
