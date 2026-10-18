@@ -1,0 +1,24 @@
+{
+  "_note": "Public teaser for the Lounge sample page (lounge/sample/). TEASER ONLY: the excerpt must stay a short opening (about 120-200 words). The full Freeborn dissertation is members-only on Patreon and must never be committed to this repo. Source kept outside the repo: /workspace/lounge_drafts/freeborn-dissertation.md.",
+  "feature": {
+    "kind": "Song story",
+    "tier": "Lounge Member and up",
+    "release": "freeborn",
+    "title": "A Dissertation on the Historical References in the Lyrics of “Freeborn” by bfo.mantis",
+    "excerpt": [
+      "The lyrics of “Freeborn” construct a single continuous claim—that freeborn status arrives with the first breath and is enacted by one person’s refusal—by staging a sequence of historical “No”s. This dissertation examines the five principal episodes the song names (John Lilburne 1638, Martin Luther at Worms 1521, Frederick Douglass and the slave-breaker 1833–34, Rosa Parks 1955, and Václav Havel with Charter 77 and the Velvet Revolution 1977–1989). It reconstructs the actual events, measures the lyrics’ compression and selection against the documentary record, and shows how the song converts disparate refusals into evidence for one ontology: nobody handed it, nobody takes it.",
+      "The song’s architecture is deliberate. An opening spoken assertion (“Nobody handed it to you… It came in with your first breath”) is followed by a chronological roll-call of individuals who refused an authority’s demand to recant, swear, move, or remain silent."
+    ],
+    "sections": [
+      "Abstract",
+      "Introduction",
+      "1638: Freeborn John Lilburne",
+      "1521: Martin Luther at the Diet of Worms",
+      "1833–34: Frederick Douglass and Edward Covey",
+      "1955: Rosa Parks and the Montgomery Bus Boycott",
+      "1977–1989: Václav Havel, Charter 77, and Wenceslas Square",
+      "The Song’s Historical Method",
+      "Conclusion"
+    ]
+  }
+}
