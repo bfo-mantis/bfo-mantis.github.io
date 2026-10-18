@@ -391,6 +391,8 @@ def topbar(root, has_about, home=False, current=None):
   <button type="button" class="search-btn" data-idx="{root}assets/data/search.json?v={SEARCH_V}" aria-haspopup="dialog" aria-keyshortcuts="/ Control+K Meta+K" aria-label="Search the site" title="Search (/ or Ctrl+K)">{SEARCH_ICON}<span class="search-lbl">Search</span></button>
 </header>'''
 
+MEMBERS = None   # content/site_config.json members_url (Patreon join/tiers page); None = previous "Coming soon" Lounge state
+PATREON = None   # content/site_config.json donate_url (Patreon page); footer / Links "Patreon" entries
 DISCORD = None   # content/site_config.json discord_url (validated in build_data.py); None = previous "Coming soon" state
 DISCORD_ICON = ('<svg class="dc-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="'
                 'M7.2 5.6c1.5-.6 3.1-.9 4.8-.9s3.3.3 4.8.9c1.8 2.6 2.8 5.5 2.7 9.2-1.6 1.3-3.3 2.1-5 2.6l-1.1-1.8'
@@ -405,6 +407,7 @@ def discord_btn(label="Join the Discord", cls="btn", event="event/discord"):
 def footer(root, js_v):
     year = date.today().year
     dc_foot = (f'<a class="footer-link" href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/footer">Discord{NT}</a>' if DISCORD else "")
+    dc_foot += (f'<a class="footer-link" href="{e(PATREON)}" target="_blank" rel="noopener" data-gc="event/patreon/footer">Patreon{NT}</a>' if PATREON else "")
     return f'''<footer class="footer">
   <p>Music, lyrics, artwork and audio previews &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</p>
   <nav class="footer-nav" aria-label="Footer"><a class="footer-link" href="{root}help/">Ways to help</a><a class="footer-link" href="{root}community/">Community</a>{dc_foot}<a class="footer-link" href="{root}merch/">Merch</a><a class="footer-link" href="{root}links/">Links</a><a class="footer-link" href="{root}press/">Press kit</a></nav>
@@ -430,10 +433,18 @@ def buy_html(url, label, tag_id, event=None):
     return (f'<div class="buy"><button type="button" class="btn-alt" disabled aria-disabled="true" aria-describedby="{tag_id}">{label}</button>'
             f'<span class="soon-tag" id="{tag_id}">Coming soon</span></div>')
 
-LOUNGE_CTA = "Members will get full downloads, demos and early access, coming soon."   # user-approved wording
+LOUNGE_CTA_SOON = "Members will get full downloads, demos and early access, coming soon."   # user-approved wording (pre-Patreon)
+LOUNGE_CTA_LIVE = "The Lounge is open on Patreon: song stories, lyric notes, early previews and demos. Tiers start at $1 a month."
+LOUNGE_CTA = LOUNGE_CTA_SOON   # set in main(): LIVE when members_url is set
 
 def lounge_cta(root, idp="cta"):
-    """'Join the Lounge' call-out (home). Links to the Lounge page; no prices, tiers or member counts."""
+    """'Join the Lounge' call-out (home). Live: Join on Patreon + link to the Lounge page; otherwise the 'Coming soon' version."""
+    if MEMBERS:
+        return (f'<aside class="cta lounge-cta" aria-labelledby="{idp}-lounge-t">'
+                f'<p class="cta-k">Members Lounge <span class="live-tag">Open now</span></p>'
+                f'<h3 id="{idp}-lounge-t">Join the Lounge</h3><p class="cta-p">{e(LOUNGE_CTA)}</p>'
+                f'<p class="cta-acts"><a class="btn-alt" href="{e(MEMBERS)}" target="_blank" rel="noopener" data-gc="event/join/{idp}">Join on Patreon{NT}</a>'
+                f'<a class="cta-more" href="{root}lounge/">See the tiers<span aria-hidden="true"> →</span></a></p></aside>')
     return (f'<aside class="cta lounge-cta" aria-labelledby="{idp}-lounge-t">'
             f'<p class="cta-k">Members Lounge <span class="soon-tag">Coming soon</span></p>'
             f'<h3 id="{idp}-lounge-t">Join the Lounge</h3><p class="cta-p">{e(LOUNGE_CTA)}</p>'
@@ -668,8 +679,8 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
 
   <section id="support" class="section support" aria-labelledby="support-title">
     <div class="section-head"><h2 id="support-title">Support bfo.mantis</h2></div>
-    <p class="support-line">bfo.mantis is a small independent artist. Direct support is coming soon.</p>
-    {buy_html(donate_url, "Support the next release", "donate-soon", "event/donate")}
+    <p class="support-line">{"bfo.mantis is a small independent artist. Support the next release directly on Patreon." if donate_url else "bfo.mantis is a small independent artist. Direct support is coming soon."}</p>
+    {buy_html(donate_url, "Support on Patreon" if donate_url else "Support the next release", "donate-soon", "event/donate")}
     {help_link(root)}
     {f'<p class="dc-cta"><a href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/home">{DISCORD_ICON}<span><strong>Join the Discord</strong> <span class="k">Talk with other fans of bfo.mantis</span></span><span aria-hidden="true" class="arr">→</span>{NT}</a></p>' if DISCORD else ""}
     <div class="cta-grid">{lounge_cta(root, "home")}{signup_html(signup_url, "home-su")}</div>
@@ -809,7 +820,7 @@ def build_release(releases, i, site, today, v, has_about):
       {preview_bar}
       <div class="listen">{listen}{buy_html(r.get("download_url"), "Download", "dl-soon", f"event/download/{r['slug']}")}
         {merch_teaser(root, r["slug"])}
-        <p class="lounge-note">{e(LOUNGE_CTA)} <a href="{root}lounge/">Join the Lounge<span aria-hidden="true"> →</span></a></p>
+        {f'<p class="lounge-note">{e(LOUNGE_CTA)} <a href="{e(MEMBERS)}" target="_blank" rel="noopener" data-gc="event/join/release">Join on Patreon<span aria-hidden="true"> →</span>{NT}</a> <a class="ln-more" href="{root}lounge/">About the Lounge</a></p>' if MEMBERS else f'<p class="lounge-note">{e(LOUNGE_CTA)} <a href="{root}lounge/">Join the Lounge<span aria-hidden="true"> →</span></a></p>'}
         {share_html(url, f"{r['title']} by {ARTIST}", r["slug"], "Share", "share-sm")}</div>
       <h2 class="tracks-title">Tracklist</h2>
       <ol class="tracks">{"".join(tracks)}</ol>
@@ -926,7 +937,19 @@ LOUNGE_ITEMS = [   # user-approved wording; no prices, tiers, perks beyond these
     "A free email sign-up for news and early access",
 ]
 
+LOUNGE_INTRO_LIVE = ("A home for the people who stand with bfo.mantis. The Lounge is open now on Patreon: "
+                     "the stories behind the songs, the history that feeds them, and a first listen at what\u2019s still in the forge.")
+LOUNGE_TIERS = [   # mirrors the Patreon tiers; keep in step with patreon.com/c/bfo_mantis/membership
+    ("Listener", "$1", "Release news and early announcements, straight from bfo.mantis. The first word when something new is coming."),
+    ("Lounge Member", "$5", "The Lounge itself: song stories and the history behind them, lyric notes, early previews, "
+                            "and the Lounge Member role in the Discord."),
+    ("Inner Circle", "$15", "Everything in Lounge Member, plus demos and works in progress, a vote on what gets made next, "
+                            "and your name in the supporters credits."),
+]
+LOUNGE_FOOT = "Billed monthly through Patreon. Cancel anytime."
+
 def build_lounge(site, v, has_about, members_url=None, signup_url=None):
+    if members_url: return build_lounge_live(site, v, has_about, members_url, signup_url)
     root = "../"; url = site + "lounge/"
     desc = f"Members Lounge (coming soon): {LOUNGE_INTRO} Exclusive music, behind-the-scenes posts, a fan community and a free email sign-up."
     ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"Members Lounge — {ARTIST}", "url": url,
@@ -948,6 +971,43 @@ def build_lounge(site, v, has_about, members_url=None, signup_url=None):
     <ul class="perks">{items}</ul>
     {f'<p class="dc-note">{DISCORD_ICON}<span>The community space is open now on Discord.</span> <a href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/lounge">Join the Discord<span aria-hidden="true"> →</span>{NT}</a></p>' if DISCORD else ""}
     {buy_html(members_url, "Join", "join-soon", "event/join")}
+    {help_link(root)}
+    <div class="cta-grid lounge-signup">{signup_html(signup_url, "lounge-su")}</div>
+  </section>
+</main>
+
+{footer(root, v["js"])}'''
+    (ROOT / "lounge").mkdir(exist_ok=True)
+    (ROOT / "lounge" / "index.html").write_text(page)
+
+def build_lounge_live(site, v, has_about, members_url, signup_url=None):
+    root = "../"; url = site + "lounge/"
+    desc = ("Members Lounge on Patreon: song stories, lyric notes, early previews and demos from bfo.mantis. "
+            "Three tiers: Listener $1, Lounge Member $5 and Inner Circle $15 a month.")
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"Members Lounge — {ARTIST}", "url": url,
+          "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site},
+          "about": music_group(site)}
+    hd = head(root, title=f"Members Lounge — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+    tiers = "".join(
+        f'<li class="tier{" tier-main" if i == 1 else ""}"><h3 class="tier-n">{e(n)}</h3>'
+        f'<p class="tier-p"><strong>{e(pr)}</strong> <span>/ month</span></p><p class="tier-d">{e(d)}</p>'
+        f'<a class="{"btn" if i == 1 else "btn-alt"} tier-btn" href="{e(members_url)}" target="_blank" rel="noopener" data-gc="event/join/lounge/{slug_(n)}">'
+        f'Join<span class="sr-only"> as {e(n)}</span>{NT}</a></li>'
+        for i, (n, pr, d) in enumerate(LOUNGE_TIERS))
+    page = f'''{hd}
+<body class="lounge-page">
+{topbar(root, has_about, current="lounge")}
+<main id="main">
+  <section class="section lounge" aria-labelledby="lounge-title">
+    <a class="back" href="{root}"><span aria-hidden="true">←</span> Home</a>
+    <p class="eyebrow">bfo.mantis</p>
+    <div class="lounge-title"><h1 id="lounge-title">Members Lounge</h1><span class="live-tag">Open now on Patreon</span></div>
+    <p class="lounge-intro">{e(LOUNGE_INTRO_LIVE)}</p>
+    <h2 class="lounge-sub">Choose your tier</h2>
+    <ul class="tiers">{tiers}</ul>
+    <p class="tier-foot">{e(LOUNGE_FOOT)} <a href="{e(members_url)}" target="_blank" rel="noopener" data-gc="event/join/lounge">See the Lounge on Patreon<span aria-hidden="true"> →</span>{NT}</a></p>
+    {f'<p class="dc-note">{DISCORD_ICON}<span>The community space is open to everyone on Discord.</span> <a href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/lounge">Join the Discord<span aria-hidden="true"> →</span>{NT}</a></p>' if DISCORD else ""}
     {help_link(root)}
     <div class="cta-grid lounge-signup">{signup_html(signup_url, "lounge-su")}</div>
   </section>
@@ -1394,7 +1454,7 @@ def build_links(releases, site, today, v, has_about, tagline):
     <ul class="lk-list">{listen}</ul>
     <h2 class="lk-h">bfo.mantis</h2>
     <ul class="lk-list">
-      <li><a class="lk" href="{root}lounge/"><span>Members Lounge</span><span class="soon-tag">Coming soon</span></a></li>
+      <li><a class="lk" href="{root}lounge/"><span>Members Lounge</span>{"" if MEMBERS else '<span class="soon-tag">Coming soon</span>'}</a></li>{f'<li><a class="lk" href="{e(PATREON)}" target="_blank" rel="noopener" data-gc="event/patreon/links"><span>Patreon</span>{NT}</a></li>' if PATREON else ""}
       <li><a class="lk" href="{root}community/"><span>Community</span></a></li>{f'<li><a class="lk" href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/links"><span>Discord</span>{NT}</a></li>' if DISCORD else ""}
       <li><a class="lk" href="{root}#support"><span>Support</span></a></li>
       <li><a class="lk" href="{root}help/"><span>Other ways to help</span></a></li>
@@ -1492,7 +1552,7 @@ def build_search_index(releases, has_about, about):
     pages = [["Start here", "start/", "My ten tracks, ranked by intensity and impact: the ten that make the case for liberty as God-given free will."],
              ["Community", "community/", COMMUNITY_INTRO + " What listeners are saying."]] + ([
              ["Discord", "community/#discord", "Join the bfo.mantis Discord server and talk about the songs with other fans."]] if DISCORD else []) + [
-             ["Members Lounge", "lounge/", "The bfo.mantis members lounge."],
+             ["Members Lounge", "lounge/", "The bfo.mantis members lounge on Patreon: Listener, Lounge Member and Inner Circle tiers, song stories, lyric notes, early previews and demos." if MEMBERS else "The bfo.mantis members lounge."],
              ["Press kit", "press/", "Press kit: bio, photos, cover art and the one-sheet."],
              ["Other ways to help", "help/", "Support bfo.mantis: follow, share, subscribe, donate."],
              ["Merch", "merch/", "Shirts, posters and more featuring bfo.mantis artwork."],
@@ -1662,7 +1722,7 @@ def build_help(site, v, has_about):
         (card(7, "Join the community", f'<p>Join the community on Discord: talk about the songs with other fans of {ARTIST}.</p>'
                                        f'{discord_btn("Join the community on Discord", "btn-alt", "event/discord/help")}'
                                        f'<ul class="help-links"><li><a href="{root}community/">Community</a></li>'
-                                       f'<li><a href="{root}lounge/">Members Lounge</a> <span class="soon-tag">Coming soon</span></li></ul>') if DISCORD else
+                                       f'<li><a href="{root}lounge/">Members Lounge</a> {"<span class=\"help-k\">on Patreon</span>" if MEMBERS else "<span class=\"soon-tag\">Coming soon</span>"}</li></ul>') if DISCORD else
          card(7, "Join the community", f'<ul class="help-links"><li><a href="{root}community/">Community</a> <span class="soon-tag">Coming soon</span></li>'
                                       f'<li><a href="{root}lounge/">Members Lounge</a> <span class="soon-tag">Coming soon</span></li></ul>')),
     ]
@@ -1815,8 +1875,10 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
         ns, ni = track_counts(releases)
         build_images(releases, f"{ns} songs · {ni} instrumentals")
     v = {"css": asset_hash("css/style.css"), "js": asset_hash("js/app.js")}
-    global SEARCH_V, DISCORD
+    global SEARCH_V, DISCORD, MEMBERS, PATREON, LOUNGE_CTA
     DISCORD = data.get("discord_url")
+    MEMBERS = data.get("members_url"); PATREON = data.get("donate_url")
+    LOUNGE_CTA = LOUNGE_CTA_LIVE if MEMBERS else LOUNGE_CTA_SOON
     idx_bytes = build_search_index(releases, has_about, about)
     SEARCH_V = asset_hash("assets/data/search.json")
     build_home(releases, site, today, v, has_about, about, data.get("donate_url"), data.get("email_signup_url"))
