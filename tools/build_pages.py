@@ -947,6 +947,12 @@ LOUNGE_TIERS = [   # mirrors the Patreon tiers; keep in step with patreon.com/c/
                             "and your name in the supporters credits."),
 ]
 LOUNGE_FOOT = "Billed monthly through Patreon. Cancel anytime."
+CREDITS_PHRASE = "supporters credits"
+
+def tier_desc(root, d):
+    """Tier description, with 'supporters credits' linked to the Supporters page."""
+    a, sep, b = d.partition(CREDITS_PHRASE)
+    return e(a) + (f'<a href="{root}supporters/">{e(sep)}</a>' + e(b) if sep else "")
 
 def build_lounge(site, v, has_about, members_url=None, signup_url=None):
     if members_url: return build_lounge_live(site, v, has_about, members_url, signup_url)
@@ -991,7 +997,7 @@ def build_lounge_live(site, v, has_about, members_url, signup_url=None):
               og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
     tiers = "".join(
         f'<li class="tier{" tier-main" if i == 1 else ""}"><h3 class="tier-n">{e(n)}</h3>'
-        f'<p class="tier-p"><strong>{e(pr)}</strong> <span>/ month</span></p><p class="tier-d">{e(d)}</p>'
+        f'<p class="tier-p"><strong>{e(pr)}</strong> <span>/ month</span></p><p class="tier-d">{tier_desc(root, d)}</p>'
         f'<a class="{"btn" if i == 1 else "btn-alt"} tier-btn" href="{e(members_url)}" target="_blank" rel="noopener" data-gc="event/join/lounge/{slug_(n)}">'
         f'Join<span class="sr-only"> as {e(n)}</span>{NT}</a></li>'
         for i, (n, pr, d) in enumerate(LOUNGE_TIERS))
@@ -1007,6 +1013,7 @@ def build_lounge_live(site, v, has_about, members_url, signup_url=None):
     <h2 class="lounge-sub">Choose your tier</h2>
     <ul class="tiers">{tiers}</ul>
     <p class="tier-foot">{e(LOUNGE_FOOT)} <a href="{e(members_url)}" target="_blank" rel="noopener" data-gc="event/join/lounge">See the Lounge on Patreon<span aria-hidden="true"> →</span>{NT}</a></p>
+    <p class="tier-foot tier-credits"><a href="{root}supporters/">Meet the Inner Circle in the supporters credits<span aria-hidden="true"> →</span></a></p>
     {f'<p class="dc-note">{DISCORD_ICON}<span>The community space is open to everyone on Discord.</span> <a href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/lounge">Join the Discord<span aria-hidden="true"> →</span>{NT}</a></p>' if DISCORD else ""}
     {help_link(root)}
     <div class="cta-grid lounge-signup">{signup_html(signup_url, "lounge-su")}</div>
@@ -1016,6 +1023,63 @@ def build_lounge_live(site, v, has_about, members_url, signup_url=None):
 {footer(root, v["js"])}'''
     (ROOT / "lounge").mkdir(exist_ok=True)
     (ROOT / "lounge" / "index.html").write_text(page)
+
+SUPPORTERS_TITLE = "Supporters"
+SUPPORTERS_INTRO = ("These are the people in the Inner Circle, the ones who carry bfo.mantis from one release to the next. "
+                    "Every name here is a voice that refused to stay quiet. Thank you.")
+SUPPORTERS_EMPTY = "The first names go here. Join the Inner Circle to be one of them."
+
+def load_supporters():
+    fp = ROOT / "content" / "supporters.json"
+    raw = (json.loads(fp.read_text()).get("supporters") or []) if fp.exists() else []
+    out = []
+    for x in raw:
+        if isinstance(x, str): x = {"name": x}
+        n = (x.get("name") or "").strip() if isinstance(x, dict) else ""
+        if not n: continue
+        since = str(x.get("since") or "").strip()
+        lbl = ""
+        if re.fullmatch(r"\d{4}-\d{2}", since):
+            lbl = "since " + date(int(since[:4]), int(since[5:]), 1).strftime("%b %Y")
+        out.append((n, lbl))
+    return out
+
+def build_supporters(site, v, has_about):
+    root = "../"; url = site + "supporters/"
+    names = load_supporters()
+    desc = "Supporters credits: thank you to the Inner Circle members who keep bfo.mantis going."
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"{SUPPORTERS_TITLE} — {ARTIST}", "url": url,
+          "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}, "about": music_group(site)}
+    hd = head(root, title=f"{SUPPORTERS_TITLE} — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+    if names:
+        body = ('<ul class="sp-list">' + "".join(f'<li><span class="sp-n">{e(n)}</span>{f"<span class=\"sp-s\">{e(l)}</span>" if l else ""}</li>'
+                                                 for n, l in names) + "</ul>")
+    else:
+        body = (f'<p class="sp-empty">{e(SUPPORTERS_EMPTY)} '
+                f'<a href="{root}lounge/">Visit the Lounge<span aria-hidden="true"> →</span></a></p>')
+    join = (f'<p class="sp-join">Want your name here? <a href="{e(MEMBERS)}" target="_blank" rel="noopener" data-gc="event/join/supporters">'
+            f'Join the Inner Circle on Patreon<span aria-hidden="true"> →</span>{NT}</a></p>') if (MEMBERS and names) else ""
+    page = f'''{hd}
+<body class="supporters-page">
+{topbar(root, has_about)}
+<main id="main">
+  <section class="section lounge supporters" aria-labelledby="sp-title">
+    <a class="back" href="{root}lounge/"><span aria-hidden="true">←</span> Members Lounge</a>
+    <p class="eyebrow">Inner Circle</p>
+    <div class="lounge-title"><h1 id="sp-title">{SUPPORTERS_TITLE}</h1></div>
+    <p class="lounge-intro">{e(SUPPORTERS_INTRO)}</p>
+    <h2 class="lounge-sub">The Inner Circle</h2>
+    {body}
+    {join}
+    {help_link(root)}
+  </section>
+</main>
+
+{footer(root, v["js"])}'''
+    (ROOT / "supporters").mkdir(exist_ok=True)
+    (ROOT / "supporters" / "index.html").write_text(page)
+    return len(names)
 
 MERCH_LINE = "Shirts, posters and more featuring bfo.mantis artwork are on the way."
 
@@ -1457,6 +1521,7 @@ def build_links(releases, site, today, v, has_about, tagline):
       <li><a class="lk" href="{root}lounge/"><span>Members Lounge</span>{"" if MEMBERS else '<span class="soon-tag">Coming soon</span>'}</a></li>{f'<li><a class="lk" href="{e(PATREON)}" target="_blank" rel="noopener" data-gc="event/patreon/links"><span>Patreon</span>{NT}</a></li>' if PATREON else ""}
       <li><a class="lk" href="{root}community/"><span>Community</span></a></li>{f'<li><a class="lk" href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/links"><span>Discord</span>{NT}</a></li>' if DISCORD else ""}
       <li><a class="lk" href="{root}#support"><span>Support</span></a></li>
+      <li><a class="lk" href="{root}supporters/"><span>Supporters</span></a></li>
       <li><a class="lk" href="{root}help/"><span>Other ways to help</span></a></li>
       <li><a class="lk" href="{root}press/"><span>Press kit</span></a></li>
       <li><a class="lk" href="{root}"><span>All music</span></a></li>
@@ -1553,6 +1618,7 @@ def build_search_index(releases, has_about, about):
              ["Community", "community/", COMMUNITY_INTRO + " What listeners are saying."]] + ([
              ["Discord", "community/#discord", "Join the bfo.mantis Discord server and talk about the songs with other fans."]] if DISCORD else []) + [
              ["Members Lounge", "lounge/", "The bfo.mantis members lounge on Patreon: Listener, Lounge Member and Inner Circle tiers, song stories, lyric notes, early previews and demos." if MEMBERS else "The bfo.mantis members lounge."],
+             ["Supporters", "supporters/", "Supporters credits: thank you to the Inner Circle members who keep bfo.mantis going."],
              ["Press kit", "press/", "Press kit: bio, photos, cover art and the one-sheet."],
              ["Other ways to help", "help/", "Support bfo.mantis: follow, share, subscribe, donate."],
              ["Merch", "merch/", "Shirts, posters and more featuring bfo.mantis artwork."],
@@ -1804,7 +1870,7 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
 </body>
 </html>
 ''')
-    urls = ([site] + [f"{site}release/{r['slug']}/" for r in releases] + [site + "genres/", site + "lounge/", site + "press/", site + "links/", site + "community/", site + "help/", site + "start/", site + "merch/"]
+    urls = ([site] + [f"{site}release/{r['slug']}/" for r in releases] + [site + "genres/", site + "lounge/", site + "press/", site + "links/", site + "community/", site + "help/", site + "start/", site + "merch/", site + "supporters/"]
             + [f"{site}genre/{genre_slug(g)}/" for g, _ in genre_groups(releases)])
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
                                       "".join(f"  <url><loc>{e(u)}</loc></url>\n" for u in urls) + "</urlset>\n")
@@ -1899,12 +1965,13 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     build_links(releases, site, today, v, has_about, tagline)
     build_community(releases, site, v, has_about, data.get("community_url"))
     build_help(site, v, has_about)
+    n_sup = build_supporters(site, v, has_about)
     n_start = build_start(releases, site, v, has_about)
     n_merch = build_merch(releases, site, v, has_about, data.get("merch_url"), data.get("merch_items"))
     build_misc(releases, site, v)
     print(f"search index: assets/data/search.json {idx_bytes / 1024:.0f} KB")
     print("genres:", ", ".join(f"{g} ({len(rs)} releases, {sum(len(r['tracks']) for r in rs)} tracks)" for g, rs in groups))
-    print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + lounge + press + links + community + help + start ({n_start} essentials) + merch ({n_merch} items, {"live" if data.get("merch_url") else "coming soon"}) (covers zip {zsize / 1e6:.1f} MB) + 404 + release.html shim | sitemap urls: {len(releases) + 9 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
+    print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + lounge + press + links + community + help + start ({n_start} essentials) + supporters ({n_sup} names) + merch ({n_merch} items, {"live" if data.get("merch_url") else "coming soon"}) (covers zip {zsize / 1e6:.1f} MB) + 404 + release.html shim | sitemap urls: {len(releases) + 10 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
