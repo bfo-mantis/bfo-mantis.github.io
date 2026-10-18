@@ -1,0 +1,4 @@
+{
+  "_note": "Inner Circle supporters credited on the Supporters page (supporters/). Add one entry per member, exactly as they want to be credited, and only with their OK: either a plain string (\"Jane D.\") or {\"name\": \"Jane D.\", \"since\": \"2026-10\"} (since = YYYY-MM, optional, shown as 'since Oct 2026'). Names are shown in the order listed. While the list is empty the page shows a placeholder that links to the Lounge. Rebuild with python3 tools/build_pages.py.",
+  "supporters": []
+}

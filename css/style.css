@@ -753,3 +753,71 @@ html.search-open{overflow:hidden}
 .dc-note .dc-ico{color:#8b9bff}
 .dc-note a{color:var(--text);text-decoration:underline;text-decoration-color:rgba(200,255,77,.5);text-underline-offset:3px}
 .help-card .dc-btn{margin:6px 0 12px}
+
+/* ---------- members lounge (live, Patreon tiers) ---------- */
+.live-tag{font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);border:1px solid rgba(200,255,77,.5);border-radius:999px;padding:3px 9px}
+.cta-acts{display:flex;align-items:center;flex-wrap:wrap;gap:10px 18px;margin:0}
+.cta-more{color:var(--text);font-size:.9rem;text-decoration:underline;text-decoration-color:rgba(200,255,77,.5);text-underline-offset:3px}
+.cta-more:hover{color:var(--accent)}
+.lounge-note .ln-more{margin-left:10px;color:var(--muted)}
+.help-k{font-size:.8rem;color:var(--muted)}
+.tiers{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:820px){.tiers{grid-template-columns:1fr}}
+.tier{display:flex;flex-direction:column;border:1px solid var(--line);background:rgba(17,17,24,.6);border-radius:var(--radius-lg);padding:clamp(18px,3vw,24px);min-width:0}
+.tier-main{border-color:rgba(200,255,77,.55);background:linear-gradient(160deg,rgba(200,255,77,.09),rgba(17,17,24,.6) 60%)}
+.section .tier-n{font:700 clamp(1.15rem,2vw,1.35rem)/1.15 var(--display);margin:0 0 6px;letter-spacing:-.01em}
+.tier-p{margin:0 0 12px;color:var(--muted);font-size:.9rem}
+.tier-p strong{font:800 1.8rem/1 var(--display);color:var(--text);letter-spacing:-.02em}
+.tier-d{margin:0 0 18px;color:#d4d3de;font-size:.96rem;line-height:1.55;flex:1}
+.tier-btn{align-self:flex-start}
+.tier-foot{margin:16px 0 0;color:var(--muted);font-size:.9rem}
+.tier-foot a{color:var(--text);text-decoration:underline;text-decoration-color:rgba(200,255,77,.5);text-underline-offset:3px}
+.lounge .dc-note{margin-top:22px}
+
+/* ---------- supporters credits ---------- */
+.tier-d a{color:var(--text);text-decoration:underline;text-decoration-color:rgba(200,255,77,.5);text-underline-offset:3px}
+.tier-d a:hover{color:var(--accent)}
+.tier-credits{margin-top:6px}
+.sp-list{list-style:none;margin:0 0 8px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.sp-list li{border:1px solid var(--line);background:rgba(17,17,24,.6);border-radius:var(--radius);padding:16px 20px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.sp-n{font:700 1.1rem/1.2 var(--display);letter-spacing:-.01em;overflow-wrap:anywhere}
+.sp-s{font-size:.8rem;color:var(--muted)}
+.sp-empty{border:1px dashed var(--line2);border-radius:var(--radius-lg);padding:clamp(22px,4vw,34px);margin:0 0 8px;font-size:clamp(1.02rem,1.8vw,1.15rem);color:#d4d3de;max-width:60ch;background:linear-gradient(160deg,rgba(200,255,77,.06),rgba(17,17,24,.5) 60%)}
+.sp-empty a,.sp-join a{color:var(--text);text-decoration:underline;text-decoration-color:rgba(200,255,77,.5);text-underline-offset:3px;white-space:nowrap}
+.sp-empty a:hover,.sp-join a:hover{color:var(--accent)}
+.sp-join{margin:18px 0 0;color:var(--muted)}
+.supporters .help-link{margin-top:22px}
+
+/* ---------- inside the lounge (sample) ---------- */
+.lounge-sample-cta{margin:20px 0 0;display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px;color:var(--muted);font-size:.92rem}
+.fs-card{border:1px solid rgba(200,255,77,.4);background:linear-gradient(160deg,rgba(200,255,77,.07),rgba(17,17,24,.6) 55%);border-radius:var(--radius-lg);padding:clamp(20px,3.5vw,32px);margin:0 0 clamp(30px,5vw,48px)}
+.fs-head{display:flex;gap:18px;align-items:flex-start;margin-bottom:16px}
+.fs-art{flex:0 0 auto;width:clamp(72px,12vw,110px);border-radius:10px;overflow:hidden;display:block}
+.fs-art img{width:100%;height:auto;display:block}
+.section .fs-title{font:700 clamp(1.2rem,2.4vw,1.6rem)/1.2 var(--display);margin:8px 0 0;letter-spacing:-.01em}
+.fs-excerpt{position:relative;max-height:21em;overflow:hidden;color:#d4d3de;line-height:1.65;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
+.fs-excerpt p{margin:0 0 1em;max-width:68ch}
+.section .fs-sub{font:600 .78rem/1.2 var(--body);text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin:10px 0 10px}
+.fs-secs{margin:0 0 22px;padding-left:1.4em;color:#d4d3de;columns:2;column-gap:28px}
+.fs-secs li{margin:0 0 6px;break-inside:avoid}
+@media (max-width:640px){.fs-secs{columns:1}.fs-head{flex-direction:column}}
+.fs-more{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px}
+.fs-note{font-size:.85rem;color:var(--muted)}
+.sx-k{margin:0;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.sx-ex{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+.sx-tier{font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);border:1px solid rgba(200,255,77,.5);border-radius:999px;padding:3px 9px}
+.sx-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:820px){.sx-list{grid-template-columns:1fr}}
+.sx-card{border:1px dashed var(--line2);background:rgba(17,17,24,.5);border-radius:var(--radius-lg);padding:clamp(18px,3vw,22px);min-width:0}
+.section .sx-h{font:700 1.15rem/1.2 var(--display);margin:10px 0 8px;letter-spacing:-.01em}
+.sx-d{margin:0;color:#d4d3de;font-size:.95rem;line-height:1.55}
+@media (max-width:640px){.fs-excerpt{max-height:34em}}
+
+/* ---------- dissertations index (lounge sample) ---------- */
+.ds{margin:0 0 clamp(30px,5vw,48px)}
+.ds-line{margin:-6px 0 16px;color:var(--muted);font-size:.95rem}
+.ds-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.ds-item{border:1px solid var(--line);background:rgba(17,17,24,.6);border-radius:var(--radius-lg);padding:clamp(18px,3vw,24px);min-width:0}
+.section .ds-t{font:700 clamp(1.05rem,2vw,1.25rem)/1.25 var(--display);margin:10px 0 8px;letter-spacing:-.01em}
+.ds-d{margin:0 0 14px;color:#d4d3de;font-size:.95rem;line-height:1.55;max-width:70ch}
+.ds-soon{display:inline-block}

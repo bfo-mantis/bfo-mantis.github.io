@@ -391,6 +391,8 @@ def topbar(root, has_about, home=False, current=None):
   <button type="button" class="search-btn" data-idx="{root}assets/data/search.json?v={SEARCH_V}" aria-haspopup="dialog" aria-keyshortcuts="/ Control+K Meta+K" aria-label="Search the site" title="Search (/ or Ctrl+K)">{SEARCH_ICON}<span class="search-lbl">Search</span></button>
 </header>'''
 
+MEMBERS = None   # content/site_config.json members_url (Patreon join/tiers page); None = previous "Coming soon" Lounge state
+PATREON = None   # content/site_config.json donate_url (Patreon page); footer / Links "Patreon" entries
 DISCORD = None   # content/site_config.json discord_url (validated in build_data.py); None = previous "Coming soon" state
 DISCORD_ICON = ('<svg class="dc-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="'
                 'M7.2 5.6c1.5-.6 3.1-.9 4.8-.9s3.3.3 4.8.9c1.8 2.6 2.8 5.5 2.7 9.2-1.6 1.3-3.3 2.1-5 2.6l-1.1-1.8'
@@ -405,6 +407,7 @@ def discord_btn(label="Join the Discord", cls="btn", event="event/discord"):
 def footer(root, js_v):
     year = date.today().year
     dc_foot = (f'<a class="footer-link" href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/footer">Discord{NT}</a>' if DISCORD else "")
+    dc_foot += (f'<a class="footer-link" href="{e(PATREON)}" target="_blank" rel="noopener" data-gc="event/patreon/footer">Patreon{NT}</a>' if PATREON else "")
     return f'''<footer class="footer">
   <p>Music, lyrics, artwork and audio previews &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</p>
   <nav class="footer-nav" aria-label="Footer"><a class="footer-link" href="{root}help/">Ways to help</a><a class="footer-link" href="{root}community/">Community</a>{dc_foot}<a class="footer-link" href="{root}merch/">Merch</a><a class="footer-link" href="{root}links/">Links</a><a class="footer-link" href="{root}press/">Press kit</a></nav>
@@ -430,10 +433,18 @@ def buy_html(url, label, tag_id, event=None):
     return (f'<div class="buy"><button type="button" class="btn-alt" disabled aria-disabled="true" aria-describedby="{tag_id}">{label}</button>'
             f'<span class="soon-tag" id="{tag_id}">Coming soon</span></div>')
 
-LOUNGE_CTA = "Members will get full downloads, demos and early access, coming soon."   # user-approved wording
+LOUNGE_CTA_SOON = "Members will get full downloads, demos and early access, coming soon."   # user-approved wording (pre-Patreon)
+LOUNGE_CTA_LIVE = "The Lounge is open on Patreon: song stories, lyric notes, early previews and demos. Tiers start at $1 a month."
+LOUNGE_CTA = LOUNGE_CTA_SOON   # set in main(): LIVE when members_url is set
 
 def lounge_cta(root, idp="cta"):
-    """'Join the Lounge' call-out (home). Links to the Lounge page; no prices, tiers or member counts."""
+    """'Join the Lounge' call-out (home). Live: Join on Patreon + link to the Lounge page; otherwise the 'Coming soon' version."""
+    if MEMBERS:
+        return (f'<aside class="cta lounge-cta" aria-labelledby="{idp}-lounge-t">'
+                f'<p class="cta-k">Members Lounge <span class="live-tag">Open now</span></p>'
+                f'<h3 id="{idp}-lounge-t">Join the Lounge</h3><p class="cta-p">{e(LOUNGE_CTA)}</p>'
+                f'<p class="cta-acts"><a class="btn-alt" href="{e(MEMBERS)}" target="_blank" rel="noopener" data-gc="event/join/{idp}">Join on Patreon{NT}</a>'
+                f'<a class="cta-more" href="{root}lounge/">See the tiers<span aria-hidden="true"> →</span></a></p></aside>')
     return (f'<aside class="cta lounge-cta" aria-labelledby="{idp}-lounge-t">'
             f'<p class="cta-k">Members Lounge <span class="soon-tag">Coming soon</span></p>'
             f'<h3 id="{idp}-lounge-t">Join the Lounge</h3><p class="cta-p">{e(LOUNGE_CTA)}</p>'
@@ -668,8 +679,8 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
 
   <section id="support" class="section support" aria-labelledby="support-title">
     <div class="section-head"><h2 id="support-title">Support bfo.mantis</h2></div>
-    <p class="support-line">bfo.mantis is a small independent artist. Direct support is coming soon.</p>
-    {buy_html(donate_url, "Support the next release", "donate-soon", "event/donate")}
+    <p class="support-line">{"bfo.mantis is a small independent artist. Support the next release directly on Patreon." if donate_url else "bfo.mantis is a small independent artist. Direct support is coming soon."}</p>
+    {buy_html(donate_url, "Support on Patreon" if donate_url else "Support the next release", "donate-soon", "event/donate")}
     {help_link(root)}
     {f'<p class="dc-cta"><a href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/home">{DISCORD_ICON}<span><strong>Join the Discord</strong> <span class="k">Talk with other fans of bfo.mantis</span></span><span aria-hidden="true" class="arr">→</span>{NT}</a></p>' if DISCORD else ""}
     <div class="cta-grid">{lounge_cta(root, "home")}{signup_html(signup_url, "home-su")}</div>
@@ -809,7 +820,7 @@ def build_release(releases, i, site, today, v, has_about):
       {preview_bar}
       <div class="listen">{listen}{buy_html(r.get("download_url"), "Download", "dl-soon", f"event/download/{r['slug']}")}
         {merch_teaser(root, r["slug"])}
-        <p class="lounge-note">{e(LOUNGE_CTA)} <a href="{root}lounge/">Join the Lounge<span aria-hidden="true"> →</span></a></p>
+        {f'<p class="lounge-note">{e(LOUNGE_CTA)} <a href="{e(MEMBERS)}" target="_blank" rel="noopener" data-gc="event/join/release">Join on Patreon<span aria-hidden="true"> →</span>{NT}</a> <a class="ln-more" href="{root}lounge/">About the Lounge</a></p>' if MEMBERS else f'<p class="lounge-note">{e(LOUNGE_CTA)} <a href="{root}lounge/">Join the Lounge<span aria-hidden="true"> →</span></a></p>'}
         {share_html(url, f"{r['title']} by {ARTIST}", r["slug"], "Share", "share-sm")}</div>
       <h2 class="tracks-title">Tracklist</h2>
       <ol class="tracks">{"".join(tracks)}</ol>
@@ -926,7 +937,25 @@ LOUNGE_ITEMS = [   # user-approved wording; no prices, tiers, perks beyond these
     "A free email sign-up for news and early access",
 ]
 
+LOUNGE_INTRO_LIVE = ("A home for the people who stand with bfo.mantis. The Lounge is open now on Patreon: "
+                     "the stories behind the songs, the history that feeds them, and a first listen at what\u2019s still in the forge.")
+LOUNGE_TIERS = [   # mirrors the Patreon tiers; keep in step with patreon.com/c/bfo_mantis/membership
+    ("Listener", "$1", "Release news and early announcements, straight from bfo.mantis. The first word when something new is coming."),
+    ("Lounge Member", "$5", "The Lounge itself: song stories and the history behind them, lyric notes, early previews, "
+                            "and the Lounge Member role in the Discord."),
+    ("Inner Circle", "$15", "Everything in Lounge Member, plus demos and works in progress, a vote on what gets made next, "
+                            "and your name in the supporters credits."),
+]
+LOUNGE_FOOT = "Billed monthly through Patreon. Cancel anytime."
+CREDITS_PHRASE = "supporters credits"
+
+def tier_desc(root, d):
+    """Tier description, with 'supporters credits' linked to the Supporters page."""
+    a, sep, b = d.partition(CREDITS_PHRASE)
+    return e(a) + (f'<a href="{root}supporters/">{e(sep)}</a>' + e(b) if sep else "")
+
 def build_lounge(site, v, has_about, members_url=None, signup_url=None):
+    if members_url: return build_lounge_live(site, v, has_about, members_url, signup_url)
     root = "../"; url = site + "lounge/"
     desc = f"Members Lounge (coming soon): {LOUNGE_INTRO} Exclusive music, behind-the-scenes posts, a fan community and a free email sign-up."
     ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"Members Lounge — {ARTIST}", "url": url,
@@ -956,6 +985,187 @@ def build_lounge(site, v, has_about, members_url=None, signup_url=None):
 {footer(root, v["js"])}'''
     (ROOT / "lounge").mkdir(exist_ok=True)
     (ROOT / "lounge" / "index.html").write_text(page)
+
+def build_lounge_live(site, v, has_about, members_url, signup_url=None):
+    root = "../"; url = site + "lounge/"
+    desc = ("Members Lounge on Patreon: song stories, lyric notes, early previews and demos from bfo.mantis. "
+            "Three tiers: Listener $1, Lounge Member $5 and Inner Circle $15 a month.")
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"Members Lounge — {ARTIST}", "url": url,
+          "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site},
+          "about": music_group(site)}
+    hd = head(root, title=f"Members Lounge — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+    tiers = "".join(
+        f'<li class="tier{" tier-main" if i == 1 else ""}"><h3 class="tier-n">{e(n)}</h3>'
+        f'<p class="tier-p"><strong>{e(pr)}</strong> <span>/ month</span></p><p class="tier-d">{tier_desc(root, d)}</p>'
+        f'<a class="{"btn" if i == 1 else "btn-alt"} tier-btn" href="{e(members_url)}" target="_blank" rel="noopener" data-gc="event/join/lounge/{slug_(n)}">'
+        f'Join<span class="sr-only"> as {e(n)}</span>{NT}</a></li>'
+        for i, (n, pr, d) in enumerate(LOUNGE_TIERS))
+    page = f'''{hd}
+<body class="lounge-page">
+{topbar(root, has_about, current="lounge")}
+<main id="main">
+  <section class="section lounge" aria-labelledby="lounge-title">
+    <a class="back" href="{root}"><span aria-hidden="true">←</span> Home</a>
+    <p class="eyebrow">bfo.mantis</p>
+    <div class="lounge-title"><h1 id="lounge-title">Members Lounge</h1><span class="live-tag">Open now on Patreon</span></div>
+    <p class="lounge-intro">{e(LOUNGE_INTRO_LIVE)}</p>
+    <h2 class="lounge-sub">Choose your tier</h2>
+    <ul class="tiers">{tiers}</ul>
+    <p class="tier-foot">{e(LOUNGE_FOOT)} <a href="{e(members_url)}" target="_blank" rel="noopener" data-gc="event/join/lounge">See the Lounge on Patreon<span aria-hidden="true"> →</span>{NT}</a></p>
+    <p class="lounge-sample-cta"><a class="btn-alt" href="{root}lounge/sample/" data-gc="event/lounge/sample">See a sample<span aria-hidden="true"> →</span></a> <span>A look inside: the opening of a members-only piece and what else is coming.</span></p>
+    <p class="tier-foot tier-credits"><a href="{root}supporters/">Meet the Inner Circle in the supporters credits<span aria-hidden="true"> →</span></a></p>
+    {f'<p class="dc-note">{DISCORD_ICON}<span>The community space is open to everyone on Discord.</span> <a href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/lounge">Join the Discord<span aria-hidden="true"> →</span>{NT}</a></p>' if DISCORD else ""}
+    {help_link(root)}
+    <div class="cta-grid lounge-signup">{signup_html(signup_url, "lounge-su")}</div>
+  </section>
+</main>
+
+{footer(root, v["js"])}'''
+    (ROOT / "lounge").mkdir(exist_ok=True)
+    (ROOT / "lounge" / "index.html").write_text(page)
+
+SAMPLE_TITLE = "Inside the Lounge"
+SAMPLE_INTRO = ("A look at what members get. Below is the opening of a members-only piece; the rest lives in the Lounge on Patreon, "
+                "along with the other kinds of posts on the way.")
+SAMPLE_EXAMPLES = [   # descriptions of content types only: no invented quotes, titles or facts
+    ("Lyric notes", "Lounge Member and up", "Notes on the lyrics of a song: the references, the word choices and what sits underneath the lines."),
+    ("Early previews", "Lounge Member and up", "A first listen at new music before it reaches the stores."),
+    ("Demos and works in progress", "Inner Circle", "Rough demos and songs still in the forge, before they\u2019re finished, plus a vote on what gets made next."),
+]
+DISS_LINE = "Full texts are for Lounge Member and Inner Circle members on Patreon."
+
+def load_dissertations():
+    """content/dissertations.json -> [(title, description, tier, live_url_or_None)]. Titles and descriptions only."""
+    fp = ROOT / "content" / "dissertations.json"
+    out = []
+    for x in (json.loads(fp.read_text()).get("dissertations") or []) if fp.exists() else []:
+        t, dsc = (x.get("title") or "").strip(), (x.get("description") or "").strip()
+        if not t: continue
+        u = x.get("patreon_url")
+        ok = isinstance(u, str) and re.match(r"^https://(www\.)?patreon\.com/", u)
+        if u and not ok: print(f"dissertations.json: patreon_url for {t!r} ignored (must be an https://www.patreon.com/ link)")
+        out.append((t, dsc, (x.get("tier") or "Lounge Member and up").strip(), u if (ok and x.get("status") == "live") else None))
+    return out
+
+def dissertations_html():
+    ds = load_dissertations()
+    if not ds: return ""
+    li = "".join(
+        f'<li class="ds-item"><p class="sx-k"><span class="sx-tier">{e(tier)}</span></p><h3 class="ds-t">{e(t)}</h3><p class="ds-d">{e(d)}</p>'
+        + (f'<a class="btn-alt ds-btn" href="{e(u)}" target="_blank" rel="noopener" data-gc="event/dissertation/{i + 1}">Read on Patreon (members only){NT}</a>'
+           if u else '<span class="soon-tag ds-soon">Coming soon to the Lounge</span>') + '</li>'
+        for i, (t, d, tier, u) in enumerate(ds))
+    return (f'<section class="ds" aria-labelledby="ds-title"><h2 class="lounge-sub" id="ds-title">The dissertations</h2>'
+            f'<p class="ds-line">{e(DISS_LINE)}</p><ol class="ds-list">{li}</ol></section>')
+
+SAMPLE_EXCERPT_MAX_WORDS = 200   # teaser only; the build refuses a longer excerpt
+
+def build_lounge_sample(releases, site, v, has_about):
+    fp = ROOT / "content" / "lounge_sample.json"
+    if not fp.exists(): return
+    f = json.loads(fp.read_text())["feature"]
+    nw = sum(len(x.split()) for x in f["excerpt"])
+    if nw > SAMPLE_EXCERPT_MAX_WORDS:
+        raise SystemExit(f"lounge_sample.json: excerpt is {nw} words (max {SAMPLE_EXCERPT_MAX_WORDS}); teaser only, the full piece stays on Patreon")
+    root = "../../"; url = site + "lounge/sample/"
+    rel = next((r for r in releases if r["slug"] == f.get("release")), None)
+    desc = "Inside the Lounge: a sample of what bfo.mantis members get on Patreon, from song stories and lyric notes to early previews and demos."
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"{SAMPLE_TITLE} — {ARTIST}", "url": url,
+          "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}, "about": music_group(site)}
+    hd = head(root, title=f"{SAMPLE_TITLE} — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+    join = MEMBERS or "https://www.patreon.com/c/bfo_mantis/membership"
+    art = (f'<a class="fs-art" href="{root}release/{rel["slug"]}/">{picture(root, rel, "120px", alt=f"{rel["title"]} cover art")}</a>' if rel and rel.get("cover") else "")
+    paras = "".join(f'<p>{e(x)}</p>' for x in f["excerpt"])
+    secs = "".join(f'<li>{e(x)}</li>' for x in f["sections"])
+    exs = "".join(f'<li class="sx-card"><p class="sx-k"><span class="sx-ex">Example of what\u2019s coming</span><span class="sx-tier">{e(tier)}</span></p>'
+                  f'<h3 class="sx-h">{e(h)}</h3><p class="sx-d">{e(d)}</p></li>' for h, tier, d in SAMPLE_EXAMPLES)
+    page = f'''{hd}
+<body class="lounge-page sample-page">
+{topbar(root, has_about, current="lounge")}
+<main id="main">
+  <section class="section lounge sample" aria-labelledby="sample-title">
+    <a class="back" href="{root}lounge/"><span aria-hidden="true">←</span> Members Lounge</a>
+    <p class="eyebrow">Members Lounge · Sample</p>
+    <div class="lounge-title"><h1 id="sample-title">{SAMPLE_TITLE}</h1></div>
+    <p class="lounge-intro">{e(SAMPLE_INTRO)}</p>
+    <article class="fs-card" aria-labelledby="fs-title">
+      <div class="fs-head">{art}<div><p class="sx-k"><span class="sx-ex">{e(f["kind"])} · Excerpt</span><span class="sx-tier">{e(f["tier"])}</span></p>
+        <h2 id="fs-title" class="fs-title">{e(f["title"])}</h2></div></div>
+      <div class="fs-excerpt">{paras}</div>
+      <h3 class="fs-sub">In the full piece</h3>
+      <ol class="fs-secs">{secs}</ol>
+      <div class="fs-more"><a class="btn" href="{e(join)}" target="_blank" rel="noopener" data-gc="event/join/sample">Read the rest in the Lounge on Patreon{NT}</a>
+        <span class="fs-note">For Lounge Member and up</span></div>
+    </article>
+    {dissertations_html()}
+    <h2 class="lounge-sub sx-title">More of what members get</h2>
+    <ul class="sx-list">{exs}</ul>
+    <p class="tier-foot"><a href="{root}lounge/">Compare the tiers<span aria-hidden="true"> →</span></a></p>
+  </section>
+</main>
+
+{footer(root, v["js"])}'''
+    (ROOT / "lounge" / "sample").mkdir(parents=True, exist_ok=True)
+    (ROOT / "lounge" / "sample" / "index.html").write_text(page)
+
+SUPPORTERS_TITLE = "Supporters"
+SUPPORTERS_INTRO = ("These are the people in the Inner Circle, the ones who carry bfo.mantis from one release to the next. "
+                    "Every name here is a voice that refused to stay quiet. Thank you.")
+SUPPORTERS_EMPTY = "The first names go here. Join the Inner Circle to be one of them."
+
+def load_supporters():
+    fp = ROOT / "content" / "supporters.json"
+    raw = (json.loads(fp.read_text()).get("supporters") or []) if fp.exists() else []
+    out = []
+    for x in raw:
+        if isinstance(x, str): x = {"name": x}
+        n = (x.get("name") or "").strip() if isinstance(x, dict) else ""
+        if not n: continue
+        since = str(x.get("since") or "").strip()
+        lbl = ""
+        if re.fullmatch(r"\d{4}-\d{2}", since):
+            lbl = "since " + date(int(since[:4]), int(since[5:]), 1).strftime("%b %Y")
+        out.append((n, lbl))
+    return out
+
+def build_supporters(site, v, has_about):
+    root = "../"; url = site + "supporters/"
+    names = load_supporters()
+    desc = "Supporters credits: thank you to the Inner Circle members who keep bfo.mantis going."
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"{SUPPORTERS_TITLE} — {ARTIST}", "url": url,
+          "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}, "about": music_group(site)}
+    hd = head(root, title=f"{SUPPORTERS_TITLE} — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+    if names:
+        body = ('<ul class="sp-list">' + "".join(f'<li><span class="sp-n">{e(n)}</span>{f"<span class=\"sp-s\">{e(l)}</span>" if l else ""}</li>'
+                                                 for n, l in names) + "</ul>")
+    else:
+        body = (f'<p class="sp-empty">{e(SUPPORTERS_EMPTY)} '
+                f'<a href="{root}lounge/">Visit the Lounge<span aria-hidden="true"> →</span></a></p>')
+    join = (f'<p class="sp-join">Want your name here? <a href="{e(MEMBERS)}" target="_blank" rel="noopener" data-gc="event/join/supporters">'
+            f'Join the Inner Circle on Patreon<span aria-hidden="true"> →</span>{NT}</a></p>') if (MEMBERS and names) else ""
+    page = f'''{hd}
+<body class="supporters-page">
+{topbar(root, has_about)}
+<main id="main">
+  <section class="section lounge supporters" aria-labelledby="sp-title">
+    <a class="back" href="{root}lounge/"><span aria-hidden="true">←</span> Members Lounge</a>
+    <p class="eyebrow">Inner Circle</p>
+    <div class="lounge-title"><h1 id="sp-title">{SUPPORTERS_TITLE}</h1></div>
+    <p class="lounge-intro">{e(SUPPORTERS_INTRO)}</p>
+    <h2 class="lounge-sub">The Inner Circle</h2>
+    {body}
+    {join}
+    {help_link(root)}
+  </section>
+</main>
+
+{footer(root, v["js"])}'''
+    (ROOT / "supporters").mkdir(exist_ok=True)
+    (ROOT / "supporters" / "index.html").write_text(page)
+    return len(names)
 
 MERCH_LINE = "Shirts, posters and more featuring bfo.mantis artwork are on the way."
 
@@ -1394,9 +1604,10 @@ def build_links(releases, site, today, v, has_about, tagline):
     <ul class="lk-list">{listen}</ul>
     <h2 class="lk-h">bfo.mantis</h2>
     <ul class="lk-list">
-      <li><a class="lk" href="{root}lounge/"><span>Members Lounge</span><span class="soon-tag">Coming soon</span></a></li>
+      <li><a class="lk" href="{root}lounge/"><span>Members Lounge</span>{"" if MEMBERS else '<span class="soon-tag">Coming soon</span>'}</a></li>{f'<li><a class="lk" href="{e(PATREON)}" target="_blank" rel="noopener" data-gc="event/patreon/links"><span>Patreon</span>{NT}</a></li>' if PATREON else ""}
       <li><a class="lk" href="{root}community/"><span>Community</span></a></li>{f'<li><a class="lk" href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/links"><span>Discord</span>{NT}</a></li>' if DISCORD else ""}
       <li><a class="lk" href="{root}#support"><span>Support</span></a></li>
+      <li><a class="lk" href="{root}supporters/"><span>Supporters</span></a></li>
       <li><a class="lk" href="{root}help/"><span>Other ways to help</span></a></li>
       <li><a class="lk" href="{root}press/"><span>Press kit</span></a></li>
       <li><a class="lk" href="{root}"><span>All music</span></a></li>
@@ -1492,7 +1703,9 @@ def build_search_index(releases, has_about, about):
     pages = [["Start here", "start/", "My ten tracks, ranked by intensity and impact: the ten that make the case for liberty as God-given free will."],
              ["Community", "community/", COMMUNITY_INTRO + " What listeners are saying."]] + ([
              ["Discord", "community/#discord", "Join the bfo.mantis Discord server and talk about the songs with other fans."]] if DISCORD else []) + [
-             ["Members Lounge", "lounge/", "The bfo.mantis members lounge."],
+             ["Members Lounge", "lounge/", "The bfo.mantis members lounge on Patreon: Listener, Lounge Member and Inner Circle tiers, song stories, lyric notes, early previews and demos." if MEMBERS else "The bfo.mantis members lounge."],
+             ["Inside the Lounge", "lounge/sample/", "Inside the Lounge: a sample of what members get, including the opening of the Freeborn history dissertation, song stories, lyric notes, early previews and demos. The dissertations: " + "; ".join(t for t, *_ in load_dissertations()) + "."],
+             ["Supporters", "supporters/", "Supporters credits: thank you to the Inner Circle members who keep bfo.mantis going."],
              ["Press kit", "press/", "Press kit: bio, photos, cover art and the one-sheet."],
              ["Other ways to help", "help/", "Support bfo.mantis: follow, share, subscribe, donate."],
              ["Merch", "merch/", "Shirts, posters and more featuring bfo.mantis artwork."],
@@ -1662,7 +1875,7 @@ def build_help(site, v, has_about):
         (card(7, "Join the community", f'<p>Join the community on Discord: talk about the songs with other fans of {ARTIST}.</p>'
                                        f'{discord_btn("Join the community on Discord", "btn-alt", "event/discord/help")}'
                                        f'<ul class="help-links"><li><a href="{root}community/">Community</a></li>'
-                                       f'<li><a href="{root}lounge/">Members Lounge</a> <span class="soon-tag">Coming soon</span></li></ul>') if DISCORD else
+                                       f'<li><a href="{root}lounge/">Members Lounge</a> {"<span class=\"help-k\">on Patreon</span>" if MEMBERS else "<span class=\"soon-tag\">Coming soon</span>"}</li></ul>') if DISCORD else
          card(7, "Join the community", f'<ul class="help-links"><li><a href="{root}community/">Community</a> <span class="soon-tag">Coming soon</span></li>'
                                       f'<li><a href="{root}lounge/">Members Lounge</a> <span class="soon-tag">Coming soon</span></li></ul>')),
     ]
@@ -1744,7 +1957,7 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
 </body>
 </html>
 ''')
-    urls = ([site] + [f"{site}release/{r['slug']}/" for r in releases] + [site + "genres/", site + "lounge/", site + "press/", site + "links/", site + "community/", site + "help/", site + "start/", site + "merch/"]
+    urls = ([site] + [f"{site}release/{r['slug']}/" for r in releases] + [site + "genres/", site + "lounge/", site + "press/", site + "links/", site + "community/", site + "help/", site + "start/", site + "merch/", site + "supporters/", site + "lounge/sample/"]
             + [f"{site}genre/{genre_slug(g)}/" for g, _ in genre_groups(releases)])
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
                                       "".join(f"  <url><loc>{e(u)}</loc></url>\n" for u in urls) + "</urlset>\n")
@@ -1815,8 +2028,10 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
         ns, ni = track_counts(releases)
         build_images(releases, f"{ns} songs · {ni} instrumentals")
     v = {"css": asset_hash("css/style.css"), "js": asset_hash("js/app.js")}
-    global SEARCH_V, DISCORD
+    global SEARCH_V, DISCORD, MEMBERS, PATREON, LOUNGE_CTA
     DISCORD = data.get("discord_url")
+    MEMBERS = data.get("members_url"); PATREON = data.get("donate_url")
+    LOUNGE_CTA = LOUNGE_CTA_LIVE if MEMBERS else LOUNGE_CTA_SOON
     idx_bytes = build_search_index(releases, has_about, about)
     SEARCH_V = asset_hash("assets/data/search.json")
     build_home(releases, site, today, v, has_about, about, data.get("donate_url"), data.get("email_signup_url"))
@@ -1837,12 +2052,14 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     build_links(releases, site, today, v, has_about, tagline)
     build_community(releases, site, v, has_about, data.get("community_url"))
     build_help(site, v, has_about)
+    n_sup = build_supporters(site, v, has_about)
+    build_lounge_sample(releases, site, v, has_about)
     n_start = build_start(releases, site, v, has_about)
     n_merch = build_merch(releases, site, v, has_about, data.get("merch_url"), data.get("merch_items"))
     build_misc(releases, site, v)
     print(f"search index: assets/data/search.json {idx_bytes / 1024:.0f} KB")
     print("genres:", ", ".join(f"{g} ({len(rs)} releases, {sum(len(r['tracks']) for r in rs)} tracks)" for g, rs in groups))
-    print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + lounge + press + links + community + help + start ({n_start} essentials) + merch ({n_merch} items, {"live" if data.get("merch_url") else "coming soon"}) (covers zip {zsize / 1e6:.1f} MB) + 404 + release.html shim | sitemap urls: {len(releases) + 9 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
+    print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + lounge + press + links + community + help + start ({n_start} essentials) + supporters ({n_sup} names) + merch ({n_merch} items, {"live" if data.get("merch_url") else "coming soon"}) (covers zip {zsize / 1e6:.1f} MB) + 404 + release.html shim | sitemap urls: {len(releases) + 11 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()

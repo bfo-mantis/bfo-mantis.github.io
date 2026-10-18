@@ -1,0 +1,26 @@
+{
+  "_note": "Dissertations index on the Lounge sample page (lounge/sample/). TITLES AND ONE-SENTENCE DESCRIPTIONS ONLY: the full texts are members-only on Patreon and never go in this repo. Fields: title, description (one sentence, shown verbatim), tier (label, e.g. 'Lounge Member and up'), patreon_url (https://www.patreon.com/... post link, or null), status ('live' or 'coming'). An entry shows 'Read on Patreon (members only)' only when status is 'live' AND patreon_url is set; otherwise 'Coming soon to the Lounge'. Order = display order. Rebuild with python3 tools/build_pages.py.",
+  "dissertations": [
+    {
+      "title": "A Dissertation on the Historical References in the Lyrics of “Freeborn” by bfo.mantis",
+      "description": "This piece reconstructs the five refusals the single names (Lilburne 1638, Luther at Worms 1521, Douglass 1833–34, Parks 1955, and Havel 1977–89) and shows how the song turns them into proof that freeborn status comes with the first breath.",
+      "tier": "Lounge Member and up",
+      "patreon_url": "https://www.patreon.com/bfo_mantis/posts/dissertation-on-172676552",
+      "status": "live"
+    },
+    {
+      "title": "An Analysis of One Freeborn Man",
+      "description": "This short companion essay reads the single “Freeborn” and the album One Man INVICTUS together as one continuous demonstration that the freeborn act is the refusal to kneel.",
+      "tier": "Lounge Member and up",
+      "patreon_url": "https://www.patreon.com/bfo_mantis/posts/analysis-of-one-172679840",
+      "status": "live"
+    },
+    {
+      "title": "A Dissertation on the Lyrics and History of One Man INVICTUS by bfo.mantis",
+      "description": "This album-level study follows the stands of the fifteen tracks, from the Tank Man, Thich Quang Duc, and Desmond Doss to Joan of Arc, Leonidas, and the closing prayer, and measures how the lyrics compress each one into the album's “One Man” argument.",
+      "tier": "Lounge Member and up",
+      "patreon_url": "https://www.patreon.com/bfo_mantis/posts/dissertation-on-172679945",
+      "status": "live"
+    }
+  ]
+}
