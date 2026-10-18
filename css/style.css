@@ -812,3 +812,12 @@ html.search-open{overflow:hidden}
 .section .sx-h{font:700 1.15rem/1.2 var(--display);margin:10px 0 8px;letter-spacing:-.01em}
 .sx-d{margin:0;color:#d4d3de;font-size:.95rem;line-height:1.55}
 @media (max-width:640px){.fs-excerpt{max-height:34em}}
+
+/* ---------- dissertations index (lounge sample) ---------- */
+.ds{margin:0 0 clamp(30px,5vw,48px)}
+.ds-line{margin:-6px 0 16px;color:var(--muted);font-size:.95rem}
+.ds-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.ds-item{border:1px solid var(--line);background:rgba(17,17,24,.6);border-radius:var(--radius-lg);padding:clamp(18px,3vw,24px);min-width:0}
+.section .ds-t{font:700 clamp(1.05rem,2vw,1.25rem)/1.25 var(--display);margin:10px 0 8px;letter-spacing:-.01em}
+.ds-d{margin:0 0 14px;color:#d4d3de;font-size:.95rem;line-height:1.55;max-width:70ch}
+.ds-soon{display:inline-block}

@@ -1033,6 +1033,32 @@ SAMPLE_EXAMPLES = [   # descriptions of content types only: no invented quotes, 
     ("Early previews", "Lounge Member and up", "A first listen at new music before it reaches the stores."),
     ("Demos and works in progress", "Inner Circle", "Rough demos and songs still in the forge, before they\u2019re finished, plus a vote on what gets made next."),
 ]
+DISS_LINE = "Full texts are for Lounge Member and Inner Circle members on Patreon."
+
+def load_dissertations():
+    """content/dissertations.json -> [(title, description, tier, live_url_or_None)]. Titles and descriptions only."""
+    fp = ROOT / "content" / "dissertations.json"
+    out = []
+    for x in (json.loads(fp.read_text()).get("dissertations") or []) if fp.exists() else []:
+        t, dsc = (x.get("title") or "").strip(), (x.get("description") or "").strip()
+        if not t: continue
+        u = x.get("patreon_url")
+        ok = isinstance(u, str) and re.match(r"^https://(www\.)?patreon\.com/", u)
+        if u and not ok: print(f"dissertations.json: patreon_url for {t!r} ignored (must be an https://www.patreon.com/ link)")
+        out.append((t, dsc, (x.get("tier") or "Lounge Member and up").strip(), u if (ok and x.get("status") == "live") else None))
+    return out
+
+def dissertations_html():
+    ds = load_dissertations()
+    if not ds: return ""
+    li = "".join(
+        f'<li class="ds-item"><p class="sx-k"><span class="sx-tier">{e(tier)}</span></p><h3 class="ds-t">{e(t)}</h3><p class="ds-d">{e(d)}</p>'
+        + (f'<a class="btn-alt ds-btn" href="{e(u)}" target="_blank" rel="noopener" data-gc="event/dissertation/{i + 1}">Read on Patreon (members only){NT}</a>'
+           if u else '<span class="soon-tag ds-soon">Coming soon to the Lounge</span>') + '</li>'
+        for i, (t, d, tier, u) in enumerate(ds))
+    return (f'<section class="ds" aria-labelledby="ds-title"><h2 class="lounge-sub" id="ds-title">The dissertations</h2>'
+            f'<p class="ds-line">{e(DISS_LINE)}</p><ol class="ds-list">{li}</ol></section>')
+
 SAMPLE_EXCERPT_MAX_WORDS = 200   # teaser only; the build refuses a longer excerpt
 
 def build_lounge_sample(releases, site, v, has_about):
@@ -1073,6 +1099,7 @@ def build_lounge_sample(releases, site, v, has_about):
       <div class="fs-more"><a class="btn" href="{e(join)}" target="_blank" rel="noopener" data-gc="event/join/sample">Read the rest in the Lounge on Patreon{NT}</a>
         <span class="fs-note">For Lounge Member and up</span></div>
     </article>
+    {dissertations_html()}
     <h2 class="lounge-sub sx-title">More of what members get</h2>
     <ul class="sx-list">{exs}</ul>
     <p class="tier-foot"><a href="{root}lounge/">Compare the tiers<span aria-hidden="true"> →</span></a></p>
@@ -1677,7 +1704,7 @@ def build_search_index(releases, has_about, about):
              ["Community", "community/", COMMUNITY_INTRO + " What listeners are saying."]] + ([
              ["Discord", "community/#discord", "Join the bfo.mantis Discord server and talk about the songs with other fans."]] if DISCORD else []) + [
              ["Members Lounge", "lounge/", "The bfo.mantis members lounge on Patreon: Listener, Lounge Member and Inner Circle tiers, song stories, lyric notes, early previews and demos." if MEMBERS else "The bfo.mantis members lounge."],
-             ["Inside the Lounge", "lounge/sample/", "Inside the Lounge: a sample of what members get, including the opening of the Freeborn history dissertation, song stories, lyric notes, early previews and demos."],
+             ["Inside the Lounge", "lounge/sample/", "Inside the Lounge: a sample of what members get, including the opening of the Freeborn history dissertation, song stories, lyric notes, early previews and demos. The dissertations: " + "; ".join(t for t, *_ in load_dissertations()) + "."],
              ["Supporters", "supporters/", "Supporters credits: thank you to the Inner Circle members who keep bfo.mantis going."],
              ["Press kit", "press/", "Press kit: bio, photos, cover art and the one-sheet."],
              ["Other ways to help", "help/", "Support bfo.mantis: follow, share, subscribe, donate."],
