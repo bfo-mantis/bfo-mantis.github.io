@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-21T22:14:46",
+ "generated": "2026-10-22T10:11:32",
  "donate_url": "https://www.patreon.com/c/bfo_mantis",
  "members_url": "https://www.patreon.com/c/bfo_mantis/membership",
  "email_signup_url": null,
@@ -60,8 +60,24 @@
      "url": "https://music.apple.com/us/album/cake-on-the-plate-single/6825094925?app=music"
     },
     {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/playlist?list=OLAK5uy_l64uc94u_L2vY433PlIRW6_e2ARY8LZfI"
+    },
+    {
+     "name": "Amazon Music",
+     "url": "https://music.amazon.com/albums/B0HNRKZ2VS"
+    },
+    {
      "name": "iTunes",
      "url": "https://music.apple.com/us/album/cake-on-the-plate-single/6825094925?app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1126592511"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/cake-on-the-plate-441628939"
     },
     {
      "name": "All stores (HyperFollow)",
