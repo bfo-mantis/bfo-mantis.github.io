@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-10-21T09:25:00",
+ "generated": "2026-10-21T22:14:46",
  "donate_url": "https://www.patreon.com/c/bfo_mantis",
  "members_url": "https://www.patreon.com/c/bfo_mantis/membership",
  "email_signup_url": null,
@@ -36,6 +36,68 @@
  "press_contact": null,
  "goatcounter_code": "bfomantis",
  "releases": [
+  {
+   "slug": "cake-on-the-plate",
+   "title": "Cake on the Plate",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-10-21",
+   "release_date_display": "October 21, 2026",
+   "genre": "Rock",
+   "label": "bfo.mantis Records",
+   "upc": "700245523370",
+   "listen_url": null,
+   "listen_source": null,
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/7ilQ79FZNeafAjNHCHUJs2"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/cake-on-the-plate-single/6825094925?app=music"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/cake-on-the-plate-single/6825094925?app=itunes"
+    },
+    {
+     "name": "All stores (HyperFollow)",
+     "url": "https://distrokid.com/hyperfollow/bfomantis/cake-on-the-plate"
+    }
+   ],
+   "cover": {
+    "jpg": "assets/covers/cake-on-the-plate-800.jpg",
+    "webp": "assets/covers/cake-on-the-plate-800.webp",
+    "jpg_small": "assets/covers/cake-on-the-plate-400.jpg",
+    "webp_small": "assets/covers/cake-on-the-plate-400.webp",
+    "width": 800,
+    "height": 800,
+    "original_size": [
+     1000,
+     1000
+    ]
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Cake on the Plate",
+     "isrc": "QTA822690876",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": "Cake on the Plate opens on war drums like bronze on bronze and a low, close voice, then marches from Thermopylae's narrow pass, where a laugh answers the arrows, into the quiet aftermath of victory. Wine replaces the trainer's whip, shields become trophies, and by Leuctra the rot has already taken the will. The bridge drops to a near-whisper aimed at the listener's own table before erupting, and the last words are spoken plainly: remember the iron, keep it.",
+     "preview": "assets/audio/previews/cake-on-the-plate/01.mp3"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/cake-on-the-plate.json",
+   "download_url": null,
+   "blurb": "Cake on the Plate is a dark martial anthem about how Sparta really fell. The three hundred hold the Hot Gates with oil on their skin and shields locked in the pass, then the gold rolls home in Persian carts. Boys who slept on stone sleep on down, spears hang as ornaments, and the iron goes soft at the table, not at the gates.",
+   "category": "vocal",
+   "mixed": false
+  },
   {
    "slug": "for-your-own-good",
    "title": "For Your Own Good",

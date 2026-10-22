@@ -43,6 +43,17 @@
   "file": "assets/audio/previews/blood-waters-the-tree/01.mp3",
   "src_size": 117584764
  },
+ "QTA822690876": {
+  "slug": "cake-on-the-plate",
+  "track": 1,
+  "title": "Cake on the Plate",
+  "start": 72.0,
+  "length": 30.0,
+  "track_length": 327.6,
+  "method": "override",
+  "file": "assets/audio/previews/cake-on-the-plate/01.mp3",
+  "src_size": 94348930
+ },
  "QT6F42637691": {
   "slug": "carry-the-star",
   "track": 1,

@@ -753,5 +753,23 @@
    "service": "TIDAL",
    "url": "https://tidal.com/album/570354272"
   }
+ ],
+ "cake-on-the-plate": [
+  {
+   "service": "Spotify",
+   "url": "https://open.spotify.com/album/7ilQ79FZNeafAjNHCHUJs2"
+  },
+  {
+   "service": "Apple Music",
+   "url": "https://music.apple.com/us/album/cake-on-the-plate-single/6825094925?app=music"
+  },
+  {
+   "service": "iTunes",
+   "url": "https://music.apple.com/us/album/cake-on-the-plate-single/6825094925?app=itunes"
+  },
+  {
+   "service": "All stores (HyperFollow)",
+   "url": "https://distrokid.com/hyperfollow/bfomantis/cake-on-the-plate"
+  }
  ]
 }

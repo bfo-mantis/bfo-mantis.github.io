@@ -294,6 +294,15 @@
    "basis": "lyrics",
    "blurb": "A tribute to mothers and the women who pour themselves into their families, pushing back against the idea that nurturing is weakness. Lullabies, meals and sleepless nights become quiet victories with lasting power.",
    "blurb_source": "track:QT6EV2671151"
+  },
+  "cake-on-the-plate": {
+   "title": "Cake on the Plate",
+   "type": "single",
+   "genre": "Rock",
+   "release_date": "2026-10-21",
+   "basis": "lyrics",
+   "blurb": "Cake on the Plate is a dark martial anthem about how Sparta really fell. The three hundred hold the Hot Gates with oil on their skin and shields locked in the pass, then the gold rolls home in Persian carts. Boys who slept on stone sleep on down, spears hang as ornaments, and the iron goes soft at the table, not at the gates.",
+   "blurb_source": "track:QTA822690876"
   }
  },
  "tracks": {
@@ -1930,6 +1939,18 @@
    "in_depth": "Unextracted is set at a signing table, where the paper slides across the grain and the line waits for a name. They price the breath and offer silver for the hand, but the wrist stays still and the pulse keeps its own time. It beats where no one signed, and by the last chorus it's inside the skin, asking whether the same pulse answers in you.",
    "in_depth_basis": "user-approved text (lyrics)",
    "suno_url": "https://suno.com/song/64011e03-e096-4ebd-a74c-5e79dae84200"
+  },
+  "QTA822690876": {
+   "release_slug": "cake-on-the-plate",
+   "n": 1,
+   "title": "Cake on the Plate",
+   "basis": "lyrics",
+   "blurb": "Cake on the Plate is a dark martial anthem about how Sparta really fell. The three hundred hold the Hot Gates with oil on their skin and shields locked in the pass, then the gold rolls home in Persian carts. Boys who slept on stone sleep on down, spears hang as ornaments, and the iron goes soft at the table, not at the gates.",
+   "lyrics_status": "lyrics",
+   "intro": "Cake on the Plate is a dark martial anthem about how Sparta really fell. The three hundred hold the Hot Gates with oil on their skin and shields locked in the pass, then the gold rolls home in Persian carts. Boys who slept on stone sleep on down, spears hang as ornaments, and the iron goes soft at the table, not at the gates.",
+   "intro_basis": "lyrics",
+   "in_depth": "Cake on the Plate opens on war drums like bronze on bronze and a low, close voice, then marches from Thermopylae's narrow pass, where a laugh answers the arrows, into the quiet aftermath of victory. Wine replaces the trainer's whip, shields become trophies, and by Leuctra the rot has already taken the will. The bridge drops to a near-whisper aimed at the listener's own table before erupting, and the last words are spoken plainly: remember the iron, keep it.",
+   "in_depth_basis": "lyrics"
   }
  }
 }
