@@ -768,6 +768,22 @@
    "url": "https://music.apple.com/us/album/cake-on-the-plate-single/6825094925?app=itunes"
   },
   {
+   "service": "YouTube Music",
+   "url": "https://music.youtube.com/playlist?list=OLAK5uy_l64uc94u_L2vY433PlIRW6_e2ARY8LZfI"
+  },
+  {
+   "service": "Amazon Music",
+   "url": "https://music.amazon.com/albums/B0HNRKZ2VS"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1126592511"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/cake-on-the-plate-441628939"
+  },
+  {
    "service": "All stores (HyperFollow)",
    "url": "https://distrokid.com/hyperfollow/bfomantis/cake-on-the-plate"
   }
