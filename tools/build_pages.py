@@ -816,7 +816,7 @@ def build_release(releases, i, site, today, v, has_about):
       <p class="eyebrow">{kind}<span class="js-upcoming"{hid_up}> · Upcoming</span></p>
       <h1 style="--fit:{word_fit(r["title"]) or 1}">{e(r["title"])}</h1>
       <p class="by">{ARTIST}</p>{f'{chr(10)}      <p class="blurb">{e(r["blurb"])}</p>' if r.get("blurb") else ""}
-      <ul class="facts">{facts}</ul>
+      {diss_link_html(r["slug"], r["title"])}<ul class="facts">{facts}</ul>
       {preview_bar}
       <div class="listen">{listen}{buy_html(r.get("download_url"), "Download", "dl-soon", f"event/download/{r['slug']}")}
         {merch_teaser(root, r["slug"])}
@@ -1047,6 +1047,32 @@ def load_dissertations():
         if u and not ok: print(f"dissertations.json: patreon_url for {t!r} ignored (must be an https://www.patreon.com/ link)")
         out.append((t, dsc, (x.get("tier") or "Lounge Member and up").strip(), u if (ok and x.get("status") == "live") else None))
     return out
+
+DISS_LINK_LABEL = "Read the dissertation (members only)"   # user-approved wording (Oct 24, 2026)
+
+def dissertation_links(release_slugs=None):
+    """content/dissertations.json -> {release slug: (title, patreon_url)} for entries that are status 'live' with a
+    valid patreon_url. Each entry's "releases" lists the release pages it is the dissertation for. Links only, never text."""
+    fp = ROOT / "content" / "dissertations.json"
+    out = {}
+    for x in (json.loads(fp.read_text()).get("dissertations") or []) if fp.exists() else []:
+        u = x.get("patreon_url")
+        if x.get("status") != "live" or not (isinstance(u, str) and re.match(r"^https://(www\.)?patreon\.com/", u)): continue
+        for s in x.get("releases") or []:
+            if release_slugs is not None and s not in release_slugs:
+                print(f"dissertations.json: release {s!r} for {x.get('title')!r} not found; no link added"); continue
+            if s in out: print(f"dissertations.json: {s!r} already has a dissertation link; keeping the first"); continue
+            out[s] = ((x.get("title") or "").strip(), u)
+    return out
+
+def diss_link_html(slug, title):
+    hit = DISS_LINKS.get(slug)
+    if not hit: return ""
+    return (f'<p class="diss-link"><a class="btn-alt" href="{e(hit[1])}" target="_blank" rel="noopener" '
+            f'aria-label="{e(f"{DISS_LINK_LABEL}: {title}, on Patreon (opens in a new tab)")}" '
+            f'data-gc="event/dissertation/release/{e(slug)}">{DISS_LINK_LABEL}{NT}</a></p>')
+
+DISS_LINKS = {}   # set in main()
 
 def dissertations_html():
     ds = load_dissertations()
@@ -2028,7 +2054,8 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
         ns, ni = track_counts(releases)
         build_images(releases, f"{ns} songs · {ni} instrumentals")
     v = {"css": asset_hash("css/style.css"), "js": asset_hash("js/app.js")}
-    global SEARCH_V, DISCORD, MEMBERS, PATREON, LOUNGE_CTA
+    global SEARCH_V, DISCORD, MEMBERS, PATREON, LOUNGE_CTA, DISS_LINKS
+    DISS_LINKS = dissertation_links({r["slug"] for r in releases})
     DISCORD = data.get("discord_url")
     MEMBERS = data.get("members_url"); PATREON = data.get("donate_url")
     LOUNGE_CTA = LOUNGE_CTA_LIVE if MEMBERS else LOUNGE_CTA_SOON

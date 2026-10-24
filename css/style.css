@@ -303,6 +303,8 @@ a.btn-alt:hover{border-color:var(--accent);background:var(--accent-soft)}
 
 /* ---------- blurbs ---------- */
 .release .blurb{margin:4px 0 22px;color:#d4d3de;font-size:1rem;line-height:1.6;max-width:62ch}
+.release .diss-link{margin:-6px 0 22px}
+.release .diss-link .btn-alt{font-size:.88rem;padding:9px 16px}
 .tblurb{margin:2px 0 14px;color:var(--muted);font-size:.9rem;line-height:1.55;font-style:italic;max-width:62ch}
 /* two-part track blurbs: intro line + "More about this track" (instrumentals); in-depth inside the lyrics dropdown */
 .tracks li.has-blurb{align-items:start}
