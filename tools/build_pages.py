@@ -1989,7 +1989,7 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
                                       "".join(f"  <url><loc>{e(u)}</loc></url>\n" for u in urls) + "</urlset>\n")
     # Lyrics live only in assets/data/lyrics/*.json (fetched on demand by release pages); keep them out of search.
     # GitHub Pages can't send X-Robots-Tag headers, so robots.txt is the lever.
-    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /assets/data/lyrics/\nDisallow: /assets/data/search.json\n\nSitemap: {site}sitemap.xml\n")
+    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /assets/data/lyrics/\nDisallow: /assets/data/search.json\nDisallow: /media/\n\nSitemap: {site}sitemap.xml\n")
     (ROOT / "site.webmanifest").write_text(json.dumps({
         "name": ARTIST, "short_name": ARTIST, "start_url": "./", "display": "standalone",
         "background_color": "#0b0b0f", "theme_color": "#0b0b0f",
