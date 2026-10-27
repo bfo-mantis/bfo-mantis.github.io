@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /assets/data/lyrics/
 Disallow: /assets/data/search.json
+Disallow: /media/
 
 Sitemap: https://bfo-mantis.github.io/sitemap.xml
