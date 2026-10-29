@@ -427,8 +427,8 @@ PAUSE_ICON = '<svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path 
 YT_ICON = ('<svg class="fl-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>')
 IG_ICON = ('<svg class="fl-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></svg>')
 # Follow subline. Neutral/factual: releases hit all stores at once and visualizers follow later.
-# Alternative proposed by ProMo bot: "New songs land on YouTube first. Behind the scenes and lyrics on Instagram."
-FOLLOW_SUB = "Visualizers and videos on YouTube. Behind the scenes and lyrics on Instagram."
+# User-approved wording (Oct 29, 2026).
+FOLLOW_SUB = "New songs land on YouTube first. Behind the scenes and lyrics on Instagram."
 def follow_block(where):
     return (f'<div class="follow" aria-labelledby="follow-title-{where}"><h3 id="follow-title-{where}" class="follow-h">Follow bfo.mantis</h3>'
             f'<p class="follow-sub">{FOLLOW_SUB}</p><p class="follow-acts">'
