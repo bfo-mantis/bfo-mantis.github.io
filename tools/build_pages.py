@@ -24,6 +24,7 @@ FONTS = ROOT / "tools" / "fonts"
 ARTIST = "bfo.mantis"
 LABEL_NAME = "bfo.mantis Records"
 COPY_YEAR = 2026   # site-wide footer notice (user-approved wording)
+INSTAGRAM = "https://www.instagram.com/bfo.mantis/"   # official Instagram (link supplied by ProMo bot, user-approved request)
 YT_CHANNEL = "https://www.youtube.com/@bfo.mantis"   # user's own channel (UCrdG9YmCFzrp1DKxmSd3z8Q): visualizers, official videos
 YTM_ARTIST = "https://music.youtube.com/channel/UCAr9yfuSAyMs5B2Iycvr7-Q"
 BG, ACCENT, TEXT, MUTED = (11, 11, 15), (200, 255, 77), (236, 235, 242), (163, 162, 179)
@@ -408,6 +409,8 @@ def footer(root, js_v):
     year = date.today().year
     dc_foot = (f'<a class="footer-link" href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/footer">Discord{NT}</a>' if DISCORD else "")
     dc_foot += (f'<a class="footer-link" href="{e(PATREON)}" target="_blank" rel="noopener" data-gc="event/patreon/footer">Patreon{NT}</a>' if PATREON else "")
+    dc_foot += f'<a class="footer-link" href="{e(YT_CHANNEL)}" target="_blank" rel="noopener" data-gc="event/youtube/footer">YouTube{NT}</a>'
+    dc_foot += f'<a class="footer-link" href="{e(INSTAGRAM)}" target="_blank" rel="noopener" data-gc="event/instagram/footer">Instagram{NT}</a>'
     return f'''<footer class="footer">
   <p>Music, lyrics, artwork and audio previews &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</p>
   <nav class="footer-nav" aria-label="Footer"><a class="footer-link" href="{root}help/">Ways to help</a><a class="footer-link" href="{root}community/">Community</a>{dc_foot}<a class="footer-link" href="{root}merch/">Merch</a><a class="footer-link" href="{root}links/">Links</a><a class="footer-link" href="{root}press/">Press kit</a></nav>
@@ -421,6 +424,17 @@ def footer(root, js_v):
 
 PLAY_ICON = '<svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>'
 PAUSE_ICON = '<svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>'
+YT_ICON = ('<svg class="fl-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>')
+IG_ICON = ('<svg class="fl-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></svg>')
+# Follow subline. Neutral/factual: releases hit all stores at once and visualizers follow later.
+# Alternative proposed by ProMo bot: "New songs land on YouTube first. Behind the scenes and lyrics on Instagram."
+FOLLOW_SUB = "Visualizers and videos on YouTube. Behind the scenes and lyrics on Instagram."
+def follow_block(where):
+    return (f'<div class="follow" aria-labelledby="follow-title-{where}"><h3 id="follow-title-{where}" class="follow-h">Follow bfo.mantis</h3>'
+            f'<p class="follow-sub">{FOLLOW_SUB}</p><p class="follow-acts">'
+            f'<a class="btn-alt" href="{e(YT_CHANNEL)}" target="_blank" rel="noopener" data-gc="event/youtube/{where}">{YT_ICON}YouTube{NT}</a>'
+            f'<a class="btn-alt" href="{e(INSTAGRAM)}" target="_blank" rel="noopener" data-gc="event/instagram/{where}">{IG_ICON}Instagram{NT}</a></p></div>')
+
 NT = '<span class="sr-only"> (opens in a new tab)</span>'
 EXT = '<svg class="ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 
@@ -683,6 +697,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
     {buy_html(donate_url, "Support on Patreon" if donate_url else "Support the next release", "donate-soon", "event/donate")}
     {help_link(root)}
     {f'<p class="dc-cta"><a href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/home">{DISCORD_ICON}<span><strong>Join the Discord</strong> <span class="k">Talk with other fans of bfo.mantis</span></span><span aria-hidden="true" class="arr">→</span>{NT}</a></p>' if DISCORD else ""}
+    {follow_block("home")}
     <div class="cta-grid">{lounge_cta(root, "home")}{signup_html(signup_url, "home-su")}</div>
   </section>
 </main>
@@ -1628,6 +1643,11 @@ def build_links(releases, site, today, v, has_about, tagline):
     </div>
     <h2 class="lk-h">Listen on</h2>
     <ul class="lk-list">{listen}</ul>
+    <h2 class="lk-h">Follow</h2>
+    <ul class="lk-list">
+      <li><a class="lk lk-ext" href="{e(YT_CHANNEL)}" target="_blank" rel="noopener" data-gc="event/youtube/links"><span>YouTube</span>{EXT}{NT}</a></li>
+      <li><a class="lk lk-ext" href="{e(INSTAGRAM)}" target="_blank" rel="noopener" data-gc="event/instagram/links"><span>Instagram</span>{EXT}{NT}</a></li>
+    </ul>
     <h2 class="lk-h">bfo.mantis</h2>
     <ul class="lk-list">
       <li><a class="lk" href="{root}lounge/"><span>Members Lounge</span>{"" if MEMBERS else '<span class="soon-tag">Coming soon</span>'}</a></li>{f'<li><a class="lk" href="{e(PATREON)}" target="_blank" rel="noopener" data-gc="event/patreon/links"><span>Patreon</span>{NT}</a></li>' if PATREON else ""}
