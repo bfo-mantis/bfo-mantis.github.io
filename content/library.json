@@ -1,0 +1,13 @@
+{
+  "_note": "PUBLIC library (library/): essays and dissertations that are free for anyone to read on the site. Only pieces the user has explicitly approved for public, full-text publication go here; members-only Patreon dissertations NEVER go here (they stay in dissertations.json as titles/descriptions only). Fields: slug (URL library/<slug>/), title, description (meta/index line), file (markdown under content/library/, rendered verbatim), release (release-page slug that gets a 'Read the dissertation' link, or null). Rebuild with python3 tools/build_pages.py.",
+  "essays": [
+    {
+      "slug": "america-250",
+      "title": "America 250: Defying Convention to Achieve World-Class Lyrics Through Structure and Invitation",
+      "description": "A dissertation on how America 250 by bfo.mantis turns declarative, cumulative lyrics into an open invitation for the listener.",
+      "file": "library/america-250.md",
+      "release": "america-250",
+      "approved": "Zach, Nov 10, 2026: public, full text, free to read"
+    }
+  ]
+}
