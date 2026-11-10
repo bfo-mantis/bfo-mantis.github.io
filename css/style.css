@@ -653,6 +653,7 @@ html:not(.js) .lbl-wide{display:none}html:not(.js) .lbl-narrow{display:inline}
 .search-lbl{display:none}
 @media (min-width:1280px){.search-lbl{display:inline}}
 @media (max-width:1100px) and (min-width:961px){.topbar nav a,.nav-sub-btn{padding-left:9px;padding-right:9px;font-size:.9rem}.topbar nav{gap:0}}
+@media (max-width:1160px) and (min-width:961px){.topbar nav a,.nav-sub-btn{white-space:nowrap;padding-left:6px;padding-right:6px;font-size:.9rem}.topbar nav{gap:0}.topbar{gap:12px}}
 @media (max-width:960px){.search-btn{margin-left:auto;padding:9px 11px;order:2}.js .nav-toggle{order:3}.topbar{gap:10px}}
 .search-dlg{width:min(720px,calc(100vw - 32px));max-height:min(78vh,760px);margin:clamp(16px,9vh,96px) auto auto;padding:0;border:1px solid var(--line2);
   border-radius:18px;background:#101016;color:var(--text);box-shadow:0 40px 90px -30px rgba(0,0,0,.95),0 0 0 1px rgba(200,255,77,.06);overflow:hidden}

@@ -387,6 +387,7 @@ def topbar(root, has_about, home=False, current=None):
       </div>
     </div>
     <a href="{root}community/"{cur("community")}>Community</a>
+    <a href="{root}library/"{cur("library")}>Library</a>
     <a href="{root}lounge/"{cur("lounge")}>Lounge</a>
   </nav>
   <button type="button" class="search-btn" data-idx="{root}assets/data/search.json?v={SEARCH_V}" aria-haspopup="dialog" aria-keyshortcuts="/ Control+K Meta+K" aria-label="Search the site" title="Search (/ or Ctrl+K)">{SEARCH_ICON}<span class="search-lbl">Search</span></button>
@@ -1163,7 +1164,7 @@ def build_library(releases, site, v, has_about):
                  + (f'<p>{e(x["description"])}</p>' if x["description"] else "") + "</li>" for x in lib)
     page = f'''{hd}
 <body class="library-page">
-{topbar(root, has_about)}
+{topbar(root, has_about, current="library")}
 <main id="main">
   <section class="section library" aria-labelledby="lib-title">
     <a class="back" href="{root}"><span aria-hidden="true">←</span> Home</a>
@@ -1191,7 +1192,7 @@ def build_library(releases, site, v, has_about):
         rel_html = (f'<p class="essay-rel">On <a href="{root}release/{rel["slug"]}/">{e(rel["title"])}</a> by {ARTIST}</p>' if rel else "")
         page = f'''{hd}
 <body class="library-page essay-page">
-{topbar(root, has_about)}
+{topbar(root, has_about, current="library")}
 <main id="main">
   <article class="section essay" aria-labelledby="essay-title">
     <a class="back" href="{root}library/"><span aria-hidden="true">←</span> Library</a>
