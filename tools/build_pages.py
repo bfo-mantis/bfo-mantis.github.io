@@ -1082,12 +1082,133 @@ def dissertation_links(release_slugs=None):
 
 def diss_link_html(slug, title):
     hit = DISS_LINKS.get(slug)
-    if not hit: return ""
+    if not hit:
+        pub = LIB_LINKS.get(slug)   # public library essay (free to read on the site), only when there is no members-only link
+        if not pub: return ""
+        return (f'<p class="diss-link"><a class="btn-alt" href="../../library/{e(pub[0])}/" '
+                f'aria-label="{e(f"Read the dissertation: {pub[1]}")}" data-gc="event/library/release/{e(slug)}">Read the dissertation</a></p>')
     return (f'<p class="diss-link"><a class="btn-alt" href="{e(hit[1])}" target="_blank" rel="noopener" '
             f'aria-label="{e(f"{DISS_LINK_LABEL}: {title}, on Patreon (opens in a new tab)")}" '
             f'data-gc="event/dissertation/release/{e(slug)}">{DISS_LINK_LABEL}{NT}</a></p>')
 
 DISS_LINKS = {}   # set in main()
+
+# ---- Public library: essays approved for free, full-text publication on the site (content/library.json) ----
+LIB_LINKS = {}   # release slug -> (essay slug, title); set in main()
+
+def load_library():
+    fp = ROOT / "content" / "library.json"
+    out = []
+    for x in (json.loads(fp.read_text()).get("essays") or []) if fp.exists() else []:
+        sl, t, f = (x.get("slug") or "").strip(), (x.get("title") or "").strip(), (x.get("file") or "").strip()
+        if not (sl and t and f and re.match(r"^[a-z0-9-]+$", sl)): continue
+        out.append({"slug": sl, "title": t, "description": (x.get("description") or "").strip(),
+                    "file": ROOT / "content" / f, "release": x.get("release")})
+    return out
+
+def _md_inline(t):
+    t = e(t)
+    t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
+    t = re.sub(r"(?<![*\w])\*(?!\s)(.+?)(?<!\s)\*(?![*\w])", r"<em>\1</em>", t)
+    return t
+
+def md_to_html(src):
+    """Minimal, faithful markdown: # / ### headings, paragraphs, - bullet lists, **bold**, *italic*. No wording changes."""
+    out, para, items = [], [], []
+    def flush():
+        if para: out.append(f"<p>{_md_inline(' '.join(para))}</p>"); para.clear()
+        if items: out.append("<ul>" + "".join(f"<li>{_md_inline(i)}</li>" for i in items) + "</ul>"); items.clear()
+    h1 = None
+    for line in src.splitlines():
+        ln = line.strip()
+        if not ln: flush(); continue
+        m = re.match(r"^(#{1,6})\s+(.*)$", ln)
+        if m:
+            flush(); lvl = len(m.group(1))
+            if lvl == 1 and h1 is None: h1 = m.group(2); continue
+            out.append(f"<h{max(lvl, 2)}>{_md_inline(m.group(2))}</h{max(lvl, 2)}>"); continue
+        if ln.startswith("- "):
+            if para: flush()
+            items.append(ln[2:]); continue
+        if items: flush()
+        para.append(ln)
+    flush()
+    return h1, "\n      ".join(out)
+
+LIB_CSS = ('\n<style>.library .lib-list{list-style:none;padding:0;margin:0;display:grid;gap:18px;max-width:72ch}'
+           '.library .lib-item{border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px 20px}'
+           '.library .lib-item h2{margin:0 0 6px;font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.3}'
+           '.library .lib-item h2 a{color:var(--text);text-decoration:none}.library .lib-item h2 a:hover{color:var(--accent)}'
+           '.library .lib-item p{margin:0;color:#d4d3de}'
+           '.essay h1{font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.15;max-width:30ch;margin:0 0 14px}'
+           '.essay .essay-rel{margin:0 0 clamp(24px,4vw,38px);color:var(--muted)}.essay .essay-rel a{color:var(--accent)}'
+           '.essay-body{max-width:68ch;color:#d4d3de;line-height:1.7;font-size:1.04rem}'
+           '.essay-body p{margin:0 0 1.1em}.essay-body h2,.essay-body h3{color:var(--text);font-size:clamp(1.1rem,2.2vw,1.35rem);line-height:1.3;margin:1.8em 0 .6em}'
+           '.essay-body ul{margin:0 0 1.2em;padding-left:1.2em}.essay-body li{margin:0 0 .7em}.essay-body strong,.essay-body em{color:var(--text)}</style>')
+
+LIB_TITLE = "Library"
+LIB_LINE = "Essays and dissertations on bfo.mantis songs, free to read."
+
+def build_library(releases, site, v, has_about):
+    lib = load_library()
+    if not lib: return []
+    by_slug = {r["slug"]: r for r in releases}
+    ogi = site + "assets/img/og/home.jpg"; oga = f"{ARTIST} wordmark over a collage of cover art"
+    # index
+    root = "../"; url = site + "library/"
+    ld = {"@context": "https://schema.org", "@type": "CollectionPage", "@id": url + "#page", "name": f"{LIB_TITLE} — {ARTIST}", "url": url,
+          "description": LIB_LINE, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}, "about": music_group(site)}
+    hd = head(root, title=f"{LIB_TITLE} — {ARTIST}", desc=LIB_LINE, url=url, og_image=ogi, og_alt=oga, css_v=v["css"], jsonld=ld, extra=LIB_CSS)
+    li = "".join(f'<li class="lib-item"><h2><a href="{x["slug"]}/">{e(x["title"])}</a></h2>'
+                 + (f'<p>{e(x["description"])}</p>' if x["description"] else "") + "</li>" for x in lib)
+    page = f'''{hd}
+<body class="library-page">
+{topbar(root, has_about)}
+<main id="main">
+  <section class="section library" aria-labelledby="lib-title">
+    <a class="back" href="{root}"><span aria-hidden="true">←</span> Home</a>
+    <p class="eyebrow">Free to read</p>
+    <h1 id="lib-title">{LIB_TITLE}</h1>
+    <p class="lounge-intro">{e(LIB_LINE)}</p>
+    <ul class="lib-list">{li}</ul>
+  </section>
+</main>
+
+{footer(root, v["js"])}'''
+    (ROOT / "library").mkdir(exist_ok=True)
+    (ROOT / "library" / "index.html").write_text(page)
+    urls = [url]
+    for x in lib:
+        h1, body = md_to_html(x["file"].read_text())
+        root = "../../"; u = f"{site}library/{x['slug']}/"
+        rel = by_slug.get(x["release"])
+        desc = x["description"] or x["title"]
+        ld = {"@context": "https://schema.org", "@type": "Article", "@id": u + "#article", "headline": x["title"], "url": u,
+              "description": desc, "inLanguage": "en", "isAccessibleForFree": True, "author": music_group(site),
+              "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}}
+        hd = head(root, title=f"{x['title']} — {ARTIST}", desc=desc, url=u, og_image=ogi, og_alt=oga, og_type="article",
+                  css_v=v["css"], jsonld=ld, extra=LIB_CSS)
+        rel_html = (f'<p class="essay-rel">On <a href="{root}release/{rel["slug"]}/">{e(rel["title"])}</a> by {ARTIST}</p>' if rel else "")
+        page = f'''{hd}
+<body class="library-page essay-page">
+{topbar(root, has_about)}
+<main id="main">
+  <article class="section essay" aria-labelledby="essay-title">
+    <a class="back" href="{root}library/"><span aria-hidden="true">←</span> Library</a>
+    <p class="eyebrow">Library · Dissertation</p>
+    <h1 id="essay-title">{_md_inline(h1 or x["title"])}</h1>
+    {rel_html}
+    <div class="essay-body">
+      {body}
+    </div>
+  </article>
+</main>
+
+{footer(root, v["js"])}'''
+        (ROOT / "library" / x["slug"]).mkdir(parents=True, exist_ok=True)
+        (ROOT / "library" / x["slug"] / "index.html").write_text(page)
+        urls.append(u)
+    return urls
 
 def dissertations_html():
     ds = load_dissertations()
@@ -1943,7 +2064,7 @@ def build_help(site, v, has_about):
     (ROOT / "help").mkdir(exist_ok=True)
     (ROOT / "help" / "index.html").write_text(page)
 
-def build_misc(releases, site, v):
+def build_misc(releases, site, v, extra_urls=()):
     # old URL shim: release.html?r=<slug> -> release/<slug>/
     slugs = json.dumps([r["slug"] for r in releases])
     (ROOT / "release.html").write_text(f'''<!doctype html>
@@ -2004,7 +2125,7 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
 </html>
 ''')
     urls = ([site] + [f"{site}release/{r['slug']}/" for r in releases] + [site + "genres/", site + "lounge/", site + "press/", site + "links/", site + "community/", site + "help/", site + "start/", site + "merch/", site + "supporters/", site + "lounge/sample/"]
-            + [f"{site}genre/{genre_slug(g)}/" for g, _ in genre_groups(releases)])
+            + [f"{site}genre/{genre_slug(g)}/" for g, _ in genre_groups(releases)] + list(extra_urls))
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
                                       "".join(f"  <url><loc>{e(u)}</loc></url>\n" for u in urls) + "</urlset>\n")
     # Lyrics live only in assets/data/lyrics/*.json (fetched on demand by release pages); keep them out of search.
@@ -2074,8 +2195,9 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
         ns, ni = track_counts(releases)
         build_images(releases, f"{ns} songs · {ni} instrumentals")
     v = {"css": asset_hash("css/style.css"), "js": asset_hash("js/app.js")}
-    global SEARCH_V, DISCORD, MEMBERS, PATREON, LOUNGE_CTA, DISS_LINKS
+    global SEARCH_V, DISCORD, MEMBERS, PATREON, LOUNGE_CTA, DISS_LINKS, LIB_LINKS
     DISS_LINKS = dissertation_links({r["slug"] for r in releases})
+    LIB_LINKS = {x["release"]: (x["slug"], x["title"]) for x in load_library() if x.get("release") in {r["slug"] for r in releases}}
     DISCORD = data.get("discord_url")
     MEMBERS = data.get("members_url"); PATREON = data.get("donate_url")
     LOUNGE_CTA = LOUNGE_CTA_LIVE if MEMBERS else LOUNGE_CTA_SOON
@@ -2103,7 +2225,7 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     build_lounge_sample(releases, site, v, has_about)
     n_start = build_start(releases, site, v, has_about)
     n_merch = build_merch(releases, site, v, has_about, data.get("merch_url"), data.get("merch_items"))
-    build_misc(releases, site, v)
+    build_misc(releases, site, v, build_library(releases, site, v, has_about))
     print(f"search index: assets/data/search.json {idx_bytes / 1024:.0f} KB")
     print("genres:", ", ".join(f"{g} ({len(rs)} releases, {sum(len(r['tracks']) for r in rs)} tracks)" for g, rs in groups))
     print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + lounge + press + links + community + help + start ({n_start} essentials) + supporters ({n_sup} names) + merch ({n_merch} items, {"live" if data.get("merch_url") else "coming soon"}) (covers zip {zsize / 1e6:.1f} MB) + 404 + release.html shim | sitemap urls: {len(releases) + 11 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
