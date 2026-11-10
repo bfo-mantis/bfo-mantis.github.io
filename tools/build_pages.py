@@ -1081,16 +1081,22 @@ def dissertation_links(release_slugs=None):
             out[s] = ((x.get("title") or "").strip(), u)
     return out
 
+def lib_link_a(slug):
+    pub = LIB_LINKS.get(slug)   # public library essay (free to read on the site)
+    if not pub: return ""
+    return (f'<a class="btn-alt" href="../../library/{e(pub[0])}/" '
+            f'aria-label="{e(f"{pub[2]}: {pub[1]}")}" data-gc="event/library/release/{e(slug)}">{e(pub[2])}</a>')
+
 def diss_link_html(slug, title):
     hit = DISS_LINKS.get(slug)
     if not hit:
-        pub = LIB_LINKS.get(slug)   # public library essay (free to read on the site), only when there is no members-only link
-        if not pub: return ""
-        return (f'<p class="diss-link"><a class="btn-alt" href="../../library/{e(pub[0])}/" '
-                f'aria-label="{e(f"Read the dissertation: {pub[1]}")}" data-gc="event/library/release/{e(slug)}">Read the dissertation</a></p>')
+        pub = lib_link_a(slug)
+        return f'<p class="diss-link">{pub}</p>' if pub else ""
+    pub = lib_link_a(slug)
+    if pub: pub = " " + pub   # public thesis/essay link sits right after the members-only link
     return (f'<p class="diss-link"><a class="btn-alt" href="{e(hit[1])}" target="_blank" rel="noopener" '
             f'aria-label="{e(f"{DISS_LINK_LABEL}: {title}, on Patreon (opens in a new tab)")}" '
-            f'data-gc="event/dissertation/release/{e(slug)}">{DISS_LINK_LABEL}{NT}</a></p>')
+            f'data-gc="event/dissertation/release/{e(slug)}">{DISS_LINK_LABEL}{NT}</a>{pub}</p>')
 
 DISS_LINKS = {}   # set in main()
 
@@ -1104,7 +1110,10 @@ def load_library():
         sl, t, f = (x.get("slug") or "").strip(), (x.get("title") or "").strip(), (x.get("file") or "").strip()
         if not (sl and t and f and re.match(r"^[a-z0-9-]+$", sl)): continue
         out.append({"slug": sl, "title": t, "description": (x.get("description") or "").strip(),
-                    "file": ROOT / "content" / f, "release": x.get("release")})
+                    "file": ROOT / "content" / f, "release": x.get("release"),
+                    "release_label": (x.get("release_label") or "Read the dissertation").strip(), "omit": list(x.get("omit") or []),
+                    "members_link": x.get("members_link") if isinstance((x.get("members_link") or {}).get("url"), str)
+                                    and re.match(r"^https://(www\.)?patreon\.com/", x["members_link"]["url"]) else None})
     return out
 
 def _md_inline(t):
@@ -1180,7 +1189,14 @@ def build_library(releases, site, v, has_about):
     (ROOT / "library" / "index.html").write_text(page)
     urls = [url]
     for x in lib:
-        h1, body = md_to_html(x["file"].read_text())
+        src = x["file"].read_text()
+        for o in x["omit"]:
+            if o not in src: raise SystemExit(f"library.json: omit text for {x['slug']!r} not found in {x['file'].name}")
+            src = src.replace(o, "")
+        h1, body = md_to_html(src)
+        ml = x["members_link"]
+        ml_html = (f'\n    <p class="essay-more" style="margin:clamp(24px,4vw,36px) 0 0"><a class="btn-alt" href="{e(ml["url"])}" target="_blank" rel="noopener" '
+                   f'data-gc="event/dissertation/library/{e(x["slug"])}">{e(ml.get("label") or DISS_LINK_LABEL)}{NT}</a></p>') if ml else ""
         root = "../../"; u = f"{site}library/{x['slug']}/"
         rel = by_slug.get(x["release"])
         desc = x["description"] or x["title"]
@@ -1197,11 +1213,11 @@ def build_library(releases, site, v, has_about):
   <article class="section essay" aria-labelledby="essay-title">
     <a class="back" href="{root}library/"><span aria-hidden="true">←</span> Library</a>
     <p class="eyebrow">Library · Dissertation</p>
-    <h1 id="essay-title">{_md_inline(h1 or x["title"])}</h1>
+    <h1 id="essay-title">{e(x["title"])}</h1>
     {rel_html}
     <div class="essay-body">
       {body}
-    </div>
+    </div>{ml_html}
   </article>
 </main>
 
@@ -2198,7 +2214,7 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     v = {"css": asset_hash("css/style.css"), "js": asset_hash("js/app.js")}
     global SEARCH_V, DISCORD, MEMBERS, PATREON, LOUNGE_CTA, DISS_LINKS, LIB_LINKS
     DISS_LINKS = dissertation_links({r["slug"] for r in releases})
-    LIB_LINKS = {x["release"]: (x["slug"], x["title"]) for x in load_library() if x.get("release") in {r["slug"] for r in releases}}
+    LIB_LINKS = {x["release"]: (x["slug"], x["title"], x["release_label"]) for x in load_library() if x.get("release") in {r["slug"] for r in releases}}
     DISCORD = data.get("discord_url")
     MEMBERS = data.get("members_url"); PATREON = data.get("donate_url")
     LOUNGE_CTA = LOUNGE_CTA_LIVE if MEMBERS else LOUNGE_CTA_SOON
