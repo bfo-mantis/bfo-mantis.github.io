@@ -296,6 +296,17 @@
   "file": "assets/audio/previews/freeborn/01.mp3",
   "src_size": 80179330
  },
+ "QTAEZ2685295": {
+  "slug": "heat-in-the-bone",
+  "track": 1,
+  "title": "Heat in the Bone",
+  "start": 47.5,
+  "length": 30.0,
+  "track_length": 247.98,
+  "method": "override",
+  "file": "assets/audio/previews/heat-in-the-bone/01.mp3",
+  "src_size": 71419444
+ },
  "QT6HM2669331": {
   "slug": "one-man",
   "track": 1,

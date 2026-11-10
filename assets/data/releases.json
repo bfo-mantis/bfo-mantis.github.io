@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-11-09T09:33:07",
+ "generated": "2026-11-09T18:12:24",
  "donate_url": "https://www.patreon.com/c/bfo_mantis",
  "members_url": "https://www.patreon.com/c/bfo_mantis/membership",
  "email_signup_url": null,
@@ -36,6 +36,51 @@
  "press_contact": null,
  "goatcounter_code": "bfomantis",
  "releases": [
+  {
+   "slug": "heat-in-the-bone",
+   "title": "Heat in the Bone",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "single",
+   "release_date": "2026-11-12",
+   "release_date_display": "November 12, 2026",
+   "genre": "Electronic",
+   "label": "bfo.mantis Records",
+   "upc": "700088724255",
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/heat-in-the-bone",
+   "listen_source": "hyperfollow_fallback",
+   "store_links": [],
+   "cover": {
+    "jpg": "assets/covers/heat-in-the-bone-800.jpg",
+    "webp": "assets/covers/heat-in-the-bone-800.webp",
+    "jpg_small": "assets/covers/heat-in-the-bone-400.jpg",
+    "webp_small": "assets/covers/heat-in-the-bone-400.webp",
+    "width": 800,
+    "height": 800,
+    "original_size": [
+     3000,
+     3000
+    ]
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Heat in the Bone",
+     "isrc": "QTAEZ2685295",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": "assets/audio/previews/heat-in-the-bone/01.mp3"
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/heat-in-the-bone.json",
+   "download_url": null,
+   "blurb": "Heat in the Bone is a rescue told through the pulse. Smoke fills the hallway, the door at the end is welded shut, and the strong hands before her have already quit, with her child beyond it. A mother sets her shoulder where they broke the line. Her heart locks to the kick and the heat in the room meets the heat she knows, until the door rips open and she carries her child out into open air.",
+   "category": "vocal",
+   "mixed": false
+  },
   {
    "slug": "cake-on-the-plate",
    "title": "Cake on the Plate",
