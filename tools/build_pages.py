@@ -776,7 +776,7 @@ def build_release(releases, i, site, today, v, has_about):
                 tracks.append(f'<li id="t{t["n"]}">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<span class="tt">{e(t["title"])}{tag}{tyt(t)}</span></li>')
     preview_bar, first = preview_main(root, r)
     n = len(r["tracks"])
-    facts = (f'<li><span>Released</span> <span class="js-upcoming"{hid_up}>Out </span><time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time></li>'
+    facts = (f'<li><span><span class="js-released"{hid_rel}>Released</span><span class="js-upcoming"{hid_up}>Release date:</span></span> <time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time></li>'
              + (f'<li><span>Genre</span> {genre_link(root, r["genre"])}</li>' if r.get("genre") else "")
              + f'<li>{n} track{"s" if n != 1 else ""}</li>'
              + ('<li class="fact-instr">Instrumental</li>' if r.get("category") == "instrumental" else "")
