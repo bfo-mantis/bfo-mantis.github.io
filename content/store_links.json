@@ -344,6 +344,10 @@
   {
    "service": "Amazon Music",
    "url": "https://www.amazon.com/gp/product/B0HFMGRP4R/?tag=distrokid06-20"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1056870832"
   }
  ],
  "spellbound-volume-3": [
@@ -553,11 +557,11 @@
   },
   {
    "service": "Apple Music",
-   "url": "https://music.apple.com/us/album/evil-eye-contrasts-single/6791078539?uo=4&app=music&at=1001lry3&ct=dashboard"
+   "url": "https://music.apple.com/us/album/evil-eye-contracts-single/6791078539?uo=4&app=music&at=1001lry3&ct=dashboard"
   },
   {
    "service": "iTunes",
-   "url": "https://music.apple.com/us/album/evil-eye-contrasts-single/6791078539?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+   "url": "https://music.apple.com/us/album/evil-eye-contracts-single/6791078539?uo=4&app=itunes&at=1001lry3&ct=dashboard"
   },
   {
    "service": "Deezer",

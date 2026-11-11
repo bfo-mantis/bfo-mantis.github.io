@@ -719,9 +719,16 @@ html.search-open{overflow:hidden}
 .mc .buy{margin-top:auto}
 .merch-note{margin-top:18px}
 /* per-track YouTube Music / YouTube links */
-.tt .tyt{display:inline-flex;gap:6px;margin-left:10px;vertical-align:middle}
-.tt .tyt a{font-size:.72rem;line-height:1;padding:3px 7px;border:1px solid var(--line);border-radius:999px;color:inherit;opacity:.75;text-decoration:none;white-space:nowrap}
-.tt .tyt a:hover,.tt .tyt a:focus-visible{opacity:1;border-color:currentColor}
+.tt .tyt{display:inline-flex;flex-wrap:wrap;gap:6px;margin-left:10px;vertical-align:middle;max-width:100%}
+.tt .tyt a,.tlinks .tyt a{font-size:.72rem;line-height:1;padding:3px 7px;border:1px solid var(--line);border-radius:999px;color:inherit;opacity:.75;text-decoration:none;white-space:nowrap}
+.tt .tyt a:hover,.tt .tyt a:focus-visible,.tlinks .tyt a:hover,.tlinks .tyt a:focus-visible{opacity:1;border-color:currentColor}
+/* lyrics rows: the links sit after the disclosure (outside <summary>), on their own line under the title */
+.tracks li>.tlinks{grid-column:3;min-width:0;padding:0 4px 12px 0;margin-top:-6px}
+.tlinks .tyt{display:flex;flex-wrap:wrap;gap:6px}
+.tracks summary .tt{min-width:0;overflow-wrap:anywhere}
+.tracks li>.tt,.tcol .tt{min-width:0;overflow-wrap:anywhere}
+.cta-grid>:only-child{grid-column:1/-1;max-width:640px}
+.contact-acts{margin:14px 0 10px}
 /* ---------- merch collections (content/merch.json) ---------- */
 .section.merch-col{padding-top:clamp(18px,3vw,32px)}
 .section .mcol-t{margin:0;font:800 clamp(1.5rem,4.5vw,2.2rem)/1.05 var(--display);letter-spacing:-.03em}
