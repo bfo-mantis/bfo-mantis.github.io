@@ -407,9 +407,9 @@ def main():
         x["download_url"] = cfg["download_url_by_slug"].get(x["slug"])
         x["blurb"] = rel_blurbs.get(x["slug"])
         for t in x["tracks"]:
-            # singles show their song blurb as the release blurb (not repeated on the track row)
-            t["blurb"] = trk_blurbs.get(t["isrc"]) if x["type"] == "album" else None
-            # singles: the intro is the release blurb, but the in-depth part still shows on the track as "More about this track"
+            # Per-track short blurb (approved text from content/blurbs.json). For a single, fall back
+            # to the release blurb when the track entry has none — they are the same song.
+            t["blurb"] = trk_blurbs.get(t["isrc"]) or (rel_blurbs.get(x["slug"]) if x["type"] == "single" else None)
             t["blurb_in_depth"] = trk_depth.get(t["isrc"])
         for t in x["tracks"]:   # 30 s previews made by tools/make_previews.py (only if the clip exists)
             pv = f"assets/audio/previews/{x['slug']}/{t['n']:02d}.mp3"
@@ -431,7 +431,7 @@ def main():
     data = {"artist": ARTIST, "generated": datetime.now().isoformat(timespec="seconds"),
             "donate_url": cfg["donate_url"], "members_url": cfg["members_url"], "email_signup_url": cfg["email_signup_url"], "community_url": cfg["community_url"], "discord_url": cfg["discord_url"], "merch_url": cfg["merch_url"], "merch_items": cfg["merch_items"], "press_contact": cfg["press_contact"],
             "goatcounter_code": cfg["goatcounter_code"], "releases": releases}
-    print("blurbs: releases", sum(1 for x in releases if x["blurb"]), "| album tracks", sum(1 for x in releases for t in x["tracks"] if t["blurb"]), "| in-depth", sum(1 for x in releases for t in x["tracks"] if t.get("blurb_in_depth")),
+    print("blurbs: releases", sum(1 for x in releases if x["blurb"]), "| tracks", sum(1 for x in releases for t in x["tracks"] if t["blurb"]), "| in-depth", sum(1 for x in releases for t in x["tracks"] if t.get("blurb_in_depth")),
           "| releases without one:", [x["slug"] for x in releases if not x["blurb"]] or "none")
     print("downloads enabled:", sum(1 for x in releases if x["download_url"]), "| donate enabled:", bool(cfg["donate_url"]), "| members (Join) enabled:", bool(cfg["members_url"]), "| email sign-up enabled:", bool(cfg["email_signup_url"]), "| community enabled:", bool(cfg["community_url"]), "| discord enabled:", bool(cfg["discord_url"]), "| merch enabled:", bool(cfg["merch_url"]),
           "| analytics:", f'GoatCounter ({cfg["goatcounter_code"]})' if cfg["goatcounter_code"] else "off")
