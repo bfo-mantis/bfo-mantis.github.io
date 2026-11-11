@@ -890,3 +890,14 @@ html.search-open{overflow:hidden}
 .press-mini{font-size:.82rem;color:var(--muted);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px;margin-left:12px;align-self:center}
 .press-mini:hover{color:var(--accent)}
 .pk-press{white-space:nowrap}
+
+/* ---------- milestones strip (home + press kit): verifiable facts only ---------- */
+.milestones{max-width:var(--maxw);margin:18px auto 0;padding:0 var(--pad);display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.press-page .milestones{padding:0;margin:0}
+.ms-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.ms-list li{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 6px;padding:8px 14px;border:1px solid var(--line2);border-radius:999px;background:var(--card);font-size:.88rem}
+.ms-list strong{font:800 1rem/1 var(--display);color:var(--accent)}
+.ms-list span{color:var(--text)}
+.ms-list small{flex-basis:100%;color:var(--muted);font-size:.72rem;line-height:1.2}
+.ms-more{font-size:.85rem;color:var(--muted)}
+.ms-more:hover{color:var(--accent)}

@@ -746,6 +746,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
       </a>
     </div>
   </section>
+  {milestones_html(root, releases, "home")}
   <p class="start-cta"><a href="start/" data-gc="event/start/home"><span class="k">New here?</span> <strong>Start here</strong> with ten tracks that make the case<span aria-hidden="true"> →</span></a></p>
 {featured}{listeners_strip}
 {cat_sections}{about_sec}
@@ -1609,6 +1610,8 @@ def build_press(releases, site, v, has_about, about, tagline, press_contact):
       <a class="btn-alt" href="{root}{zip_path}" download>Cover art (ZIP, {zip_size / 1e6:.1f} MB)</a>
     </div>
   </section>
+
+  <div class="section">{milestones_html(root, releases, "press")}</div>
 
   <section class="section" aria-labelledby="pk-bio">
     <div class="section-head"><h2 id="pk-bio">Bio</h2></div>
@@ -2545,6 +2548,26 @@ def build_release_presses(releases, site, today, v, has_about, press_contact):
     missing = [r["slug"] for r in releases if not press_pitch(r, notes)[0]]
     if missing: print("press pages without a pitch line:", ", ".join(missing))
     return urls
+
+def milestones_html(root, releases, where):
+    """Small 'visible proof' strip (home + press kit). Only facts the site can verify from its own data:
+    release/track counts (the catalog), first release date, and the country count from content/community_countries.json
+    (DistroKid YouTube stats). No placements, quotes or playlist adds are shown until one has a source on file."""
+    ntr = sum(len(r["tracks"]) for r in releases)
+    first = min(releases, key=lambda r: r["release_date"])["release_date"]
+    d = date.fromisoformat(first)
+    items = [(str(len(releases)), "releases", None), (str(ntr), "tracks", None)]
+    cp = ROOT / "content" / "community_countries.json"
+    if cp.exists():
+        cd = json.loads(cp.read_text()); n = len(cd.get("countries") or [])
+        if n:
+            rd = cd.get("report_date")
+            note = "YouTube listening, last 12 months" + (f" (DistroKid stats, {date.fromisoformat(rd).strftime('%b')} {date.fromisoformat(rd).day}, {rd[:4]})" if rd else "")
+            items.append((str(n), "countries listening", note))
+    items.append((d.strftime("%b ") + str(d.day) + ", " + str(d.year), "first release", None))
+    lis = "".join(f'<li><strong>{e(a)}</strong> <span>{e(b)}</span>{f"<small>{e(n)}</small>" if n else ""}</li>' for a, b, n in items)
+    link = f' <a class="ms-more" href="{root}community/">Where people listen</a>' if where == "home" else ""
+    return f'<section class="milestones" aria-label="Milestones"><ul class="ms-list">{lis}</ul>{link}</section>'
 
 def build_releases_index(releases, site, today, v, has_about, songs=()):
     """release/: the whole discography on one shareable page (Songs and Instrumentals, albums and singles, newest first)."""
