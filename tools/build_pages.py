@@ -898,7 +898,7 @@ def build_release(releases, i, site, today, v, has_about):
       <div class="listen">{listen}{buy_html(r.get("download_url"), "Download", "dl-soon", f"event/download/{r['slug']}")}
         {merch_teaser(root, r["slug"])}
         {f'<p class="lounge-note">{e(LOUNGE_CTA)} <a href="{e(MEMBERS)}" target="_blank" rel="noopener" data-gc="event/join/release">Join on Patreon<span aria-hidden="true"> →</span>{NT}</a> <a class="ln-more" href="{root}lounge/">About the Lounge</a></p>' if MEMBERS else f'<p class="lounge-note">{e(LOUNGE_CTA)} <a href="{root}lounge/">Join the Lounge<span aria-hidden="true"> →</span></a></p>'}
-        {share_html(url, f"{r['title']} by {ARTIST}", r["slug"], "Share", "share-sm")}</div>
+        {share_html(url, f"{r['title']} by {ARTIST}", r["slug"], "Share", "share-sm")}<a class="press-mini" href="{root}press/{r["slug"]}/">Press info</a></div>
       <h2 class="tracks-title">Tracklist</h2>
       <ol class="tracks">{"".join(tracks)}</ol>
     </div>
@@ -1583,7 +1583,7 @@ def build_press(releases, site, v, has_about, about, tagline, press_contact):
         f'<td>{"Album" if r["type"] == "album" else "Single"}{f" · {len(r["tracks"])} tracks" if r["type"] == "album" else ""}</td>'
         f'<td><time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time></td>'
         f'<td>{genre_link(root, r["genre"]) if r.get("genre") else ""}</td>'
-        f'<td>' + (f'<a class="pk-dl" href="{root}{r["cover"]["jpg"]}" download="{r["slug"]}-cover-800.jpg">JPG 800px<span class="sr-only"> cover art for {e(r["title"])}</span></a>' if r.get("cover") else "") + '</td></tr>'
+        f'<td>' + (f'<a class="pk-dl" href="{root}{r["cover"]["jpg"]}" download="{r["slug"]}-cover-800.jpg">JPG 800px<span class="sr-only"> cover art for {e(r["title"])}</span></a>' if r.get("cover") else "") + '</td>' + f'<td><a class="pk-press" href="{root}press/{r["slug"]}/">Press info<span class="sr-only"> for {e(r["title"])}</span></a></td></tr>'
         for r in releases)
     contact = contact_html(root, press_contact, "press")
     bio = f'<div class="about-body">{about}</div>' if about else ""
@@ -1630,7 +1630,7 @@ def build_press(releases, site, v, has_about, about, tagline, press_contact):
     <div class="section-head"><h2 id="pk-releases">Releases &amp; cover art</h2>
       <a class="btn-alt pk-zip" href="{root}{zip_path}" download>Download all covers (ZIP, {zip_size / 1e6:.1f} MB)</a></div>
     <div class="pk-table-wrap"><table class="pk-table">
-      <thead><tr><th scope="col"><span class="sr-only">Cover</span></th><th scope="col">Title</th><th scope="col">Type</th><th scope="col">Released</th><th scope="col">Genre</th><th scope="col">Cover art</th></tr></thead>
+      <thead><tr><th scope="col"><span class="sr-only">Cover</span></th><th scope="col">Title</th><th scope="col">Type</th><th scope="col">Released</th><th scope="col">Genre</th><th scope="col">Cover art</th><th scope="col">Press page</th></tr></thead>
       <tbody>{rows}</tbody>
     </table></div>
     <p class="art-copy">Artwork &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</p>
@@ -2448,6 +2448,104 @@ def presave_event(r, up):
     """GoatCounter event for the HyperFollow button: event/presave/... while upcoming, event/store/hyperfollow/... once out."""
     return f'event/presave/hyperfollow/{r["slug"]}' if up else f'event/store/hyperfollow/{r["slug"]}'
 
+# ---- Release press pages (press/<slug>/) ----
+def load_press_notes():
+    fp = ROOT / "content" / "press_notes.json"
+    return (json.loads(fp.read_text()).get("releases") or {}) if fp.exists() else {}
+
+def first_sentence(s):
+    s = re.sub(r"\s+", " ", s or "").strip()
+    m = re.match(r"(.+?[.!?])(?=\s+[A-Z0-9\"'“‘]|$)", s)
+    return m.group(1) if m else s
+
+def press_pitch(r, notes):
+    n = notes.get(r["slug"]) or {}
+    if n.get("pitch_line"): return n["pitch_line"], "promo"
+    if r.get("blurb"): return first_sentence(r["blurb"]), "blurb"
+    return None, None
+
+def build_release_press(r, site, today, v, has_about, press_contact, notes):
+    root = "../../"; url = f"{site}press/{r['slug']}/"
+    up, hid_up, hid_rel = updown(r, today)
+    kind = "Album" if r["type"] == "album" else "Single"
+    pitch, _src = press_pitch(r, notes)
+    ffo = (notes.get(r["slug"]) or {}).get("for_fans_of")
+    desc = f"Press info for {r['title']} by {ARTIST} ({kind.lower()}, {r['release_date_display']}): " + (pitch or "release facts, cover art download, listening link and contact.")
+    og_img = site + f"assets/img/og/{r['slug']}.jpg" if r.get("cover") else site + "assets/img/og/home.jpg"
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"{r['title']}: press info — {ARTIST}", "url": url,
+          "description": trim_desc(desc), "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site},
+          "about": {"@type": "MusicAlbum", "@id": f"{site}release/{r['slug']}/#release", "name": r["title"], "url": f"{site}release/{r['slug']}/",
+                    "datePublished": r["release_date"], "byArtist": {"@type": "MusicGroup", "name": ARTIST}}}
+    hd = head(root, title=f"{r['title']}: press info — {ARTIST}", desc=desc, url=url, og_image=og_img,
+              og_alt=f"Cover art for {r['title']} by {ARTIST}", css_v=v["css"], jsonld=ld)
+    stores = r.get("store_links") or []
+    if stores:
+        listen = ('<ul class="pk-stores">' + "".join(f'<li><a class="store" href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["name"])}{NT}</a></li>' for x in stores) + "</ul>")
+    elif r.get("listen_url"):
+        listen = (f'<p><a class="btn" href="{e(r["listen_url"])}" target="_blank" rel="noopener" data-gc="{presave_event(r, up)}">'
+                  f'<span class="js-released"{hid_rel}>Listen</span><span class="js-upcoming"{hid_up}>Pre-save / listen</span>{NT}</a></p>')
+    else:
+        listen = ""
+    cover = (f'<a class="btn-alt" href="{root}{r["cover"]["jpg"]}" download="{r["slug"]}-cover-800.jpg" data-gc="event/press/cover/{r["slug"]}">'
+             f'Download cover art (JPG, 800 × 800)</a>') if r.get("cover") else ""
+    facts = (f'<div><dt><span class="js-released"{hid_rel}>Released</span><span class="js-upcoming"{hid_up}>Release date</span></dt><dd><time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time></dd></div>'
+             f'<div><dt>Type</dt><dd>{kind}{f" · {len(r["tracks"])} tracks" if r["type"] == "album" else ""}</dd></div>'
+             + (f'<div><dt>Genre</dt><dd>{genre_link(root, r["genre"])}</dd></div>' if r.get("genre") else "")
+             + (f'<div><dt>Label</dt><dd>{e(r["label"])}</dd></div>' if r.get("label") else "")
+             + (f'<div><dt>UPC</dt><dd>{e(r["upc"])}</dd></div>' if r.get("upc") else ""))
+    page = f'''{hd}
+<body class="press-page release-press">
+{topbar(root, has_about, current="press")}
+<main id="main">
+  <section class="section press" aria-labelledby="rp-title">
+    <a class="back" href="{root}press/"><span aria-hidden="true">←</span> Press kit</a>
+    <p class="eyebrow">Press info · {kind}<span class="js-upcoming"{hid_up}> · Upcoming</span></p>
+    <div class="rp-head">
+      <div class="rp-cover">{picture(root, r, "(max-width: 600px) 60vw, 260px", eager=True, alt=f"Cover art for {r['title']} by {ARTIST}")}</div>
+      <div class="rp-body">
+        <h1 id="rp-title">{e(r["title"])}</h1>
+        <p class="by">{ARTIST}</p>
+        {f'<p class="pk-tagline rp-pitch">{e(pitch)}</p>' if pitch else ""}
+        {f'<p class="rp-ffo"><strong>For fans of:</strong> {e(ffo)}</p>' if ffo else ""}
+        <dl class="pk-facts rp-facts">{facts}</dl>
+        <div class="pk-downloads">{cover}<a class="btn-alt" href="{root}release/{r["slug"]}/">Release page</a></div>
+      </div>
+    </div>
+    <p class="art-copy">Artwork &copy; {r["release_date"][:4]} {LABEL_NAME}. Provided for press and editorial use.</p>
+  </section>
+  {f"""<section class="section" aria-labelledby="rp-about">
+    <div class="section-head"><h2 id="rp-about">About the release</h2></div>
+    <p class="blurb">{e(r["blurb"])}</p>
+  </section>""" if r.get("blurb") else ""}
+  <section class="section" aria-labelledby="rp-listen">
+    <div class="section-head"><h2 id="rp-listen">Listen</h2></div>
+    {listen}
+  </section>
+  <section class="section" aria-labelledby="rp-contact">
+    <div class="section-head"><h2 id="rp-contact">Contact</h2></div>
+    {contact_html(root, press_contact, "press-" + r["slug"])}
+  </section>
+</main>
+
+{footer(root, v["js"])}'''
+    d = ROOT / "press" / r["slug"]; d.mkdir(parents=True, exist_ok=True)
+    (d / "index.html").write_text(page)
+    return url
+
+def build_release_presses(releases, site, today, v, has_about, press_contact):
+    notes = load_press_notes()
+    keep = {r["slug"] for r in releases}
+    pd = ROOT / "press"
+    if pd.exists():
+        for sub in pd.iterdir():
+            if sub.is_dir() and sub.name not in keep:
+                for f in sub.iterdir(): f.unlink()
+                sub.rmdir()
+    urls = [build_release_press(r, site, today, v, has_about, press_contact, notes) for r in releases]
+    missing = [r["slug"] for r in releases if not press_pitch(r, notes)[0]]
+    if missing: print("press pages without a pitch line:", ", ".join(missing))
+    return urls
+
 def build_releases_index(releases, site, today, v, has_about, songs=()):
     """release/: the whole discography on one shareable page (Songs and Instrumentals, albums and singles, newest first)."""
     root = "../"; url = site + "release/"
@@ -2706,11 +2804,12 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     n_start = build_start(releases, site, v, has_about)
     n_merch = build_merch(releases, site, v, has_about, data.get("merch_url"), data.get("merch_items"))
     song_urls = build_songs(releases, songs, site, today, v, has_about)
+    press_urls = build_release_presses(releases, site, today, v, has_about, data.get("press_contact"))
     extra = [build_releases_index(releases, site, today, v, has_about, songs), build_contact(site, v, has_about, data.get("press_contact")),
              build_about(releases, site, v, has_about, about, tagline)]
     build_genre_index(site)
     n_feed = build_feed(releases, site, today)
-    build_misc(releases, site, v, [u for u in extra if u] + build_library(releases, site, v, has_about) + song_urls)
+    build_misc(releases, site, v, [u for u in extra if u] + build_library(releases, site, v, has_about) + song_urls + press_urls)
     print(f"search index: assets/data/search.json {idx_bytes / 1024:.0f} KB")
     print("genres:", ", ".join(f"{g} ({len(rs)} releases, {sum(len(r['tracks']) for r in rs)} tracks)" for g, rs in groups))
     print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + lounge + press + links + community + help + start ({n_start} essentials) + supporters ({n_sup} names) + merch ({n_merch} items, {"live" if data.get("merch_url") else "coming soon"}) (covers zip {zsize / 1e6:.1f} MB) + 404 + release.html shim | sitemap urls: {len(releases) + 11 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")

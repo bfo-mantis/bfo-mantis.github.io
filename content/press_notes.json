@@ -1,0 +1,10 @@
+{
+  "_note": "Per-release press-page copy (press/<slug>/). ONLY text taken verbatim from ProMo's approved campaign files on the box, never written fresh. pitch_line: one line for curators/press; for_fans_of: comparable artists or rooms, shown as 'For fans of'. A release missing here uses the first sentence of its site blurb as the pitch line and shows no 'For fans of'. source: where the text comes from.",
+  "releases": {
+    "sacred-steel": {
+      "pitch_line": "Acoustic intimacy that opens into a cathedral lift — a testimony anthem for mothers who build the home under God.",
+      "for_fans_of": null,
+      "source": "/workspace/music-promo/sacred-steel-asset-pack.OFFICIAL-LOCKED-20261025.md (ProMo asset pack, approved & locked by the user 2026-10-25 5:51 PM MST), YouTube description body line 1. The lane card names 'comparable rooms, not soundalike fame claims' (faith-family anthem mixes etc.), not artists, so no 'For fans of' line."
+    }
+  }
+}
