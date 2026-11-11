@@ -878,3 +878,15 @@ html.search-open{overflow:hidden}
 .tracks li>.tlinks{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .songlink{display:inline-block;font-size:.72rem;line-height:1;padding:3px 8px;border:1px solid var(--line2);border-radius:999px;text-decoration:none;margin-right:6px;color:var(--text)}
 .song-pages-sec{max-width:var(--maxw);margin:0 auto}
+
+/* ---------- release press pages (press/<slug>/) ---------- */
+.rp-head{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(18px,3vw,36px);align-items:start;margin-top:8px}
+.rp-cover img{border-radius:var(--radius);width:100%}
+.rp-head h1{font:800 clamp(2rem,5vw,3.4rem)/1 var(--display);margin:0 0 6px;letter-spacing:-.03em;overflow-wrap:anywhere}
+.rp-pitch{margin:14px 0 10px}
+.rp-ffo{margin:0 0 14px;color:#d4d3de}
+.rp-facts{margin:16px 0}
+@media (max-width:600px){.rp-head{grid-template-columns:1fr}.rp-cover{max-width:60vw}}
+.press-mini{font-size:.82rem;color:var(--muted);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px;margin-left:12px;align-self:center}
+.press-mini:hover{color:var(--accent)}
+.pk-press{white-space:nowrap}
