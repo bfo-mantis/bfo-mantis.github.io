@@ -2334,12 +2334,14 @@ def build_song(sp, songs, site, today, v, has_about):
                f'<span class="vis-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>'
                f'<span class="vis-cap">Watch {e(t["title"])} on YouTube{NT}</span></a>\n      </section>')
     if t.get("blurb"):
-        story_html = f'<p class="blurb">{e(t["blurb"])}</p>' + (f'<p class="blurb">{e(t["blurb_in_depth"])}</p>' if t.get("blurb_in_depth") else "")
+        story_html = f'<p class="blurb">{e(t["blurb"])}</p>'
     elif r.get("blurb"):
         story_html = (f'<p class="blurb">{e(r["blurb"])}</p>' if single else
                       f'<p class="story-k">From the album <a href="{root}release/{r["slug"]}/">{e(r["title"])}</a></p><p class="blurb">{e(r["blurb"])}</p>')
     else:
         story_html = ""
+    if t.get("blurb_in_depth"):   # same "More about this track" block as the release tracklist (shared .tdepth style)
+        story_html += f'<div class="tdepth"><p class="tdepth-k">More about this track</p><p>{e(t["blurb_in_depth"])}</p></div>'
     diss = diss_link_html(r["slug"], r["title"])
     n = len(r["tracks"])
     track_of = "" if single else f" · track {t['n']} of {n}"
