@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-11-09T19:19:51",
+ "generated": "2026-11-10T20:21:25",
  "donate_url": "https://www.patreon.com/c/bfo_mantis",
  "members_url": "https://www.patreon.com/c/bfo_mantis/membership",
  "email_signup_url": null,
@@ -2309,6 +2309,10 @@
     {
      "name": "Amazon Music",
      "url": "https://www.amazon.com/gp/product/B0HFMGRP4R/?tag=distrokid06-20"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1056870832"
     }
    ],
    "cover": {
@@ -3451,7 +3455,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/evil-eye-contrasts-single/6791078539?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/evil-eye-contracts-single/6791078539?uo=4&app=music&at=1001lry3&ct=dashboard"
     },
     {
      "name": "YouTube Music",
@@ -3459,7 +3463,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/evil-eye-contrasts-single/6791078539?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/evil-eye-contracts-single/6791078539?uo=4&app=itunes&at=1001lry3&ct=dashboard"
     },
     {
      "name": "Deezer",

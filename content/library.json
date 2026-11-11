@@ -1,5 +1,5 @@
 {
-  "_note": "PUBLIC library (library/): essays and dissertations that are free for anyone to read on the site. Only pieces the user has explicitly approved for public, full-text publication go here; members-only Patreon dissertations NEVER go here (they stay in dissertations.json as titles/descriptions only). Fields: slug (URL library/<slug>/), title, description (meta/index line), file (markdown under content/library/, rendered verbatim), release (release-page slug that gets a 'Read the dissertation' link, or null). Rebuild with python3 tools/build_pages.py. Optional: release_label (link text on the release page, default 'Read the dissertation'; shown after any members-only link), omit (exact source paragraphs that are notes, not essay text, left out of the page), members_link {label, url} (shown at the end of the essay).",
+  "_note": "PUBLIC library (library/): essays and dissertations that are free for anyone to read on the site. Only pieces the user has explicitly approved for public, full-text publication go here; members-only Patreon dissertations NEVER go here (they stay in dissertations.json as titles/descriptions only). Fields: slug (URL library/<slug>/), title, description (meta/index line), file (markdown under content/library/, rendered verbatim), release (release-page slug that gets a 'Read the dissertation' link, or null). Rebuild with python3 tools/build_pages.py. Optional: release_label (link text on the release page, default 'Read the dissertation'; shown after any members-only link), omit (exact source paragraphs that are notes, not essay text, left out of the page), members_link {label, url} (shown at the end of the essay). short_title (optional): a shorter name for the browser tab/search title, '<short_title> — Library — bfo.mantis'; the page heading keeps the full title.",
   "essays": [
     {
       "slug": "america-250",
@@ -7,7 +7,8 @@
       "description": "A dissertation on how America 250 by bfo.mantis turns declarative, cumulative lyrics into an open invitation for the listener.",
       "file": "library/america-250.md",
       "release": "america-250",
-      "approved": "Zach, Nov 10, 2026: public, full text, free to read"
+      "approved": "Zach, Nov 10, 2026: public, full text, free to read",
+      "short_title": "America 250 dissertation"
     },
     {
       "slug": "heat-in-the-bone-thesis",
@@ -20,7 +21,8 @@
         "label": "Read the full dissertation (members only)",
         "url": "https://www.patreon.com/bfo_mantis/posts/dissertation-on-174892128"
       },
-      "approved": "Zach, Nov 10, 2026: thesis public, full text, free to read; dissertation stays members-only"
+      "approved": "Zach, Nov 10, 2026: thesis public, full text, free to read; dissertation stays members-only",
+      "short_title": "Heat in the Bone thesis"
     }
   ]
 }
