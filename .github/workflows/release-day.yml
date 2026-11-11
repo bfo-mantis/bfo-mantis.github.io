@@ -40,8 +40,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install Pillow
-        run: pip install --quiet pillow
+      - name: Install build dependencies (same versions as the local build, so generated files match)
+        run: pip install --quiet "pillow==13.0.0" "fonttools==4.65.0"
 
       - name: Validate override
         if: env.RELEASE_DATE_OVERRIDE != ''
