@@ -1,0 +1,99 @@
+# Release-day rebuild: at midnight MST (07:00 UTC) the static pages are rebuilt for the new day, so a release whose date
+# has arrived switches to release mode (Pre-save -> Listen/store links, "Released" label, both homepage cards, RSS item).
+# The switch is purely date-driven (tools/build_pages.py reads assets/data/releases.json, already in the repo), so no
+# /workspace inputs and no secrets are needed: only GITHUB_TOKEN. It commits and pushes only if the output changed.
+# It never posts anywhere (Discord is announced by a separate job that first runs tools/release_day_check.py).
+#
+# Dry run: Actions > Release-day rebuild > Run workflow, with release_date_override=YYYY-MM-DD. That builds as if it
+# were that date, prints tools/release_day_check.py --local, uploads the built pages as an artifact, and never pushes.
+name: Release-day rebuild
+
+on:
+  schedule:
+    - cron: "0 7 * * *"    # 00:00 America/Phoenix (MST, no DST)
+    - cron: "45 7 * * *"   # backup run (scheduled runs can be delayed or dropped); a no-op if nothing changed
+  workflow_dispatch:
+    inputs:
+      release_date_override:
+        description: "Dry run only: build as if today were this date (YYYY-MM-DD). Never pushes. Leave empty for a real run."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: release-day-rebuild
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      RELEASE_DATE_OVERRIDE: ${{ github.event_name == 'workflow_dispatch' && inputs.release_date_override || '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Pillow
+        run: pip install --quiet pillow
+
+      - name: Validate override
+        if: env.RELEASE_DATE_OVERRIDE != ''
+        run: |
+          python3 -c "import datetime,os; datetime.date.fromisoformat(os.environ['RELEASE_DATE_OVERRIDE'])"
+          echo "DRY RUN as if today were $RELEASE_DATE_OVERRIDE (nothing will be pushed)"
+
+      - name: Build pages (date-driven release mode)
+        run: |
+          echo "Site date: ${RELEASE_DATE_OVERRIDE:-$(TZ=America/Phoenix date +%F)} (America/Phoenix)"
+          python3 tools/build_pages.py --skip-images
+
+      - name: Show changes
+        run: |
+          git status --porcelain
+          git diff --stat
+
+      - name: Release-day check (local build)
+        run: python3 tools/release_day_check.py --local --date "${RELEASE_DATE_OVERRIDE:-$(TZ=America/Phoenix date +%F)}" || true
+
+      - name: Dry-run evidence
+        if: env.RELEASE_DATE_OVERRIDE != ''
+        run: |
+          mkdir -p dry-run
+          git diff > dry-run/changes.diff || true
+          cp index.html feed.xml dry-run/
+          for s in $(python3 -c "import json,os; print(' '.join(r['slug'] for r in json.load(open('assets/data/releases.json'))['releases'] if r['release_date']==os.environ['RELEASE_DATE_OVERRIDE']))"); do
+            mkdir -p "dry-run/release/$s"; cp "release/$s/index.html" "dry-run/release/$s/"
+          done
+          python3 tools/release_day_check.py --local --date "$RELEASE_DATE_OVERRIDE" > dry-run/release_day_check.json || true
+
+      - name: Upload dry-run artifact
+        if: env.RELEASE_DATE_OVERRIDE != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-day-dry-run-${{ env.RELEASE_DATE_OVERRIDE }}
+          path: dry-run/
+
+      - name: Commit and push (real runs only, only if the output changed)
+        if: env.RELEASE_DATE_OVERRIDE == ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then echo "No changes; nothing to commit."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Release-day rebuild for $(TZ=America/Phoenix date +%F) (automated, date-driven)"
+          for i in 1 2 3; do
+            git push origin HEAD:main && break
+            echo "push rejected; rebasing this one automated commit onto the latest main and retrying"
+            git pull --rebase origin main
+          done
+          # Pages (branch source) normally rebuilds on push; request a build too in case it doesn't fire.
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/pages/builds" || echo "pages build request failed (the push itself still triggers Pages)"
