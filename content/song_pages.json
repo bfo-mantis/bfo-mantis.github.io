@@ -1,0 +1,293 @@
+{
+ "_note": "Song pages (song/<slug>/): ONLY songs whose lyrics Zach approved as official (corpus catalog bot registry, report /workspace/corpus_reports/lyric_status/lyric_authorization_status_2026-11-10_post.md, Group 1). A song not listed here gets no song page. The lyrics themselves come from the release's published lyrics file (content/lyrics_overrides/<ISRC>.txt = the approved text; the REDACTED version for T&C pairs; Heat in the Bone uses Zach's public-display rule). source_sha256 = the approved file in the catalog store (redacted file for pairs). No lyric text in this file. Rebuild with tools/build_data.py.",
+ "songs": [
+  {
+   "slug": "america-250",
+   "isrc": "QT6EW2622862",
+   "title": "America 250",
+   "release": "america-250",
+   "approved_on": "2026-10-25",
+   "text": "official",
+   "source_sha256": "63cb1b4eec84393d0b324a02359827f9b9ce4894646f5cdfb31f4fda0a4435c4"
+  },
+  {
+   "slug": "cake-on-the-plate",
+   "isrc": "QTA822690876",
+   "title": "Cake on the Plate",
+   "release": "cake-on-the-plate",
+   "approved_on": "2026-10-20",
+   "text": "official",
+   "source_sha256": "5a3187cd39b3fc4a826e20a66d32c5cde7b8952289db53b859346dbccaa0f1f0"
+  },
+  {
+   "slug": "for-your-own-good",
+   "isrc": "QTA7Y2605766",
+   "title": "For Your Own Good",
+   "release": "for-your-own-good",
+   "approved_on": "2026-10-24",
+   "text": "official",
+   "source_sha256": "0e768f2e681746aeb7fc0987879337d10d6d75c524148ccb8eaf3b8f63ef93f6"
+  },
+  {
+   "slug": "freeborn",
+   "isrc": "QTA7W2619114",
+   "title": "Freeborn",
+   "release": "freeborn",
+   "approved_on": "2026-10-25",
+   "text": "official",
+   "source_sha256": "119edd3ace0e7663783e161e09d1beaa9dcf490b7db500f7bc110ca928a85ab4"
+  },
+  {
+   "slug": "heat-in-the-bone",
+   "isrc": "QTAEZ2685295",
+   "title": "Heat in the Bone",
+   "release": "heat-in-the-bone",
+   "approved_on": "2026-11-09",
+   "text": "official",
+   "source_sha256": "d06ce19d2a87c0f17c6905825457410f6c7a43f8ca50a4794adc04ddfd474c7c"
+  },
+  {
+   "slug": "sacred-steel",
+   "isrc": "QT6EV2671151",
+   "title": "Sacred Steel",
+   "release": "sacred-steel",
+   "approved_on": "2026-10-25",
+   "text": "official",
+   "source_sha256": "a85331e9bb045a42354fac2a7cab1294236be7af850319c092e90af77ce5cef6"
+  },
+  {
+   "slug": "sovereign-flame",
+   "isrc": "QT6HR2651302",
+   "title": "Sovereign Flame",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": "2026-10-31",
+   "text": "official",
+   "source_sha256": "7f97222b64b4dbd6c2ffaef319908b4d919db4fec543f7bca3c5418273cf31c9"
+  },
+  {
+   "slug": "crown-of-ash",
+   "isrc": "QTA7T2600629",
+   "title": "Crown of Ash",
+   "release": "crown-of-ash",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "a3f9b520dab8e69b1cf66aebec980e85853a99dee43c95eb0ddced5480cbe486"
+  },
+  {
+   "slug": "dangerous",
+   "isrc": "QT9XH2672245",
+   "title": "Dangerous",
+   "release": "dangerous",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "5e484a615180da2ac50cbaea196c5f18c1c37604cee0eb565b1e0a08bb3d447f"
+  },
+  {
+   "slug": "guardians-of-the-free",
+   "isrc": "QT9XH2672247",
+   "title": "Guardians of the Free",
+   "release": "dangerous",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "b507b2a5c79df6dd2305f4e0ee772ae42bc6c8678996def2d311e3112e9faaee"
+  },
+  {
+   "slug": "solution-or-problem",
+   "isrc": "QT9XH2672248",
+   "title": "Solution or Problem",
+   "release": "dangerous",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "61a801d766dfbe4d87066d8b10e0d1d3804c2f55028a967dab75ab3f4ef9de02"
+  },
+  {
+   "slug": "here-to-hell",
+   "isrc": "QT9XH2672249",
+   "title": "Here to Hell...p",
+   "release": "dangerous",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "621bc32cc6a6b15cfcd21e6bc069f50ed5001ef3269ab95497d8e997b361ea76"
+  },
+  {
+   "slug": "qualified-impunity",
+   "isrc": "QT9XH2672252",
+   "title": "Qualified Impunity",
+   "release": "dangerous",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "733ef8ebae0195850e8ef0a091c61e0bbb190d600656cee3dbd2d3b3933b1f22"
+  },
+  {
+   "slug": "earned-or-burned",
+   "isrc": "QT9XH2672253",
+   "title": "Earned or Burned",
+   "release": "dangerous",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "e7eac3b68acaee23d689227c408a246cebabe360e8dc59bd65d3205d27721f39"
+  },
+  {
+   "slug": "hero-or-zero",
+   "isrc": "QT9XH2672255",
+   "title": "Hero or Zero",
+   "release": "dangerous",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "16095ee81edf4c91ae9c19834cfa2515083a702fc6fcf73d50b32c267f8d14eb"
+  },
+  {
+   "slug": "forge-of-your-light",
+   "isrc": "QT9XH2693555",
+   "title": "Forge of Your Light",
+   "release": "forge-of-your-light",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "097510e5fa3503b9ac6400b83dd6e674433d655628b5a94a7b5d7afd175301d9"
+  },
+  {
+   "slug": "brotherhood",
+   "isrc": "QT6G62652790",
+   "title": "Brotherhood",
+   "release": "rebel-anthem",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "f246676787becb215e4833e1e4b6b92506c03bbc39391594f191e05789319723"
+  },
+  {
+   "slug": "what-is-tyranny",
+   "isrc": "QT6G62652794",
+   "title": "What Is Tyranny?",
+   "release": "rebel-anthem",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "1617ea96e0402ab31dc91b1fe10dd852f4d14d34223b6a302d9365ade252a56b"
+  },
+  {
+   "slug": "what-is-rebellion",
+   "isrc": "QT6G62652795",
+   "title": "What Is Rebellion?",
+   "release": "rebel-anthem",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "820450ca520a88841ca92531420785b7e17239f1a4f1873b2e392feeb57dffda"
+  },
+  {
+   "slug": "endowed-in-flame",
+   "isrc": "QT6HR2651306",
+   "title": "Endowed in Flame",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "f98f7b95c568c720ca62430da7fce667fc04b0814fffdf7e6dd3147462ed2fa8"
+  },
+  {
+   "slug": "immortal-flame",
+   "isrc": "QT6HR2651307",
+   "title": "Immortal Flame",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "f7aad950f35e6ef0803a8dc3015c677342ba4f19204d96b7bcbd2cee68f0ab30"
+  },
+  {
+   "slug": "sovereign-dawn",
+   "isrc": "QT6HR2651308",
+   "title": "Sovereign Dawn",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "53cec3591519d9c0b4785a0989df2b2475bf8a146ce2f25337222095449e3054"
+  },
+  {
+   "slug": "burning-for-liberty",
+   "isrc": "QT6HR2651309",
+   "title": "Burning for Liberty",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "b4ccb132fc498730c535d754edee69f6f98037f9071a925b41a8d5e33ec3331b"
+  },
+  {
+   "slug": "forge-eternal",
+   "isrc": "QT6HR2651311",
+   "title": "Forge Eternal",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "53bf757b4684d447caff39b560de39e15cd59164d88e93fbdb0a0a23dac692e2"
+  },
+  {
+   "slug": "endowed-sovereignty",
+   "isrc": "QT6HR2651312",
+   "title": "Endowed Sovereignty",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "6a8ce7301a0e7debf97bbdfdc03c714af4d6aa0014aafddb0ffc00d10640cf4a"
+  },
+  {
+   "slug": "ruby-ridge",
+   "isrc": "QT6HR2642231",
+   "title": "Ruby Ridge",
+   "release": "the-ridge",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "918ab8b2269913046977941f9327686d9c4941749a61a91a05da18391985b59b"
+  },
+  {
+   "slug": "the-ridge",
+   "isrc": "QT6HR2642232",
+   "title": "The Ridge",
+   "release": "the-ridge",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "a53b63860f4444fc60ee4adc86fc88a089066e7d958baa30af8bebafded00d1b"
+  },
+  {
+   "slug": "unextracted",
+   "isrc": "QTA7U2699820",
+   "title": "Unextracted",
+   "release": "unextracted",
+   "approved_on": "2026-11-10",
+   "text": "official",
+   "source_sha256": "688feaffbe6116ba3a39b6462cff75e643e9b9b2ccee6b80f194b219207bbd2c"
+  },
+  {
+   "slug": "void-means-void",
+   "isrc": "QT9XH2672251",
+   "title": "Void means VOID!",
+   "release": "dangerous",
+   "approved_on": "2026-11-10",
+   "text": "redacted (T&C pair)",
+   "source_sha256": "c989f35ace419a2858525ebd5f3d002c0e52ed28ce388df367b89e0d27859eed"
+  },
+  {
+   "slug": "blue-plague",
+   "isrc": "QT9XH2672256",
+   "title": "Blue Plague",
+   "release": "dangerous",
+   "approved_on": "2026-11-10",
+   "text": "redacted (T&C pair)",
+   "source_sha256": "5b804ccccb4f08dff891746677333c04d040eb424453a966bfba4e23b6bc2faa"
+  },
+  {
+   "slug": "defiance",
+   "isrc": "QT9XH2672259",
+   "title": "Defiance",
+   "release": "dangerous",
+   "approved_on": "2026-11-10",
+   "text": "redacted (T&C pair)",
+   "source_sha256": "880e7611b573629021661dbb099e348770c7cf09ddb022e85672c566416e20ce"
+  },
+  {
+   "slug": "blood-for-the-beast",
+   "isrc": "QT6G62652788",
+   "title": "Blood for the Beast",
+   "release": "rebel-anthem",
+   "approved_on": "2026-11-10",
+   "text": "redacted (T&C pair)",
+   "source_sha256": "fc38060fb16843a421a5f2715cb1785390c3f15b594c649179f21a98cf64c146"
+  }
+ ]
+}

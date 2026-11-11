@@ -400,6 +400,11 @@
         }).catch(function () { box.textContent = "Couldn't load lyrics. Please try again."; lyricsPromise = null; });
       });
     }, rel);
+    // Song pages (song/<slug>/): the lyrics box is shown open, so load it straight away.
+    each(".song-lyrics[data-isrc]", function (box) {
+      loadLyrics().then(function (map) { renderLyrics(box, map[box.getAttribute("data-isrc")]); })
+        .catch(function () { box.textContent = "Couldn't load lyrics. Please reload the page."; lyricsPromise = null; });
+    }, rel);
   }
 
   // Deep links to a track (#t3, used by search results): open its lyrics / "More about this track" and bring it into view.

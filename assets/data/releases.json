@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-11-10T20:21:25",
+ "generated": "2026-11-10T20:50:05",
  "donate_url": "https://www.patreon.com/c/bfo_mantis",
  "members_url": "https://www.patreon.com/c/bfo_mantis/membership",
  "email_signup_url": null,
@@ -662,6 +662,7 @@
      "youtube_music_url": "https://music.youtube.com/watch?v=cCbQXqFTB8c",
      "youtube_url": "https://www.youtube.com/watch?v=cCbQXqFTB8c",
      "visualizer_url": "https://youtu.be/CExbHCkOz1s",
+     "lyrics_source": "artist",
      "blurb": "The title track lays out the album's thesis: free will is a gift from God that no empire can revoke, and being peaceful is not the same as being harmless. Gandhi's refusal to obey is offered as proof that one person's no can outlast armies.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/dangerous/01.mp3"
@@ -686,6 +687,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=ixCBnSOmxno",
      "youtube_url": "https://www.youtube.com/watch?v=ixCBnSOmxno",
+     "lyrics_source": "artist",
      "blurb": "A hymn-like call to vigilance about sentinels who keep liberty's flame alive through sacrifice and endless watch. It is one of the album's most stately, ceremonial moments.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/dangerous/03.mp3"
@@ -1565,6 +1567,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=xIbyynucS1I",
      "youtube_url": "https://www.youtube.com/watch?v=xIbyynucS1I",
+     "lyrics_source": "artist",
      "blurb": "The stories of David and Moses frame a prayer for courage against darkness and tyranny. It ties liberty to the presence of the Spirit.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/sovereign-heart-of-fire/03.mp3"
@@ -1636,6 +1639,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=WnFWX1O875k",
      "youtube_url": "https://www.youtube.com/watch?v=WnFWX1O875k",
+     "lyrics_source": "artist",
      "blurb": "A philosophical turn inward that weighs negative and positive freedom and the idea of self-ownership. Here the chains are the stories people swallow, and sovereignty begins in the self.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/sovereign-heart-of-fire/09.mp3"
@@ -1647,6 +1651,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=p5A-YGuJQ-4",
      "youtube_url": "https://www.youtube.com/watch?v=p5A-YGuJQ-4",
+     "lyrics_source": "artist",
      "blurb": "A rousing anthem for free men under open skies, careful to say its fire is meant to redeem rather than destroy.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/sovereign-heart-of-fire/10.mp3"
@@ -1670,6 +1675,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=8-9QcQZVngI",
      "youtube_url": "https://www.youtube.com/watch?v=8-9QcQZVngI",
+     "lyrics_source": "artist",
      "blurb": "A personal song of being shattered and remade by grace, where every wound becomes a doorway. It is the album's most intimate and cosmic track.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/sovereign-heart-of-fire/12.mp3"
@@ -1681,6 +1687,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=KwbehMOWf54",
      "youtube_url": "https://www.youtube.com/watch?v=KwbehMOWf54",
+     "lyrics_source": "artist",
      "blurb": "Asking where liberty comes from, the song answers that it flows from God alone and confesses how far people have drifted into comfortable cages.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/sovereign-heart-of-fire/13.mp3"
@@ -2706,6 +2713,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=YaMuecZR8L8",
      "youtube_url": "https://www.youtube.com/watch?v=YaMuecZR8L8",
+     "lyrics_source": "artist",
      "blurb": "A song of loyalty among men rooted in the soil, carrying each other's burdens through loss. It is the album's warmest moment, though it still ends with a call to rise.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/rebel-anthem/10.mp3"
@@ -2752,6 +2760,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=J-7b4yfIa-Y",
      "youtube_url": "https://www.youtube.com/watch?v=J-7b4yfIa-Y",
+     "lyrics_source": "artist",
      "blurb": "A plain-spoken definition track that names three examples of tyranny: civil asset forfeiture, gun restrictions and the drug war. It is more lesson than rant.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/rebel-anthem/14.mp3"
@@ -2763,6 +2772,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=k_gHMq9rFKE",
      "youtube_url": "https://www.youtube.com/watch?v=k_gHMq9rFKE",
+     "lyrics_source": "artist",
      "blurb": "The closing companion piece defines rebellion as organized, principled resistance rather than chaos, citing the Boston Tea Party, Lexington and the Whiskey Rebellion. It returns to the tree of liberty one last time.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/rebel-anthem/15.mp3"
@@ -3971,6 +3981,7 @@
      "youtube_music_url": "https://music.youtube.com/watch?v=bJmX1t5CoxM",
      "youtube_url": "https://www.youtube.com/watch?v=bJmX1t5CoxM",
      "visualizer_url": "https://youtu.be/uz3iFCyeA2Q",
+     "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/america-250/01.mp3"
