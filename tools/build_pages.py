@@ -747,7 +747,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
     </div>
   </section>
   {milestones_html(root, releases, "home")}
-  <p class="start-cta"><a href="start/" data-gc="event/start/home"><span class="k">New here?</span> <strong>Start here</strong> with ten tracks that make the case<span aria-hidden="true"> →</span></a></p>
+  <div class="start-row"><p class="start-cta"><a href="start/" data-gc="event/start/home"><span class="k">New here?</span> <strong>Start here</strong> with ten tracks that make the case<span aria-hidden="true"> →</span></a></p>{queue_button("", releases, "home", "q-home")}</div>
 {featured}{listeners_strip}
 {cat_sections}{about_sec}
 
@@ -2733,6 +2733,28 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
         "icons": [{"src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png"},
                   {"src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png"}]}, indent=1) + "\n")
 
+def start_queue(root, releases):
+    """The Start here ten as a play queue for the mini-player (data-queue on a .q-play button); [] when none."""
+    p = ROOT / "content" / "start.json"
+    if not p.exists():
+        return []
+    R = {r["slug"]: r for r in releases}; q = []
+    for it in json.loads(p.read_text())["items"]:
+        r = R.get(it["release"])
+        t = next((x for x in (r or {}).get("tracks", []) if x["n"] == it["track"]), None)
+        if t and t.get("preview"):
+            q.append({"src": root + t["preview"], "title": t["title"], "rel": r["title"], "href": f'{root}release/{r["slug"]}/',
+                      "art": root + r["cover"]["jpg_small"] if r.get("cover") else ""})
+    return q
+
+def queue_button(root, releases, gc="start", cls=""):
+    q = start_queue(root, releases)
+    if not q:
+        return ""
+    data = e(json.dumps(q, ensure_ascii=False, separators=(",", ":")))
+    return (f'<button type="button" class="q-play{(" " + cls) if cls else ""}" data-qname="Start here" data-gcq="{gc}" data-queue="{data}">'
+            f'{PLAY_ICON}{PAUSE_ICON}<span>Play the Start here ten</span></button>')
+
 def build_start(releases, site, v, has_about):
     """'Start here': ten essential tracks for new listeners, from content/start.json (user-approved picks)."""
     p = ROOT / "content" / "start.json"
@@ -2767,6 +2789,7 @@ def build_start(releases, site, v, has_about):
     <p class="eyebrow">{e(cfg["title"])}</p>
     <h1 id="start-title">{h1}</h1>
     {"".join(f'<p class="lead">{e(x)}</p>' for x in intro)}
+    <p class="q-row">{queue_button(root, releases, "start")}<span class="q-note">30-second previews, one after another</span></p>
     <ol class="ess tracks">{"".join(items)}</ol>
     {f'<p class="start-closing">{e(cfg["closing"])}</p>' if cfg.get("closing") else ""}
     <p class="start-more"><a href="{root}#songs">Browse all songs</a> · <a href="{root}#instrumentals">Instrumentals</a> · <a href="{root}genres/">Genres</a></p>
