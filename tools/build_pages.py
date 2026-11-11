@@ -773,6 +773,21 @@ def merch_teaser(root, slug):
     return (f'<p class="merch-teaser"><span class="soon-tag">Merch: coming soon</span> '
             f'<a href="{root}merch/#{e(c["id"])}">See the {e(c["title"])} ({n} items)<span aria-hidden="true"> →</span></a></p>')
 
+
+def track_about_block(t, release_blurb=None):
+    """Uniform expanded-track about block: green 'More about this track' heading, then the
+    italic short blurb (and, if present, the approved in-depth paragraph). Empty if the
+    track has no approved blurb or in-depth text — never an empty heading."""
+    blurb = t.get("blurb") or release_blurb
+    depth = t.get("blurb_in_depth")
+    if depth and blurb and depth == blurb:
+        depth = None
+    if not blurb and not depth:
+        return ""
+    body = (f"<p>{e(blurb)}</p>" if blurb else "") + (f"<p>{e(depth)}</p>" if depth else "")
+    return f'<div class="tdepth"><p class="tdepth-k">More about this track</p>{body}</div>'
+
+
 def build_release(releases, i, site, today, v, has_about):
     r = releases[i]
     root = "../../"
@@ -819,8 +834,7 @@ def build_release(releases, i, site, today, v, has_about):
             tracks.append(f'<li class="has-lyrics" id="t{t["n"]}">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<details data-isrc="{e(t["isrc"])}">'
                           f'<summary><span class="tt">{e(t["title"])}</span><span class="ltag" aria-hidden="true">Lyrics</span>'
                           f'<span class="sr-only"> — show lyrics</span></summary>'
-                          + (f'<p class="tblurb">{e(t["blurb"])}</p>' if t.get("blurb") else "")
-                          + (f'<div class="tdepth"><p class="tdepth-k">More about this track</p><p>{e(t["blurb_in_depth"])}</p></div>' if t.get("blurb_in_depth") else "")
+                          + track_about_block(t)
                           + f'<div class="lyrics" aria-live="polite">Loading lyrics…</div>'
                           f'<p class="lcopy">&copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p></details>'
                           # links sit outside <summary> (no interactive content inside the disclosure's toggle)
@@ -828,13 +842,11 @@ def build_release(releases, i, site, today, v, has_about):
         else:
             tag = (' <span class="itag">Instrumental</span>' if t["lyrics"] == "instrumental"
                    else ' <span class="itag itag-pending">Lyrics coming soon</span>' if t["lyrics"] == "pending" else "")
-            if t.get("blurb"):
-                # Instrumental / no-lyrics track with a blurb: intro as a short line under the title, in-depth text
-                # behind an expandable "More about this track".
-                more = (f'<details class="tmore"><summary>More about this track</summary><p class="tdepth">{e(t["blurb_in_depth"])}</p></details>'
-                        if t.get("blurb_in_depth") else "")
+            about = track_about_block(t)
+            if about:
+                # Instrumental / no-lyrics track: same heading + italic blurb as vocal expanders (no lyrics block).
                 tracks.append(f'<li class="has-blurb" id="t{t["n"]}">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<div class="tcol">'
-                              f'<span class="tt">{e(t["title"])}{tag}{tyt(t)}</span><p class="tblurb tintro">{e(t["blurb"])}</p>{more}</div></li>')
+                              f'<span class="tt">{e(t["title"])}{tag}{tyt(t)}</span>{about}</div></li>')
             else:
                 tracks.append(f'<li id="t{t["n"]}">{pv_btn(t)}<span class="n">{t["n"]}</span>{bar}<span class="tt">{e(t["title"])}{tag}{tyt(t)}</span></li>')
     preview_bar, first = preview_main(root, r)
@@ -2336,15 +2348,15 @@ def build_song(sp, songs, site, today, v, has_about):
                f'<img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" width="480" height="360" alt="" loading="lazy" decoding="async">'
                f'<span class="vis-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>'
                f'<span class="vis-cap">Watch {e(t["title"])} on YouTube{NT}</span></a>\n      </section>')
-    if t.get("blurb"):
-        story_html = f'<p class="blurb">{e(t["blurb"])}</p>'
+    about = track_about_block(t, release_blurb=(r.get("blurb") if single else None))
+    if about:
+        story_html = about
     elif r.get("blurb"):
+        # Album context only (not a per-track blurb): do not invent a "More about this track" heading.
         story_html = (f'<p class="blurb">{e(r["blurb"])}</p>' if single else
                       f'<p class="story-k">From the album <a href="{root}release/{r["slug"]}/">{e(r["title"])}</a></p><p class="blurb">{e(r["blurb"])}</p>')
     else:
         story_html = ""
-    if t.get("blurb_in_depth"):   # same "More about this track" block as the release tracklist (shared .tdepth style)
-        story_html += f'<div class="tdepth"><p class="tdepth-k">More about this track</p><p>{e(t["blurb_in_depth"])}</p></div>'
     diss = diss_link_html(r["slug"], r["title"])
     n = len(r["tracks"])
     track_of = "" if single else f" · track {t['n']} of {n}"
