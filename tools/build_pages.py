@@ -556,8 +556,27 @@ def about_html():
     body = re.sub(r"<!--.*?-->", "", p.read_text(), flags=re.S).strip()
     return body
 
+PATREON_PROFILE = "https://www.patreon.com/c/bfo_mantis"   # official Patreon page (site_config donate_url)
+
 def music_group(site):
-    return {"@type": "MusicGroup", "name": ARTIST, "url": site, "sameAs": [x["url"] for x in artist_links()]}
+    # sameAs: every verified official profile (content/artist_links.json: Spotify, Apple Music, YouTube Music, YouTube,
+    # Deezer, iHeartRadio) plus Instagram and Patreon. The Discord invite is a server invite, not a profile, so it's left out.
+    same = list(dict.fromkeys([x["url"] for x in artist_links()] + [INSTAGRAM, PATREON_PROFILE]))
+    return {"@type": "MusicGroup", "name": ARTIST, "url": site, "sameAs": same}
+
+def site_verification_tags():
+    """Search-engine ownership tags for the home page, from content/site_config.json (empty = none):
+    google_site_verification -> google-site-verification, bing_site_verification -> msvalidate.01."""
+    fp = ROOT / "content" / "site_config.json"
+    cfg = json.loads(fp.read_text()) if fp.exists() else {}
+    out = ""
+    for key, name in (("google_site_verification", "google-site-verification"), ("bing_site_verification", "msvalidate.01")):
+        tok = (cfg.get(key) or "").strip()
+        if tok and re.fullmatch(r"[A-Za-z0-9_\-]{8,100}", tok):
+            out += f'\n<meta name="{name}" content="{e(tok)}">'
+        elif tok:
+            print(f"site_config: {key} ignored (expected just the token, letters/digits/-/_)")
+    return out
 
 def release_jsonld(r, site):
     url = f"{site}release/{r['slug']}/"
@@ -648,7 +667,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
     hd = head(root, title=f"{ARTIST} — Songs & Instrumentals", desc=desc, url=site, og_image=site + "assets/img/og/home.jpg",
               og_alt=f"{ARTIST} wordmark over a collage of cover art", og_type="music.musician" if False else "website",
               css_v=v["css"], jsonld=ld,
-              extra=f'\n<link rel="preload" as="image" href="assets/img/hero-1600.webp" media="(min-width: 601px)" fetchpriority="high">'
+              extra=site_verification_tags() + f'\n<link rel="preload" as="image" href="assets/img/hero-1600.webp" media="(min-width: 601px)" fetchpriority="high">'
                     f'\n<link rel="preload" as="image" href="assets/img/hero-800.webp" media="(max-width: 600px)" fetchpriority="high">')
     cat_sections = cat_sections_html(root, releases, today)
     # "Play this now": the newest release that is already out and has previews (else the newest with previews)

@@ -1,5 +1,5 @@
 {
-  "_note": "Artist-level profile links for the links/ page and press one-sheet. Each was derived from the artist link on existing bfo.mantis store pages (DANGEROUS, Rebel Anthem, Sacred Steel) and opened in headless Chrome on 2026-10-09 to confirm the profile is bfo.mantis. Only add a link here after the same check.",
+  "_note": "Artist-level profile links for the links/ page and press one-sheet. Each was derived from the artist link on existing bfo.mantis store pages (DANGEROUS, Rebel Anthem, Sacred Steel) and opened in headless Chrome on 2026-10-09 to confirm the profile is bfo.mantis. Only add a link here after the same check. Deezer (artist 401474281: the artist on all 17 Deezer album links, 32 albums) and iHeartRadio (artist 51258457, the artist path of the iHeart album links) added 2026-11-10 after the same check (page title reads bfo.mantis).",
   "links": [
     {
       "name": "Spotify",
@@ -20,6 +20,16 @@
       "name": "YouTube (videos)",
       "url": "https://www.youtube.com/@bfo.mantis",
       "verified": "2026-10-13"
+    },
+    {
+      "name": "Deezer",
+      "url": "https://www.deezer.com/artist/401474281",
+      "verified": "2026-11-10"
+    },
+    {
+      "name": "iHeartRadio",
+      "url": "https://www.iheart.com/artist/bfomantis-51258457/",
+      "verified": "2026-11-10"
     }
   ]
 }
