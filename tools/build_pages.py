@@ -15,8 +15,9 @@ Outputs (all GENERATED, all links relative so the site also works from a sub-pat
   assets/img/og/*.jpg            1200x630 share images (home + one per release)
 Lyrics are never written into HTML, JSON-LD or the sitemap; release pages fetch them on demand.
 """
-import argparse, hashlib, html, json, math, re, unicodedata
-from datetime import date
+import argparse, hashlib, html, json, math, os, re, unicodedata
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -28,6 +29,14 @@ INSTAGRAM = "https://www.instagram.com/bfo.mantis/"   # official Instagram (link
 YT_CHANNEL = "https://www.youtube.com/@bfo.mantis"   # user's own channel (UCrdG9YmCFzrp1DKxmSd3z8Q): visualizers, official videos
 YTM_ARTIST = "https://music.youtube.com/channel/UCAr9yfuSAyMs5B2Iycvr7-Q"
 BG, ACCENT, TEXT, MUTED = (11, 11, 15), (200, 255, 77), (236, 235, 242), (163, 162, 179)
+
+SITE_TZ = ZoneInfo("America/Phoenix")   # the artist's time zone (MST all year): a release "goes live" at midnight here
+
+def site_today():
+    """Today's date in America/Phoenix, so a build run at 07:00 UTC (the release-day GitHub Action) flips to release mode
+    for that day. RELEASE_DATE_OVERRIDE=YYYY-MM-DD pretends it's that date (dry runs only; never commit such a build)."""
+    o = (os.environ.get("RELEASE_DATE_OVERRIDE") or "").strip()
+    return date.fromisoformat(o) if o else datetime.now(SITE_TZ).date()
 
 e = lambda s: html.escape(str(s if s is not None else ""), quote=True)
 
@@ -375,6 +384,7 @@ def head(root, *, title, desc, url, og_image, og_alt, og_type="website", extra="
 <link rel="icon" href="{root}favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{root}apple-touch-icon.png">
 <link rel="manifest" href="{root}site.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="{ARTIST} releases" href="{root}feed.xml">
 <link rel="preload" href="{root}assets/fonts/syne-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{root}css/style.css?v={css_v}">{j}{goatcounter_tag()}
@@ -426,7 +436,7 @@ def discord_btn(label="Join the Discord", cls="btn", event="event/discord"):
             f'{DISCORD_ICON}<span>{e(label)}</span>{NT}</a>')
 
 def footer(root, js_v):
-    year = date.today().year
+    year = site_today().year
     dc_foot = (f'<a class="footer-link" href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/footer">Discord{NT}</a>' if DISCORD else "")
     dc_foot += (f'<a class="footer-link" href="{e(PATREON)}" target="_blank" rel="noopener" data-gc="event/patreon/footer">Patreon{NT}</a>' if PATREON else "")
     dc_foot += f'<a class="footer-link" href="{e(YT_CHANNEL)}" target="_blank" rel="noopener" data-gc="event/youtube/footer">YouTube{NT}</a>'
@@ -1739,7 +1749,7 @@ def _svg_to_png(svg, png, width):
 def store_list_html(root, r, cls="pk-stores"):
     st = r.get("store_links") or []
     if not st and r.get("listen_url"):
-        out = date.fromisoformat(r["release_date"]) <= date.today()
+        out = date.fromisoformat(r["release_date"]) <= site_today()
         st = [{"name": "Listen" if out else "Pre-save / listen", "url": r["listen_url"]}]
     return (f'<ul class="{cls}">' + "".join(f'<li><a class="store" href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["name"])}{NT}</a></li>' for x in st)
             + "</ul>") if st else ""
@@ -1795,7 +1805,8 @@ footer{{margin-top:10pt;font-size:7.5pt;color:#55556a}}
 <footer>{ARTIST} · {site} · &copy; {COPY_YEAR} {LABEL_NAME}</footer></section>
 </body></html>'''
     src = cache / "one-sheet.html"; src.write_text(html_)
-    h = hashlib.sha256(html_.encode() + b"".join((ROOT / r["cover"]["jpg_small"]).read_bytes()[:4096] for r in releases if r.get("cover"))).hexdigest()
+    # hash with the checkout path masked (the HTML holds file:// font URLs), so a CI checkout elsewhere doesn't re-print it
+    h = hashlib.sha256(html_.replace(ROOT.as_uri(), "file:///SITE").encode() + b"".join((ROOT / r["cover"]["jpg_small"]).read_bytes()[:4096] for r in releases if r.get("cover"))).hexdigest()
     if pdf.exists() and stamp.exists() and stamp.read_text().strip() == h:
         return "assets/press/" + pdf.name, pdf.stat().st_size
     chrome = _chrome()
@@ -2272,6 +2283,42 @@ def build_genre_index(site):
 </html>
 ''')
 
+def build_feed(releases, site, today):
+    """feed.xml: RSS 2.0 of releases that are out as of `today` (newest first). Deterministic: dates come from the
+    catalog, so the file only changes when a release goes live (or its data changes), never just because it was rebuilt."""
+    from email.utils import format_datetime
+    out = sorted((r for r in releases if date.fromisoformat(r["release_date"]) <= today), key=lambda r: (r["release_date"], r["title"]), reverse=True)
+    pub = lambda r: format_datetime(datetime.combine(date.fromisoformat(r["release_date"]), datetime.min.time(), SITE_TZ))
+    items = []
+    for r in out:
+        url = f"{site}release/{r['slug']}/"
+        kind = "Album" if r["type"] == "album" else "Single"
+        desc = r.get("blurb") or describe(r)
+        img = f'\n      <enclosure url="{e(site + r["cover"]["jpg"])}" type="image/jpeg" length="{(ROOT / r["cover"]["jpg"]).stat().st_size}"/>' if r.get("cover") and (ROOT / r["cover"]["jpg"]).exists() else ""
+        items.append(f"""    <item>
+      <title>{e(r["title"])} ({kind.lower()})</title>
+      <link>{e(url)}</link>
+      <guid isPermaLink="true">{e(url)}</guid>
+      <pubDate>{pub(r)}</pubDate>
+      <category>{e(r.get("genre") or kind)}</category>
+      <description>{e(desc)}</description>{img}
+    </item>
+""")
+    last = pub(out[0]) if out else format_datetime(datetime(2026, 1, 1, tzinfo=SITE_TZ))
+    (ROOT / "feed.xml").write_text(f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{ARTIST}: new releases</title>
+    <link>{e(site)}</link>
+    <atom:link href="{e(site)}feed.xml" rel="self" type="application/rss+xml"/>
+    <description>New songs and instrumentals from {ARTIST} ({LABEL_NAME}).</description>
+    <language>en</language>
+    <lastBuildDate>{last}</lastBuildDate>
+{"".join(items)}  </channel>
+</rss>
+""")
+    return len(items)
+
 def build_misc(releases, site, v, extra_urls=()):
     # old URL shim: release.html?r=<slug> -> release/<slug>/
     slugs = json.dumps([r["slug"] for r in releases])
@@ -2396,7 +2443,7 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     releases = data["releases"]
     global GOATCOUNTER
     GOATCOUNTER = data.get("goatcounter_code")
-    today = date.today()
+    today = site_today()
     about = about_html(); has_about = bool(about)
     albums = sum(r["type"] == "album" for r in releases); singles = len(releases) - albums
     if images:
@@ -2438,6 +2485,7 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     extra = [build_releases_index(releases, site, today, v, has_about), build_contact(site, v, has_about, data.get("press_contact")),
              build_about(releases, site, v, has_about, about, tagline)]
     build_genre_index(site)
+    n_feed = build_feed(releases, site, today)
     build_misc(releases, site, v, [u for u in extra if u] + build_library(releases, site, v, has_about))
     print(f"search index: assets/data/search.json {idx_bytes / 1024:.0f} KB")
     print("genres:", ", ".join(f"{g} ({len(rs)} releases, {sum(len(r['tracks']) for r in rs)} tracks)" for g, rs in groups))
