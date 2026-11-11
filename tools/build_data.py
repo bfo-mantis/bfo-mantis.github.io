@@ -172,11 +172,11 @@ def lines_src(text):
 _LABEL_WORDS = re.compile(r"\b(verse|chorus|pre-?chorus|refrain|bridge|hook|intro|outro|coda|interlude|breakdown|instrumental|spoken|"
                           r"sing|sung|whisper\w*|fad\w*|build\w*|slow\w*|tempo|bpm|style|beat|drums?|guitars?|strings|choir|choral|"
                           r"thunder|rumble|percussion|radar|cannon|crescendo|shout\w*|scream\w*|layered|harmon\w*|soaring|reverent|"
-                          r"intensity|climax|anthem|think|read it|repeat|tag|final)\b", re.I)
+                          r"intensity|climax|anthem|think|read it|repeat|tag|final|explosive)\b", re.I)
 
 def _is_label(line):
     s = line.strip()
-    if re.fullmatch(r"(\[[^\]]*\]\s*)+", s): return True
+    if re.fullmatch(r"(\[[^\]]*\]\s*)+(\([^)]*\)\s*)?", s): return True   # "[Bridge]" or "[Bridge] (soft, then swelling)"
     if re.fullmatch(r"\(.*\)", s): return bool(_LABEL_WORDS.search(s))
     return False
 

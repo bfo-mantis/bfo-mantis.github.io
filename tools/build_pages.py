@@ -783,7 +783,7 @@ def build_release(releases, i, site, today, v, has_about):
                   f'<ul class="store-row" id="stores-{r["slug"]}" aria-labelledby="stores-label"{" data-collapsed" if extra else ""}>'
                   + "".join(li(x) for x in main_) + "".join(li(x, ' class="store-extra"') for x in extra) + more_btn + "</ul></div>")
     elif r.get("listen_url"):
-        listen = (f'<a class="btn" href="{e(r["listen_url"])}" target="_blank" rel="noopener" data-gc="event/store/hyperfollow/{r["slug"]}">'
+        listen = (f'<a class="btn" href="{e(r["listen_url"])}" target="_blank" rel="noopener" data-gc="{presave_event(r, up)}">'
                   f'<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'
                   # "Listen" once the release date has passed; "Pre-save / listen" only while it's upcoming (app.js flips these on the day)
                   f'<span class="js-released"{hid_rel}>Listen</span><span class="js-upcoming"{hid_up}>Pre-save / listen</span>{NT}</a>')
@@ -804,7 +804,7 @@ def build_release(releases, i, site, today, v, has_about):
                           + f'<div class="lyrics" aria-live="polite">Loading lyrics…</div>'
                           f'<p class="lcopy">&copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p></details>'
                           # links sit outside <summary> (no interactive content inside the disclosure's toggle)
-                          + (f'<span class="tlinks">{tyt(t)}</span>' if tyt(t) else "") + '</li>')
+                          + (f'<span class="tlinks">{song_link(root, t["isrc"], t["title"])}{tyt(t)}</span>' if (tyt(t) or SONGS.get(t["isrc"])) else "") + '</li>')
         else:
             tag = (' <span class="itag">Instrumental</span>' if t["lyrics"] == "instrumental"
                    else ' <span class="itag itag-pending">Lyrics coming soon</span>' if t["lyrics"] == "pending" else "")
@@ -2232,7 +2232,202 @@ def build_about(releases, site, v, has_about, about, tagline):
     (ROOT / "about" / "index.html").write_text(page)
     return url
 
-def build_releases_index(releases, site, today, v, has_about):
+# ---- Song pages (song/<slug>/): only songs whose lyrics Zach approved (content/song_pages.json) ----
+SONGS = {}   # ISRC -> song page slug; set in main() from content/song_pages.json
+
+def load_song_pages(releases):
+    fp = ROOT / "content" / "song_pages.json"
+    if not fp.exists(): return []
+    by = {t["isrc"]: (r, t) for r in releases for t in r["tracks"]}
+    out = []
+    for x in json.loads(fp.read_text()).get("songs") or []:
+        hit = by.get(x.get("isrc"))
+        if not hit or not re.match(r"^[a-z0-9-]+$", x.get("slug") or ""):
+            print(f"song_pages.json: {x.get('slug')!r} ({x.get('isrc')}) skipped (not on the site or bad slug)"); continue
+        r, t = hit
+        if t.get("lyrics") != "lyrics" or not r.get("lyrics_file"):
+            print(f"song_pages.json: {x['slug']} skipped (no published lyrics on its release page)"); continue
+        out.append({**x, "r": r, "t": t})
+    return out
+
+def yt_id(u):
+    m = re.search(r"(?:youtu\.be/|v=|/embed/|/shorts/)([A-Za-z0-9_-]{11})", u or "")
+    return m.group(1) if m else None
+
+def song_jsonld(sp, site):
+    r, t = sp["r"], sp["t"]; url = f"{site}song/{sp['slug']}/"
+    d = {"@context": "https://schema.org", "@type": "MusicRecording", "@id": url + "#recording", "name": t["title"], "url": url,
+         "isrcCode": t["isrc"], "byArtist": music_group(site), "datePublished": r["release_date"],
+         "inAlbum": {"@type": "MusicAlbum", "@id": f"{site}release/{r['slug']}/#release", "name": r["title"], "url": f"{site}release/{r['slug']}/",
+                     "albumReleaseType": "https://schema.org/" + ("AlbumRelease" if r["type"] == "album" else "SingleRelease")},
+         "recordingOf": {"@type": "MusicComposition", "name": t["title"]},
+         "copyrightHolder": {"@type": "Organization", "name": LABEL_NAME}, "copyrightYear": int(r["release_date"][:4])}
+    if r.get("genre"): d["genre"] = r["genre"]
+    if r.get("label"): d["recordLabel"] = {"@type": "Organization", "name": r["label"]}
+    if r.get("cover"): d["image"] = site + r["cover"]["jpg"]
+    if t.get("preview"): d["audio"] = {"@type": "AudioObject", "contentUrl": site + t["preview"], "encodingFormat": "audio/mpeg", "description": "30-second preview"}
+    vid = yt_id(t.get("visualizer_url"))
+    if vid:
+        d["subjectOf"] = {"@type": "VideoObject", "name": f"{t['title']} (official visualizer)", "url": t["visualizer_url"], "embedUrl": f"https://www.youtube.com/embed/{vid}",
+                          "thumbnailUrl": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg", "uploadDate": r["release_date"],
+                          "description": f"Official visualizer for {t['title']} by {ARTIST}."}
+    same = [u for u in (t.get("youtube_music_url"), t.get("youtube_url")) if u]
+    if same: d["sameAs"] = same
+    story = t.get("blurb") or (r.get("blurb") if r["type"] == "single" else None)
+    if story: d["description"] = story
+    return d
+
+def song_link(root, isrc, title):
+    s = SONGS.get(isrc)
+    return (f'<a class="songlink" href="{root}song/{s}/" aria-label="{e(title)}: song page with lyrics and credits">Song page</a>') if s else ""
+
+def build_song(sp, songs, site, today, v, has_about):
+    r, t = sp["r"], sp["t"]
+    root = "../../"; url = f"{site}song/{sp['slug']}/"
+    up, hid_up, hid_rel = updown(r, today)
+    single = r["type"] == "single"
+    where = "single" if single else f"track {t['n']} of {r['title']}"
+    story = t.get("blurb") or (r.get("blurb") if single else None)
+    desc = story or f"{t['title']}, a song by {ARTIST} ({where}, {r['release_date'][:4]}): lyrics, the story behind it, credits and where to listen."
+    og_img = site + f"assets/img/og/{r['slug']}.jpg" if r.get("cover") else site + "assets/img/og/home.jpg"
+    hd = head(root, title=f"{t['title']} lyrics — {ARTIST}", desc=desc, url=url, og_image=og_img,
+              og_alt=f"Cover art for {r['title']} by {ARTIST}", og_type="music.song", css_v=v["css"], jsonld=song_jsonld(sp, site))
+    # Listen: the release's direct store links, else its HyperFollow link (labelled Pre-save until the release date)
+    stores = r.get("store_links") or []
+    rel_lbl = "" if single else f' <span class="muted">({e(r["title"])})</span>'
+    if stores:
+        listen = (f'<div class="stores"><p class="stores-label" id="stores-label">Listen on{rel_lbl}</p><ul class="store-row" aria-labelledby="stores-label">'
+                  + "".join(f'<li><a class="store" href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["name"])}{EXT}{NT}</a></li>' for x in stores) + "</ul></div>")
+    elif r.get("listen_url"):
+        listen = (f'<a class="btn" href="{e(r["listen_url"])}" target="_blank" rel="noopener" data-gc="{presave_event(r, up)}">'
+                  f'<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'
+                  f'<span class="js-released"{hid_rel}>Listen</span><span class="js-upcoming"{hid_up}>Pre-save / listen</span>{NT}</a>')
+    else:
+        listen = ""
+    ytl = "".join(f'<a class="btn-alt" href="{e(u)}" target="_blank" rel="noopener" data-gc="event/store/{k}/{r["slug"]}">{lab}{NT}</a>'
+                  for k, u, lab in (("youtube-music", t.get("youtube_music_url"), "This song on YouTube Music"), ("youtube", t.get("youtube_url"), "This song on YouTube")) if u)
+    vis = ""
+    vid = yt_id(t.get("visualizer_url"))
+    if vid:
+        vis = ('\n      <section class="song-sec song-vis" aria-labelledby="vis-title">\n        <h2 id="vis-title">Official visualizer</h2>\n'
+               f'        <a class="vis-link" href="{e(t["visualizer_url"])}" target="_blank" rel="noopener" data-gc="event/visualizer/{sp["slug"]}">'
+               f'<img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" width="480" height="360" alt="" loading="lazy" decoding="async">'
+               f'<span class="vis-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>'
+               f'<span class="vis-cap">Watch {e(t["title"])} on YouTube{NT}</span></a>\n      </section>')
+    if t.get("blurb"):
+        story_html = f'<p class="blurb">{e(t["blurb"])}</p>' + (f'<p class="blurb">{e(t["blurb_in_depth"])}</p>' if t.get("blurb_in_depth") else "")
+    elif r.get("blurb"):
+        story_html = (f'<p class="blurb">{e(r["blurb"])}</p>' if single else
+                      f'<p class="story-k">From the album <a href="{root}release/{r["slug"]}/">{e(r["title"])}</a></p><p class="blurb">{e(r["blurb"])}</p>')
+    else:
+        story_html = ""
+    diss = diss_link_html(r["slug"], r["title"])
+    n = len(r["tracks"])
+    track_of = "" if single else f" · track {t['n']} of {n}"
+    credits = (f'<div><dt>Artist</dt><dd>{ARTIST}</dd></div>'
+               f'<div><dt>{"Single" if single else "Album"}</dt><dd><a href="{root}release/{r["slug"]}/">{e(r["title"])}</a>{track_of}</dd></div>'
+               f'<div><dt><span class="js-released"{hid_rel}>Released</span><span class="js-upcoming"{hid_up}>Release date</span></dt><dd><time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time></dd></div>'
+               + (f'<div><dt>Genre</dt><dd>{genre_link(root, r["genre"])}</dd></div>' if r.get("genre") else "")
+               + (f'<div><dt>Label</dt><dd>{e(r["label"])}</dd></div>' if r.get("label") else "")
+               + f'<div><dt>ISRC</dt><dd><code>{e(t["isrc"])}</code></dd></div>'
+               + (f'<div><dt>UPC</dt><dd><code>{e(r["upc"])}</code></dd></div>' if r.get("upc") else ""))
+    sibs = [x for x in songs if x["r"]["slug"] == r["slug"] and x["slug"] != sp["slug"]]
+    sib_items = "".join(f'<li><a href="{root}song/{x["slug"]}/">{e(x["t"]["title"])}</a></li>' for x in sibs)
+    sib_html = (f'\n      <section class="song-sec" aria-labelledby="sib-title">\n        <h2 id="sib-title">More song pages from {e(r["title"])}</h2>\n'
+                f'        <ul class="song-sibs">{sib_items}</ul>\n      </section>') if sibs else ""
+    pv = pv_button(root, r, t) if t.get("preview") else ""
+    pv_html = (f'<ol class="tracks song-pv"><li>{pv}<span class="pv-bar" aria-hidden="true"><span></span></span><span class="tt">30-second preview</span></li></ol>') if pv else ""
+    bg = f' style="background-image:url(\'{root}{r["cover"]["jpg_small"]}\')"' if r.get("cover") else ""
+    eyebrow = "Single" if single else f"Track {t['n']} of {e(r['title'])}"
+    kind_l = "single" if single else "album"
+    page = f'''{hd}
+<body class="release-page song-page">
+{topbar(root, has_about)}
+<main id="main">
+  <div class="release-bg"{bg} aria-hidden="true"></div>
+  <article class="release song" data-slug="{r["slug"]}" data-date="{r["release_date"]}" data-lyrics="{root}{r["lyrics_file"]}">
+    <div class="cover-col"><div class="cover"><a href="{root}release/{r["slug"]}/" tabindex="-1" aria-hidden="true">{picture(root, r, "(max-width: 820px) 92vw, 560px", eager=True, big=True, alt="")}</a></div>
+      <p class="art-copy">Artwork &copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p></div>
+    <div class="release-body">
+      <a class="back" href="{root}release/{r["slug"]}/"><span aria-hidden="true">←</span> {e(r["title"])}</a>
+      <p class="eyebrow">Song · {eyebrow}<span class="js-upcoming"{hid_up}> · Upcoming</span></p>
+      <h1 style="--fit:{word_fit(t["title"]) or 1}">{e(t["title"])}</h1>
+      <p class="by">{ARTIST}</p>
+      {story_html}
+      {diss}{pv_html}
+      <div class="listen">{listen}{ytl}</div>
+      <section class="song-sec song-lyr" aria-labelledby="lyr-title">
+        <h2 id="lyr-title">Lyrics</h2>
+        <div class="lyrics song-lyrics" data-isrc="{e(t["isrc"])}" aria-live="polite">Loading lyrics…</div>
+        <noscript><p class="muted">Turn on JavaScript to see the lyrics.</p></noscript>
+        <p class="lcopy">Lyrics &copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p>
+      </section>{vis}
+      <section class="song-sec" aria-labelledby="cred-title">
+        <h2 id="cred-title">Credits and details</h2>
+        <dl class="song-facts">{credits}</dl>
+      </section>{sib_html}
+      <p class="song-more"><a href="{root}release/{r["slug"]}/">Open the {kind_l}</a> · <a href="{root}song/">All song pages</a></p>
+    </div>
+  </article>
+</main>
+
+{footer(root, v["js"])}'''
+    d = ROOT / "song" / sp["slug"]; d.mkdir(parents=True, exist_ok=True)
+    (d / "index.html").write_text(page)
+    return url
+
+def song_index_html(root, songs):
+    """Song pages grouped by release (newest release first)."""
+    groups = {}
+    for x in songs: groups.setdefault(x["r"]["slug"], []).append(x)
+    out = []
+    for slug, xs in sorted(groups.items(), key=lambda kv: (kv[1][0]["r"]["release_date"], kv[0]), reverse=True):
+        r = xs[0]["r"]
+        items = "".join(f'<li><a href="{root}song/{x["slug"]}/">{e(x["t"]["title"])}</a></li>' for x in sorted(xs, key=lambda x: x["t"]["n"]))
+        kind = "Single" if r["type"] == "single" else "Album"
+        out.append(f'<li><h2 class="si-rel"><a href="{root}release/{r["slug"]}/">{e(r["title"])}</a> <span class="muted">{kind} · {r["release_date"][:4]}</span></h2>'
+                   f'<ul class="song-sibs">{items}</ul></li>')
+    return f'<ul class="song-index">{"".join(out)}</ul>'
+
+def build_songs(releases, songs, site, today, v, has_about):
+    d = ROOT / "song"
+    keep = {x["slug"] for x in songs}
+    if d.exists():
+        for sub in d.iterdir():
+            if sub.is_dir() and sub.name not in keep:
+                for f in sub.iterdir(): f.unlink()
+                sub.rmdir()
+    urls = [build_song(x, songs, site, today, v, has_about) for x in songs]
+    root = "../"; url = site + "song/"
+    desc = f"Lyrics pages for {len(songs)} {ARTIST} songs: the official lyrics, the story behind each song, credits, ISRC and where to listen."
+    ld = {"@context": "https://schema.org", "@type": "CollectionPage", "@id": url + "#page", "name": f"Song pages — {ARTIST}", "url": url,
+          "description": trim_desc(desc), "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site},
+          "mainEntity": {"@type": "ItemList", "numberOfItems": len(songs), "itemListElement": [
+              {"@type": "ListItem", "position": k + 1, "url": f"{site}song/{x['slug']}/", "name": x["t"]["title"]} for k, x in enumerate(songs)]}}
+    hd = head(root, title=f"Song pages and lyrics — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+    page = f'''{hd}
+<body class="genre-page songs-index">
+{topbar(root, has_about, current="releases")}
+<main id="main">
+  <header class="section genre-head">
+    <a class="back" href="{root}release/"><span aria-hidden="true">←</span> All releases</a>
+    <p class="eyebrow">Lyrics</p>
+    <h1>Song pages</h1>
+    <p class="genre-stats">{len(songs)} songs with official lyrics, the story behind each one, credits and where to listen. More are added as their lyrics are confirmed.</p>
+  </header>
+  <section class="section" aria-label="Songs by release">{song_index_html(root, songs)}</section>
+</main>
+
+{footer(root, v["js"])}'''
+    d.mkdir(exist_ok=True); (d / "index.html").write_text(page)
+    return [url] + urls
+
+def presave_event(r, up):
+    """GoatCounter event for the HyperFollow button: event/presave/... while upcoming, event/store/hyperfollow/... once out."""
+    return f'event/presave/hyperfollow/{r["slug"]}' if up else f'event/store/hyperfollow/{r["slug"]}'
+
+def build_releases_index(releases, site, today, v, has_about, songs=()):
     """release/: the whole discography on one shareable page (Songs and Instrumentals, albums and singles, newest first)."""
     root = "../"; url = site + "release/"
     albums = sum(r["type"] == "album" for r in releases); singles = len(releases) - albums
@@ -2255,8 +2450,12 @@ def build_releases_index(releases, site, today, v, has_about):
     <p class="eyebrow">Discography</p>
     <h1>Releases</h1>
     <p class="genre-stats">{len(releases)} releases · {albums} albums · {singles} singles<span class="sep" aria-hidden="true"> · </span><span class="mix">{ns} songs · {ni} instrumentals</span></p>
-    <p class="start-more"><a href="#songs">Songs</a> · <a href="#instrumentals">Instrumentals</a> · <a href="{root}genres/">Browse by genre</a></p>
-  </header>{cat_sections_html(root, releases, today)}
+    <p class="start-more"><a href="#songs">Songs</a> · <a href="#instrumentals">Instrumentals</a> · <a href="{root}genres/">Browse by genre</a>{f' · <a href="#song-pages">Song pages and lyrics</a>' if songs else ""}</p>
+  </header>{cat_sections_html(root, releases, today)}{f"""
+  <section id="song-pages" class="section song-pages-sec" aria-labelledby="sp-title">
+    <div class="section-head"><h2 id="sp-title">Song pages and lyrics</h2><a class="count" href="{root}song/">{len(songs)} songs</a></div>
+    {song_index_html(root, songs).replace('<h2 class="si-rel">', '<h3 class="si-rel">').replace('</span></h2>', '</span></h3>')}
+  </section>""" if songs else ""}
 </main>
 
 {footer(root, v["js"])}'''
@@ -2460,6 +2659,9 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     LOUNGE_CTA = LOUNGE_CTA_LIVE if MEMBERS else LOUNGE_CTA_SOON
     idx_bytes = build_search_index(releases, has_about, about)
     SEARCH_V = asset_hash("assets/data/search.json")
+    global SONGS
+    songs = load_song_pages(releases)
+    SONGS = {x["isrc"]: x["slug"] for x in songs}
     build_home(releases, site, today, v, has_about, about, data.get("donate_url"), data.get("email_signup_url"))
     rel = ROOT / "release"
     keep = {r["slug"] for r in releases}
@@ -2482,11 +2684,12 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     build_lounge_sample(releases, site, v, has_about)
     n_start = build_start(releases, site, v, has_about)
     n_merch = build_merch(releases, site, v, has_about, data.get("merch_url"), data.get("merch_items"))
-    extra = [build_releases_index(releases, site, today, v, has_about), build_contact(site, v, has_about, data.get("press_contact")),
+    song_urls = build_songs(releases, songs, site, today, v, has_about)
+    extra = [build_releases_index(releases, site, today, v, has_about, songs), build_contact(site, v, has_about, data.get("press_contact")),
              build_about(releases, site, v, has_about, about, tagline)]
     build_genre_index(site)
     n_feed = build_feed(releases, site, today)
-    build_misc(releases, site, v, [u for u in extra if u] + build_library(releases, site, v, has_about))
+    build_misc(releases, site, v, [u for u in extra if u] + build_library(releases, site, v, has_about) + song_urls)
     print(f"search index: assets/data/search.json {idx_bytes / 1024:.0f} KB")
     print("genres:", ", ".join(f"{g} ({len(rs)} releases, {sum(len(r['tracks']) for r in rs)} tracks)" for g, rs in groups))
     print(f"pages: index + {len(releases)} release pages + genres index + {len(groups)} genre pages + lounge + press + links + community + help + start ({n_start} essentials) + supporters ({n_sup} names) + merch ({n_merch} items, {"live" if data.get("merch_url") else "coming soon"}) (covers zip {zsize / 1e6:.1f} MB) + 404 + release.html shim | sitemap urls: {len(releases) + 11 + len(groups)} | about section: {'shown' if has_about else 'hidden (content/about.html empty)'}")
