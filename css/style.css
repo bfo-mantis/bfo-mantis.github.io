@@ -901,3 +901,20 @@ html.search-open{overflow:hidden}
 .ms-list small{flex-basis:100%;color:var(--muted);font-size:.72rem;line-height:1.2}
 .ms-more{font-size:.85rem;color:var(--muted)}
 .ms-more:hover{color:var(--accent)}
+
+/* ---------- play queue ("Play the Start here ten") + site-wide mini-player extras ---------- */
+.start-row{max-width:var(--maxw);margin:18px auto 0;padding:0 var(--pad);display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.start-row .start-cta{flex:1 1 320px;margin:0;padding:0;max-width:none}
+.start-row .start-cta a{height:100%;box-sizing:border-box}
+.q-play{-webkit-appearance:none;appearance:none;font:inherit;font-weight:600;font-size:.92rem;cursor:pointer;display:inline-flex;align-items:center;gap:10px;
+  padding:12px 18px;border-radius:999px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);transition:box-shadow .2s}
+.q-play:hover,.q-play:focus-visible{box-shadow:0 0 0 3px rgba(200,255,77,.3)}
+.q-play svg{width:14px;height:14px;flex:none}
+.q-play .i-pause,.q-play.is-playing .i-play{display:none}.q-play.is-playing .i-pause{display:block}
+.q-home{border-radius:var(--radius)}
+.q-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:18px 0 6px}
+.q-note{font-size:.85rem;color:var(--muted)}
+.mini.has-q{grid-template-columns:44px minmax(0,1fr) auto auto auto auto}
+.mini-nx[hidden]{display:none}
+@media (max-width:420px){.mini.has-q{grid-template-columns:40px minmax(0,1fr) auto auto auto}.start-row .start-cta{flex-basis:100%}.q-home{width:100%;justify-content:center}}
+html.spa-loading #main{opacity:.6;transition:opacity .2s .15s}

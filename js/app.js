@@ -1,41 +1,19 @@
 /* bfo.mantis — progressive enhancement only. Pages are pre-rendered by tools/build_pages.py. */
 (function () {
   "use strict";
-  var today = new Date(); today.setHours(0, 0, 0, 0);
   var each = function (sel, fn, root) { Array.prototype.forEach.call((root || document).querySelectorAll(sel), fn); };
-  var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
-
-  // Upcoming vs released labels are baked in at build time; refresh them against today's date.
-  each("[data-date]", function (el) {
-    var p = el.getAttribute("data-date").split("-");
-    var up = new Date(+p[0], p[1] - 1, +p[2]) > today;
-    // only touch the DOM when the baked-in state is out of date (avoids needless style recalcs)
-    each(".js-upcoming", function (x) { if (x.hidden !== !up && x.closest("[data-date]") === el) x.hidden = !up; }, el);
-    each(".js-released", function (x) { if (x.hidden !== up && x.closest("[data-date]") === el) x.hidden = up; }, el);
-  });
-
-  // Compact header + back-to-top button once the page is scrolled.
-  var body = document.body, ticking = false, st = {};
   var narrow = window.matchMedia ? matchMedia("(max-width: 960px)") : null;
-  var set = function (cls, on) { if (st[cls] !== on) { st[cls] = on; body.classList.toggle(cls, on); } };
-  var onScroll = function () {
-    ticking = false;
-    var s = window.pageYOffset;
-    set("is-scrolled", s > 24);
-    set("show-top", s > 900);
+
+  // Per-page listeners on window/document are bound through on(), tied to an AbortController that is aborted when
+  // client-side navigation swaps the page, so re-running init() never stacks duplicate handlers.
+  var sigOK = false;
+  try { var tac = new AbortController(); window.addEventListener("bfo-test", null, { get signal() { sigOK = true; return tac.signal; } }); } catch (err) { sigOK = false; }
+  var pageAC = null;
+  var on = function (t, type, fn, o) {
+    o = o || {};
+    if (pageAC) o.signal = pageAC.signal;
+    t.addEventListener(type, fn, o);
   };
-  var queue = function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } };
-  window.addEventListener("scroll", queue, { passive: true });
-  window.addEventListener("load", queue);   // e.g. reload mid-page (reading the offset earlier would force a layout)
-  each('a[href="#top"]', function (a) {
-    a.addEventListener("click", function (ev) {
-      ev.preventDefault();
-      var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
-      var brand = document.querySelector(".brand"); if (brand) brand.focus({ preventScroll: true });
-      if (history.replaceState) history.replaceState(null, "", location.pathname + location.search);
-    });
-  });
 
   // Analytics (GoatCounter, only when content/site_config.json sets goatcounter_code; no cookies). Every call is
   // guarded, so nothing breaks when the script is absent, blocked or still loading.
@@ -54,6 +32,173 @@
     var svc = slugify((a.firstChild && a.firstChild.nodeValue) || a.textContent);
     track("event/store/" + svc + "/" + relSlug(a));
   });
+
+  document.addEventListener("submit", function (ev) {   // email sign-up (only live when email_signup_url is configured)
+    var f = ev.target;
+    if (f && f.hasAttribute && f.hasAttribute("data-gc")) track(f.getAttribute("data-gc"));
+  });
+
+  // ---------- 30-second previews + the site-wide mini-player ----------
+  // One shared <audio preload="none"> for the whole visit, so only one clip plays at a time and nothing downloads until
+  // a play button is pressed. The player (audio + bottom bar) lives outside the page content: while a clip is loaded,
+  // internal links swap pages client-side (see the router below), so it keeps playing as you browse.
+  var svgPlay = '<svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>';
+  var svgPause = '<svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>';
+  var mmss = function (t) { t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ":" + ("0" + t % 60).slice(-2); };
+  var abs = function (u) { try { return u ? new URL(u, location.href).href : ""; } catch (err) { return ""; } };
+  var noop = function () {};
+  var PL = {
+    audio: null, it: null,          // it: the loaded clip {src, title, rel, href, art} (absolute URLs)
+    q: null, qi: -1, qname: "",     // an optional queue (e.g. the Start here ten)
+    mini: null, page: null          // page: hooks the current page registers (button states, progress bars)
+  };
+  var hooks = function () { return PL.page || { state: noop, progress: noop, changed: noop, ended: noop, error: noop, closed: noop }; };
+  PL.itemFrom = function (btn) {
+    return { src: abs(btn.getAttribute("data-src")), title: btn.getAttribute("data-title") || "", rel: btn.getAttribute("data-rel") || "",
+      href: abs(btn.getAttribute("data-href")), art: abs(btn.getAttribute("data-art")) };
+  };
+  PL.active = function () { return !!(PL.audio && PL.it && PL.mini && !PL.mini.hidden); };
+  PL.playing = function () { return !!(PL.audio && !PL.audio.paused); };
+  var mEls = {};
+  var buildMini = function () {
+    var m = document.createElement("div");
+    m.className = "mini"; m.hidden = true;
+    m.setAttribute("role", "region"); m.setAttribute("aria-label", "Preview player");
+    m.innerHTML = '<img class="mini-art" alt="" width="44" height="44"><div class="mini-meta"><span class="mini-t"></span><span class="mini-s"></span></div>' +
+      '<span class="mini-time" aria-hidden="true">0:00 / 0:30</span>' +
+      '<button type="button" class="mini-pp" aria-label="Pause preview">' + svgPlay + svgPause + '</button>' +
+      '<button type="button" class="mini-nx" hidden aria-label="Next in queue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5.5v13l9-6.5zM16.5 5.5H19v13h-2.5z" fill="currentColor"/></svg></button>' +
+      '<button type="button" class="mini-x" aria-label="Close preview player"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>' +
+      '<span class="mini-prog" aria-hidden="true"><span></span></span>';
+    document.body.appendChild(m);
+    PL.mini = m;
+    ["pp", "nx", "t", "s", "art", "time"].forEach(function (k) { mEls[k] = m.querySelector(".mini-" + k); });
+    mEls.bar = m.querySelector(".mini-prog > span");
+    mEls.pp.addEventListener("click", function () { if (PL.it) PL.play(PL.it); });
+    mEls.nx.addEventListener("click", function () { PL.next(); });
+    m.querySelector(".mini-x").addEventListener("click", function () { PL.close(); });
+  };
+  PL.showMini = function () {   // (re)draw the bar for the loaded clip; also called after each page swap
+    var it = PL.it; if (!it) return;
+    if (!PL.mini) buildMini();
+    mEls.t.textContent = it.title;
+    mEls.s.textContent = "";
+    var qtxt = PL.q ? PL.qname + " · " + (PL.qi + 1) + " of " + PL.q.length : "";
+    if (it.rel && it.href && location.pathname.replace(/index\.html$/, "") !== new URL(it.href).pathname) {
+      var a = document.createElement("a"); a.href = it.href; a.textContent = it.rel; mEls.s.appendChild(a);
+      if (qtxt) mEls.s.appendChild(document.createTextNode(" · " + qtxt));
+    } else mEls.s.textContent = qtxt || (it.rel ? it.rel + " · 30s preview" : "30s preview");
+    if (it.art) { if (mEls.art.getAttribute("src") !== it.art) mEls.art.src = it.art; mEls.art.hidden = false; } else mEls.art.hidden = true;
+    var hasNext = !!(PL.q && PL.qi < PL.q.length - 1);
+    mEls.nx.hidden = !hasNext; PL.mini.classList.toggle("has-q", hasNext);
+    if (hasNext) mEls.nx.setAttribute("aria-label", "Next: " + PL.q[PL.qi + 1].title);
+    if (PL.mini.hidden) PL.mini.hidden = false;
+    document.body.classList.add("has-mini");
+  };
+  var miniState = function (playing) {
+    if (!PL.mini || !PL.it) return;
+    mEls.pp.classList.toggle("is-playing", playing);
+    mEls.pp.setAttribute("aria-label", (playing ? "Pause" : "Play") + " preview of " + PL.it.title);
+  };
+  var miniProgress = function () {
+    if (!PL.mini || PL.mini.hidden) return;
+    var d = PL.audio.duration || 30;
+    mEls.bar.style.transform = "scaleX(" + Math.min(1, (PL.audio.currentTime || 0) / d) + ")";
+    mEls.time.textContent = mmss(PL.audio.currentTime) + " / " + mmss(d);
+  };
+  var qSync = function () { each("button.q-play", function (b) { var mine = PL.q && PL.qname === b.getAttribute("data-qname"); b.classList.toggle("is-playing", !!(mine && PL.playing())); }); };
+  var ensureAudio = function () {
+    if (PL.audio) return PL.audio;
+    var audio = PL.audio = new Audio(); audio.preload = "none";
+    audio.addEventListener("play", function () { hooks().state(true); PL.showMini(); miniState(true); qSync(); });
+    audio.addEventListener("pause", function () { hooks().state(false); miniState(false); qSync(); });
+    audio.addEventListener("timeupdate", function () { hooks().progress(); miniProgress(); });
+    audio.addEventListener("ended", function () {
+      if (PL.q && PL.qi < PL.q.length - 1) { PL.next(); return; }
+      hooks().ended(); miniState(false); audio.currentTime = 0;
+      if (mEls.bar) mEls.bar.style.transform = "scaleX(0)";
+      if (PL.q) { PL.q = null; PL.qi = -1; PL.showMini(); }
+      qSync();
+    });
+    audio.addEventListener("error", function () {
+      if (!PL.it) return;
+      hooks().error(); miniState(false); qSync();
+    });
+    document.addEventListener("keydown", function (ev) {   // Esc stops the preview (unless it is closing the lightbox)
+      if (ev.key === "Escape" && !audio.paused && !document.querySelector("dialog[open]")) audio.pause();
+    });
+    return audio;
+  };
+  // Play (or pause/resume) a clip. qi: its index when it is played as part of PL.q; any other clip ends the queue.
+  PL.play = function (it, qi) {
+    var audio = ensureAudio();
+    var same = PL.it && PL.it.src === it.src;
+    if (same && !audio.paused && qi === undefined) { audio.pause(); return; }
+    var fresh = !same || audio.ended || audio.currentTime < 0.5;
+    if (qi !== undefined) PL.qi = qi; else if (!same) { PL.q = null; PL.qi = -1; }
+    if (!same) {
+      var old = PL.it; PL.it = it;
+      audio.src = it.src;
+      hooks().changed(old);
+    }
+    if (fresh) {   // a clip starting (not a resume after pause)
+      var m = /previews\/([^\/]+)\/(\d+)\.mp3/.exec(it.src || "");
+      if (m) track("event/play/" + m[1] + "/" + m[2]);
+    }
+    if (PL.mini && !PL.mini.hidden) PL.showMini();
+    var pr = audio.play();
+    if (pr && pr.catch) pr.catch(function () { hooks().state(false); miniState(false); qSync(); });
+  };
+  PL.next = function () { if (PL.q && PL.qi < PL.q.length - 1) PL.play(PL.q[PL.qi + 1], PL.qi + 1); };
+  PL.close = function () {
+    if (!PL.audio) return;
+    PL.audio.pause();
+    var old = PL.it;
+    hooks().state(false); hooks().ended(); PL.audio.currentTime = 0;
+    PL.q = null; PL.qi = -1;
+    if (PL.mini) { PL.mini.hidden = true; document.body.classList.remove("has-mini"); }
+    qSync();
+    hooks().closed(old);
+  };
+
+  // ---------- per-page setup (re-run after each client-side page swap) ----------
+  var init = function () {
+  pageAC = sigOK ? new AbortController() : null;
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
+
+  // Upcoming vs released labels are baked in at build time; refresh them against today's date.
+  each("[data-date]", function (el) {
+    var p = el.getAttribute("data-date").split("-");
+    var up = new Date(+p[0], p[1] - 1, +p[2]) > today;
+    // only touch the DOM when the baked-in state is out of date (avoids needless style recalcs)
+    each(".js-upcoming", function (x) { if (x.hidden !== !up && x.closest("[data-date]") === el) x.hidden = !up; }, el);
+    each(".js-released", function (x) { if (x.hidden !== up && x.closest("[data-date]") === el) x.hidden = up; }, el);
+  });
+
+  // Compact header + back-to-top button once the page is scrolled.
+  var body = document.body, ticking = false, st = {};
+  var set = function (cls, on) { if (st[cls] !== on) { st[cls] = on; body.classList.toggle(cls, on); } };
+  var onScroll = function () {
+    ticking = false;
+    var s = window.pageYOffset;
+    set("is-scrolled", s > 24);
+    set("show-top", s > 900);
+  };
+  var queue = function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } };
+  on(window, "scroll", queue, { passive: true });
+  if (document.readyState === "complete") queue(); else on(window, "load", queue);   // e.g. reload mid-page (reading the offset earlier would force a layout)
+  each('a[href="#top"]', function (a) {
+    a.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+      var brand = document.querySelector(".brand"); if (brand) brand.focus({ preventScroll: true });
+      if (history.replaceState) history.replaceState(null, "", location.pathname + location.search);
+    });
+  });
+
+  // Analytics: lyric / "more about" expands (the click and submit counters are bound once, outside init)
   each("details[data-isrc]", function (d) {
     d.addEventListener("toggle", function () {
       if (!d.open) return;
@@ -78,8 +223,8 @@
     };
     tog.addEventListener("click", function () { setOpen(!navBar.classList.contains("nav-open")); });
     each("nav a", function (a) { a.addEventListener("click", function () { setOpen(false); }); }, navBar);
-    document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && navBar.classList.contains("nav-open")) setOpen(false, true); });
-    document.addEventListener("click", function (ev) { if (navBar.classList.contains("nav-open") && !navBar.contains(ev.target)) setOpen(false); });
+    on(document, "keydown", function (ev) { if (ev.key === "Escape" && navBar.classList.contains("nav-open")) setOpen(false, true); });
+    on(document, "click", function (ev) { if (navBar.classList.contains("nav-open") && !navBar.contains(ev.target)) setOpen(false); });
   }
 
   // "More" store buttons: extras are hidden by CSS (only when JS runs); the toggle reveals them.
@@ -96,39 +241,43 @@
     });
   });
 
-  // 30-second previews: one shared <audio preload="none">, so only one clip plays at a time and nothing
-  // downloads until a play button is pressed.
+  // Previews on this page: the buttons drive the shared player (PL); PL calls back through these hooks.
+  PL.page = null;
   var pvButtons = document.querySelectorAll("button.pv");
   var top = document.querySelector("button.pv-top");
+  var main = top && top.closest(".pv-main");
+  var fab = null, mainOut = false;
+  var fabUpdate = function () {
+    if (!fab) return;
+    var on_ = mainOut && !PL.active() && narrow && narrow.matches;
+    fab.classList.toggle("is-on", !!on_);
+    fab.tabIndex = on_ ? 0 : -1; fab.setAttribute("aria-hidden", on_ ? "false" : "true");
+    body.classList.toggle("has-fab", !!on_);
+  };
   if (pvButtons.length) {
-    var audio = new Audio(); audio.preload = "none";
-    var current = null;   // the .pv button whose clip is loaded
-    var main = top && top.closest(".pv-main");
     var nowEl = main && main.querySelector(".pv-now"), timeEl = main && main.querySelector(".pv-time");
-    var mmss = function (t) { t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ":" + ("0" + t % 60).slice(-2); };
+    var cur = function () {   // this page's button for the loaded clip, if any
+      if (!PL.it) return null;
+      for (var i = 0; i < pvButtons.length; i++) if (abs(pvButtons[i].getAttribute("data-src")) === PL.it.src) return pvButtons[i];
+      return null;
+    };
     var label = function (btn, playing) {
       btn.setAttribute("aria-label", (playing ? "Pause" : "Play") + " 30-second preview of " + btn.getAttribute("data-title"));
     };
     var setState = function (playing) {
-      if (current) {
-        current.classList.toggle("is-playing", playing);
-        label(current, playing);
-        current.closest("li").classList.toggle("pv-active", true);
+      var c = cur();
+      if (c) {
+        c.classList.toggle("is-playing", playing);
+        label(c, playing);
+        c.closest("li").classList.toggle("pv-active", true);
       }
       if (top) {
-        top.classList.toggle("is-playing", playing);
-        var title = current ? current.getAttribute("data-title") : pvButtons[0].getAttribute("data-title");
-        top.setAttribute("aria-label", (playing ? "Pause" : "Play") + " 30-second preview of " + title);
-        top.querySelector(".pv-top-label").textContent = playing ? "Pause preview" : "Play preview";
-        if (nowEl) nowEl.textContent = title;
+        var shown = c || pvButtons[0], tp = playing && !!c;
+        top.classList.toggle("is-playing", tp);
+        top.setAttribute("aria-label", (tp ? "Pause" : "Play") + " 30-second preview of " + shown.getAttribute("data-title"));
+        top.querySelector(".pv-top-label").textContent = tp ? "Pause preview" : "Play preview";
+        if (nowEl) nowEl.textContent = shown.getAttribute("data-title");
       }
-    };
-    var progress = function () {
-      if (!current) return;
-      var d = audio.duration || 30, p = Math.min(1, (audio.currentTime || 0) / d);
-      var bar = current.closest("li").querySelector(".pv-bar > span");
-      if (bar) bar.style.transform = "scaleX(" + p + ")";
-      if (timeEl) timeEl.textContent = mmss(audio.currentTime) + " / " + mmss(d);
     };
     var reset = function (btn) {
       if (!btn) return;
@@ -136,94 +285,44 @@
       var li = btn.closest("li"); li.classList.remove("pv-active");
       var bar = li.querySelector(".pv-bar > span"); if (bar) bar.style.transform = "scaleX(0)";
     };
-    var play = function (btn) {
-      if (current === btn && !audio.paused) { audio.pause(); return; }
-      var fresh = current !== btn || audio.ended || audio.currentTime < 0.5;
-      if (current !== btn) {
-        reset(current); current = btn;
-        audio.src = btn.getAttribute("data-src");
+    var btnFor = function (it) {
+      if (!it) return null;
+      for (var i = 0; i < pvButtons.length; i++) if (abs(pvButtons[i].getAttribute("data-src")) === it.src) return pvButtons[i];
+      return null;
+    };
+    PL.page = {
+      state: setState,
+      progress: function () {
+        var c = cur(); if (!c) return;
+        var d = PL.audio.duration || 30, p = Math.min(1, (PL.audio.currentTime || 0) / d);
+        var bar = c.closest("li").querySelector(".pv-bar > span");
+        if (bar) bar.style.transform = "scaleX(" + p + ")";
+        if (timeEl) timeEl.textContent = mmss(PL.audio.currentTime) + " / " + mmss(d);
+      },
+      changed: function (old) { reset(btnFor(old)); if (timeEl) timeEl.textContent = "0:00 / 0:30"; setState(false); fabUpdate(); },
+      ended: function () { setState(false); reset(cur()); if (timeEl) timeEl.textContent = "0:00 / 0:30"; },
+      error: function () { setState(false); if (nowEl && cur()) nowEl.textContent = "Preview unavailable"; },
+      closed: function (old) {
+        if (timeEl) timeEl.textContent = "0:00 / 0:30";
+        fabUpdate();
+        var b = btnFor(old);
+        if (b && b.offsetParent) b.focus(); else if (top) top.focus();
       }
-      if (fresh) {   // a clip starting (not a resume after pause)
-        var m = /previews\/([^\/]+)\/(\d+)\.mp3/.exec(btn.getAttribute("data-src") || "");
-        if (m) track("event/play/" + m[1] + "/" + m[2]);
-      }
-      var pr = audio.play();
-      if (pr && pr.catch) pr.catch(function () { setState(false); });
     };
     Array.prototype.forEach.call(pvButtons, function (btn) {
-      btn.addEventListener("click", function () { play(btn); });
+      btn.addEventListener("click", function () { PL.play(PL.itemFrom(btn)); });
     });
-    if (top) top.addEventListener("click", function () { play(current || pvButtons[0]); });
-    // Mini-player: a bar fixed to the bottom of the viewport while a clip is loaded (title, cover, play/pause, progress,
-    // close). Built on first play; the shared <audio> keeps playing while the page scrolls.
-    var mini = null, miniPP, miniT, miniS, miniArt, miniTime, miniBar;
-    var svgPlay = '<svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>';
-    var svgPause = '<svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>';
-    var buildMini = function () {
-      mini = document.createElement("div");
-      mini.className = "mini"; mini.hidden = true;
-      mini.setAttribute("role", "region"); mini.setAttribute("aria-label", "Preview player");
-      mini.innerHTML = '<img class="mini-art" alt="" width="44" height="44"><div class="mini-meta"><span class="mini-t"></span><span class="mini-s"></span></div>' +
-        '<span class="mini-time" aria-hidden="true">0:00 / 0:30</span>' +
-        '<button type="button" class="mini-pp" aria-label="Pause preview">' + svgPlay + svgPause + '</button>' +
-        '<button type="button" class="mini-x" aria-label="Close preview player"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>' +
-        '<span class="mini-prog" aria-hidden="true"><span></span></span>';
-      document.body.appendChild(mini);
-      miniPP = mini.querySelector(".mini-pp"); miniT = mini.querySelector(".mini-t"); miniS = mini.querySelector(".mini-s");
-      miniArt = mini.querySelector(".mini-art"); miniTime = mini.querySelector(".mini-time"); miniBar = mini.querySelector(".mini-prog > span");
-      miniPP.addEventListener("click", function () { if (current) play(current); });
-      mini.querySelector(".mini-x").addEventListener("click", closeMini);
-    };
-    var showMini = function () {
-      if (!current) return;
-      if (!mini) buildMini();
-      miniT.textContent = current.getAttribute("data-title") || "";
-      var rel = current.getAttribute("data-rel") || "", href = current.getAttribute("data-href");
-      miniS.textContent = "";
-      if (rel && href && location.pathname.replace(/index\.html$/, "") !== new URL(href, location.href).pathname) {
-        var a = document.createElement("a"); a.href = href; a.textContent = rel; miniS.appendChild(a);
-      } else miniS.textContent = rel ? rel + " · 30s preview" : "30s preview";
-      var art = current.getAttribute("data-art");
-      if (art) { if (miniArt.getAttribute("src") !== art) miniArt.src = art; miniArt.hidden = false; } else miniArt.hidden = true;
-      if (mini.hidden) { mini.hidden = false; body.classList.add("has-mini"); fabUpdate(); }
-    };
-    var closeMini = function () {
-      audio.pause();
-      var btn = current; setState(false); reset(btn); audio.currentTime = 0;
-      if (timeEl) timeEl.textContent = "0:00 / 0:30";
-      if (mini) { mini.hidden = true; body.classList.remove("has-mini"); }
-      fabUpdate();
-      if (btn && btn.offsetParent) btn.focus(); else if (top) top.focus();
-    };
-    var miniState = function (playing) {
-      if (!mini || !current) return;
-      miniPP.classList.toggle("is-playing", playing);
-      miniPP.setAttribute("aria-label", (playing ? "Pause" : "Play") + " preview of " + current.getAttribute("data-title"));
-    };
-    var miniProgress = function () {
-      if (!mini || mini.hidden) return;
-      var d = audio.duration || 30;
-      miniBar.style.transform = "scaleX(" + Math.min(1, (audio.currentTime || 0) / d) + ")";
-      miniTime.textContent = mmss(audio.currentTime) + " / " + mmss(d);
-    };
+    if (top) top.addEventListener("click", function () { PL.play(PL.itemFrom(cur() || pvButtons[0])); });
 
     // Phones: a floating "Play latest" / "Play preview" button once the page's main player has scrolled out of view
     // (hidden while the mini-player is open). The page gets matching bottom padding so nothing ends up underneath it.
-    var fab = null, mainOut = false;
-    var fabUpdate = function () {
-      if (!fab) return;
-      var on = mainOut && (!mini || mini.hidden) && narrow && narrow.matches;
-      fab.classList.toggle("is-on", !!on);
-      fab.tabIndex = on ? 0 : -1; fab.setAttribute("aria-hidden", on ? "false" : "true");
-      body.classList.toggle("has-fab", !!on);
-    };
     if (main) {
       fab = document.createElement("button");
       fab.type = "button"; fab.className = "fab-play"; fab.tabIndex = -1; fab.setAttribute("aria-hidden", "true");
       fab.innerHTML = svgPlay + "<span></span>";
       fab.querySelector("span").textContent = main.getAttribute("data-fab") || "Play preview";
       document.body.appendChild(fab);
-      fab.addEventListener("click", function () { play(current || pvButtons[0]); });
+      fab.addEventListener("click", function () { PL.play(PL.itemFrom(cur() || pvButtons[0])); });
       // the main player counts as "out of view" once it has scrolled above the viewport (rAF-throttled, read-only)
       var fabTick = false;
       var fabCheck = function () {
@@ -232,26 +331,29 @@
         var out = main.getBoundingClientRect().bottom < 72;   // i.e. behind or above the sticky header
         if (out !== mainOut) { mainOut = out; fabUpdate(); }
       };
-      window.addEventListener("scroll", function () { if (!fabTick) { fabTick = true; requestAnimationFrame(fabCheck); } }, { passive: true });
-      window.addEventListener("load", fabCheck);
-      if (narrow && narrow.addEventListener) narrow.addEventListener("change", fabCheck);
+      on(window, "scroll", function () { if (!fabTick) { fabTick = true; requestAnimationFrame(fabCheck); } }, { passive: true });
+      if (document.readyState === "complete") fabCheck(); else on(window, "load", fabCheck);
+      if (narrow && narrow.addEventListener) on(narrow, "change", fabCheck);
     }
-
-    audio.addEventListener("play", function () { setState(true); showMini(); miniState(true); });
-    audio.addEventListener("pause", function () { setState(false); miniState(false); });
-    audio.addEventListener("timeupdate", function () { progress(); miniProgress(); });
-    audio.addEventListener("ended", function () {
-      setState(false); miniState(false); reset(current); audio.currentTime = 0; if (timeEl) timeEl.textContent = "0:00 / 0:30";
-      if (miniBar) miniBar.style.transform = "scaleX(0)";
-    });
-    audio.addEventListener("error", function () {
-      if (!current) return;
-      setState(false); miniState(false); if (nowEl) nowEl.textContent = "Preview unavailable";
-    });
-    document.addEventListener("keydown", function (ev) {   // Esc stops the preview (unless it is closing the lightbox)
-      if (ev.key === "Escape" && !audio.paused && !document.querySelector("dialog[open]")) audio.pause();
-    });
+    // arriving on a page while a clip is loaded (client-side navigation): mark its button
+    if (PL.it) { var c0 = cur(); if (c0) { setState(PL.playing()); PL.page.progress(); } }
   }
+  // Queues ("Play the Start here ten"): the button carries the list; the mini-player shows "n of 10" and a Next button.
+  each("button.q-play", function (b) {
+    b.addEventListener("click", function () {
+      var name = b.getAttribute("data-qname") || "Queue";
+      if (PL.q && PL.qname === name) { if (PL.playing()) PL.audio.pause(); else PL.play(PL.it, PL.qi); return; }
+      var list; try { list = JSON.parse(b.getAttribute("data-queue")); } catch (err) { return; }
+      if (!list || !list.length) return;
+      PL.q = list.map(function (x) { return { src: abs(x.src), title: x.title || "", rel: x.rel || "", href: abs(x.href), art: abs(x.art) }; });
+      PL.qname = name;
+      track("event/queue/" + (b.getAttribute("data-gcq") || "start"));
+      PL.play(PL.q[0], 0);
+    });
+  });
+  qSync();
+  if (PL.active()) { PL.showMini(); miniState(PL.playing()); }
+  fabUpdate();
 
   // Cover lightbox (release pages): the cover links to the 800px JPG; with JS it opens in a modal <dialog> instead.
   // Esc and the close button close it; Tab stays inside; focus returns to the cover link.
@@ -286,7 +388,7 @@
     b.addEventListener("click", function () { var on = !g.classList.contains("is-open"); setG(on); if (on) { var a = g.querySelector(".nav-sub a"); if (a) a.focus(); } });
     g.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && g.classList.contains("is-open")) { ev.stopPropagation(); setG(false, true); } });
     g.addEventListener("focusout", function (ev) { if (!g.contains(ev.relatedTarget)) setG(false); });
-    document.addEventListener("click", function (ev) { if (!g.contains(ev.target)) setG(false); });
+    on(document, "click", function (ev) { if (!g.contains(ev.target)) setG(false); });
     each("a", function (a) { a.addEventListener("click", function () { setG(false); }); }, g);
   });
 
@@ -311,12 +413,6 @@
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function () { say("Link copied"); }, fallback);
       else fallback();
     });
-  });
-
-  // Email sign-up (only live when email_signup_url is configured): count the submission.
-  document.addEventListener("submit", function (ev) {
-    var f = ev.target;
-    if (f && f.hasAttribute && f.hasAttribute("data-gc")) track(f.getAttribute("data-gc"));
   });
 
   // Community: filter the country list and show the chosen country's card.
@@ -415,7 +511,7 @@
     li.classList.add("t-hit"); setTimeout(function () { li.classList.remove("t-hit"); }, 2400);
     requestAnimationFrame(function () { li.scrollIntoView({ block: "center" }); });
   };
-  openTrack(); window.addEventListener("hashchange", openTrack);
+  openTrack(); on(window, "hashchange", openTrack);
 
   // Site search: the header button opens a modal <dialog>; the index (assets/data/search.json, built by
   // tools/build_pages.py from the published, already-redacted data) is fetched on first open. "/" or Ctrl/Cmd+K opens it.
@@ -602,10 +698,88 @@
       if (!idx) { sStat.textContent = "Loading search…"; load(); }
     };
     sBtn.addEventListener("click", openSearch);
-    document.addEventListener("keydown", function (ev) {
+    on(document, "keydown", function (ev) {
       var t = ev.target, typing = t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName));
       if ((ev.key === "k" || ev.key === "K") && (ev.metaKey || ev.ctrlKey) && !ev.altKey) { ev.preventDefault(); openSearch(); }
       else if (ev.key === "/" && !typing && !ev.metaKey && !ev.ctrlKey && !ev.altKey && !document.querySelector("dialog[open]")) { ev.preventDefault(); openSearch(); }
+    });
+  }
+  };
+  init();
+
+  // ---------- client-side navigation (only while the mini-player has a clip loaded) ----------
+  // With nothing loaded, links are ordinary page loads. While a preview is loaded, same-site page links are fetched and
+  // swapped in place so the clip keeps playing: the URL, history (back/forward), scroll position, <title>, meta tags
+  // and the GoatCounter pageview all follow the new page. Any failure falls back to a normal page load.
+  var canSPA = sigOK && !!(window.history && history.pushState && window.fetch && window.DOMParser && window.URL);
+  if (canSPA) {
+    var spaUsed = false, navSeq = 0, shownPath = location.pathname + location.search, sTick = 0;
+    var saveScroll = function () {
+      try { history.replaceState({ spa: 1, y: window.pageYOffset }, "", location.href); } catch (err) { /* ignore */ }
+    };
+    window.addEventListener("scroll", function () {
+      if (!spaUsed) return;
+      clearTimeout(sTick); sTick = setTimeout(saveScroll, 150);
+    }, { passive: true });
+    var HEAD_SEL = 'meta[name="description"], link[rel="canonical"], meta[property^="og:"], meta[name^="twitter:"], script[type="application/ld+json"], meta[name="robots"]';
+    var swap = function (doc) {
+      document.title = doc.title;
+      each(HEAD_SEL, function (n) { n.parentNode.removeChild(n); }, document.head);
+      each(HEAD_SEL, function (n) { document.head.appendChild(document.importNode(n, true)); }, doc.head);
+      each("script", function (s) { if (s.type !== "application/ld+json") s.parentNode.removeChild(s); }, doc.body);
+      var b = document.body;
+      Array.prototype.slice.call(b.attributes).forEach(function (at) { b.removeAttribute(at.name); });
+      Array.prototype.forEach.call(doc.body.attributes, function (at) { b.setAttribute(at.name, at.value); });
+      Array.prototype.slice.call(b.childNodes).forEach(function (n) { if (n !== PL.mini) b.removeChild(n); });
+      var frag = document.createDocumentFragment();
+      Array.prototype.slice.call(doc.body.childNodes).forEach(function (n) { frag.appendChild(document.importNode(n, true)); });
+      b.insertBefore(frag, PL.mini && PL.mini.parentNode === b ? PL.mini : null);
+    };
+    var go = function (url, push, st) {
+      var my = ++navSeq, hash = url.indexOf("#") > -1 ? url.slice(url.indexOf("#")) : "";
+      document.documentElement.classList.add("spa-loading");
+      fetch(url, { credentials: "same-origin" }).then(function (r) {
+        if (!r.ok || !/text\/html/.test(r.headers.get("content-type") || "")) throw new Error("not a page");
+        return r.text().then(function (t) { return { t: t, u: r.url || url }; });
+      }).then(function (res) {
+        if (my !== navSeq) return;
+        var doc = new DOMParser().parseFromString(res.t, "text/html");
+        if (!doc.body || !doc.getElementById("main")) throw new Error("unexpected page");
+        if (!spaUsed) { spaUsed = true; if ("scrollRestoration" in history) history.scrollRestoration = "manual"; }
+        if (push) { saveScroll(); history.pushState({ spa: 1, y: 0 }, "", res.u.split("#")[0] + hash); }
+        if (pageAC) pageAC.abort();
+        swap(doc);
+        shownPath = location.pathname + location.search;
+        init();
+        var y = !push && st && typeof st.y === "number" ? st.y : 0;
+        var target = hash && hash.length > 1 && document.getElementById(decodeURIComponent(hash.slice(1)));
+        if (target && !/^#t\d+$/.test(hash)) target.scrollIntoView(); else if (!/^#t\d+$/.test(hash)) window.scrollTo(0, y);
+        var h = document.querySelector("#main h1") || document.getElementById("main");
+        if (h && push) { if (!h.hasAttribute("tabindex")) h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
+        try {   // pageview for the new page (GoatCounter only counts the first load by itself)
+          var gc = window.goatcounter;
+          if (gc && typeof gc.count === "function") gc.count({ path: location.pathname + location.search, title: document.title });
+        } catch (err) { /* ignore */ }
+      }).catch(function () {
+        if (my !== navSeq) return;
+        if (push) location.href = url; else location.reload();
+      }).then(function () { if (my === navSeq) document.documentElement.classList.remove("spa-loading"); });
+    };
+    document.addEventListener("click", function (ev) {
+      if (ev.defaultPrevented || ev.button || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+      if (!PL.active()) return;
+      var a = ev.target.closest && ev.target.closest("a[href]");
+      if (!a || (a.target && a.target !== "_self") || a.hasAttribute("download") || a.hasAttribute("data-no-spa")) return;
+      var u; try { u = new URL(a.href, location.href); } catch (err) { return; }
+      if (u.origin !== location.origin || !/(\/|\.html)$/.test(u.pathname)) return;   // other sites, files, feeds, PDFs
+      if (u.pathname + u.search === location.pathname + location.search) return;   // same page (incl. #anchors)
+      ev.preventDefault();
+      go(u.href, true);
+    });
+    window.addEventListener("popstate", function (ev) {
+      if (!spaUsed) return;
+      if (location.pathname + location.search === shownPath) return;   // hash-only change
+      go(location.href, false, ev.state);
     });
   }
 })();
