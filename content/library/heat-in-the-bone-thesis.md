@@ -1,7 +1,5 @@
 # Thesis: The Involuntary Fire — Maternal Necessity as Social and Theological Event in "Heat in the Bone"
 
-(Approved by Zach as the foundation lens, Nov 9, 2026. Formerly drafted under the working title "Fire in the Soul"; every reference now reads "Heat in the Bone".)
-
 "Heat in the Bone" stages a single, irreversible sequence: an ordinary woman stands before a door that has already defeated stronger men, hears her child's cry, and is moved by a heat that was already present in her body until the obstruction ceases to exist. The lyric refuses both heroic self-assertion and passive victimhood. What occurs is neither chosen strength nor external rescue. It is the moment when maternal necessity renders ordinary human limits inoperative. The song's totality is best viewed through the lens of *involuntary maternal ignition*: a social-psychological collapse of expected protectors that forces the latent, non-negotiable bond between mother and child into physiological expression, and a theological disclosure that the power required for the impossible was never absent from her—only unactivated until the cry made refusal impossible.
 
 ## Social-psychological analysis
@@ -10,7 +8,7 @@ The opening establishes a classic failure of social expectation. "Strong hands" 
 
 The baby's cry functions as the precise social-psychological trigger. It is not narrated; it is sound. In attachment and stress literature, infant distress vocalizations are among the most potent elicitors of maternal physiological response—elevated heart rate, redirected attention, and motor readiness that can override self-preservation calculations. The lyric enacts this without commentary. Immediately after the cry, the heart "locks to the kick," the chest takes the load, and "the heat in the room meets the heat I know." The dual heat is the meeting of external lethal pressure and an internal heat that the earlier line "Something already hot behind the ribs" has already established as pre-existing. The power is not summoned; it is recognized as already resident and then fully expressed once the child's voice removes the possibility of continued restraint.
 
-This sequence reverses the usual social script in which extraordinary action is attributed to exceptional individuals. Here the exceptional action is produced by an ordinary body under the non-negotiable demand of the maternal bond once all socially available stronger agents have failed. The "indomitable spirit" the user originally requested is not a character trait displayed in advance. It is the name given, after the fact, to what the body did when the alternative was the child's silence.
+This sequence reverses the usual social script in which extraordinary action is attributed to exceptional individuals. Here the exceptional action is produced by an ordinary body under the non-negotiable demand of the maternal bond once all socially available stronger agents have failed. The indomitable spirit that drives the song is not a character trait displayed in advance. It is the name given, after the fact, to what the body did when the alternative was the child's silence.
 
 ## Theological analysis
 
