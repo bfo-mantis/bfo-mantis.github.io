@@ -15,6 +15,7 @@ Requires Pillow (pip install pillow).
 """
 import argparse, json, re, sys, unicodedata, urllib.request
 from datetime import datetime
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -65,6 +66,18 @@ def load_store_links(path):
     return out
 STORE_NAMES = {"youtube_music": "YouTube Music"}
 
+
+_STORE_TRACKING_PARAMS = {"at", "ct", "tag"}  # DistroKid Apple at=/ct= and Amazon tag=distrokid06-20
+
+
+def _strip_store_tracking(url):
+    u = urlsplit(url)
+    if not u.query:
+        return url
+    q = [(k, v) for k, v in parse_qsl(u.query, keep_blank_values=True) if k.lower() not in _STORE_TRACKING_PARAMS]
+    return urlunsplit((u.scheme, u.netloc, u.path, urlencode(q, safe=""), u.fragment))
+
+
 def clean_stores(sl, rtype="album"):
     """Return [{name, url}] for public store links only, in a stable order; never adds stores.
     Nested values like youtube_music {"album": playlist, "track": watch} resolve to the track URL
@@ -85,6 +98,8 @@ def clean_stores(sl, rtype="album"):
             continue
         if url.startswith("http://www.amazon.") or url.startswith("http://amazon."):
             url = "https://" + url[len("http://"):]
+        # Drop DistroKid affiliate/dashboard tags; keep the store destination (and Apple app= / uo=).
+        url = _strip_store_tracking(url)
         out.append({"name": name, "url": url})
     rank = {n: i for i, n in enumerate(STORE_ORDER)}
     return sorted(out, key=lambda x: rank.get(x["name"], len(STORE_ORDER)))
@@ -370,7 +385,7 @@ def main():
         if direct is not None:
             # Direct store links replace the HyperFollow button. HyperFollow stays only as a fallback for a release
             # with no direct links yet (labelled "Pre-save / listen").
-            stores = direct.get(slug, [])
+            stores = clean_stores(direct.get(slug, []), r["type"].lower())
             url, src = (None, None) if stores else ((r["hyperfollow_url"], "hyperfollow_fallback") if is_public(r.get("hyperfollow_url")) else (None, None))
         cover = None
         if not a.skip_covers:
