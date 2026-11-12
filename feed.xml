@@ -6,7 +6,16 @@
     <atom:link href="https://bfo-mantis.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     <description>New songs and instrumentals from bfo.mantis (bfo.mantis Records).</description>
     <language>en</language>
-    <lastBuildDate>Wed, 21 Oct 2026 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 00:00:00 -0700</lastBuildDate>
+    <item>
+      <title>Heat in the Bone (single)</title>
+      <link>https://bfo-mantis.github.io/release/heat-in-the-bone/</link>
+      <guid isPermaLink="true">https://bfo-mantis.github.io/release/heat-in-the-bone/</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 -0700</pubDate>
+      <category>Minimal techno</category>
+      <description>Heat in the Bone is a rescue told through the pulse. Smoke fills the hallway, the door at the end is welded shut, and the strong hands before her have already quit, with her child beyond it. A mother sets her shoulder where they broke the line. Her heart locks to the kick and the heat in the room meets the heat she knows, until the door rips open and she carries her child out into open air.</description>
+      <enclosure url="https://bfo-mantis.github.io/assets/covers/heat-in-the-bone-800.jpg" type="image/jpeg" length="65005"/>
+    </item>
     <item>
       <title>Cake on the Plate (single)</title>
       <link>https://bfo-mantis.github.io/release/cake-on-the-plate/</link>
