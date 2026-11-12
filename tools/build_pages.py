@@ -13,7 +13,7 @@ Outputs (all GENERATED, all links relative so the site also works from a sub-pat
   sitemap.xml, robots.txt, site.webmanifest, favicon.svg/.ico, apple-touch-icon.png, assets/img/icon-*.png
   assets/img/hero-*.{webp,jpg}   pre-blurred cover collage for the hero (one image instead of 24)
   assets/img/og/*.jpg            1200x630 share images (home + one per release)
-Lyrics are never written into HTML, JSON-LD or the sitemap; release pages fetch them on demand.
+Unapproved lyrics are never written into HTML, JSON-LD or the sitemap; those release pages fetch them on demand. Approved official lyrics (the 32 song pages) are server-rendered into the page for no-JS readers and search engines.
 """
 import argparse, hashlib, html, json, math, os, re, unicodedata
 from datetime import date, datetime
@@ -352,9 +352,26 @@ def goatcounter_tag():
     if not GOATCOUNTER: return ""
     return f'\n<script data-goatcounter="https://{GOATCOUNTER}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>'
 
-def head(root, *, title, desc, url, og_image, og_alt, og_type="website", extra="", noindex=False, css_v="", jsonld=None):
+def breadcrumb_list(crumbs):
+    """crumbs: list of (name, absolute url)."""
+    return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": name, "item": url} for i, (name, url) in enumerate(crumbs)]}
+
+
+def record_org(site):
+    """bfo.mantis Records as an Organization; same official profiles as the MusicGroup (no invented URLs)."""
+    return {"@context": "https://schema.org", "@type": "Organization", "@id": site.rstrip("/") + "/#label",
+            "name": LABEL_NAME, "url": site, "sameAs": music_group(site)["sameAs"]}
+
+
+def head(root, *, title, desc, url, og_image, og_alt, og_type="website", extra="", noindex=False, css_v="", jsonld=None, crumbs=None):
     desc = trim_desc(desc)
-    j = f'\n<script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False, separators=(",", ":"))}</script>' if jsonld else ""
+    blocks = []
+    if jsonld:
+        blocks.extend(jsonld if isinstance(jsonld, list) else [jsonld])
+    if crumbs:
+        blocks.append(breadcrumb_list(crumbs))
+    j = "".join(f'\n<script type="application/ld+json">{json.dumps(b, ensure_ascii=False, separators=(",", ":"))}</script>' for b in blocks if b)
     return f'''<!doctype html>
 <html lang="en">
 <head>
@@ -407,6 +424,7 @@ def topbar(root, has_about, home=False, current=None):
     <a href="{root}release/#instrumentals">Instrumentals</a>
     <a href="{root}genres/"{cur("genres")}>Genres</a>
     {about}
+    <a href="{root}press/"{cur("press")}>Press kit</a>
     <div class="nav-group">
       <button type="button" class="nav-sub-btn" aria-expanded="false" aria-controls="nav-support"{' aria-current="page"' if current in ("help", "merch") else ""}>Support<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div class="nav-sub" id="nav-support">
@@ -435,15 +453,22 @@ def discord_btn(label="Join the Discord", cls="btn", event="event/discord"):
     return (f'<a class="{cls} dc-btn" href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="{e(event)}">'
             f'{DISCORD_ICON}<span>{e(label)}</span>{NT}</a>')
 
+def _artist_profile(name):
+    return next((x["url"] for x in artist_links() if x["name"] == name), None)
+
+
 def footer(root, js_v):
     year = site_today().year
     dc_foot = (f'<a class="footer-link" href="{e(DISCORD)}" target="_blank" rel="noopener" data-gc="event/discord/footer">Discord{NT}</a>' if DISCORD else "")
     dc_foot += (f'<a class="footer-link" href="{e(PATREON)}" target="_blank" rel="noopener" data-gc="event/patreon/footer">Patreon{NT}</a>' if PATREON else "")
     dc_foot += f'<a class="footer-link" href="{e(YT_CHANNEL)}" target="_blank" rel="noopener" data-gc="event/youtube/footer">YouTube{NT}</a>'
     dc_foot += f'<a class="footer-link" href="{e(INSTAGRAM)}" target="_blank" rel="noopener" data-gc="event/instagram/footer">Instagram{NT}</a>'
+    sp, am = _artist_profile("Spotify"), _artist_profile("Apple Music")
+    dc_foot += (f'<a class="footer-link" href="{e(sp)}" target="_blank" rel="noopener" data-gc="event/spotify/footer">Spotify{NT}</a>' if sp else "")
+    dc_foot += (f'<a class="footer-link" href="{e(am)}" target="_blank" rel="noopener" data-gc="event/apple-music/footer">Apple Music{NT}</a>' if am else "")
     return f'''<footer class="footer">
   <p>Music, lyrics, artwork and audio previews &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</p>
-  <nav class="footer-nav" aria-label="Footer"><a class="footer-link" href="{root}help/">Ways to help</a><a class="footer-link" href="{root}community/">Community</a>{dc_foot}<a class="footer-link" href="{root}merch/">Merch</a><a class="footer-link" href="{root}links/">Links</a><a class="footer-link" href="{root}press/">Press kit</a><a class="footer-link" href="{root}contact/">Contact</a></nav>
+  <nav class="footer-nav" aria-label="Footer"><a class="footer-link" href="{root}help/">Ways to help</a><a class="footer-link" href="{root}community/">Community</a><a class="footer-link" href="{root}library/">Library</a><a class="footer-link" href="{root}lounge/">Lounge</a><a class="footer-link" href="{root}start/">Start here</a><a class="footer-link" href="{root}genres/">Genres</a>{dc_foot}<a class="footer-link" href="{root}merch/">Merch</a><a class="footer-link" href="{root}links/">Links</a><a class="footer-link" href="{root}press/">Press kit</a><a class="footer-link" href="{root}contact/">Contact</a></nav>
   <a class="footer-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
 </footer>
 <a class="to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l-7 7m7-7l7 7M12 5v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -598,9 +623,9 @@ def release_jsonld(r, site):
                       "copyrightYear": int(r["release_date"][:4]),
                       "copyrightNotice": f"Artwork © {r['release_date'][:4]} {LABEL_NAME}. All rights reserved.",
                       "creditText": LABEL_NAME}
-    if r.get("label"): d["recordLabel"] = {"@type": "Organization", "name": r["label"]}
+    d["recordLabel"] = {"@type": "Organization", "name": r.get("label") or LABEL_NAME, "url": site, "@id": site.rstrip("/") + "/#label"}
     if r.get("blurb"): d["description"] = r["blurb"]
-    d["copyrightHolder"] = {"@type": "Organization", "name": LABEL_NAME}
+    d["copyrightHolder"] = {"@type": "Organization", "name": LABEL_NAME, "url": site, "@id": site.rstrip("/") + "/#label"}
     d["copyrightYear"] = int(r["release_date"][:4])
     # sameAs: one canonical URL per store (iTunes is the same Apple page as Apple Music; affiliate/tracking params
     # dropped where the URL works without them). The visible buttons keep the links exactly as listed.
@@ -666,7 +691,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
           "album": [{"@type": "MusicAlbum", "name": r["title"], "url": f"{site}release/{r['slug']}/", "datePublished": r["release_date"]} for r in releases]}
     hd = head(root, title=f"{ARTIST} — Songs & Instrumentals", desc=desc, url=site, og_image=site + "assets/img/og/home.jpg",
               og_alt=f"{ARTIST} wordmark over a collage of cover art", og_type="music.musician" if False else "website",
-              css_v=v["css"], jsonld=ld,
+              css_v=v["css"], jsonld=[ld, record_org(site)], crumbs=[("Home", site)],
               extra=site_verification_tags() + f'\n<link rel="preload" as="image" href="assets/img/hero-1600.webp" media="(min-width: 601px)" fetchpriority="high">'
                     f'\n<link rel="preload" as="image" href="assets/img/hero-800.webp" media="(max-width: 600px)" fetchpriority="high">')
     cat_sections = cat_sections_html(root, releases, today)
@@ -774,6 +799,47 @@ def merch_teaser(root, slug):
             f'<a href="{root}merch/#{e(c["id"])}">See the {e(c["title"])} ({n} items)<span aria-hidden="true"> →</span></a></p>')
 
 
+
+_LYRICS_CACHE = {}
+
+
+def approved_lyrics_html(isrc, lyrics_file):
+    """Server-render lyrics only for the 32 Zach-approved song pages. Uses the published, already-redacted
+    lyrics JSON (same source as the JS path). Redaction tokens become empty .rbar spans, with no hidden text.
+    Unapproved tracks return None and stay on the existing JS fetch."""
+    if not isrc or not lyrics_file or isrc not in (SONGS or {}):
+        return None
+    if lyrics_file not in _LYRICS_CACHE:
+        fp = ROOT / lyrics_file
+        _LYRICS_CACHE[lyrics_file] = json.loads(fp.read_text()) if fp.exists() else {}
+    v = _LYRICS_CACHE[lyrics_file].get(isrc)
+    if v is None:
+        return None
+    if isinstance(v, str):
+        return e(v)
+    parts = []
+    for i, line in enumerate(v):
+        if i:
+            parts.append("\n")
+        if isinstance(line, str):
+            parts.append(e(line))
+            continue
+        whole = len(line) == 1 and isinstance(line[0], dict)
+        for part in line:
+            if isinstance(part, str):
+                parts.append(e(part))
+            else:
+                n = part.get("r") if isinstance(part, dict) else 8
+                try:
+                    n = int(n)
+                except (TypeError, ValueError):
+                    n = 8
+                n = max(1, min(64, n))
+                cls = "rbar rbar-line" if whole else "rbar"
+                parts.append(f'<span class="{cls}" role="img" aria-label="redacted" style="--n:{n}"></span>')
+    return "".join(parts)
+
+
 def track_about_block(t, release_blurb=None):
     """Uniform expanded-track about block: green 'More about this track' heading, then the
     italic short blurb (and, if present, the approved in-depth paragraph). Empty if the
@@ -799,7 +865,7 @@ def build_release(releases, i, site, today, v, has_about):
     extra = f'\n<meta property="music:release_date" content="{r["release_date"]}">'
     hd = head(root, title=f"{r['title']} — {ARTIST}", desc=desc, url=url, og_image=og_img,
               og_alt=f"Cover art for {r['title']} by {ARTIST}", og_type="music.album" if r["type"] == "album" else "music.song",
-              extra=extra, css_v=v["css"], jsonld=release_jsonld(r, site))
+              extra=extra, css_v=v["css"], jsonld=[release_jsonld(r, site), record_org(site)], crumbs=[("Home", site), ("Releases", site + "release/"), (r["title"], url)])
     # Direct store buttons (content/store_links.json). The first PRIMARY ones are always shown; if 2+ more remain they sit
     # behind a "More" toggle (shown by default without JS). HyperFollow only appears as a fallback for a release that has
     # no direct links yet.
@@ -835,7 +901,7 @@ def build_release(releases, i, site, today, v, has_about):
                           f'<summary><span class="tt">{e(t["title"])}</span><span class="ltag" aria-hidden="true">Lyrics</span>'
                           f'<span class="sr-only"> — show lyrics</span></summary>'
                           + track_about_block(t)
-                          + f'<div class="lyrics" aria-live="polite">Loading lyrics…</div>'
+                          + f'<div class="lyrics" aria-live="polite">{approved_lyrics_html(t.get("isrc"), r.get("lyrics_file")) or "Loading lyrics…"}</div>'
                           f'<p class="lcopy">&copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p></details>'
                           # links sit outside <summary> (no interactive content inside the disclosure's toggle)
                           + (f'<span class="tlinks">{song_link(root, t["isrc"], t["title"])}{tyt(t)}</span>' if (tyt(t) or SONGS.get(t["isrc"])) else "") + '</li>')
@@ -960,7 +1026,7 @@ def build_genres(releases, site, today, v, has_about):
                    "item": {"@type": "MusicAlbum", "name": r["title"], "url": f"{site}release/{r['slug']}/", "datePublished": r["release_date"],
                             "genre": g, "byArtist": {"@type": "MusicGroup", "name": ARTIST}}} for k, r in enumerate(rs)]}}
         hd = head(root, title=f"{g} — {ARTIST}", desc=desc, url=url, og_image=og,
-                  og_alt=f"{g}: collage of {ARTIST} cover art", css_v=v["css"], jsonld=ld)
+                  og_alt=f"{g}: collage of {ARTIST} cover art", css_v=v["css"], jsonld=ld, crumbs=[("Home", site), ("Genres", site + "genres/"), (g, url)])
         page = f'''{hd}
 <body class="genre-page">
 {topbar(root, has_about, current="genres")}
@@ -996,7 +1062,7 @@ def build_genres(releases, site, today, v, has_about):
           "mainEntity": {"@type": "ItemList", "numberOfItems": len(groups), "itemListElement": [
               {"@type": "ListItem", "position": k + 1, "name": g, "url": f"{site}genre/{genre_slug(g)}/"} for k, (g, _) in enumerate(groups)]}}
     hd = head(root, title=f"Genres — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
-              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld, crumbs=[("Home", site), ("Genres", url)])
     page = f'''{hd}
 <body class="genres-page">
 {topbar(root, has_about, current="genres")}
@@ -1257,7 +1323,7 @@ def build_library(releases, site, v, has_about):
     root = "../"; url = site + "library/"
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "@id": url + "#page", "name": f"{LIB_TITLE} — {ARTIST}", "url": url,
           "description": LIB_LINE, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}, "about": music_group(site)}
-    hd = head(root, title=f"{LIB_TITLE} — {ARTIST}", desc=LIB_LINE, url=url, og_image=ogi, og_alt=oga, css_v=v["css"], jsonld=ld, extra=LIB_CSS)
+    hd = head(root, title=f"{LIB_TITLE} — {ARTIST}", desc=LIB_LINE, url=url, og_image=ogi, og_alt=oga, css_v=v["css"], jsonld=ld, extra=LIB_CSS, crumbs=[("Home", site), (LIB_TITLE, url)])
     li = "".join(f'<li class="lib-item"><h2><a href="{x["slug"]}/">{e(x["title"])}</a></h2>'
                  + (f'<p>{e(x["description"])}</p>' if x["description"] else "") + "</li>" for x in lib)
     page = f'''{hd}
@@ -1300,7 +1366,7 @@ def build_library(releases, site, v, has_about):
         r_og = (site + f"assets/img/og/{rel['slug']}.jpg", f"Cover art for {rel['title']} by {ARTIST}") if rel and rel.get("cover") else (ogi, oga)
         if rel and rel.get("cover"): ld["image"] = r_og[0]
         hd = head(root, title=f"{short} — {LIB_TITLE} — {ARTIST}", desc=desc, url=u, og_image=r_og[0], og_alt=r_og[1], og_type="article",
-                  css_v=v["css"], jsonld=ld, extra=LIB_CSS)
+                  css_v=v["css"], jsonld=ld, extra=LIB_CSS, crumbs=[("Home", site), (LIB_TITLE, site + "library/"), (short, u)])
         rel_html = (f'<p class="essay-rel">On <a href="{root}release/{rel["slug"]}/">{e(rel["title"])}</a> by {ARTIST}</p>' if rel else "")
         page = f'''{hd}
 <body class="library-page essay-page">
@@ -1527,8 +1593,16 @@ def build_merch(releases, site, v, has_about, merch_url=None, items=None):
     store = (f'<div class="buy"><a class="btn" href="{e(merch_url)}" target="_blank" rel="noopener" data-gc="event/merch">Visit the store{NT}</a></div>'
              if live else f'<p class="merch-follow">Want to know when it opens? <a href="{root}help/">Follow bfo.mantis</a> where you listen.</p>')
     note = "" if live else '<p class="art-copy merch-note">Product ideas shown with album artwork. Final items may differ.</p>'
-    cols = load_merch_collections()
+    show_ideas = live or SHOW_SOON
+    cols = load_merch_collections() if show_ideas else []
     cols_html = "\n  ".join(merch_collection_html(root, c, bys) for c in cols)
+    grid = ""
+    if show_ideas:
+        grid = f'''  <section class="section merch-grid-sec" aria-label="More merch ideas">
+    {'<h2 class="mcol-t">More from the catalog</h2>' if cols else ''}
+    <ul class="mgrid">{"".join(cards)}</ul>
+    {note}
+  </section>'''
     page = f'''{hd}
 <body class="merch-page">
 {topbar(root, has_about, current="merch")}
@@ -1541,18 +1615,14 @@ def build_merch(releases, site, v, has_about, merch_url=None, items=None):
     {store}
   </section>
   {cols_html}
-  <section class="section merch-grid-sec" aria-label="More merch ideas">
-    {'<h2 class="mcol-t">More from the catalog</h2>' if cols else ''}
-    <ul class="mgrid">{"".join(cards)}</ul>
-    {note}
-  </section>
+{grid}
 </main>
 {ZOOM_JS if cols else ""}
 
 {footer(root, v["js"])}'''
     (ROOT / "merch").mkdir(exist_ok=True)
     (ROOT / "merch" / "index.html").write_text(page)
-    return len(cards) + sum(len(c.get("items") or []) for c in cols)
+    return (len(cards) + sum(len(c.get("items") or []) for c in cols)) if show_ideas else 0
 
 def build_covers_zip(releases):
     """assets/press/bfo-mantis-cover-art.zip: every 800px cover JPG + a notice. Deterministic (fixed timestamps), so an
@@ -1589,7 +1659,7 @@ def build_press(releases, site, v, has_about, about, tagline, press_contact):
           "about": {**music_group(site), "foundingDate": first["release_date"], "genre": genres,
                     "recordLabel": {"@type": "Organization", "name": LABEL_NAME}}}
     hd = head(root, title=f"Press kit — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
-              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld, crumbs=[("Home", site), ("Press kit", url)])
     rows = "".join(
         f'<tr><td class="pk-cover">{picture(root, r, "56px", alt="")}</td>'
         f'<th scope="row"><a href="{root}release/{r["slug"]}/">{e(r["title"])}</a></th>'
@@ -2212,7 +2282,7 @@ def build_contact(site, v, has_about, press_contact):
     ld = {"@context": "https://schema.org", "@type": "ContactPage", "@id": url + "#page", "name": f"Contact — {ARTIST}", "url": url,
           "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}, "about": music_group(site)}
     hd = head(root, title=f"Contact — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
-              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld, crumbs=[("Home", site), ("Contact", url)])
     page = f'''{hd}
 <body class="contact-page">
 {topbar(root, has_about, current="contact")}
@@ -2241,7 +2311,7 @@ def build_about(releases, site, v, has_about, about, tagline):
           "description": trim_desc(desc), "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site},
           "about": {**music_group(site), "recordLabel": {"@type": "Organization", "name": LABEL_NAME}}}
     hd = head(root, title=f"About — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
-              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld, crumbs=[("Home", site), ("About", url)])
     artist_li = "".join(f'<li><a class="store" href="{e(x["url"])}" target="_blank" rel="noopener" data-gc="event/artist/about/{slug_(x["name"])}">{e(x["name"])}{EXT}{NT}</a></li>'
                         for x in artist_links())
     page = f'''{hd}
@@ -2325,7 +2395,7 @@ def build_song(sp, songs, site, today, v, has_about):
     desc = story or f"{t['title']}, a song by {ARTIST} ({where}, {r['release_date'][:4]}): lyrics, the story behind it, credits and where to listen."
     og_img = site + f"assets/img/og/{r['slug']}.jpg" if r.get("cover") else site + "assets/img/og/home.jpg"
     hd = head(root, title=f"{t['title']} lyrics — {ARTIST}", desc=desc, url=url, og_image=og_img,
-              og_alt=f"Cover art for {r['title']} by {ARTIST}", og_type="music.song", css_v=v["css"], jsonld=song_jsonld(sp, site))
+              og_alt=f"Cover art for {r['title']} by {ARTIST}", og_type="music.song", css_v=v["css"], jsonld=song_jsonld(sp, site), crumbs=[("Home", site), ("Releases", site + "release/"), (r["title"], site + "release/" + r["slug"] + "/"), (t["title"], url)])
     # Listen: the release's direct store links, else its HyperFollow link (labelled Pre-save until the release date)
     stores = r.get("store_links") or []
     rel_lbl = "" if single else f' <span class="muted">({e(r["title"])})</span>'
@@ -2376,6 +2446,7 @@ def build_song(sp, songs, site, today, v, has_about):
     bg = f' style="background-image:url(\'{root}{r["cover"]["jpg_small"]}\')"' if r.get("cover") else ""
     eyebrow = "Single" if single else f"Track {t['n']} of {e(r['title'])}"
     kind_l = "single" if single else "album"
+    lyr_ssr = approved_lyrics_html(t.get("isrc"), r.get("lyrics_file"))
     page = f'''{hd}
 <body class="release-page song-page">
 {topbar(root, has_about)}
@@ -2394,8 +2465,8 @@ def build_song(sp, songs, site, today, v, has_about):
       <div class="listen">{listen}{ytl}</div>
       <section class="song-sec song-lyr" aria-labelledby="lyr-title">
         <h2 id="lyr-title">Lyrics</h2>
-        <div class="lyrics song-lyrics" data-isrc="{e(t["isrc"])}" aria-live="polite">Loading lyrics…</div>
-        <noscript><p class="muted">Turn on JavaScript to see the lyrics.</p></noscript>
+        <div class="lyrics song-lyrics" data-isrc="{e(t["isrc"])}" aria-live="polite">{lyr_ssr or "Loading lyrics…"}</div>
+        {"" if lyr_ssr else '<noscript><p class="muted">Turn on JavaScript to see the lyrics.</p></noscript>'}
         <p class="lcopy">Lyrics &copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p>
       </section>{vis}
       <section class="song-sec" aria-labelledby="cred-title">
@@ -2441,7 +2512,7 @@ def build_songs(releases, songs, site, today, v, has_about):
           "mainEntity": {"@type": "ItemList", "numberOfItems": len(songs), "itemListElement": [
               {"@type": "ListItem", "position": k + 1, "url": f"{site}song/{x['slug']}/", "name": x["t"]["title"]} for k, x in enumerate(songs)]}}
     hd = head(root, title=f"Song pages and lyrics — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
-              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld, crumbs=[("Home", site), ("Song pages", url)])
     page = f'''{hd}
 <body class="genre-page songs-index">
 {topbar(root, has_about, current="releases")}
@@ -2492,7 +2563,7 @@ def build_release_press(r, site, today, v, has_about, press_contact, notes):
           "about": {"@type": "MusicAlbum", "@id": f"{site}release/{r['slug']}/#release", "name": r["title"], "url": f"{site}release/{r['slug']}/",
                     "datePublished": r["release_date"], "byArtist": {"@type": "MusicGroup", "name": ARTIST}}}
     hd = head(root, title=f"{r['title']}: press info — {ARTIST}", desc=desc, url=url, og_image=og_img,
-              og_alt=f"Cover art for {r['title']} by {ARTIST}", css_v=v["css"], jsonld=ld)
+              og_alt=f"Cover art for {r['title']} by {ARTIST}", css_v=v["css"], jsonld=ld, crumbs=[("Home", site), ("Press kit", site + "press/"), (r["title"], url)])
     stores = r.get("store_links") or []
     if stores:
         listen = ('<ul class="pk-stores">' + "".join(f'<li><a class="store" href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["name"])}{NT}</a></li>' for x in stores) + "</ul>")
@@ -2581,6 +2652,21 @@ def milestones_html(root, releases, where):
     link = f' <a class="ms-more" href="{root}community/">Where people listen</a>' if where == "home" else ""
     return f'<section class="milestones" aria-label="Milestones"><ul class="ms-list">{lis}</ul>{link}</section>'
 
+
+def release_calendar_html(root, releases):
+    """Factual chronological list of existing release titles and dates; no invented posts."""
+    rows = sorted(releases, key=lambda r: (r["release_date"], r["title"]))
+    items = "".join(
+        f'<li><time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time> · '
+        f'<a href="{root}release/{r["slug"]}/">{e(r["title"])}</a> · {"Album" if r["type"]=="album" else "Single"}</li>'
+        for r in rows)
+    return f'''
+  <section id="calendar" class="section cal-sec" aria-labelledby="cal-title">
+    <div class="section-head"><h2 id="cal-title">Release calendar</h2><p class="count">{len(rows)} releases</p></div>
+    <ol class="cal">{items}</ol>
+  </section>'''
+
+
 def build_releases_index(releases, site, today, v, has_about, songs=()):
     """release/: the whole discography on one shareable page (Songs and Instrumentals, albums and singles, newest first)."""
     root = "../"; url = site + "release/"
@@ -2594,7 +2680,7 @@ def build_releases_index(releases, site, today, v, has_about, songs=()):
                "item": {"@type": "MusicAlbum", "name": r["title"], "url": f"{site}release/{r['slug']}/", "datePublished": r["release_date"],
                         "byArtist": {"@type": "MusicGroup", "name": ARTIST}}} for k, r in enumerate(releases)]}}
     hd = head(root, title=f"Releases — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
-              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld, crumbs=[("Home", site), ("Releases", url)])
     page = f'''{hd}
 <body class="genre-page releases-page">
 {topbar(root, has_about, current="releases")}
@@ -2604,8 +2690,8 @@ def build_releases_index(releases, site, today, v, has_about, songs=()):
     <p class="eyebrow">Discography</p>
     <h1>Releases</h1>
     <p class="genre-stats">{len(releases)} releases · {albums} albums · {singles} singles<span class="sep" aria-hidden="true"> · </span><span class="mix">{ns} songs · {ni} instrumentals</span></p>
-    <p class="start-more"><a href="#songs">Songs</a> · <a href="#instrumentals">Instrumentals</a> · <a href="{root}genres/">Browse by genre</a>{f' · <a href="#song-pages">Song pages and lyrics</a>' if songs else ""}</p>
-  </header>{cat_sections_html(root, releases, today)}{f"""
+    <p class="start-more"><a href="#songs">Songs</a> · <a href="#instrumentals">Instrumentals</a> · <a href="#calendar">Release calendar</a> · <a href="{root}genres/">Browse by genre</a>{f' · <a href="#song-pages">Song pages and lyrics</a>' if songs else ""}</p>
+  </header>{cat_sections_html(root, releases, today)}{release_calendar_html(root, releases)}{f"""
   <section id="song-pages" class="section song-pages-sec" aria-labelledby="sp-title">
     <div class="section-head"><h2 id="sp-title">Song pages and lyrics</h2><a class="count" href="{root}song/">{len(songs)} songs</a></div>
     {song_index_html(root, songs).replace('<h2 class="si-rel">', '<h3 class="si-rel">').replace('</span></h2>', '</span></h3>')}
@@ -2726,17 +2812,49 @@ footer{{padding:22px clamp(16px,4vw,40px);color:#a3a2b3;font-size:.9rem;border-t
   <p class="big" aria-hidden="true">4<span>0</span>4</p>
   <h1>This page doesn’t exist.</h1>
   <p class="m">The link may be old or mistyped. Everything from {ARTIST} is on the home page.</p>
-  <div class="row"><a class="btn" href="/">Back to home</a><a class="ghost" href="/#songs">Songs</a><a class="ghost" href="/#instrumentals">Instrumentals</a></div>
+  <div class="row"><a class="btn" href="/">Back to home</a><a class="ghost" href="/release/">Releases</a><a class="ghost" href="/start/">Start here</a><a class="ghost" href="/contact/">Contact</a></div>
 </div></main>
 <footer>Music, lyrics, artwork and audio previews &copy; {COPY_YEAR} {LABEL_NAME}. All rights reserved.</footer>
 </body>
 </html>
 ''')
-    urls = ([site] + [f"{site}release/{r['slug']}/" for r in releases] + [site + "genres/", site + "lounge/", site + "press/", site + "links/", site + "community/", site + "help/", site + "start/", site + "merch/"] + ([site + "supporters/"] if HAS_SUPPORTERS else []) + [site + "lounge/sample/"]
-            + [f"{site}genre/{genre_slug(g)}/" for g, _ in genre_groups(releases)] + list(extra_urls))
+    newest = max((r["release_date"] for r in releases), default="2026-07-04")
+    by_slug = {r["slug"]: r["release_date"] for r in releases}
+    lastmod = {site: newest}
+    urls = [site]
+    for r in releases:
+        u = f"{site}release/{r['slug']}/"
+        urls.append(u); lastmod[u] = r["release_date"]
+    for path in ["genres/", "lounge/", "press/", "links/", "community/", "help/", "start/", "merch/", "lounge/sample/"]:
+        u = site + path
+        urls.append(u); lastmod[u] = newest
+    if HAS_SUPPORTERS:
+        u = site + "supporters/"; urls.append(u); lastmod[u] = newest
+    for g, rs in genre_groups(releases):
+        u = f"{site}genre/{genre_slug(g)}/"
+        urls.append(u); lastmod[u] = max((x["release_date"] for x in rs), default=newest)
+    for u in extra_urls:
+        urls.append(u)
+        # song/<slug>/, press/<slug>/, library/<slug>/, about/, contact/, release/ index
+        parts = u[len(site):].strip("/").split("/")
+        if parts and parts[0] in ("song", "press", "library") and len(parts) >= 2:
+            # library articles keyed by release when possible; song/press by their slug or parent release
+            slug = parts[1]
+            lastmod[u] = by_slug.get(slug, next((d for s, d in by_slug.items() if s in slug or slug in s), newest))
+        else:
+            lastmod[u] = newest
+    # stable unique order
+    seen = set(); ordered = []
+    for u in urls:
+        if u not in seen:
+            seen.add(u); ordered.append(u)
+    def sm_entry(u):
+        d = lastmod.get(u) or newest
+        return f"  <url><loc>{e(u)}</loc><lastmod>{d}</lastmod></url>\n"
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-                                      "".join(f"  <url><loc>{e(u)}</loc></url>\n" for u in urls) + "</urlset>\n")
-    # Lyrics live only in assets/data/lyrics/*.json (fetched on demand by release pages); keep them out of search.
+                                      "".join(sm_entry(u) for u in ordered) + "</urlset>\n")
+    # Approved official lyrics are also server-rendered into song pages and those tracks' release expanders.
+    # Unapproved lyrics stay in assets/data/lyrics/*.json only (fetched on demand). robots.txt keeps the JSON out of search.
     # GitHub Pages can't send X-Robots-Tag headers, so robots.txt is the lever.
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /assets/data/lyrics/\nDisallow: /assets/data/search.json\nDisallow: /media/\n\nSitemap: {site}sitemap.xml\n")
     (ROOT / "site.webmanifest").write_text(json.dumps({
@@ -2786,13 +2904,16 @@ def build_start(releases, site, v, has_about):
             print(f"start: skipped missing {it['release']} #{it['track']}"); continue
         cat = "Instrumental" if r.get("category") == "instrumental" else "Song"
         where = f'track {t["n"]} of {e(r["title"])}' if r["type"] == "album" else "single"
+        song = (SONGS or {}).get(t["isrc"])
+        href = (f'{root}song/{song}/' if song else
+                f'{root}release/{r["slug"]}/' + (f'#t{t["n"]}' if r["type"] == "album" else ""))
         items.append(f'''<li><span class="num">{i}</span><span class="art">{picture(root, r, "72px", alt="")}{pv_button(root, r, t)}</span>
-  <div class="ess-body"><h2><a href="{root}release/{r["slug"]}/">{e(t["title"])}</a></h2><p class="meta">{cat} · {e(r.get("genre") or "")} · {where}</p><p class="why">{e(it["reason"])}</p></div>
+  <div class="ess-body"><h2><a href="{href}">{e(t["title"])}</a></h2><p class="meta">{cat} · {e(r.get("genre") or "")} · {where}</p><p class="why">{e(it["reason"])}</p></div>
   <span class="pv-bar" aria-hidden="true"><span></span></span></li>''')
     ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"{cfg['title']} — {ARTIST}", "url": url,
           "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}, "about": music_group(site)}
     hd = head(root, title=f"{cfg['title']}: {h1} — {ARTIST}", desc=desc, url=url, og_image=site + "assets/img/og/home.jpg",
-              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld)
+              og_alt=f"{ARTIST} wordmark over a collage of cover art", css_v=v["css"], jsonld=ld, crumbs=[("Home", site), ("Start here", url)])
     page = f'''{hd}
 <body class="start-page">
 {topbar(root, has_about, current="start")}
@@ -2825,6 +2946,7 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     if images:
         ns, ni = track_counts(releases)
         build_images(releases, f"{ns} songs · {ni} instrumentals")
+    _LYRICS_CACHE.clear()
     v = {"css": asset_hash("css/style.css"), "js": asset_hash("js/app.js")}
     global SEARCH_V, DISCORD, MEMBERS, PATREON, LOUNGE_CTA, DISS_LINKS, LIB_LINKS
     DISS_LINKS = dissertation_links({r["slug"] for r in releases})

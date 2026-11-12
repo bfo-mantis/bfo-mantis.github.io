@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-11-11T09:31:55",
+ "generated": "2026-11-11T19:21:25",
  "donate_url": "https://www.patreon.com/c/bfo_mantis",
  "members_url": "https://www.patreon.com/c/bfo_mantis/membership",
  "email_signup_url": null,
@@ -342,7 +342,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/unextracted-single/6821743077?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/unextracted-single/6821743077?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -354,7 +354,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/unextracted-single/6821743077?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/unextracted-single/6821743077?uo=4&app=itunes"
     },
     {
      "name": "Deezer",
@@ -495,7 +495,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/the-only-way-single/6814011369?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/the-only-way-single/6814011369?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -503,7 +503,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/the-only-way-single/6814011369?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/the-only-way-single/6814011369?uo=4&app=itunes"
     }
    ],
    "cover": {
@@ -558,7 +558,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/forge-of-your-light-single/6811712664?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/forge-of-your-light-single/6811712664?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -570,7 +570,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/forge-of-your-light-single/6811712664?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/forge-of-your-light-single/6811712664?uo=4&app=itunes"
     }
    ],
    "cover": {
@@ -626,7 +626,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/dangerous/6811647141?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/dangerous/6811647141?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -634,11 +634,11 @@
     },
     {
      "name": "Amazon Music",
-     "url": "https://www.amazon.com/gp/product/B0HJP7BDPL/?tag=distrokid06-20"
+     "url": "https://www.amazon.com/gp/product/B0HJP7BDPL/"
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/dangerous/6811647141?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/dangerous/6811647141?uo=4&app=itunes"
     }
    ],
    "cover": {
@@ -864,7 +864,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/road-to-hell-single/6808337818?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/road-to-hell-single/6808337818?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -872,11 +872,11 @@
     },
     {
      "name": "Amazon Music",
-     "url": "https://www.amazon.com/gp/product/B0HHPRQ9W9/?tag=distrokid06-20"
+     "url": "https://www.amazon.com/gp/product/B0HHPRQ9W9/"
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/road-to-hell-single/6808337818?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/road-to-hell-single/6808337818?uo=4&app=itunes"
     }
    ],
    "cover": {
@@ -932,7 +932,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/blood-waters-the-tree-single/6807182138?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/blood-waters-the-tree-single/6807182138?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -940,11 +940,11 @@
     },
     {
      "name": "Amazon Music",
-     "url": "https://www.amazon.com/gp/product/B0HHBDQDCX/?tag=distrokid06-20"
+     "url": "https://www.amazon.com/gp/product/B0HHBDQDCX/"
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/blood-waters-the-tree-single/6807182138?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/blood-waters-the-tree-single/6807182138?uo=4&app=itunes"
     }
    ],
    "cover": {
@@ -999,7 +999,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/savage-serenade-volume-3/6806875384?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/savage-serenade-volume-3/6806875384?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -1007,11 +1007,11 @@
     },
     {
      "name": "Amazon Music",
-     "url": "https://www.amazon.com/gp/product/B0HH828FT9/?tag=distrokid06-20"
+     "url": "https://www.amazon.com/gp/product/B0HH828FT9/"
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/savage-serenade-volume-3/6806875384?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/savage-serenade-volume-3/6806875384?uo=4&app=itunes"
     }
    ],
    "cover": {
@@ -1253,7 +1253,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/savage-serenade-volume-2/6804620567?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/savage-serenade-volume-2/6804620567?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -1261,11 +1261,11 @@
     },
     {
      "name": "Amazon Music",
-     "url": "https://www.amazon.com/gp/product/B0HG9S19C3/?tag=distrokid06-20"
+     "url": "https://www.amazon.com/gp/product/B0HG9S19C3/"
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/savage-serenade-volume-2/6804620567?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/savage-serenade-volume-2/6804620567?uo=4&app=itunes"
     }
    ],
    "cover": {
@@ -1507,7 +1507,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/sovereign-heart-of-fire/6804363446?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/sovereign-heart-of-fire/6804363446?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -1515,11 +1515,11 @@
     },
     {
      "name": "Amazon Music",
-     "url": "https://www.amazon.com/gp/product/B0HG6Y4GNF/?tag=distrokid06-20"
+     "url": "https://www.amazon.com/gp/product/B0HG6Y4GNF/"
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/sovereign-heart-of-fire/6804363446?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/sovereign-heart-of-fire/6804363446?uo=4&app=itunes"
     }
    ],
    "cover": {
@@ -1745,7 +1745,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/the-ridge-single/6804338756?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/the-ridge-single/6804338756?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -1753,11 +1753,11 @@
     },
     {
      "name": "Amazon Music",
-     "url": "https://www.amazon.com/gp/product/B0HG6QV59L/?tag=distrokid06-20"
+     "url": "https://www.amazon.com/gp/product/B0HG6QV59L/"
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/the-ridge-single/6804338756?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/the-ridge-single/6804338756?uo=4&app=itunes"
     }
    ],
    "cover": {
@@ -1826,7 +1826,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/savage-serenade/6803737452?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/savage-serenade/6803737452?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -1834,11 +1834,11 @@
     },
     {
      "name": "Amazon Music",
-     "url": "https://www.amazon.com/gp/product/B0HFY7T4RK/?tag=distrokid06-20"
+     "url": "https://www.amazon.com/gp/product/B0HFY7T4RK/"
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/savage-serenade/6803737452?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/savage-serenade/6803737452?uo=4&app=itunes"
     }
    ],
    "cover": {
@@ -2080,7 +2080,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/one-man-invictus/6803052725?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/one-man-invictus/6803052725?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -2088,11 +2088,11 @@
     },
     {
      "name": "Amazon Music",
-     "url": "https://www.amazon.com/gp/product/B0HFRNL7NG/?tag=distrokid06-20"
+     "url": "https://www.amazon.com/gp/product/B0HFRNL7NG/"
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/one-man-invictus/6803052725?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/one-man-invictus/6803052725?uo=4&app=itunes"
     }
    ],
    "cover": {
@@ -2315,7 +2315,7 @@
     },
     {
      "name": "Amazon Music",
-     "url": "https://www.amazon.com/gp/product/B0HFMGRP4R/?tag=distrokid06-20"
+     "url": "https://www.amazon.com/gp/product/B0HFMGRP4R/"
     },
     {
      "name": "Deezer",
@@ -2374,7 +2374,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/spellbound-volume-3/6799736952?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/spellbound-volume-3/6799736952?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -2382,11 +2382,11 @@
     },
     {
      "name": "Amazon Music",
-     "url": "https://www.amazon.com/gp/product/B0HDM8SBBX/?tag=distrokid06-20"
+     "url": "https://www.amazon.com/gp/product/B0HDM8SBBX/"
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/spellbound-volume-3/6799736952?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/spellbound-volume-3/6799736952?uo=4&app=itunes"
     },
     {
      "name": "iHeartRadio",
@@ -2566,7 +2566,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/rebel-anthem/6799606263?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/rebel-anthem/6799606263?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -2574,11 +2574,11 @@
     },
     {
      "name": "Amazon Music",
-     "url": "https://www.amazon.com/gp/product/B0HDL42KV4/?tag=distrokid06-20"
+     "url": "https://www.amazon.com/gp/product/B0HDL42KV4/"
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/rebel-anthem/6799606263?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/rebel-anthem/6799606263?uo=4&app=itunes"
     },
     {
      "name": "iHeartRadio",
@@ -2805,7 +2805,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/the-savage-ledger-single/6794268962?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/the-savage-ledger-single/6794268962?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -2813,7 +2813,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/the-savage-ledger-single/6794268962?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/the-savage-ledger-single/6794268962?uo=4&app=itunes"
     },
     {
      "name": "iHeartRadio",
@@ -2873,7 +2873,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/spellbound-volume-2/6792426929?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/spellbound-volume-2/6792426929?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -2881,7 +2881,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/spellbound-volume-2/6792426929?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/spellbound-volume-2/6792426929?uo=4&app=itunes"
     },
     {
      "name": "Deezer",
@@ -3065,7 +3065,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/spellbound-volume-1/6792403537?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/spellbound-volume-1/6792403537?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -3073,7 +3073,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/spellbound-volume-1/6792403537?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/spellbound-volume-1/6792403537?uo=4&app=itunes"
     },
     {
      "name": "Deezer",
@@ -3257,7 +3257,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/flock-of-the-tyrants-single/6792349853?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/flock-of-the-tyrants-single/6792349853?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -3265,7 +3265,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/flock-of-the-tyrants-single/6792349853?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/flock-of-the-tyrants-single/6792349853?uo=4&app=itunes"
     },
     {
      "name": "Deezer",
@@ -3325,7 +3325,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/the-flock-betrayal-single/6791796592?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/the-flock-betrayal-single/6791796592?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -3333,7 +3333,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/the-flock-betrayal-single/6791796592?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/the-flock-betrayal-single/6791796592?uo=4&app=itunes"
     },
     {
      "name": "Deezer",
@@ -3393,7 +3393,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/violent-light-single/6793668551?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/violent-light-single/6793668551?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -3401,7 +3401,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/violent-light-single/6793668551?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/violent-light-single/6793668551?uo=4&app=itunes"
     },
     {
      "name": "Deezer",
@@ -3466,7 +3466,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/evil-eye-contracts-single/6791078539?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/evil-eye-contracts-single/6791078539?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -3474,7 +3474,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/evil-eye-contracts-single/6791078539?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/evil-eye-contracts-single/6791078539?uo=4&app=itunes"
     },
     {
      "name": "Deezer",
@@ -3539,7 +3539,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/carry-the-star-single/6790073752?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/carry-the-star-single/6790073752?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -3547,7 +3547,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/carry-the-star-single/6790073752?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/carry-the-star-single/6790073752?uo=4&app=itunes"
     },
     {
      "name": "Deezer",
@@ -3611,7 +3611,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/anvils-kiss-single/6789521893?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/anvils-kiss-single/6789521893?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -3619,7 +3619,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/anvils-kiss-single/6789521893?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/anvils-kiss-single/6789521893?uo=4&app=itunes"
     },
     {
      "name": "Deezer",
@@ -3682,7 +3682,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/tinmouth-cathedral-volume-1/6789056155?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/tinmouth-cathedral-volume-1/6789056155?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -3690,7 +3690,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/tinmouth-cathedral-volume-1/6789056155?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/tinmouth-cathedral-volume-1/6789056155?uo=4&app=itunes"
     },
     {
      "name": "Deezer",
@@ -3874,7 +3874,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/blazing-stars-single/6788357226?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/blazing-stars-single/6788357226?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -3882,7 +3882,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/blazing-stars-single/6788357226?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/blazing-stars-single/6788357226?uo=4&app=itunes"
     },
     {
      "name": "iHeartRadio",
@@ -3942,7 +3942,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/america-250-single/6787694827?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/america-250-single/6787694827?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -3950,7 +3950,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/america-250-single/6787694827?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/america-250-single/6787694827?uo=4&app=itunes"
     },
     {
      "name": "Deezer",
@@ -4015,7 +4015,7 @@
     },
     {
      "name": "Apple Music",
-     "url": "https://music.apple.com/us/album/sacred-steel-single/6787351767?uo=4&app=music&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/sacred-steel-single/6787351767?uo=4&app=music"
     },
     {
      "name": "YouTube Music",
@@ -4023,7 +4023,7 @@
     },
     {
      "name": "iTunes",
-     "url": "https://music.apple.com/us/album/sacred-steel-single/6787351767?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+     "url": "https://music.apple.com/us/album/sacred-steel-single/6787351767?uo=4&app=itunes"
     },
     {
      "name": "Deezer",

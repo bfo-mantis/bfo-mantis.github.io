@@ -918,3 +918,10 @@ html.search-open{overflow:hidden}
 .mini-nx[hidden]{display:none}
 @media (max-width:420px){.mini.has-q{grid-template-columns:40px minmax(0,1fr) auto auto auto}.start-row .start-cta{flex-basis:100%}.q-home{width:100%;justify-content:center}}
 html.spa-loading #main{opacity:.6;transition:opacity .2s .15s}
+
+/* Release calendar (releases index) */
+.cal-sec{padding-bottom:48px}
+.cal{list-style:none;margin:8px 0 0;padding:0;max-width:720px}
+.cal li{padding:10px 0;border-bottom:1px solid #262632;color:var(--muted,#9a98a6);font-size:.95rem;line-height:1.5}
+.cal time{color:var(--fg,#ecebf2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cal a{color:inherit}
