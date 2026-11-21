@@ -26,6 +26,7 @@ ARTIST = "bfo.mantis"
 LABEL_NAME = "bfo.mantis Records"
 COPY_YEAR = 2026   # site-wide footer notice (user-approved wording)
 INSTAGRAM = "https://www.instagram.com/bfo.mantis/"   # official Instagram (link supplied by ProMo bot, user-approved request)
+TIKTOK = "https://www.tiktok.com/@bfo.mantis"   # official TikTok (uniqueId bfo.mantis verified 2026-11-20; user-approved request)
 YT_CHANNEL = "https://www.youtube.com/@bfo.mantis"   # user's own channel (UCrdG9YmCFzrp1DKxmSd3z8Q): visualizers, official videos
 YTM_ARTIST = "https://music.youtube.com/channel/UCAr9yfuSAyMs5B2Iycvr7-Q"
 BG, ACCENT, TEXT, MUTED = (11, 11, 15), (200, 255, 77), (236, 235, 242), (163, 162, 179)
@@ -463,6 +464,7 @@ def footer(root, js_v):
     dc_foot += (f'<a class="footer-link" href="{e(PATREON)}" target="_blank" rel="noopener" data-gc="event/patreon/footer">Patreon{NT}</a>' if PATREON else "")
     dc_foot += f'<a class="footer-link" href="{e(YT_CHANNEL)}" target="_blank" rel="noopener" data-gc="event/youtube/footer">YouTube{NT}</a>'
     dc_foot += f'<a class="footer-link" href="{e(INSTAGRAM)}" target="_blank" rel="noopener" data-gc="event/instagram/footer">Instagram{NT}</a>'
+    dc_foot += f'<a class="footer-link" href="{e(TIKTOK)}" target="_blank" rel="noopener" data-gc="event/tiktok/footer">TikTok{NT}</a>'
     sp, am = _artist_profile("Spotify"), _artist_profile("Apple Music")
     dc_foot += (f'<a class="footer-link" href="{e(sp)}" target="_blank" rel="noopener" data-gc="event/spotify/footer">Spotify{NT}</a>' if sp else "")
     dc_foot += (f'<a class="footer-link" href="{e(am)}" target="_blank" rel="noopener" data-gc="event/apple-music/footer">Apple Music{NT}</a>' if am else "")
@@ -481,6 +483,7 @@ PLAY_ICON = '<svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d=
 PAUSE_ICON = '<svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>'
 YT_ICON = ('<svg class="fl-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>')
 IG_ICON = ('<svg class="fl-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></svg>')
+TT_ICON = ('<svg class="fl-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>')
 # Follow subline. Neutral/factual: releases hit all stores at once and visualizers follow later.
 # User-approved wording (Oct 29, 2026).
 FOLLOW_SUB = "New songs land on YouTube first. Behind the scenes and lyrics on Instagram."
@@ -488,7 +491,8 @@ def follow_block(where):
     return (f'<div class="follow" aria-labelledby="follow-title-{where}"><h3 id="follow-title-{where}" class="follow-h">Follow bfo.mantis</h3>'
             f'<p class="follow-sub">{FOLLOW_SUB}</p><p class="follow-acts">'
             f'<a class="btn-alt" href="{e(YT_CHANNEL)}" target="_blank" rel="noopener" data-gc="event/youtube/{where}">{YT_ICON}YouTube{NT}</a>'
-            f'<a class="btn-alt" href="{e(INSTAGRAM)}" target="_blank" rel="noopener" data-gc="event/instagram/{where}">{IG_ICON}Instagram{NT}</a></p></div>')
+            f'<a class="btn-alt" href="{e(INSTAGRAM)}" target="_blank" rel="noopener" data-gc="event/instagram/{where}">{IG_ICON}Instagram{NT}</a>'
+            f'<a class="btn-alt" href="{e(TIKTOK)}" target="_blank" rel="noopener" data-gc="event/tiktok/{where}">{TT_ICON}TikTok{NT}</a></p></div>')
 
 NT = '<span class="sr-only"> (opens in a new tab)</span>'
 EXT = '<svg class="ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
@@ -585,8 +589,8 @@ PATREON_PROFILE = "https://www.patreon.com/c/bfo_mantis"   # official Patreon pa
 
 def music_group(site):
     # sameAs: every verified official profile (content/artist_links.json: Spotify, Apple Music, YouTube Music, YouTube,
-    # Deezer, iHeartRadio) plus Instagram and Patreon. The Discord invite is a server invite, not a profile, so it's left out.
-    same = list(dict.fromkeys([x["url"] for x in artist_links()] + [INSTAGRAM, PATREON_PROFILE]))
+    # Deezer, iHeartRadio) plus Instagram, TikTok and Patreon. The Discord invite is a server invite, not a profile, so it's left out.
+    same = list(dict.fromkeys([x["url"] for x in artist_links()] + [INSTAGRAM, TIKTOK, PATREON_PROFILE]))
     return {"@type": "MusicGroup", "name": ARTIST, "url": site, "sameAs": same}
 
 def site_verification_tags():
@@ -1957,6 +1961,7 @@ def build_links(releases, site, today, v, has_about, tagline):
     <ul class="lk-list">
       <li><a class="lk lk-ext" href="{e(YT_CHANNEL)}" target="_blank" rel="noopener" data-gc="event/youtube/links"><span>YouTube</span>{EXT}{NT}</a></li>
       <li><a class="lk lk-ext" href="{e(INSTAGRAM)}" target="_blank" rel="noopener" data-gc="event/instagram/links"><span>Instagram</span>{EXT}{NT}</a></li>
+      <li><a class="lk lk-ext" href="{e(TIKTOK)}" target="_blank" rel="noopener" data-gc="event/tiktok/links"><span>TikTok</span>{EXT}{NT}</a></li>
     </ul>
     <h2 class="lk-h">bfo.mantis</h2>
     <ul class="lk-list">
