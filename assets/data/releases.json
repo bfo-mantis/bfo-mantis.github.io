@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-11-18T09:34:43",
+ "generated": "2026-11-22T11:37:59",
  "donate_url": "https://www.patreon.com/c/bfo_mantis",
  "members_url": "https://www.patreon.com/c/bfo_mantis/membership",
  "email_signup_url": null,
@@ -48,9 +48,42 @@
    "genre": "Minimal techno",
    "label": "bfo.mantis Records",
    "upc": "700088724255",
-   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/heat-in-the-bone",
-   "listen_source": "hyperfollow_fallback",
-   "store_links": [],
+   "listen_url": null,
+   "listen_source": null,
+   "store_links": [
+    {
+     "name": "Spotify",
+     "url": "https://open.spotify.com/album/1b9fdsFkNaQSNoXSlrkz5B"
+    },
+    {
+     "name": "Apple Music",
+     "url": "https://music.apple.com/us/album/heat-in-the-bone-single/6832434210?uo=4"
+    },
+    {
+     "name": "YouTube Music",
+     "url": "https://music.youtube.com/watch?v=vssjag1EsPU"
+    },
+    {
+     "name": "Amazon Music",
+     "url": "https://music.amazon.com/albums/B0HQZG8N5J"
+    },
+    {
+     "name": "iTunes",
+     "url": "https://music.apple.com/us/album/heat-in-the-bone-single/6832434210?uo=4&app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1142083211"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/577227505"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/heat-in-the-bone-446353280"
+    }
+   ],
    "cover": {
     "jpg": "assets/covers/heat-in-the-bone-800.jpg",
     "webp": "assets/covers/heat-in-the-bone-800.webp",
@@ -69,6 +102,8 @@
      "title": "Heat in the Bone",
      "isrc": "QTAEZ2685295",
      "lyrics": "lyrics",
+     "youtube_music_url": "https://music.youtube.com/watch?v=vssjag1EsPU",
+     "youtube_url": "https://www.youtube.com/watch?v=vssjag1EsPU",
      "lyrics_source": "artist",
      "blurb": "Heat in the Bone is a rescue told through the pulse. Smoke fills the hallway, the door at the end is welded shut, and the strong hands before her have already quit, with her child beyond it. A mother sets her shoulder where they broke the line. Her heart locks to the kick and the heat in the room meets the heat she knows, until the door rips open and she carries her child out into open air.",
      "blurb_in_depth": null,
@@ -502,8 +537,24 @@
      "url": "https://music.youtube.com/watch?v=RXX3WOO5qT8"
     },
     {
+     "name": "Amazon Music",
+     "url": "https://music.amazon.com/albums/B0HKDH5NJ8"
+    },
+    {
      "name": "iTunes",
      "url": "https://music.apple.com/us/album/the-only-way-single/6814011369?uo=4&app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1105476372"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/562572124"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/the-only-way-433793962"
     }
    ],
    "cover": {
@@ -571,6 +622,18 @@
     {
      "name": "iTunes",
      "url": "https://music.apple.com/us/album/forge-of-your-light-single/6811712664?uo=4&app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1078026082"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/560949042"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/forge-of-your-light-432338993"
     }
    ],
    "cover": {
@@ -640,6 +703,18 @@
     {
      "name": "iTunes",
      "url": "https://music.apple.com/us/album/dangerous/6811647141?uo=4&app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1077830572"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/560891937"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/dangerous-432281391"
     }
    ],
    "cover": {
@@ -878,6 +953,18 @@
     {
      "name": "iTunes",
      "url": "https://music.apple.com/us/album/road-to-hell-single/6808337818?uo=4&app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1070213722"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/558203506"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-429888396"
     }
    ],
    "cover": {
@@ -946,6 +1033,18 @@
     {
      "name": "iTunes",
      "url": "https://music.apple.com/us/album/blood-waters-the-tree-single/6807182138?uo=4&app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1067438891"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/557187524"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-428981486"
     }
    ],
    "cover": {
@@ -968,6 +1067,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=Vnr7fyw-tRc",
      "youtube_url": "https://www.youtube.com/watch?v=Vnr7fyw-tRc",
+     "lyrics_source": "artist",
      "blurb": "A story-song about Elias Hart, a small-town blacksmith of quiet faith who takes up his hammer when tyrants seize his village. His last stand, and his parting words to his daughter beneath an old oak, turn sacrifice into an inheritance.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/blood-waters-the-tree/01.mp3"
@@ -1013,6 +1113,18 @@
     {
      "name": "iTunes",
      "url": "https://music.apple.com/us/album/savage-serenade-volume-3/6806875384?uo=4&app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1066756861"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/556962731"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-428783878"
     }
    ],
    "cover": {
@@ -1267,6 +1379,18 @@
     {
      "name": "iTunes",
      "url": "https://music.apple.com/us/album/savage-serenade-volume-2/6804620567?uo=4&app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1061520322"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/555019802"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-427109994"
     }
    ],
    "cover": {
@@ -1521,6 +1645,18 @@
     {
      "name": "iTunes",
      "url": "https://music.apple.com/us/album/sovereign-heart-of-fire/6804363446?uo=4&app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1060855462"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/554789055"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-426917908"
     }
    ],
    "cover": {
@@ -1759,6 +1895,18 @@
     {
      "name": "iTunes",
      "url": "https://music.apple.com/us/album/the-ridge-single/6804338756?uo=4&app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1060793232"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/554766829"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-426898853"
     }
    ],
    "cover": {
@@ -1840,6 +1988,18 @@
     {
      "name": "iTunes",
      "url": "https://music.apple.com/us/album/savage-serenade/6803737452?uo=4&app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1059267822"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/554221724"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-426374337"
     }
    ],
    "cover": {
@@ -2094,6 +2254,18 @@
     {
      "name": "iTunes",
      "url": "https://music.apple.com/us/album/one-man-invictus/6803052725?uo=4&app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1057763472"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/553624851"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-425900545"
     }
    ],
    "cover": {
@@ -2128,6 +2300,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=HraLUk3Ak0s",
      "youtube_url": "https://www.youtube.com/watch?v=HraLUk3Ak0s",
+     "lyrics_source": "artist",
      "blurb": "A reworking of the wolf and gallows imagery from Rebel Anthem, this time centered on one man who breaks the silence and turns whispers into thunder.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/one-man-invictus/02.mp3"
@@ -2258,6 +2431,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=qSQ-fAZAdvc",
      "youtube_url": "https://www.youtube.com/watch?v=qSQ-fAZAdvc",
+     "lyrics_source": "artist",
      "blurb": "A roll call of last stands and uprisings, from Thermopylae and Spartacus to Joan of Arc, Masada, the Alamo, Warsaw and Tiananmen. One word is hammered home as the thing that survives them all.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/one-man-invictus/13.mp3"
@@ -2269,6 +2443,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=gf8PT4ooSXw",
      "youtube_url": "https://www.youtube.com/watch?v=gf8PT4ooSXw",
+     "lyrics_source": "artist",
      "blurb": "An anthem for the unnamed individual who answers oppression with a roar, unbought and unbowed. Its chorus invites listeners to find that same person in themselves.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/one-man-invictus/14.mp3"
@@ -2280,6 +2455,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=AyFU_At3p3M",
      "youtube_url": "https://www.youtube.com/watch?v=AyFU_At3p3M",
+     "lyrics_source": "artist",
      "blurb": "A spoken prayer that closes the album by calling each free person a nation unto himself, sovereign under God and armed. It widens the album's single heroes into a vision of a whole people.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/one-man-invictus/15.mp3"
@@ -2321,6 +2497,14 @@
     {
      "name": "Deezer",
      "url": "https://www.deezer.com/album/1056870832"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/553305318"
+    },
+    {
+     "name": "iHeartRadio",
+     "url": "https://www.iheart.com/artist/id-51258457/albums/id-425606938"
     }
    ],
    "cover": {
@@ -2388,6 +2572,14 @@
     {
      "name": "iTunes",
      "url": "https://music.apple.com/us/album/spellbound-volume-3/6799736952?uo=4&app=itunes"
+    },
+    {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1050080612"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/550635626"
     },
     {
      "name": "iHeartRadio",
@@ -2582,6 +2774,14 @@
      "url": "https://music.apple.com/us/album/rebel-anthem/6799606263?uo=4&app=itunes"
     },
     {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1049765512"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/550528427"
+    },
+    {
      "name": "iHeartRadio",
      "url": "https://www.iheart.com/artist/id-51258457/albums/id-423357253"
     }
@@ -2643,6 +2843,7 @@
      "lyrics": "lyrics",
      "youtube_music_url": "https://music.youtube.com/watch?v=t6-uHrayW_Q",
      "youtube_url": "https://www.youtube.com/watch?v=t6-uHrayW_Q",
+     "lyrics_source": "artist",
      "blurb": "An apocalyptic rewrite of the previous track that turns the tree of liberty into an image of total upheaval. It is the darkest and most extreme song on the album.",
      "blurb_in_depth": null,
      "preview": "assets/audio/previews/rebel-anthem/04.mp3"
@@ -2817,6 +3018,10 @@
      "url": "https://music.apple.com/us/album/the-savage-ledger-single/6794268962?uo=4&app=itunes"
     },
     {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1036900752"
+    },
+    {
      "name": "iHeartRadio",
      "url": "https://www.iheart.com/artist/id-51258457/albums/id-419291657"
     }
@@ -2887,6 +3092,10 @@
     {
      "name": "Deezer",
      "url": "https://www.deezer.com/album/1032755792"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/544435138"
     },
     {
      "name": "iHeartRadio",
@@ -3079,6 +3288,10 @@
     {
      "name": "Deezer",
      "url": "https://www.deezer.com/album/1032686492"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/544407419"
     },
     {
      "name": "iHeartRadio",
@@ -3699,6 +3912,10 @@
      "url": "https://www.deezer.com/album/1024764901"
     },
     {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/541510359"
+    },
+    {
      "name": "iHeartRadio",
      "url": "https://www.iheart.com/artist/id-51258457/albums/id-415368629"
     }
@@ -3887,6 +4104,14 @@
      "url": "https://music.apple.com/us/album/blazing-stars-single/6788357226?uo=4&app=itunes"
     },
     {
+     "name": "Deezer",
+     "url": "https://www.deezer.com/album/1022977271"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/540925281"
+    },
+    {
      "name": "iHeartRadio",
      "url": "https://www.iheart.com/artist/id-51258457/albums/id-414870042"
     }
@@ -3960,6 +4185,10 @@
      "url": "https://www.deezer.com/album/1021455711"
     },
     {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/540135155"
+    },
+    {
      "name": "iHeartRadio",
      "url": "https://www.iheart.com/artist/id-51258457/albums/id-414364801"
     }
@@ -4031,6 +4260,10 @@
     {
      "name": "Deezer",
      "url": "https://www.deezer.com/album/1021149661"
+    },
+    {
+     "name": "TIDAL",
+     "url": "https://tidal.com/album/539991900"
     },
     {
      "name": "iHeartRadio",

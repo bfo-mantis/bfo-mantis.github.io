@@ -110,6 +110,22 @@
   {
    "service": "iTunes",
    "url": "https://music.apple.com/us/album/the-only-way-single/6814011369?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+  },
+  {
+   "service": "Amazon Music",
+   "url": "https://music.amazon.com/albums/B0HKDH5NJ8"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1105476372"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/562572124"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/the-only-way-433793962"
   }
  ],
  "forge-of-your-light": [
@@ -132,6 +148,18 @@
   {
    "service": "Amazon Music",
    "url": "https://www.amazon.com/gp/product/B0HJPFQ816"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1078026082"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/560949042"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/forge-of-your-light-432338993"
   }
  ],
  "dangerous": [
@@ -154,6 +182,18 @@
   {
    "service": "Amazon Music",
    "url": "https://www.amazon.com/gp/product/B0HJP7BDPL/?tag=distrokid06-20"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1077830572"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/560891937"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/dangerous-432281391"
   }
  ],
  "road-to-hell": [
@@ -176,6 +216,18 @@
   {
    "service": "Amazon Music",
    "url": "https://www.amazon.com/gp/product/B0HHPRQ9W9/?tag=distrokid06-20"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/id-51258457/albums/id-429888396"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1070213722"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/558203506"
   }
  ],
  "blood-waters-the-tree": [
@@ -198,6 +250,18 @@
   {
    "service": "Amazon Music",
    "url": "https://www.amazon.com/gp/product/B0HHBDQDCX/?tag=distrokid06-20"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/id-51258457/albums/id-428981486"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1067438891"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/557187524"
   }
  ],
  "savage-serenade-volume-3": [
@@ -220,6 +284,18 @@
   {
    "service": "Amazon Music",
    "url": "https://www.amazon.com/gp/product/B0HH828FT9/?tag=distrokid06-20"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/id-51258457/albums/id-428783878"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1066756861"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/556962731"
   }
  ],
  "savage-serenade-volume-2": [
@@ -242,6 +318,18 @@
   {
    "service": "Amazon Music",
    "url": "https://www.amazon.com/gp/product/B0HG9S19C3/?tag=distrokid06-20"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1061520322"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/id-51258457/albums/id-427109994"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/555019802"
   }
  ],
  "sovereign-heart-of-fire": [
@@ -264,6 +352,18 @@
   {
    "service": "Amazon Music",
    "url": "https://www.amazon.com/gp/product/B0HG6Y4GNF/?tag=distrokid06-20"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1060855462"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/id-51258457/albums/id-426917908"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/554789055"
   }
  ],
  "the-ridge": [
@@ -286,6 +386,18 @@
   {
    "service": "Amazon Music",
    "url": "https://www.amazon.com/gp/product/B0HG6QV59L/?tag=distrokid06-20"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1060793232"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/id-51258457/albums/id-426898853"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/554766829"
   }
  ],
  "savage-serenade": [
@@ -308,6 +420,18 @@
   {
    "service": "Amazon Music",
    "url": "https://www.amazon.com/gp/product/B0HFY7T4RK/?tag=distrokid06-20"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1059267822"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/id-51258457/albums/id-426374337"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/554221724"
   }
  ],
  "one-man-invictus": [
@@ -330,6 +454,18 @@
   {
    "service": "Amazon Music",
    "url": "https://www.amazon.com/gp/product/B0HFRNL7NG/?tag=distrokid06-20"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1057763472"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/id-51258457/albums/id-425900545"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/553624851"
   }
  ],
  "one-man": [
@@ -348,6 +484,14 @@
   {
    "service": "Deezer",
    "url": "https://www.deezer.com/album/1056870832"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/id-51258457/albums/id-425606938"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/553305318"
   }
  ],
  "spellbound-volume-3": [
@@ -374,6 +518,14 @@
   {
    "service": "iHeartRadio",
    "url": "https://www.iheart.com/artist/id-51258457/albums/id-423450140"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1050080612"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/550635626"
   }
  ],
  "rebel-anthem": [
@@ -400,6 +552,14 @@
   {
    "service": "iHeartRadio",
    "url": "https://www.iheart.com/artist/id-51258457/albums/id-423357253"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1049765512"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/550528427"
   }
  ],
  "the-savage-ledger": [
@@ -422,6 +582,10 @@
   {
    "service": "iHeartRadio",
    "url": "https://www.iheart.com/artist/id-51258457/albums/id-419291657"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1036900752"
   }
  ],
  "spellbound-volume-2": [
@@ -448,6 +612,10 @@
   {
    "service": "iHeartRadio",
    "url": "https://www.iheart.com/artist/id-51258457/albums/id-417908894"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/544435138"
   }
  ],
  "spellbound-volume-1": [
@@ -474,6 +642,10 @@
   {
    "service": "iHeartRadio",
    "url": "https://www.iheart.com/artist/id-51258457/albums/id-423450140"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/544407419"
   }
  ],
  "flock-of-the-tyrants": [
@@ -648,6 +820,10 @@
   {
    "service": "iHeartRadio",
    "url": "https://www.iheart.com/artist/id-51258457/albums/id-415368629"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/541510359"
   }
  ],
  "blazing-stars": [
@@ -670,6 +846,14 @@
   {
    "service": "iHeartRadio",
    "url": "https://www.iheart.com/artist/id-51258457/albums/id-414870042"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1022977271"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/540925281"
   }
  ],
  "america-250": [
@@ -696,6 +880,10 @@
   {
    "service": "iHeartRadio",
    "url": "https://www.iheart.com/artist/id-51258457/albums/id-414364801"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/540135155"
   }
  ],
  "sacred-steel": [
@@ -722,6 +910,10 @@
   {
    "service": "iHeartRadio",
    "url": "https://www.iheart.com/artist/id-51258457/albums/id-414233331"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/539991900"
   }
  ],
  "for-your-own-good": [
@@ -790,6 +982,40 @@
   {
    "service": "TIDAL",
    "url": "https://tidal.com/album/571653729"
+  }
+ ],
+ "heat-in-the-bone": [
+  {
+   "service": "Spotify",
+   "url": "https://open.spotify.com/album/1b9fdsFkNaQSNoXSlrkz5B"
+  },
+  {
+   "service": "Apple Music",
+   "url": "https://music.apple.com/us/album/heat-in-the-bone-single/6832434210?uo=4"
+  },
+  {
+   "service": "iTunes",
+   "url": "https://music.apple.com/us/album/heat-in-the-bone-single/6832434210?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+  },
+  {
+   "service": "YouTube Music",
+   "url": "https://music.youtube.com/watch?v=vssjag1EsPU"
+  },
+  {
+   "service": "Amazon Music",
+   "url": "https://music.amazon.com/albums/B0HQZG8N5J"
+  },
+  {
+   "service": "Deezer",
+   "url": "https://www.deezer.com/album/1142083211"
+  },
+  {
+   "service": "TIDAL",
+   "url": "https://tidal.com/album/577227505"
+  },
+  {
+   "service": "iHeartRadio",
+   "url": "https://www.iheart.com/artist/bfomantis-51258457/albums/heat-in-the-bone-446353280"
   }
  ]
 }

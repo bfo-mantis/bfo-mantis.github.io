@@ -169,6 +169,20 @@
      "reason": "unproven allegation against a named individual/company",
      "count": 1,
      "match_sha256_16": "9d8cdb0272a2653f"
+    },
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "explicit language (T&C, POL-4b)",
+     "count": 1,
+     "match_sha256_16": "6ac3c336e4094835"
+    },
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "explicit language (T&C, POL-4b)",
+     "count": 1,
+     "match_sha256_16": "acd9193a33ddc5c6"
     }
    ]
   },
@@ -237,6 +251,13 @@
      "reason": "incitement/call for violence against people or officials",
      "count": 1,
      "match_sha256_16": "de23e525b3e660ee"
+    },
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "sexual violence reference (T&C, POL-4b)",
+     "count": 1,
+     "match_sha256_16": "78a00d189cb84bce"
     }
    ]
   },
@@ -492,6 +513,85 @@
      "line_sha256_16": "93278bbfdb4e1733",
      "reason": "incitement/call for violence against people or officials"
     }
+   ],
+   "override_edits": [
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "explicit language (T&C, POL-4b)",
+     "count": 1,
+     "match_sha256_16": "d6736c332798858b"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "4134775a56282a6c"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "c06865c5ea0565d5"
+    },
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "sexual violence reference (T&C, POL-4b)",
+     "count": 1,
+     "match_sha256_16": "59cc3cb8a4297301"
+    },
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "explicit language (T&C, POL-4b)",
+     "count": 3,
+     "match_sha256_16": "31506a8448a761a4"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "904a4ec0ff4c6f6a"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "799db73f025f0b87"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "692cdac495182fbd"
+    },
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "e940d870f03e15cd"
+    },
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "4f6b59ea06f7e096"
+    },
+    {
+     "action": "redact_line",
+     "type": "redaction",
+     "reason": "incitement/call for violence against people or officials",
+     "count": 1,
+     "match_sha256_16": "2bde0ffb748137c4"
+    }
    ]
   },
   "QT6HN2654612": {
@@ -701,6 +801,27 @@
      "action": "redact_line",
      "line_sha256_16": "0924fde70f66a0a6",
      "reason": "incitement/call for violence against people or officials"
+    }
+   ]
+  },
+  "QT6F82613759": {
+   "release_title": "Violent Light",
+   "track_title": "Violent Light",
+   "edits": [],
+   "override_edits": [
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "sexual violence reference (T&C, POL-4b)",
+     "count": 3,
+     "match_sha256_16": "f2161cb129c64864"
+    },
+    {
+     "action": "redact_span",
+     "type": "redaction",
+     "reason": "sexual violence reference (T&C, POL-4b)",
+     "count": 1,
+     "match_sha256_16": "59cc3cb8a4297301"
     }
    ]
   }

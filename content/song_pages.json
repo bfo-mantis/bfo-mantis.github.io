@@ -1,5 +1,5 @@
 {
- "_note": "Song pages (song/<slug>/): ONLY songs whose lyrics Zach approved as official (corpus catalog bot registry, report /workspace/corpus_reports/lyric_status/lyric_authorization_status_2026-11-10_post.md, Group 1). A song not listed here gets no song page. The lyrics themselves come from the release's published lyrics file (content/lyrics_overrides/<ISRC>.txt = the approved text; the REDACTED version for T&C pairs; Heat in the Bone uses Zach's public-display rule). source_sha256 = the approved file in the catalog store (redacted file for pairs). No lyric text in this file. Rebuild with tools/build_data.py.",
+ "_note": "Song pages (song/<slug>/): ONLY songs whose lyrics Zach approved as official (corpus catalog bot registry, report /workspace/corpus_reports/lyric_status/lyric_authorization_status_2026-11-10_post.md, Group 1; 45 more added Nov 22, 2026 from the registry's approved songs per the DistroKid Audit Bot site audit). A song not listed here gets no song page. The lyrics themselves come from the release's published lyrics file (content/lyrics_overrides/<ISRC>.txt = the approved text; the REDACTED version for T&C pairs; Heat in the Bone uses Zach's public-display rule). source_sha256 = the approved file in the catalog store (redacted file for pairs). No lyric text in this file. Rebuild with tools/build_data.py.",
  "songs": [
   {
    "slug": "america-250",
@@ -288,6 +288,411 @@
    "approved_on": "2026-11-10",
    "text": "redacted (T&C pair)",
    "source_sha256": "fc38060fb16843a421a5f2715cb1785390c3f15b594c649179f21a98cf64c146"
+  },
+  {
+   "slug": "suits",
+   "isrc": "QT9XH2672250",
+   "title": "Suits",
+   "release": "dangerous",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "48fa82a30b48f68b1038099f72b13469ebfbb6ff9654195d1fbcd6e2d0e9b833"
+  },
+  {
+   "slug": "first-responder",
+   "isrc": "QT9XH2672254",
+   "title": "First Responder",
+   "release": "dangerous",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "98b79b44265919bc3882f73a159964d8136ac7bdd92a4f2ffcad3ff26b004cbd"
+  },
+  {
+   "slug": "we-are-dangerous",
+   "isrc": "QT9XH2672258",
+   "title": "We Are Dangerous",
+   "release": "dangerous",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "935268136dc79b2054d1620e28cf206a46076f1cfb6a78c41dc8407a7554c63d"
+  },
+  {
+   "slug": "tha-last-thunderbolt",
+   "isrc": "QT9XH2672246",
+   "title": "Tha Last Thunderbolt",
+   "release": "dangerous",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "b6b974999cecd414dac5b698fe16379115e8f09ec39cadb756022d7d0c3d3036"
+  },
+  {
+   "slug": "counted-as-cast",
+   "isrc": "QT9XH2672257",
+   "title": "Counted as Cast",
+   "release": "dangerous",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "c34e6762fc6533649439a806df3d3979b0f36f94efd5a2b0827ad3bda89a0f06"
+  },
+  {
+   "slug": "road-to-hell",
+   "isrc": "QT6J22605151",
+   "title": "Road to Hell",
+   "release": "road-to-hell",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "c336839bf98d219c24fcce20b97c4723f668fcc6e2cb596e5b912d31c3bc2443"
+  },
+  {
+   "slug": "true-liberty-s-roar",
+   "isrc": "QT6HR2651300",
+   "title": "True Liberty's ROAR",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "eb45b3ce3466ac5dafd4b251aa760d5b7b7142a72dedbe7b1d782e4ed1b5514a"
+  },
+  {
+   "slug": "sovereign-thunder",
+   "isrc": "QT6HR2651303",
+   "title": "Sovereign Thunder",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "c2737acf9463506163d890a11f336757b0c63bbd1fea6907ac36b4eb41ac63d4"
+  },
+  {
+   "slug": "to-the-bitter-end",
+   "isrc": "QT6HR2651304",
+   "title": "To the Bitter End",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "11d5938f7e3fb5e482e922db4f575e86d8887150e7e08ac032dc23607dba69eb"
+  },
+  {
+   "slug": "forge-of-fathers",
+   "isrc": "QT6HR2651305",
+   "title": "Forge of Fathers",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "d7565aaaf49268445ea0c91f01d9def8345e1853add1fd69d915a126cb931d2e"
+  },
+  {
+   "slug": "endowed-by-the-creator",
+   "isrc": "QT6HR2651310",
+   "title": "Endowed by the Creator",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "aedbfbff05fc255bdf9b32d33eb147abde5920922677d7dbea7a3c850eae75c7"
+  },
+  {
+   "slug": "sovereign-heart-of-fire",
+   "isrc": "QT6HR2651314",
+   "title": "Sovereign Heart of Fire",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "4a3e90e6414b660f310c16543661821aca63c777cab47d01e223d7ed64b87c3e"
+  },
+  {
+   "slug": "anvil-s-kiss",
+   "isrc": "QT6F22689948",
+   "title": "Anvil's Kiss",
+   "release": "anvil-s-kiss",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "ef36227d545a94f2f72d70225750d383f96a9e0bad38bccaa7df9c52b368d48a"
+  },
+  {
+   "slug": "blazing-stars",
+   "isrc": "QT6EY2616104",
+   "title": "Blazing Stars",
+   "release": "blazing-stars",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "6f7df719316e2ec12b8165d1d03d377ad7c6145b318b97641424fd8da8013af5"
+  },
+  {
+   "slug": "carry-the-star",
+   "isrc": "QT6F42637691",
+   "title": "Carry the Star",
+   "release": "carry-the-star",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "cb69830aff1bece34db29f43554e11e37722af3d65b96a602278ff7cb9542854"
+  },
+  {
+   "slug": "one-man-zhanzhe",
+   "isrc": "QT6HM2669331",
+   "title": "One Man - 站着",
+   "release": "one-man",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "f1e1daf009750273db07accb0bda74b2754806f0cdbcf7a54ed4a4a75d620b40"
+  },
+  {
+   "slug": "one-man-at-the-gallows",
+   "isrc": "QT6HN2654613",
+   "title": "One Man (At the Gallows)",
+   "release": "one-man-invictus",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "be309a8dd880b221496331b05b9a0a89d852389c24f8b595431b6ee31ccdaf7b"
+  },
+  {
+   "slug": "one-man-conviction",
+   "isrc": "QT6HN2654616",
+   "title": "One Man (Conviction)",
+   "release": "one-man-invictus",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "b35287872b8e33866e688e725e49a7f8ea2a98a2c3e33c0bda540939e7a89ec7"
+  },
+  {
+   "slug": "one-man-the-ghost",
+   "isrc": "QT6HN2654617",
+   "title": "One Man (The Ghost)",
+   "release": "one-man-invictus",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "9d088015c01c43f82867fdab5fa15cb628412893a10463717cf97a786d0be746"
+  },
+  {
+   "slug": "one-man-the-swamp-fox",
+   "isrc": "QT6HN2654619",
+   "title": "One Man (The Swamp Fox)",
+   "release": "one-man-invictus",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "a6dc9c716e0b0dc6827b8386326594e0200402d33ab18ba5c8c7169899888d35"
+  },
+  {
+   "slug": "one-man-gandhi",
+   "isrc": "QT6HN2654620",
+   "title": "One Man (Gandhi)",
+   "release": "one-man-invictus",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "fb87b7a8819f58953f2852f01f6a3cf25efc04f48b5483cb43cdb6b15470a026"
+  },
+  {
+   "slug": "one-song-devotion",
+   "isrc": "QT6HN2654621",
+   "title": "One Song (Devotion)",
+   "release": "one-man-invictus",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "8a3afa31bd2837534cec5acf2a79b78c70b7f1ada2423355bd316662a6a5221f"
+  },
+  {
+   "slug": "one-man-immortal-stand",
+   "isrc": "QT6HN2654623",
+   "title": "One Man (Immortal Stand)",
+   "release": "one-man-invictus",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "b9914cc2ecc1ee522c9ed93f226b8ab7a6852ccd997cf9a18435a0c5c1b69458"
+  },
+  {
+   "slug": "one-man-defiance",
+   "isrc": "QT6HN2654624",
+   "title": "One Man (Defiance)",
+   "release": "one-man-invictus",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "ba32b6f65a7cbe1ee7a9091e820da95adba929548ec740bda21ac725a3043e9c"
+  },
+  {
+   "slug": "one-man-heart-of-thunder",
+   "isrc": "QT6HN2654625",
+   "title": "One Man (Heart of Thunder)",
+   "release": "one-man-invictus",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "955ded922b941794d0c7ed9bce8a0370ee46ffb9b84291bb0445db3619617d00"
+  },
+  {
+   "slug": "one-man-nation-under-god",
+   "isrc": "QT6HN2654626",
+   "title": "One Man Nation (Under God)",
+   "release": "one-man-invictus",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "297737a14ac989f27e782331dfe14b9ed7ac47b6ab651bfc699ab7d550c001be"
+  },
+  {
+   "slug": "rebel-anthem",
+   "isrc": "QT6G62652781",
+   "title": "Rebel Anthem",
+   "release": "rebel-anthem",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "d4488879fcc13c69c7a306085f4cdfc911f10e46bc49a3596cd519aca5918fd2"
+  },
+  {
+   "slug": "sovereign-tongue",
+   "isrc": "QT6G62652785",
+   "title": "Sovereign Tongue",
+   "release": "rebel-anthem",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "f011b6009d21504189205df7c5b68337bb0546c902426580bd6b5c6fb877932a"
+  },
+  {
+   "slug": "they-fear-us",
+   "isrc": "QT6G62652786",
+   "title": "They Fear Us",
+   "release": "rebel-anthem",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "b6a5c262da7c4031a6f426f18031974eec77c2c8772c43990ae9ea9c6bf75909"
+  },
+  {
+   "slug": "tree-of-liberty-reignited",
+   "isrc": "QT6G62652787",
+   "title": "Tree of Liberty (Reignited)",
+   "release": "rebel-anthem",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "5b6939dece5bcc6f623d9e43b05c5fde35eb82890e13a441428f55298787d978"
+  },
+  {
+   "slug": "pure-fury",
+   "isrc": "QT6G62652791",
+   "title": "Pure FURY!",
+   "release": "rebel-anthem",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "9fc7e1c1d2e8db21f94c9b3995d869fb897b5fe58fbf74ee2bacb70ef955f71f"
+  },
+  {
+   "slug": "the-savage-ledger",
+   "isrc": "QT6FH2601974",
+   "title": "The Savage Ledger",
+   "release": "the-savage-ledger",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "1463a2e2c9311be0a9797d6321e563c3bb45b70a0d24fefe7381ddffa52864a2"
+  },
+  {
+   "slug": "evil-eye-contracts",
+   "isrc": "QT6F62681643",
+   "title": "EVIL EYE CONTRACTS",
+   "release": "evil-eye-contracts",
+   "approved_on": "2026-11-14",
+   "text": "redacted (T&C pair)",
+   "source_sha256": "fe854f6a9fd81cea73db371bb730716f01ede0aa188947381a14fa8699e2a4fa"
+  },
+  {
+   "slug": "the-flock-betrayal",
+   "isrc": "QT6F82621394",
+   "title": "The Flock Betrayal",
+   "release": "the-flock-betrayal",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "1aa55ee43ba7d7c1017971967ba750d9d07014a0a9aae922c702c733db851323"
+  },
+  {
+   "slug": "the-only-way",
+   "isrc": "QT9XM2685551",
+   "title": "The Only Way",
+   "release": "the-only-way",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "aad180bd692e9e45903d3d41edeb4fff68e3750e331b4cc7be5fb8b151569c28"
+  },
+  {
+   "slug": "violent-light",
+   "isrc": "QT6F82613759",
+   "title": "Violent Light",
+   "release": "violent-light",
+   "approved_on": "2026-11-14",
+   "text": "redacted (T&C pair)",
+   "source_sha256": "fd793d08413b9a25b17437fc6c0892c3d97242bc1a46280946fa398759d5ca62"
+  },
+  {
+   "slug": "havilah",
+   "isrc": "QT6HR2651313",
+   "title": "Havilah",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "296f4bf5974e1145e3b32844d9e30d8a412ed8be28dccf1abc190e3fd3bdb3b1"
+  },
+  {
+   "slug": "flock-of-the-tyrants",
+   "isrc": "QT6F92659506",
+   "title": "Flock of the Tyrants",
+   "release": "flock-of-the-tyrants",
+   "approved_on": "2026-11-14",
+   "text": "official",
+   "source_sha256": "519672d91d8da39c9242c1488d6136e3fa532d3ffa54dabd37dfabe0e7eb804d"
+  },
+  {
+   "slug": "one-man-burned",
+   "isrc": "QT6HN2654615",
+   "title": "One Man (Burned)",
+   "release": "one-man-invictus",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "8b302f5f5a355147c08fa9c1a146593223670fa371ff7e7d01f1f7e64e426bcf"
+  },
+  {
+   "slug": "one-man-leonidas",
+   "isrc": "QT6HN2654622",
+   "title": "One Man (Leonidas)",
+   "release": "one-man-invictus",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "ee6f86d14e22d39deb1b1211348d27b9a1f8046ce5a5126e038e5b0a1f09118f"
+  },
+  {
+   "slug": "rebel-anthem-reckoning",
+   "isrc": "QT6G62652782",
+   "title": "Rebel Anthem (Reckoning)",
+   "release": "rebel-anthem",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "98ef1985aef4462ad280776a42ff63431cf2ec6cadaf175b14641bb56c32c8df"
+  },
+  {
+   "slug": "rebel-anthem-blood-tax",
+   "isrc": "QT6G62652792",
+   "title": "Rebel Anthem (Blood Tax)",
+   "release": "rebel-anthem",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "efe18a190e1198f4471f5d9c98daa1bf4b85c4f6301cce230f6364c654417b2c"
+  },
+  {
+   "slug": "blood-waters-the-tree",
+   "isrc": "QT6HX2695835",
+   "title": "Blood Waters the Tree",
+   "release": "blood-waters-the-tree",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "94a387a57720fcb9f694e4e3b541055790207b49db4aaa0b1c48f668a6b17a66"
+  },
+  {
+   "slug": "one-man-stood",
+   "isrc": "QT6HN2654614",
+   "title": "One Man (Stood)",
+   "release": "one-man-invictus",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "a79fb14c43e5276ae7cba674db6d2928b5bdcc3df425bcc7615c7856f32c4f3f"
+  },
+  {
+   "slug": "the-tree-is-thirsty-sovereign-armageddon",
+   "isrc": "QT6G62652784",
+   "title": "The Tree is Thirsty (Sovereign Armageddon)",
+   "release": "rebel-anthem",
+   "approved_on": "2026-11-22",
+   "text": "redacted (T&C pair)",
+   "source_sha256": "17fc6a6674a03908aa573f22044b3753523f5bd4ac52f335ffbcc1d5f215110a"
   }
  ]
 }
