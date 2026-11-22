@@ -1,5 +1,5 @@
 {
- "_note": "Song pages (song/<slug>/): ONLY songs whose lyrics Zach approved as official (corpus catalog bot registry, report /workspace/corpus_reports/lyric_status/lyric_authorization_status_2026-11-10_post.md, Group 1; 45 more added Nov 22, 2026 from the registry's approved songs per the DistroKid Audit Bot site audit). A song not listed here gets no song page. The lyrics themselves come from the release's published lyrics file (content/lyrics_overrides/<ISRC>.txt = the approved text; the REDACTED version for T&C pairs; Heat in the Bone uses Zach's public-display rule). source_sha256 = the approved file in the catalog store (redacted file for pairs). No lyric text in this file. Rebuild with tools/build_data.py.",
+ "_note": "Song pages (song/<slug>/): ONLY songs whose lyrics Zach approved as official (corpus catalog bot registry, report /workspace/corpus_reports/lyric_status/lyric_authorization_status_2026-11-10_post.md, Group 1; 45 more added Nov 22, 2026 from the registry's approved songs per the DistroKid Audit Bot site audit). A song not listed here gets no song page. The lyrics themselves come from the release's published lyrics file (content/lyrics_overrides/<ISRC>.txt = the approved text; the REDACTED version for T&C pairs; Heat in the Bone uses Zach's public-display rule). source_sha256 = the approved file in the catalog store (redacted file for pairs). No lyric text in this file. Rebuild with tools/build_data.py. Two pages added Nov 22, 2026 for Start here (Zach t331u): one-man-invictus shows the lyrics exactly as the live site already does (published override + existing lyrics_edits.json redactions, unchanged; Zach still to decide on those lines, audit #70), and the-rebel-prayer is a page WITHOUT lyrics (\"lyrics\": false; no authorized corpus text yet, echo decision pending, audit #79).",
  "songs": [
   {
    "slug": "america-250",
@@ -693,6 +693,27 @@
    "approved_on": "2026-11-22",
    "text": "redacted (T&C pair)",
    "source_sha256": "17fc6a6674a03908aa573f22044b3753523f5bd4ac52f335ffbcc1d5f215110a"
+  },
+  {
+   "slug": "one-man-invictus",
+   "isrc": "QT6HN2654612",
+   "title": "One Man (Invictus)",
+   "release": "one-man-invictus",
+   "approved_on": null,
+   "text": "as live (site override + existing redactions; hidden-line decision pending with Zach, audit #70)",
+   "source_sha256": "02c1b5b7714bbf97576baef42e3c1ac2403d02be7a66199813f1bcd9656b3c86",
+   "source": "content/lyrics_overrides/QT6HN2654612.txt (site copy, not the corpus file)",
+   "added_on": "2026-11-22"
+  },
+  {
+   "slug": "the-rebel-prayer",
+   "isrc": "QT6HR2651301",
+   "title": "The Rebel Prayer",
+   "release": "sovereign-heart-of-fire",
+   "approved_on": null,
+   "text": "none (no authorized corpus entry; echo decision pending with Zach, audit #79)",
+   "lyrics": false,
+   "added_on": "2026-11-22"
   }
  ]
 }
