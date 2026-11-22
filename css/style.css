@@ -628,10 +628,11 @@ html:not(.js) .lbl-wide{display:none}html:not(.js) .lbl-narrow{display:inline}
 .start .ess .art img{width:100%;height:100%;object-fit:cover;display:block}
 .start .ess .art .pv{position:absolute;right:4px;bottom:4px}
 .start .ess h2{font:700 1.08rem/1.25 var(--body);margin:0}
-.start .ess h2 a{color:var(--text);text-decoration:underline;text-decoration-color:rgba(200,255,77,.45);text-decoration-thickness:1px;text-underline-offset:4px;transition:color .2s,text-decoration-color .2s}
+/* Start here title links: underlined in the accent; padded to a 44px-tall tap target (WCAG 2.5.5) with negative margins so the card barely grows */
+.start .ess h2 a{display:inline-block;padding:11.5px 0;margin:-8px 0;color:var(--text);text-decoration:underline;text-decoration-color:rgba(200,255,77,.45);text-decoration-thickness:1px;text-underline-offset:4px;transition:color .2s,text-decoration-color .2s;-webkit-tap-highlight-color:rgba(200,255,77,.18)}
 .start .ess h2 a:hover,.start .ess h2 a:focus-visible{color:var(--accent);text-decoration-color:var(--accent)}
 .start .ess .ess-go{margin:8px 0 0;font-size:.84rem}
-.start .ess .ess-go a{color:var(--accent);text-decoration:none;font-weight:600}
+.start .ess .ess-go a{display:inline-block;padding:14px 0;margin:-14px 0 -12px;color:var(--accent);text-decoration:none;font-weight:600}
 .start .ess .ess-go a:hover{text-decoration:underline;text-underline-offset:3px}
 .start .ess .meta{font-size:.82rem;color:var(--muted);margin:3px 0 6px}
 .start .ess p.why{margin:0;font-size:.95rem;line-height:1.5}

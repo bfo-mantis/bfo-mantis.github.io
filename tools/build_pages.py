@@ -825,7 +825,7 @@ def approved_lyrics_html(isrc, lyrics_file):
     """Server-render lyrics only for the 32 Zach-approved song pages. Uses the published, already-redacted
     lyrics JSON (same source as the JS path). Redaction tokens become empty .rbar spans, with no hidden text.
     Unapproved tracks return None and stay on the existing JS fetch."""
-    if not isrc or not lyrics_file or isrc not in (SONGS or {}):
+    if not isrc or not lyrics_file or isrc not in (SONGS or {}) or isrc in SONGS_NOLYR:
         return None
     if lyrics_file not in _LYRICS_CACHE:
         fp = ROOT / lyrics_file
@@ -2358,6 +2358,7 @@ def build_about(releases, site, v, has_about, about, tagline):
 
 # ---- Song pages (song/<slug>/): only songs whose lyrics Zach approved (content/song_pages.json) ----
 SONGS = {}   # ISRC -> song page slug; set in main() from content/song_pages.json
+SONGS_NOLYR = set()   # ISRCs whose song page has no lyrics ("lyrics": false in content/song_pages.json)
 
 def load_song_pages(releases):
     fp = ROOT / "content" / "song_pages.json"
@@ -2369,9 +2370,12 @@ def load_song_pages(releases):
         if not hit or not re.match(r"^[a-z0-9-]+$", x.get("slug") or ""):
             print(f"song_pages.json: {x.get('slug')!r} ({x.get('isrc')}) skipped (not on the site or bad slug)"); continue
         r, t = hit
-        if t.get("lyrics") != "lyrics" or not r.get("lyrics_file"):
+        # "lyrics": false = a song page without lyrics (title, story, listen links, credits) for a song whose final text
+        # isn't approved yet. No lyrics block, no placeholder, nothing lyric-related in its JSON-LD.
+        nolyr = x.get("lyrics") is False
+        if not nolyr and (t.get("lyrics") != "lyrics" or not r.get("lyrics_file")):
             print(f"song_pages.json: {x['slug']} skipped (no published lyrics on its release page)"); continue
-        out.append({**x, "r": r, "t": t})
+        out.append({**x, "r": r, "t": t, "no_lyrics": nolyr})
     return out
 
 def yt_id(u):
@@ -2403,7 +2407,8 @@ def song_jsonld(sp, site):
 
 def song_link(root, isrc, title):
     s = SONGS.get(isrc)
-    return (f'<a class="songlink" href="{root}song/{s}/" aria-label="{e(title)}: song page with lyrics and credits">Song page</a>') if s else ""
+    what = "credits and where to listen" if isrc in SONGS_NOLYR else "lyrics and credits"
+    return (f'<a class="songlink" href="{root}song/{s}/" aria-label="{e(title)}: song page with {what}">Song page</a>') if s else ""
 
 def build_song(sp, songs, site, today, v, has_about):
     r, t = sp["r"], sp["t"]
@@ -2412,9 +2417,10 @@ def build_song(sp, songs, site, today, v, has_about):
     single = r["type"] == "single"
     where = "single" if single else f"track {t['n']} of {r['title']}"
     story = t.get("blurb") or (r.get("blurb") if single else None)
-    desc = story or f"{t['title']}, a song by {ARTIST} ({where}, {r['release_date'][:4]}): lyrics, the story behind it, credits and where to listen."
+    nolyr = bool(sp.get("no_lyrics"))
+    desc = story or (f"{t['title']}, a song by {ARTIST} ({where}, {r['release_date'][:4]}): " + ("" if nolyr else "lyrics, ") + "the story behind it, credits and where to listen.")
     og_img = site + f"assets/img/og/{r['slug']}.jpg" if r.get("cover") else site + "assets/img/og/home.jpg"
-    hd = head(root, title=f"{t['title']} lyrics — {ARTIST}", desc=desc, url=url, og_image=og_img,
+    hd = head(root, title=f"{t['title']}{'' if nolyr else ' lyrics'} — {ARTIST}", desc=desc, url=url, og_image=og_img,
               og_alt=f"Cover art for {r['title']} by {ARTIST}", og_type="music.song", css_v=v["css"], jsonld=song_jsonld(sp, site), crumbs=[("Home", site), ("Releases", site + "release/"), (r["title"], site + "release/" + r["slug"] + "/"), (t["title"], url)])
     # Listen: the release's direct store links, else its HyperFollow link (labelled Pre-save until the release date)
     stores = r.get("store_links") or []
@@ -2466,7 +2472,14 @@ def build_song(sp, songs, site, today, v, has_about):
     bg = f' style="background-image:url(\'{root}{r["cover"]["jpg_small"]}\')"' if r.get("cover") else ""
     eyebrow = "Single" if single else f"Track {t['n']} of {e(r['title'])}"
     kind_l = "single" if single else "album"
-    lyr_ssr = approved_lyrics_html(t.get("isrc"), r.get("lyrics_file"))
+    lyr_ssr = None if nolyr else approved_lyrics_html(t.get("isrc"), r.get("lyrics_file"))
+    lyr_sec = "" if nolyr else (f'''
+      <section class="song-sec song-lyr" aria-labelledby="lyr-title">
+        <h2 id="lyr-title">Lyrics</h2>
+        <div class="lyrics song-lyrics" data-isrc="{e(t["isrc"])}" aria-live="polite">{lyr_ssr or "Loading lyrics…"}</div>
+        {"" if lyr_ssr else '<noscript><p class="muted">Turn on JavaScript to see the lyrics.</p></noscript>'}
+        <p class="lcopy">Lyrics &copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p>
+      </section>''')
     page = f'''{hd}
 <body class="release-page song-page">
 {topbar(root, has_about)}
@@ -2482,13 +2495,7 @@ def build_song(sp, songs, site, today, v, has_about):
       <p class="by">{ARTIST}</p>
       {story_html}
       {diss}{pv_html}
-      <div class="listen">{listen}{ytl}</div>
-      <section class="song-sec song-lyr" aria-labelledby="lyr-title">
-        <h2 id="lyr-title">Lyrics</h2>
-        <div class="lyrics song-lyrics" data-isrc="{e(t["isrc"])}" aria-live="polite">{lyr_ssr or "Loading lyrics…"}</div>
-        {"" if lyr_ssr else '<noscript><p class="muted">Turn on JavaScript to see the lyrics.</p></noscript>'}
-        <p class="lcopy">Lyrics &copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p>
-      </section>{vis}
+      <div class="listen">{listen}{ytl}</div>{lyr_sec}{vis}
       <section class="song-sec" aria-labelledby="cred-title">
         <h2 id="cred-title">Credits and details</h2>
         <dl class="song-facts">{credits}</dl>
@@ -2502,6 +2509,13 @@ def build_song(sp, songs, site, today, v, has_about):
     d = ROOT / "song" / sp["slug"]; d.mkdir(parents=True, exist_ok=True)
     (d / "index.html").write_text(page)
     return url
+
+def songs_stat(songs):
+    n_l = sum(1 for x in songs if not x.get("no_lyrics"))
+    if n_l == len(songs):
+        return f"{len(songs)} songs with official lyrics, the story behind each one, credits and where to listen. More are added as their lyrics are confirmed."
+    return (f"{len(songs)} songs ({n_l} with official lyrics): the story behind each one, credits and where to listen. "
+            "Lyrics are added as they are confirmed.")
 
 def song_index_html(root, songs):
     """Song pages grouped by release (newest release first)."""
@@ -2541,7 +2555,7 @@ def build_songs(releases, songs, site, today, v, has_about):
     <a class="back" href="{root}release/"><span aria-hidden="true">←</span> All releases</a>
     <p class="eyebrow">Lyrics</p>
     <h1>Song pages</h1>
-    <p class="genre-stats">{len(songs)} songs with official lyrics, the story behind each one, credits and where to listen. More are added as their lyrics are confirmed.</p>
+    <p class="genre-stats">{songs_stat(songs)}</p>
   </header>
   <section class="section" aria-label="Songs by release">{song_index_html(root, songs)}</section>
 </main>
@@ -2925,10 +2939,10 @@ def build_start(releases, site, v, has_about):
         cat = "Instrumental" if r.get("category") == "instrumental" else "Song"
         where = f'track {t["n"]} of {e(r["title"])}' if r["type"] == "album" else "single"
         song = (SONGS or {}).get(t["isrc"])
-        # Song page when the ISRC has one (content/song_pages.json: Zach-approved lyrics only), else the track on its release page.
+        # Song page when the ISRC has one (content/song_pages.json; with or without lyrics), else the track on its release page.
         href = (f'{root}song/{song}/' if song else
                 f'{root}release/{r["slug"]}/' + (f'#t{t["n"]}' if r["type"] == "album" else ""))
-        go = ("Song page and lyrics" if song else
+        go = (("Song page" if t["isrc"] in SONGS_NOLYR else "Song page and lyrics") if song else
               (f'Track {t["n"]} on {e(r["title"])}' if r["type"] == "album" else "Release page"))
         items.append(f'''<li><span class="num">{i}</span><span class="art">{picture(root, r, "72px", alt="")}{pv_button(root, r, t)}</span>
   <div class="ess-body"><h2><a href="{href}" data-isrc="{t["isrc"]}">{e(t["title"])}</a></h2><p class="meta">{cat} · {e(r.get("genre") or "")} · {where}</p><p class="why">{e(it["reason"])}</p>
@@ -2982,9 +2996,10 @@ def main(site_url="https://bfo-mantis.github.io/", images=True):
     LOUNGE_CTA = LOUNGE_CTA_LIVE if MEMBERS else LOUNGE_CTA_SOON
     idx_bytes = build_search_index(releases, has_about, about)
     SEARCH_V = asset_hash("assets/data/search.json")
-    global SONGS
+    global SONGS, SONGS_NOLYR
     songs = load_song_pages(releases)
     SONGS = {x["isrc"]: x["slug"] for x in songs}
+    SONGS_NOLYR = {x["isrc"] for x in songs if x.get("no_lyrics")}
     build_home(releases, site, today, v, has_about, about, data.get("donate_url"), data.get("email_signup_url"))
     rel = ROOT / "release"
     keep = {r["slug"] for r in releases}
