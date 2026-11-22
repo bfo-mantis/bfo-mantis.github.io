@@ -10,7 +10,8 @@ Usage (from the site root or anywhere):
   so newly collected HyperFollow/store links can be dropped in without editing the catalog.
 - Listen link priority: hyperfollow_url > first store link > distrokid_release_page (only if public,
   i.e. not a /dashboard/ or /signin/ URL that requires login) > none (button hidden).
-- Covers: downloads original once to tools/.cache/, writes assets/covers/<slug>-800.jpg/.webp and -400.
+- Covers: downloads original once to tools/.cache/, writes assets/covers/<slug>-800.jpg/.webp and -400,
+  plus a large -1200 (or the source width if smaller) for big desktop covers, never upscaled.
 Requires Pillow (pip install pillow).
 """
 import argparse, json, re, sys, unicodedata, urllib.request
@@ -304,6 +305,29 @@ def load_site_config(path, slugs):
             print(f"site_config: download_url for {k} ignored (must be https://)"); cfg["download_url_by_slug"][k] = None
     return cfg
 
+LARGE = 1200   # widest cover size for big desktop renders (release/song page covers, lightbox); never upscaled
+
+def _hi_source(url, slug, small, force):
+    """Higher-resolution source for the large cover. DistroKid's artwork CDN serves the same file at 3000x3000 when the
+    catalog URL is the 800x800 copy; it is cached as tools/.cache/<slug>.hi.orig and used only if it is the same artwork
+    (32px grayscale thumbnails must match). Returns a PIL image or None (then no large size beyond the source)."""
+    from PIL import Image, ImageChops, ImageStat
+    if "/800x800%2D" not in url or not url.startswith("https://"):
+        return None
+    hi = ROOT / "tools" / ".cache" / f"{slug}.hi.orig"
+    try:
+        if force or not hi.exists():
+            req = urllib.request.Request(url.replace("/800x800%2D", "/3000x3000%2D"), headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                hi.write_bytes(resp.read())
+        im = Image.open(hi).convert("RGB")
+    except Exception as e:
+        print(f"covers: no large source for {slug} ({e})"); return None
+    a, b = (x.convert("L").resize((32, 32), Image.LANCZOS) for x in (im, small))
+    if im.width <= small.width or ImageStat.Stat(ImageChops.difference(a, b)).mean[0] > 10:
+        print(f"covers: large source for {slug} rejected (not larger or not the same artwork)"); return None
+    return im
+
 def make_covers(url, slug, force):
     from PIL import Image
     cache = ROOT / "tools" / ".cache"; cache.mkdir(parents=True, exist_ok=True)
@@ -322,9 +346,19 @@ def make_covers(url, slug, force):
         t.save(out / f"{slug}-{size}.jpg", "JPEG", quality=82, optimize=True, progressive=True)
         t.save(out / f"{slug}-{size}.webp", "WEBP", quality=78, method=6)
         sizes[size] = (t.width, t.height)
-    return {"jpg": f"assets/covers/{slug}-800.jpg", "webp": f"assets/covers/{slug}-800.webp",
-            "jpg_small": f"assets/covers/{slug}-400.jpg", "webp_small": f"assets/covers/{slug}-400.webp",
-            "width": sizes[800][0], "height": sizes[800][1], "original_size": list(im.size)}
+    cover = {"jpg": f"assets/covers/{slug}-800.jpg", "webp": f"assets/covers/{slug}-800.webp",
+             "jpg_small": f"assets/covers/{slug}-400.jpg", "webp_small": f"assets/covers/{slug}-400.webp",
+             "width": sizes[800][0], "height": sizes[800][1], "original_size": list(im.size)}
+    # Large size: from the original when it is wider than 800, else from the verified hi-res CDN copy; capped at LARGE.
+    src = im if im.width > 800 else _hi_source(url, slug, im, force)
+    if src is not None:
+        w = min(LARGE, src.width)
+        t = src.resize((w, round(src.height * w / src.width)), Image.LANCZOS) if src.width > w else src.copy()
+        t.save(out / f"{slug}-{w}.jpg", "JPEG", quality=80, optimize=True, progressive=True)
+        t.save(out / f"{slug}-{w}.webp", "WEBP", quality=76, method=6)
+        cover.update({"jpg_large": f"assets/covers/{slug}-{w}.jpg", "webp_large": f"assets/covers/{slug}-{w}.webp",
+                      "large_width": t.width, "large_height": t.height})
+    return cover
 
 def main():
     ap = argparse.ArgumentParser()
@@ -399,6 +433,11 @@ def main():
                 cover = {"jpg": f"assets/covers/{slug}-800.jpg", "webp": f"assets/covers/{slug}-800.webp",
                          "jpg_small": f"assets/covers/{slug}-400.jpg", "webp_small": f"assets/covers/{slug}-400.webp",
                          "width": 800, "height": 800}
+                big = sorted(ROOT.glob(f"assets/covers/{slug}-[0-9][0-9][0-9][0-9].jpg"))
+                if big and (ROOT / "assets" / "covers" / (big[-1].stem + ".webp")).exists():
+                    w = int(big[-1].stem.rsplit("-", 1)[1])
+                    cover.update({"jpg_large": f"assets/covers/{big[-1].name}", "webp_large": f"assets/covers/{big[-1].stem}.webp",
+                                  "large_width": w, "large_height": w})
         releases.append({
             "slug": slug, "title": r["title"], "artist": r["artist"], "type": r["type"].lower(),
             "release_date": d.isoformat(), "release_date_display": r["release_date"],

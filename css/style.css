@@ -628,8 +628,11 @@ html:not(.js) .lbl-wide{display:none}html:not(.js) .lbl-narrow{display:inline}
 .start .ess .art img{width:100%;height:100%;object-fit:cover;display:block}
 .start .ess .art .pv{position:absolute;right:4px;bottom:4px}
 .start .ess h2{font:700 1.08rem/1.25 var(--body);margin:0}
-.start .ess h2 a{color:var(--text);text-decoration:none}
-.start .ess h2 a:hover{color:var(--accent)}
+.start .ess h2 a{color:var(--text);text-decoration:underline;text-decoration-color:rgba(200,255,77,.45);text-decoration-thickness:1px;text-underline-offset:4px;transition:color .2s,text-decoration-color .2s}
+.start .ess h2 a:hover,.start .ess h2 a:focus-visible{color:var(--accent);text-decoration-color:var(--accent)}
+.start .ess .ess-go{margin:8px 0 0;font-size:.84rem}
+.start .ess .ess-go a{color:var(--accent);text-decoration:none;font-weight:600}
+.start .ess .ess-go a:hover{text-decoration:underline;text-underline-offset:3px}
 .start .ess .meta{font-size:.82rem;color:var(--muted);margin:3px 0 6px}
 .start .ess p.why{margin:0;font-size:.95rem;line-height:1.5}
 .start .ess .pv-bar{bottom:0}
@@ -925,3 +928,27 @@ html.spa-loading #main{opacity:.6;transition:opacity .2s .15s}
 .cal li{padding:10px 0;border-bottom:1px solid #262632;color:var(--muted,#9a98a6);font-size:.95rem;line-height:1.5}
 .cal time{color:var(--fg,#ecebf2);font-variant-numeric:tabular-nums;white-space:nowrap}
 .cal a{color:inherit}
+
+/* ---------- wide desktop: bigger artwork (1200px+) ----------
+   Wider page frame on big screens, a larger cover column on release/song pages, bigger featured and latest-release art,
+   and roomier catalog grids. The <img> sizes attributes in tools/build_pages.py (COVER_SIZES, FEAT_SIZES, ALBUM_SIZES,
+   SINGLE_SIZES) follow these widths; covers ship at 400/800/1200 so nothing upscales. Mobile rules above are unchanged. */
+@media (min-width:1440px){:root{--maxw:1360px}}
+@media (min-width:1800px){:root{--maxw:1600px}}
+@media (min-width:1200px){
+  .release{grid-template-columns:minmax(0,1.18fr) minmax(0,1fr)}
+  .cover-col{max-width:max(480px,calc(100vh - var(--header-h) - 96px))}
+  .feat{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
+  .grid-singles{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+  .ggrid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+  .lightbox{max-width:min(92vw,1140px)}
+  .lightbox img{width:min(92vw,1120px,calc(94vh - 110px))}
+  .lightbox figcaption{max-width:min(92vw,1120px)}
+}
+@media (min-width:1280px){
+  .hero-latest{max-width:520px;padding:12px 22px 12px 12px;gap:20px}
+  .hero-latest img{width:104px;height:104px;border-radius:14px}
+  .hero-latest .t{font-size:1.35rem}
+}
+@media (min-width:1440px){.feat{grid-template-columns:minmax(0,400px) minmax(0,1fr)}}
+@media (min-width:1800px){.grid-singles{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}}

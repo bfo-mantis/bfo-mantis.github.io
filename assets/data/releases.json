@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-11-18T09:34:43",
+ "generated": "2026-11-22T11:26:31",
  "donate_url": "https://www.patreon.com/c/bfo_mantis",
  "members_url": "https://www.patreon.com/c/bfo_mantis/membership",
  "email_signup_url": null,
@@ -61,7 +61,11 @@
     "original_size": [
      3000,
      3000
-    ]
+    ],
+    "jpg_large": "assets/covers/heat-in-the-bone-1200.jpg",
+    "webp_large": "assets/covers/heat-in-the-bone-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -139,7 +143,11 @@
     "original_size": [
      1000,
      1000
-    ]
+    ],
+    "jpg_large": "assets/covers/cake-on-the-plate-1000.jpg",
+    "webp_large": "assets/covers/cake-on-the-plate-1000.webp",
+    "large_width": 1000,
+    "large_height": 1000
    },
    "tracks": [
     {
@@ -219,7 +227,11 @@
     "original_size": [
      3000,
      3000
-    ]
+    ],
+    "jpg_large": "assets/covers/for-your-own-good-1200.jpg",
+    "webp_large": "assets/covers/for-your-own-good-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -299,7 +311,11 @@
     "original_size": [
      3000,
      3000
-    ]
+    ],
+    "jpg_large": "assets/covers/freeborn-1200.jpg",
+    "webp_large": "assets/covers/freeborn-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -379,7 +395,11 @@
     "original_size": [
      3000,
      3000
-    ]
+    ],
+    "jpg_large": "assets/covers/unextracted-1200.jpg",
+    "webp_large": "assets/covers/unextracted-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -451,7 +471,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/crown-of-ash-1200.jpg",
+    "webp_large": "assets/covers/crown-of-ash-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -516,7 +540,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/the-only-way-1200.jpg",
+    "webp_large": "assets/covers/the-only-way-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -583,7 +611,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/forge-of-your-light-1200.jpg",
+    "webp_large": "assets/covers/forge-of-your-light-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -652,7 +684,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/dangerous-1200.jpg",
+    "webp_large": "assets/covers/dangerous-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -890,7 +926,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/road-to-hell-1200.jpg",
+    "webp_large": "assets/covers/road-to-hell-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -958,7 +998,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/blood-waters-the-tree-1200.jpg",
+    "webp_large": "assets/covers/blood-waters-the-tree-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -1025,7 +1069,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/savage-serenade-volume-3-1200.jpg",
+    "webp_large": "assets/covers/savage-serenade-volume-3-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -1279,7 +1327,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/savage-serenade-volume-2-1200.jpg",
+    "webp_large": "assets/covers/savage-serenade-volume-2-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -1533,7 +1585,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/sovereign-heart-of-fire-1200.jpg",
+    "webp_large": "assets/covers/sovereign-heart-of-fire-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -1771,7 +1827,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/the-ridge-1200.jpg",
+    "webp_large": "assets/covers/the-ridge-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -1852,7 +1912,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/savage-serenade-1200.jpg",
+    "webp_large": "assets/covers/savage-serenade-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -2106,7 +2170,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/one-man-invictus-1200.jpg",
+    "webp_large": "assets/covers/one-man-invictus-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -2333,7 +2401,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/one-man-1200.jpg",
+    "webp_large": "assets/covers/one-man-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -2404,7 +2476,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/spellbound-volume-3-1200.jpg",
+    "webp_large": "assets/covers/spellbound-volume-3-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -2596,7 +2672,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/rebel-anthem-1200.jpg",
+    "webp_large": "assets/covers/rebel-anthem-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -2831,7 +2911,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/the-savage-ledger-1200.jpg",
+    "webp_large": "assets/covers/the-savage-ledger-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -2903,7 +2987,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/spellbound-volume-2-1200.jpg",
+    "webp_large": "assets/covers/spellbound-volume-2-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -3095,7 +3183,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/spellbound-volume-1-1200.jpg",
+    "webp_large": "assets/covers/spellbound-volume-1-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -3283,7 +3375,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/flock-of-the-tyrants-1200.jpg",
+    "webp_large": "assets/covers/flock-of-the-tyrants-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -3351,7 +3447,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/the-flock-betrayal-1200.jpg",
+    "webp_large": "assets/covers/the-flock-betrayal-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -3424,7 +3524,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/violent-light-1200.jpg",
+    "webp_large": "assets/covers/violent-light-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -3497,7 +3601,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/evil-eye-contracts-1200.jpg",
+    "webp_large": "assets/covers/evil-eye-contracts-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -3570,7 +3678,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/carry-the-star-1200.jpg",
+    "webp_large": "assets/covers/carry-the-star-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -3642,7 +3754,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/anvil-s-kiss-1200.jpg",
+    "webp_large": "assets/covers/anvil-s-kiss-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -3713,7 +3829,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/tinmouth-cathedral-volume-1-1200.jpg",
+    "webp_large": "assets/covers/tinmouth-cathedral-volume-1-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -3901,7 +4021,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/blazing-stars-1200.jpg",
+    "webp_large": "assets/covers/blazing-stars-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -3974,7 +4098,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/america-250-1200.jpg",
+    "webp_large": "assets/covers/america-250-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {
@@ -4047,7 +4175,11 @@
     "original_size": [
      800,
      800
-    ]
+    ],
+    "jpg_large": "assets/covers/sacred-steel-1200.jpg",
+    "webp_large": "assets/covers/sacred-steel-1200.webp",
+    "large_width": 1200,
+    "large_height": 1200
    },
    "tracks": [
     {

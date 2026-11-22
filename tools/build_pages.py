@@ -266,9 +266,23 @@ def picture(root, r, sizes, eager=False, alt=None, big=False):
     alt = f"Cover art for {r['title']} by {ARTIST}" if alt is None else alt
     load = ' fetchpriority="high"' if eager else ' loading="lazy" decoding="async"'
     w = 800 if big else 400
-    return (f'<picture><source type="image/webp" srcset="{root}{c["webp_small"]} 400w, {root}{c["webp"]} 800w" sizes="{sizes}">'
-            f'<img src="{root}{c["jpg" if big else "jpg_small"]}" srcset="{root}{c["jpg_small"]} 400w, {root}{c["jpg"]} 800w" sizes="{sizes}" '
+    # srcset: 400 and 800, plus the large size (1200, or the source width) when the build made one, so big desktop
+    # covers at 2x get a sharp file and small renders still pick the 400.
+    lg = c.get("large_width") if c.get("jpg_large") and c.get("webp_large") else None
+    xw = f', {root}{c["webp_large"]} {lg}w' if lg else ""
+    xj = f', {root}{c["jpg_large"]} {lg}w' if lg else ""
+    return (f'<picture><source type="image/webp" srcset="{root}{c["webp_small"]} 400w, {root}{c["webp"]} 800w{xw}" sizes="{sizes}">'
+            f'<img src="{root}{c["jpg" if big else "jpg_small"]}" srcset="{root}{c["jpg_small"]} 400w, {root}{c["jpg"]} 800w{xj}" sizes="{sizes}" '
             f'width="{w}" height="{w}" alt="{e(alt)}"{load}></picture>')
+
+# Rendered widths (CSS px) of the big release/song page cover; keep in step with the .release grid in css/style.css.
+COVER_SIZES = "(max-width: 820px) 92vw, (max-width: 1199px) 46vw, (max-width: 1799px) 48vw, 780px"
+FEAT_SIZES = "(max-width: 600px) 38vw, (max-width: 1199px) 260px, (max-width: 1439px) 340px, 400px"
+
+def cover_full(r):
+    """Largest cover JPG for the lightbox / full-size link: the large size when there is one, else the 800."""
+    c = r["cover"]
+    return (c["jpg_large"], c.get("large_width") or 800) if c.get("jpg_large") else (c["jpg"], 800)
 
 def updown(r, today):
     up = date.fromisoformat(r["release_date"]) > today
@@ -344,8 +358,8 @@ def cat_sections_html(root, releases, today, eager_albums=4):
 '''
     return out
 
-ALBUM_SIZES = "(max-width: 520px) 46vw, (max-width: 1240px) 24vw, 280px"
-SINGLE_SIZES = "(max-width: 520px) 46vw, (max-width: 1240px) 16vw, 190px"
+ALBUM_SIZES = "(max-width: 520px) 46vw, (max-width: 1240px) 24vw, (max-width: 1799px) 320px, 380px"
+SINGLE_SIZES = "(max-width: 520px) 46vw, (max-width: 1240px) 16vw, (max-width: 1799px) 220px, 250px"
 
 GOATCOUNTER = None   # set by main() from content/site_config.json (goatcounter_code); None = no analytics at all
 
@@ -726,7 +740,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
   <section id="featured" class="section featured" aria-labelledby="featured-title">
     <div class="section-head"><h2 id="featured-title">Play this now</h2><a class="count" href="release/{feat["slug"]}/">Open release</a></div>
     <div class="feat" data-slug="{feat["slug"]}">
-      <a class="feat-art" href="release/{feat["slug"]}/" tabindex="-1" aria-hidden="true">{picture(root, feat, "(max-width: 600px) 38vw, 260px", alt="")}</a>
+      <a class="feat-art" href="release/{feat["slug"]}/" tabindex="-1" aria-hidden="true">{picture(root, feat, FEAT_SIZES, alt="")}</a>
       <div class="feat-body">
         <p class="eyebrow"{f' data-date="{swap_on}"' if swap_on else ""}>{flabel_html} · {fkind}{(" · " + e(feat["genre"])) if feat.get("genre") else ""}</p>
         <h3 class="feat-title"><a href="release/{feat["slug"]}/">{e(feat["title"])}</a></h3>
@@ -767,7 +781,7 @@ def build_home(releases, site, today, v, has_about, about, donate_url=None, sign
         <a class="artist-link" href="{YTM_ARTIST}" target="_blank" rel="noopener">YouTube Music{EXT}{NT}</a>
         <a class="artist-link" href="{YT_CHANNEL}" target="_blank" rel="noopener">YouTube (videos){EXT}{NT}</a></p>
       <a class="hero-latest" href="release/{latest['slug']}/" data-date="{latest['release_date']}">
-        {picture(root, latest, "84px", eager=True, alt="")}
+        {picture(root, latest, "(min-width: 1280px) 108px, 84px", eager=True, alt="")}
         <span class="hl-text"><span class="k"><span class="js-released"{hid_rel}>Latest release</span><span class="js-upcoming"{hid_up}>Out {short_date(latest['release_date'])}</span></span>
         <span class="t">{e(latest['title'])}</span>
         <span class="s">{'Album' if latest['type'] == 'album' else 'Single'}{(' · ' + e(latest['genre'])) if latest.get('genre') else ''}</span></span>
@@ -945,16 +959,17 @@ def build_release(releases, i, site, today, v, has_about):
     <ul class="grid grid-singles">{"".join(card(root, x, SINGLE_SIZES, today) for x in more)}</ul>
   </section>''' if more else "")
     bg = f' style="background-image:url(\'{root}{r["cover"]["jpg_small"]}\')"' if r.get("cover") else ""
-    # Cover lightbox: the cover links to the 800px JPG (works without JS); app.js opens it in a modal <dialog> instead.
-    cover_pic = picture(root, r, "(max-width: 820px) 92vw, 560px", eager=True, big=True)
+    # Cover lightbox: the cover links to the largest JPG (works without JS); app.js opens it in a modal <dialog> instead.
+    cover_pic = picture(root, r, COVER_SIZES, eager=True, big=True)
     lightbox = ""
     if r.get("cover"):
         alt = f"Cover art for {r['title']} by {ARTIST}"
-        cover_html = (f'<a class="cover-zoom" href="{root}{r["cover"]["jpg"]}" data-lightbox="lightbox" aria-haspopup="dialog">{cover_pic}'
+        full, fw = cover_full(r)
+        cover_html = (f'<a class="cover-zoom" href="{root}{full}" data-lightbox="lightbox" aria-haspopup="dialog">{cover_pic}'
                       f'<span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
                       f'<span class="sr-only"> (view full size)</span></a>')
         lightbox = (f'<dialog class="lightbox" id="lightbox" aria-labelledby="lb-title">'
-                    f'<figure><img data-src="{root}{r["cover"]["jpg"]}" alt="{e(alt)}" width="800" height="800">'
+                    f'<figure><img data-src="{root}{full}" alt="{e(alt)}" width="{fw}" height="{fw}">'
                     f'<figcaption><span class="lb-t" id="lb-title">{e(r["title"])}</span>'
                     f'<span class="lb-d">{"Release date" } <time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time></span>'
                     f'<span class="lb-c">Artwork &copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</span></figcaption></figure>'
@@ -2458,7 +2473,7 @@ def build_song(sp, songs, site, today, v, has_about):
 <main id="main">
   <div class="release-bg"{bg} aria-hidden="true"></div>
   <article class="release song" data-slug="{r["slug"]}" data-date="{r["release_date"]}" data-lyrics="{root}{r["lyrics_file"]}">
-    <div class="cover-col"><div class="cover"><a href="{root}release/{r["slug"]}/" tabindex="-1" aria-hidden="true">{picture(root, r, "(max-width: 820px) 92vw, 560px", eager=True, big=True, alt="")}</a></div>
+    <div class="cover-col"><div class="cover"><a href="{root}release/{r["slug"]}/" tabindex="-1" aria-hidden="true">{picture(root, r, COVER_SIZES, eager=True, big=True, alt="")}</a></div>
       <p class="art-copy">Artwork &copy; {r["release_date"][:4]} {LABEL_NAME}. All rights reserved.</p></div>
     <div class="release-body">
       <a class="back" href="{root}release/{r["slug"]}/"><span aria-hidden="true">←</span> {e(r["title"])}</a>
@@ -2910,10 +2925,14 @@ def build_start(releases, site, v, has_about):
         cat = "Instrumental" if r.get("category") == "instrumental" else "Song"
         where = f'track {t["n"]} of {e(r["title"])}' if r["type"] == "album" else "single"
         song = (SONGS or {}).get(t["isrc"])
+        # Song page when the ISRC has one (content/song_pages.json: Zach-approved lyrics only), else the track on its release page.
         href = (f'{root}song/{song}/' if song else
                 f'{root}release/{r["slug"]}/' + (f'#t{t["n"]}' if r["type"] == "album" else ""))
+        go = ("Song page and lyrics" if song else
+              (f'Track {t["n"]} on {e(r["title"])}' if r["type"] == "album" else "Release page"))
         items.append(f'''<li><span class="num">{i}</span><span class="art">{picture(root, r, "72px", alt="")}{pv_button(root, r, t)}</span>
-  <div class="ess-body"><h2><a href="{href}">{e(t["title"])}</a></h2><p class="meta">{cat} · {e(r.get("genre") or "")} · {where}</p><p class="why">{e(it["reason"])}</p></div>
+  <div class="ess-body"><h2><a href="{href}" data-isrc="{t["isrc"]}">{e(t["title"])}</a></h2><p class="meta">{cat} · {e(r.get("genre") or "")} · {where}</p><p class="why">{e(it["reason"])}</p>
+  <p class="ess-go"><a href="{href}" tabindex="-1" aria-hidden="true">{go}<span aria-hidden="true"> →</span></a></p></div>
   <span class="pv-bar" aria-hidden="true"><span></span></span></li>''')
     ld = {"@context": "https://schema.org", "@type": "WebPage", "@id": url + "#page", "name": f"{cfg['title']} — {ARTIST}", "url": url,
           "description": desc, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": ARTIST, "url": site}, "about": music_group(site)}
