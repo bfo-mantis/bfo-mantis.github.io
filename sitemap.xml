@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://bfo-mantis.github.io/</loc><lastmod>2026-11-12</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/release/1776-invictus-vol-1/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/release/heat-in-the-bone/</loc><lastmod>2026-11-12</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/release/cake-on-the-plate/</loc><lastmod>2026-10-21</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/release/for-your-own-good/</loc><lastmod>2026-10-16</lastmod></url>
@@ -34,16 +35,16 @@
   <url><loc>https://bfo-mantis.github.io/release/blazing-stars/</loc><lastmod>2026-07-07</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/release/america-250/</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/release/sacred-steel/</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/genres/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/lounge/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/press/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/links/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/community/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/help/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/start/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/merch/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/lounge/sample/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/genre/rock/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/genres/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/lounge/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/press/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/links/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/community/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/help/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/start/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/merch/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/lounge/sample/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/genre/rock/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/genre/hip-hop-rap/</loc><lastmod>2026-08-23</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/genre/electronic/</loc><lastmod>2026-08-14</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/genre/metal/</loc><lastmod>2026-09-18</lastmod></url>
@@ -51,45 +52,61 @@
   <url><loc>https://bfo-mantis.github.io/genre/christian-gospel/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/genre/world/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/genre/minimal-techno/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/release/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/contact/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/about/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/library/</loc><lastmod>2026-11-12</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/release/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/contact/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/about/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/library/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/library/america-250/</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/library/heat-in-the-bone-thesis/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/</loc><lastmod>2026-11-12</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/song/america-250/</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/song/cake-on-the-plate/</loc><lastmod>2026-10-21</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/song/for-your-own-good/</loc><lastmod>2026-10-16</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/song/freeborn/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/song/heat-in-the-bone/</loc><lastmod>2026-11-12</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/song/sacred-steel/</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/sovereign-flame/</loc><lastmod>2026-11-12</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/sovereign-flame/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/song/crown-of-ash/</loc><lastmod>2026-10-09</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/song/dangerous/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/guardians-of-the-free/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/solution-or-problem/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/here-to-hell/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/qualified-impunity/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/earned-or-burned/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/hero-or-zero/</loc><lastmod>2026-11-12</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/guardians-of-the-free/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/solution-or-problem/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/here-to-hell/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/qualified-impunity/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/earned-or-burned/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/hero-or-zero/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/song/forge-of-your-light/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/brotherhood/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/what-is-tyranny/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/what-is-rebellion/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/endowed-in-flame/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/immortal-flame/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/sovereign-dawn/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/burning-for-liberty/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/forge-eternal/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/endowed-sovereignty/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/ruby-ridge/</loc><lastmod>2026-11-12</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/brotherhood/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/what-is-tyranny/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/what-is-rebellion/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/endowed-in-flame/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/immortal-flame/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/sovereign-dawn/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/burning-for-liberty/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/forge-eternal/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/endowed-sovereignty/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/ruby-ridge/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/song/the-ridge/</loc><lastmod>2026-08-23</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/song/unextracted/</loc><lastmod>2026-10-11</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/void-means-void/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/blue-plague/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/defiance/</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://bfo-mantis.github.io/song/blood-for-the-beast/</loc><lastmod>2026-11-12</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/void-means-void/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/blue-plague/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/defiance/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/blood-for-the-beast/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/embattled-farmers/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/o-tree-of-liberty/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/intolerable/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/liberty-s-vow/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/vigilance-anthem/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/constitutional-republic/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/our-fathers/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/the-embattled-farmers-cry/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/when-called-upon/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/harmless-hands/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/liberty-s-eternal-flame/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/self-evident/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/glory/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/tree-of-liberty/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/song/forge-of-fury/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://bfo-mantis.github.io/press/1776-invictus-vol-1/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/press/heat-in-the-bone/</loc><lastmod>2026-11-12</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/press/cake-on-the-plate/</loc><lastmod>2026-10-21</lastmod></url>
   <url><loc>https://bfo-mantis.github.io/press/for-your-own-good/</loc><lastmod>2026-10-16</lastmod></url>

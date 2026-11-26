@@ -312,6 +312,16 @@
    "basis": "lyrics",
    "blurb": "Heat in the Bone is a rescue told through the pulse. Smoke fills the hallway, the door at the end is welded shut, and the strong hands before her have already quit, with her child beyond it. A mother sets her shoulder where they broke the line. Her heart locks to the kick and the heat in the room meets the heat she knows, until the door rips open and she carries her child out into open air.",
    "blurb_source": "track:QTAEZ2685295"
+  },
+  "1776-invictus-vol-1": {
+   "title": "1776: INVICTUS Vol. 1",
+   "type": "album",
+   "genre": "Rock",
+   "release_date": "2026-11-26",
+   "basis": "pending",
+   "status": "DRAFT, pending Zach's approval. Not rendered while basis is 'pending'; set basis to 'lyrics' once approved.",
+   "blurb": "1776: INVICTUS Vol. 1 is fifteen songs for the founding fight. It opens on a midnight alarm in April 1775, as farmers leave their plows in the furrow for the green, then marches through the Intolerable Acts, Boston's Liberty Tree and Jefferson's warning that liberty's tree must be refreshed. It reads the Bill of Rights amendment by amendment, calls out the harmless hands that comply, and ends on a prayer for steel.",
+   "blurb_source": "lyrics-final T01-T15 (draft)"
   }
  },
  "tracks": {

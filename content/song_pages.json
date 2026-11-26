@@ -288,6 +288,156 @@
    "approved_on": "2026-11-10",
    "text": "redacted (T&C pair)",
    "source_sha256": "fc38060fb16843a421a5f2715cb1785390c3f15b594c649179f21a98cf64c146"
+  },
+  {
+   "slug": "embattled-farmers",
+   "isrc": "PENDING-1776-01",
+   "title": "Embattled Farmers",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "4ca714e5cd6aa8c366ddd20bc5c5b9a4cfcb6877539c2c30346fe073924cf3ea",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (01-embattled-farmers.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "o-tree-of-liberty",
+   "isrc": "PENDING-1776-02",
+   "title": "O Tree of Liberty",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "6becd99d479224a57e084d89c40e2a7c2ef72e04ce2608578b6bed54552a830d",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (02-o-tree-of-liberty.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "intolerable",
+   "isrc": "PENDING-1776-03",
+   "title": "Intolerable",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "097049ea97f9a51ea63f102c237fcc65408b7ee3ad03416c299dff5df96ac44e",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (03-intolerable.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "liberty-s-vow",
+   "isrc": "PENDING-1776-04",
+   "title": "Liberty's Vow",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "e2490c9a0a4d51b93e6df0b1fa35ee16bc88eb99e465de2e67a4fdee0b6d4ce1",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (04-libertys-vow.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "vigilance-anthem",
+   "isrc": "PENDING-1776-05",
+   "title": "Vigilance Anthem",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "bcb1f93bc66808e8e583ac4f18b4a8507037d1b174d3d7591bcde50933eefd32",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (05-vigilance-anthem.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "constitutional-republic",
+   "isrc": "PENDING-1776-06",
+   "title": "Constitutional Republic",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "9218c2d041011fd62ea8a33a43609ba34b285c1b5f8e34edf75ce9559abcc692",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (06-constitutional-republic.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "our-fathers",
+   "isrc": "PENDING-1776-07",
+   "title": "Our Fathers",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "da3432816e16b30078d3f21410b73f9e38d467fc73c21c5fd0b1a73f0df21f8f",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (07-our-fathers.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "the-embattled-farmers-cry",
+   "isrc": "PENDING-1776-08",
+   "title": "The Embattled Farmers Cry",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "1d9fb5921f6e3615b21ec35e9271eeb8eaece296c6a3aeddc9204361e355cf29",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (08-the-embattled-farmers-cry.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "when-called-upon",
+   "isrc": "PENDING-1776-09",
+   "title": "When Called Upon",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "469e4e878057fdc88892e2dd8fe279adc646de7d81dcc3c2bc20ed86092963e7",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (09-when-called-upon.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "harmless-hands",
+   "isrc": "PENDING-1776-10",
+   "title": "Harmless Hands",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-25",
+   "text": "official",
+   "source_sha256": "3350db25214c07493e60b3292bee3e0eb4e2a186e7586b32d985636e2c358877",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (10-harmless-hands.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "liberty-s-eternal-flame",
+   "isrc": "PENDING-1776-11",
+   "title": "Liberty's Eternal Flame",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-25",
+   "text": "official",
+   "source_sha256": "35659a999bdc490c20c6c0bfe0313227321c57f12068284f55a6f303f1ba0001",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (11-libertys-eternal-flame.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "self-evident",
+   "isrc": "PENDING-1776-12",
+   "title": "Self Evident",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-25",
+   "text": "official",
+   "source_sha256": "6aff68d601b1b2425097b26f73dbc10f7c56253d81a4a93306e351768a01b19c",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (12-self-evident.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "glory",
+   "isrc": "PENDING-1776-13",
+   "title": "Glory",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "cebd654d4553131fc9faa39ced91a04b78fa1aa05705b9661a3a41268e59902d",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (13-glory.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "tree-of-liberty",
+   "isrc": "PENDING-1776-14",
+   "title": "Tree of Liberty",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "0ee2f5fff535731e968123dec16dec0e15d793319bfb05ba517e5a776446db0b",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (14-tree-of-liberty.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "forge-of-fury",
+   "isrc": "PENDING-1776-15",
+   "title": "Forge of Fury",
+   "release": "1776-invictus-vol-1",
+   "approved_on": "2026-11-22",
+   "text": "official",
+   "source_sha256": "f32894390d171e743c61980c8b65272a0ba864b6415a50784690c3bdc6b7ad40",
+   "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (15-forge-of-fury.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
   }
  ]
 }

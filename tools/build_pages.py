@@ -616,7 +616,7 @@ def release_jsonld(r, site):
          "numTracks": len(r["tracks"]),
          "track": {"@type": "ItemList", "numberOfItems": len(r["tracks"]), "itemListElement": [
              {"@type": "ListItem", "position": t["n"], "item": {"@type": "MusicRecording", "name": t["title"],
-              **({"isrcCode": t["isrc"]} if t.get("isrc") else {}), "byArtist": {"@type": "MusicGroup", "name": ARTIST}}}
+              **({"isrcCode": pub_isrc(t["isrc"])} if pub_isrc(t.get("isrc")) else {}), "byArtist": {"@type": "MusicGroup", "name": ARTIST}}}
              for t in r["tracks"]]}}
     if r.get("genre"): d["genre"] = r["genre"]
     if r.get("cover"):
@@ -2344,6 +2344,11 @@ def build_about(releases, site, v, has_about, about, tagline):
 # ---- Song pages (song/<slug>/): only songs whose lyrics Zach approved (content/song_pages.json) ----
 SONGS = {}   # ISRC -> song page slug; set in main() from content/song_pages.json
 
+def pub_isrc(x):
+    """The ISRC to show publicly, or None. "PENDING-<release>-NN" keys are build-only placeholders for tracks whose
+    ISRCs DistroKid hasn't issued yet; they are never rendered (credits, JSON-LD). Swap them for real ISRCs later."""
+    return None if (not x or str(x).upper().startswith("PENDING-")) else x
+
 def load_song_pages(releases):
     fp = ROOT / "content" / "song_pages.json"
     if not fp.exists(): return []
@@ -2366,11 +2371,12 @@ def yt_id(u):
 def song_jsonld(sp, site):
     r, t = sp["r"], sp["t"]; url = f"{site}song/{sp['slug']}/"
     d = {"@context": "https://schema.org", "@type": "MusicRecording", "@id": url + "#recording", "name": t["title"], "url": url,
-         "isrcCode": t["isrc"], "byArtist": music_group(site), "datePublished": r["release_date"],
+         "byArtist": music_group(site), "datePublished": r["release_date"],
          "inAlbum": {"@type": "MusicAlbum", "@id": f"{site}release/{r['slug']}/#release", "name": r["title"], "url": f"{site}release/{r['slug']}/",
                      "albumReleaseType": "https://schema.org/" + ("AlbumRelease" if r["type"] == "album" else "SingleRelease")},
          "recordingOf": {"@type": "MusicComposition", "name": t["title"]},
          "copyrightHolder": {"@type": "Organization", "name": LABEL_NAME}, "copyrightYear": int(r["release_date"][:4])}
+    if pub_isrc(t.get("isrc")): d["isrcCode"] = t["isrc"]
     if r.get("genre"): d["genre"] = r["genre"]
     if r.get("label"): d["recordLabel"] = {"@type": "Organization", "name": r["label"]}
     if r.get("cover"): d["image"] = site + r["cover"]["jpg"]
@@ -2440,7 +2446,7 @@ def build_song(sp, songs, site, today, v, has_about):
                f'<div><dt><span class="js-released"{hid_rel}>Released</span><span class="js-upcoming"{hid_up}>Release date</span></dt><dd><time datetime="{r["release_date"]}">{e(r["release_date_display"])}</time></dd></div>'
                + (f'<div><dt>Genre</dt><dd>{genre_link(root, r["genre"])}</dd></div>' if r.get("genre") else "")
                + (f'<div><dt>Label</dt><dd>{e(r["label"])}</dd></div>' if r.get("label") else "")
-               + f'<div><dt>ISRC</dt><dd><code>{e(t["isrc"])}</code></dd></div>'
+               + (f'<div><dt>ISRC</dt><dd><code>{e(t["isrc"])}</code></dd></div>' if pub_isrc(t.get("isrc")) else "")
                + (f'<div><dt>UPC</dt><dd><code>{e(r["upc"])}</code></dd></div>' if r.get("upc") else ""))
     sibs = [x for x in songs if x["r"]["slug"] == r["slug"] and x["slug"] != sp["slug"]]
     sib_items = "".join(f'<li><a href="{root}song/{x["slug"]}/">{e(x["t"]["title"])}</a></li>' for x in sibs)
