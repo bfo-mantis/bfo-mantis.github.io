@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-11-25T21:16:09",
+ "generated": "2026-11-25T21:38:31",
  "donate_url": "https://www.patreon.com/c/bfo_mantis",
  "members_url": "https://www.patreon.com/c/bfo_mantis/membership",
  "email_signup_url": null,
@@ -72,7 +72,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/01.mp3"
     },
     {
      "n": 2,
@@ -82,7 +82,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/02.mp3"
     },
     {
      "n": 3,
@@ -92,7 +92,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/03.mp3"
     },
     {
      "n": 4,
@@ -102,7 +102,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/04.mp3"
     },
     {
      "n": 5,
@@ -112,7 +112,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/05.mp3"
     },
     {
      "n": 6,
@@ -122,7 +122,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/06.mp3"
     },
     {
      "n": 7,
@@ -132,7 +132,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/07.mp3"
     },
     {
      "n": 8,
@@ -142,7 +142,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/08.mp3"
     },
     {
      "n": 9,
@@ -152,7 +152,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/09.mp3"
     },
     {
      "n": 10,
@@ -162,7 +162,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/10.mp3"
     },
     {
      "n": 11,
@@ -172,7 +172,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/11.mp3"
     },
     {
      "n": 12,
@@ -182,7 +182,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/12.mp3"
     },
     {
      "n": 13,
@@ -192,7 +192,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/13.mp3"
     },
     {
      "n": 14,
@@ -202,7 +202,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/14.mp3"
     },
     {
      "n": 15,
@@ -212,7 +212,7 @@
      "lyrics_source": "artist",
      "blurb": null,
      "blurb_in_depth": null,
-     "preview": null
+     "preview": "assets/audio/previews/1776-invictus-vol-1/15.mp3"
     }
    ],
    "lyrics_file": "assets/data/lyrics/1776-invictus-vol-1.json",
