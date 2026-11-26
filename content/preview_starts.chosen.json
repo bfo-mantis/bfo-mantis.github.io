@@ -648,6 +648,17 @@
   "file": "assets/audio/previews/one-man-invictus/15.mp3",
   "src_size": 100454578
  },
+ "PENDING-RAISE-THE-LOAF-01": {
+  "slug": "raise-the-loaf",
+  "track": 1,
+  "title": "Raise the Loaf",
+  "start": 152.0,
+  "length": 30.0,
+  "track_length": 230.12,
+  "method": "max-energy window",
+  "file": "assets/audio/previews/raise-the-loaf/01.mp3",
+  "src_size": 44182734
+ },
  "QT6G62652781": {
   "slug": "rebel-anthem",
   "track": 1,
