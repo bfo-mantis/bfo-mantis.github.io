@@ -318,10 +318,10 @@
    "type": "album",
    "genre": "Rock",
    "release_date": "2026-11-26",
-   "basis": "pending",
-   "status": "DRAFT, pending Zach's approval. Not rendered while basis is 'pending'; set basis to 'lyrics' once approved.",
+   "basis": "lyrics",
+   "status": "Approved by Zach, Nov 25, 2026 (Grok Bot transcript pos 1642); published.",
    "blurb": "1776 INVICTUS, Vol. 1 is fifteen songs for the founding fight. It opens on a midnight alarm in April 1775, as farmers leave their plows in the furrow for the green, then marches through the Intolerable Acts, Boston's Liberty Tree and Jefferson's warning that liberty's tree must be refreshed. It reads the Bill of Rights amendment by amendment, calls out the harmless hands that comply, and ends on a prayer for steel.",
-   "blurb_source": "lyrics-final T01-T15 (draft)"
+   "blurb_source": "lyrics-final T01-T15 (approved)"
   },
   "raise-the-loaf": {
    "title": "Raise the Loaf",
@@ -1989,6 +1989,111 @@
    "lyrics_status": "lyrics",
    "intro": "Heat in the Bone is a rescue told through the pulse. Smoke fills the hallway, the door at the end is welded shut, and the strong hands before her have already quit, with her child beyond it. A mother sets her shoulder where they broke the line. Her heart locks to the kick and the heat in the room meets the heat she knows, until the door rips open and she carries her child out into open air.",
    "intro_basis": "lyrics"
+  },
+  "PENDING-1776-01": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 1,
+   "title": "Embattled Farmers",
+   "basis": "lyrics",
+   "blurb": "Embattled Farmers starts with a midnight alarm on April 19, 1775. Revere cuts through the dark, plows are left in the furrow, and seventy Minutemen step onto the green while Parker tells them not to fire first. Eight men fall in the dew before the farmers regroup at the North Bridge. Wives watch from windows, a father whispers to his daughter at the door, and every free breath is counted as paid for there."
+  },
+  "PENDING-1776-02": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 2,
+   "title": "O Tree of Liberty",
+   "basis": "lyrics",
+   "blurb": "O Tree of Liberty begins with an elm near Boston's crowded way, where the Sons of Liberty hang effigies in the August heat and a copper plate carries liberty's claim until British axes fell it. From the severed trunk, the lyric turns to Jefferson's letter about refreshing the tree. Its roots run through Concord and Yorktown, its branches through civil war and world fire, and each generation is charged to prune complacency and water it with vigilance."
+  },
+  "PENDING-1776-03": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 3,
+   "title": "Intolerable",
+   "basis": "lyrics",
+   "blurb": "Boston Harbor sits frozen and shut in Intolerable, with starvation on every quay after the Tea Party, town meetings gagged and redcoats quartered in private homes. Samuel Adams thunders, Joseph Warren pens the Resolves, Revere rides, and thirteen colonies meet as one in Philadelphia. Then the Acts are held up against today's punished cities and shielded officials, and the listener is called to stand like the patriots of '74, from Boston's ghosts to their own front door."
+  },
+  "PENDING-1776-04": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 4,
+   "title": "Liberty's Vow",
+   "basis": "lyrics",
+   "blurb": "Liberty's Vow sweeps through the American story and turns it into a pledge. Columbus sails the blue, Jamestown and Plymouth endure the wild, and the founders pen their sacred script in seventeen seventy-six. Valley Forge freezes, the Bill of Rights arrives as ten shields, and the road runs on through Gettysburg, the world wars and King's dream. Each chorus answers with \"Don't tread on me,\" a bald eagle's scream, and strong men standing heeled and true."
+  },
+  "PENDING-1776-05": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 5,
+   "title": "Vigilance Anthem",
+   "basis": "lyrics",
+   "blurb": "Vigilance Anthem wakes up in a world of blurred lines, where sophistry twists truth until it dies and half-truths keep everyone warm. Then it names the tools one at a time: red flag laws, well checks at the door, no-knock warrants in the dead of night, qualified immunity and ex parte whispers. Lower courts judge with their blindfolds torn. Through all of it, the refrain holds steady: stand tall, keep watch, and don't let them take your crown."
+  },
+  "PENDING-1776-06": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 6,
+   "title": "Constitutional Republic",
+   "basis": "lyrics",
+   "blurb": "Short and blunt, Constitutional Republic reads like a creed for a people forged in fire rather than chains. Ink-stained hands sign parchment vows, and government is cast as servant, never master, its power leashed. The Bill of Rights becomes an iron creed with speech, faith and arms unchained. Jefferson's warning about the tree comes back as a whisper through the storm, and the track closes with a promise, from sea to shining sea, to keep liberty's tree standing."
+  },
+  "PENDING-1776-07": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 7,
+   "title": "Our Fathers",
+   "basis": "lyrics",
+   "blurb": "Our Fathers is a wake-up call to sleeping patriots. In the halls of independence the founders cry for liberty or death, and their warnings follow: Jefferson's tree, Franklin on trading liberty for safety, Madison's tyranny masked as defense. It counts the losses too, from the Alien Acts and sundown towns to wartime internment camps and the Patriot's net. The chorus commands its listeners to vote and speak, and the last word goes to Franklin: a republic, if we can keep it."
+  },
+  "PENDING-1776-08": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 8,
+   "title": "The Embattled Farmers Cry",
+   "basis": "lyrics",
+   "blurb": "The Embattled Farmers Cry mourns a Boston farmer who left his fields when called upon and carried his brothers forward until he died. Soldiers force their quarter, tyrants force their tax, and Liberty appears as a thirsty tree whose branches drip justice like dew. His sacrifice becomes \"We,\" and then becomes you. From his own blood, bones and breath he forges a sword of justice, while one question keeps returning: tomorrow's always coming, what will we allow?"
+  },
+  "PENDING-1776-09": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 9,
+   "title": "When Called Upon",
+   "basis": "lyrics",
+   "blurb": "When Called Upon opens with a roll call of what the singer stands for: home, land, family, brothers, and liberty as his mother. Next comes what grinds him down, in single words: taxes, interest, credit, debt, savings spent. Screens and news tell him to consume, conform and not think. An echo from long ago answers with a vow to give everything and never yield, and a spoken close recalls December 16, 1773, when brothers in Boston cried \"No more!\""
+  },
+  "PENDING-1776-10": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 10,
+   "title": "Harmless Hands",
+   "basis": "lyrics",
+   "blurb": "Harmless Hands aims at the people who never do the damage themselves: officers who nod, judges who trade robes for gold, the neighbor who looks down and turns away. Every shrug and every \"not my place\" counts as a quiet vote. A question is scrawled in ash across the square, its grammar broken by despair. There is no virtue in being harmless, the chorus insists, and a line is drawn at my child, my neighbor. The answer to the question is: nothing."
+  },
+  "PENDING-1776-11": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 11,
+   "title": "Liberty's Eternal Flame",
+   "basis": "lyrics",
+   "blurb": "Liberty's Eternal Flame puts the Bill of Rights into verse and walks through it in order. The First Amendment's five freedoms lead, followed by the right to bear arms, no soldiers quartered without consent, homes guarded from unreasonable search, grand juries, speedy public trials, civil juries and no excessive bail. The Ninth keeps unlisted rights with the people, and the Tenth leaves the rest to the states or the people. Its last request is simple: memorize them, and teach your children well."
+  },
+  "PENDING-1776-12": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 12,
+   "title": "Self Evident",
+   "basis": "lyrics",
+   "blurb": "Self Evident is a creed taught by a father and carried by faith. Liberty, it says, was given at creation, and the singer's life, mind, heart and soul each hold it. Spoken passages borrow the Declaration's language and set the freedom to lift a stone beside the freedom to speak. Because liberty is always under attack, death by a thousand cuts, the refusals stack up: no ground, no tolerance, no compromise. Samuel Adams' words send the comfortable home in peace."
+  },
+  "PENDING-1776-13": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 13,
+   "title": "Glory",
+   "basis": "lyrics",
+   "blurb": "Glory opens on \"Mine eyes have seen the glory\" and turns the line toward liberty unchained. It traces a turning wheel: fat years make the weak soft and blind, hard times forge the faithful, and good times follow the fight until weakness creeps back like rust. Embattled farmers face the redcoats at the green, then the scene shifts to mandates, surveillance eyes and silenced cries. Between hallelujahs, the moral rings plain: freedom is not a gift but something won."
+  },
+  "PENDING-1776-14": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 14,
+   "title": "Tree of Liberty",
+   "basis": "lyrics",
+   "blurb": "Tree of Liberty rises from earth and clay, kin of the soil, blood and bone. Forefathers forged the seed in fire; now surveillance shadows choke the sky and twisted sophistry spins its lies. Then the scene moves into the forge, with a crucible, an anvil ringing true and bellows blasting an immortal spark. Home and hearth stand behind it, wolves and eagles stand united, and the bridge names the duty: guard the seed the fathers planted. Thy will be done."
+  },
+  "PENDING-1776-15": {
+   "release_slug": "1776-invictus-vol-1",
+   "n": 15,
+   "title": "Forge of Fury",
+   "basis": "lyrics",
+   "blurb": "Forge of Fury is a warrior's prayer for a darkening hour. Calling on a sovereign Lord, the singer offers to lay his life on the altar stone and asks for steel, yet still prays for the corrupted, blind and damned. He remembers that the tyrants were once children laughing in God's light. In the bridge he asks for an answer larger than a single death: millions waking, quiet fathers and mothers rising. It closes in hope that all shall be well."
   }
  }
 }
