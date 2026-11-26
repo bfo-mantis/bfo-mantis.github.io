@@ -43,7 +43,7 @@ def shown(span_cls, text, html):
 
 def check_release(r, get, home, feed):
     slug = r["slug"]; res = {"slug": slug, "title": r["title"], "release_date": r["release_date"],
-                            "isrcs": [t.get("isrc") for t in r.get("tracks", [])]}
+                            "isrcs": [None if str(t.get("isrc") or "").upper().startswith("PENDING-") else t.get("isrc") for t in r.get("tracks", [])]}
     try:
         page = get(f"release/{slug}/")
     except Exception as ex:

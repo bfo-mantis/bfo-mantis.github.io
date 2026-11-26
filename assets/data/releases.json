@@ -1,6 +1,6 @@
 {
  "artist": "bfo.mantis",
- "generated": "2026-11-18T09:34:43",
+ "generated": "2026-11-25T21:16:09",
  "donate_url": "https://www.patreon.com/c/bfo_mantis",
  "members_url": "https://www.patreon.com/c/bfo_mantis/membership",
  "email_signup_url": null,
@@ -36,6 +36,191 @@
  "press_contact": null,
  "goatcounter_code": "bfomantis",
  "releases": [
+  {
+   "slug": "1776-invictus-vol-1",
+   "title": "1776: INVICTUS Vol. 1",
+   "artist": [
+    "bfo.mantis"
+   ],
+   "type": "album",
+   "release_date": "2026-11-26",
+   "release_date_display": "November 26, 2026",
+   "genre": "Rock",
+   "label": "bfo.mantis Records",
+   "upc": null,
+   "listen_url": "https://distrokid.com/hyperfollow/bfomantis/1776-invictus-vol-1",
+   "listen_source": "hyperfollow_fallback",
+   "store_links": [],
+   "cover": {
+    "jpg": "assets/covers/1776-invictus-vol-1-800.jpg",
+    "webp": "assets/covers/1776-invictus-vol-1-800.webp",
+    "jpg_small": "assets/covers/1776-invictus-vol-1-400.jpg",
+    "webp_small": "assets/covers/1776-invictus-vol-1-400.webp",
+    "width": 800,
+    "height": 800,
+    "original_size": [
+     3000,
+     3000
+    ]
+   },
+   "tracks": [
+    {
+     "n": 1,
+     "title": "Embattled Farmers",
+     "isrc": "PENDING-1776-01",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    },
+    {
+     "n": 2,
+     "title": "O Tree of Liberty",
+     "isrc": "PENDING-1776-02",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    },
+    {
+     "n": 3,
+     "title": "Intolerable",
+     "isrc": "PENDING-1776-03",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    },
+    {
+     "n": 4,
+     "title": "Liberty's Vow",
+     "isrc": "PENDING-1776-04",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    },
+    {
+     "n": 5,
+     "title": "Vigilance Anthem",
+     "isrc": "PENDING-1776-05",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    },
+    {
+     "n": 6,
+     "title": "Constitutional Republic",
+     "isrc": "PENDING-1776-06",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    },
+    {
+     "n": 7,
+     "title": "Our Fathers",
+     "isrc": "PENDING-1776-07",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    },
+    {
+     "n": 8,
+     "title": "The Embattled Farmers Cry",
+     "isrc": "PENDING-1776-08",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    },
+    {
+     "n": 9,
+     "title": "When Called Upon",
+     "isrc": "PENDING-1776-09",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    },
+    {
+     "n": 10,
+     "title": "Harmless Hands",
+     "isrc": "PENDING-1776-10",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    },
+    {
+     "n": 11,
+     "title": "Liberty's Eternal Flame",
+     "isrc": "PENDING-1776-11",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    },
+    {
+     "n": 12,
+     "title": "Self Evident",
+     "isrc": "PENDING-1776-12",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    },
+    {
+     "n": 13,
+     "title": "Glory",
+     "isrc": "PENDING-1776-13",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    },
+    {
+     "n": 14,
+     "title": "Tree of Liberty",
+     "isrc": "PENDING-1776-14",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    },
+    {
+     "n": 15,
+     "title": "Forge of Fury",
+     "isrc": "PENDING-1776-15",
+     "lyrics": "lyrics",
+     "lyrics_source": "artist",
+     "blurb": null,
+     "blurb_in_depth": null,
+     "preview": null
+    }
+   ],
+   "lyrics_file": "assets/data/lyrics/1776-invictus-vol-1.json",
+   "download_url": null,
+   "blurb": null,
+   "category": "vocal",
+   "mixed": false
+  },
   {
    "slug": "heat-in-the-bone",
    "title": "Heat in the Bone",
