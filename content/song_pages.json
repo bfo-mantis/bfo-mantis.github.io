@@ -438,6 +438,16 @@
    "text": "official",
    "source_sha256": "f32894390d171e743c61980c8b65272a0ba864b6415a50784690c3bdc6b7ad40",
    "approval_note": "Zach FINAL per /workspace/releases/2026-11-26-album/lyrics-final/STATUS.md (15-forge-of-fury.txt). TODO: swap PENDING id for the real ISRC after DistroKid processing."
+  },
+  {
+   "slug": "raise-the-loaf",
+   "isrc": "PENDING-RAISE-THE-LOAF-01",
+   "title": "Raise the Loaf",
+   "release": "raise-the-loaf",
+   "approved_on": "2026-11-25",
+   "text": "official",
+   "source_sha256": "6df9497c71ef6abe4d9ea0ae9db7665447213d64089f304820136380b72db8ed",
+   "approval_note": "Zach's official lyrics (t397u) per /workspace/releases/2026-11-26-raise-the-loaf/STATUS.md; section labels and stage directions stripped for display. TODO: swap PENDING id for the real ISRC after DistroKid processing."
   }
  ]
 }
