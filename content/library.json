@@ -23,6 +23,23 @@
       },
       "approved": "Zach, Nov 10, 2026: thesis public, full text, free to read; dissertation stays members-only",
       "short_title": "Heat in the Bone thesis"
+    },
+    {
+      "slug": "raise-the-loaf-thesis",
+      "title": "Thesis: Thanks in the Wreck — The Shared Loaf as Social Bond and Theological Act in 'Raise the Loaf'",
+      "description": "",
+      "file": "library/raise-the-loaf-thesis.md",
+      "release": "raise-the-loaf",
+      "release_label": "Read the thesis",
+      "members_link": {
+        "label": "Read the full dissertation (members only)",
+        "url": "https://www.patreon.com/posts/176412127"
+      },
+      "omit": [
+        "Read the full dissertation (members only): https://www.patreon.com/posts/176412127"
+      ],
+      "approved": "Zach via Grok Bot, Nov 25, 2026: thesis public, full text, free to read; dissertation stays members-only (Patreon post 176412127)",
+      "short_title": "Raise the Loaf thesis"
     }
   ]
 }
